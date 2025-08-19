@@ -1,103 +1,146 @@
+import Link from "next/link";
 import Image from "next/image";
+import { Sparkles, Users, Clock4, Code2 } from "lucide-react";
+import { Testimonials } from "@/components/site/testimonials";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="font-sans">
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(1000px_600px_at_10%_-10%,oklch(0.98_0.02_310_/_0.6),transparent),radial-gradient(800px_500px_at_90%_-20%,oklch(0.98_0.02_210_/_0.6),transparent)]" />
+        {/* Enhanced animated glow accents */}
+        <div className="pointer-events-none absolute -top-10 -left-10 h-64 w-64 rounded-full bg-fuchsia-400/20 blur-3xl animate-pulse" />
+        <div className="pointer-events-none absolute -bottom-16 -right-16 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl [animation-duration:3s] animate-pulse" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-violet-400/10 blur-3xl animate-ping [animation-duration:4s]" />
+        
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div className="animate-fade-in-up [animation-delay:200ms]">
+              <h1 className="text-4xl/tight sm:text-5xl/tight font-bold tracking-tight">
+                <span className="inline-block animate-fade-in-up [animation-delay:400ms]">Learn to code with momentum.</span>{" "}
+                <span className="inline-block animate-fade-in-up [animation-delay:600ms]">Build real projects.</span>{" "}
+                <span className="inline-block animate-fade-in-up [animation-delay:800ms] bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">Land real work.</span>
+              </h1>
+              <p className="mt-4 text-muted-foreground text-lg animate-fade-in-up [animation-delay:1000ms]">
+                Vibe Coding Philippines shares hands-on guides and community-driven content in Web Development, AI, and Data. Project-first, mentor-guided, community-backed.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3 animate-fade-in-up [animation-delay:1200ms]">
+                <Link href="/projects" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90 hover:scale-105 transition-all duration-200">
+                  Start Building
+                </Link>
+                <Link href="/projects" className="inline-flex items-center rounded-md border px-4 py-2.5 text-sm font-medium hover:bg-accent hover:scale-105 transition-all duration-200">
+                  See Projects
+                </Link>
+              </div>
+              <p className="mt-4 text-xs text-muted-foreground animate-fade-in-up [animation-delay:1400ms]">
+                Start any time. New guides and projects drop regularly.
+              </p>
+            </div>
+            <div className="relative animate-fade-in-up [animation-delay:600ms]">
+              <div className="aspect-[4/3] w-full rounded-xl border bg-gradient-to-tr from-violet-600/10 via-fuchsia-600/10 to-sky-500/10 p-4 hover:scale-105 transition-transform duration-300">
+                <div className="h-full w-full overflow-hidden rounded-lg bg-background/60">
+                  <Image src="/hero.svg" alt="Vibe Coding" width={800} height={600} className="h-full w-full object-contain p-6 animate-float" />
+                </div>
+              </div>
+              {/* Floating elements */}
+              <div className="absolute -top-4 -right-4 h-8 w-8 rounded-full bg-violet-500/20 animate-bounce [animation-delay:2s]" />
+              <div className="absolute -bottom-2 -left-2 h-6 w-6 rounded-full bg-fuchsia-500/20 animate-bounce [animation-delay:3s]" />
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+      {/* Testimonials */}
+      <Testimonials />
+
+      {/* Features */}
+      <section className="border-t">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background"><Code2 size={16} /></div>
+              <div className="font-medium">Project-first curriculum</div>
+              <p className="text-sm text-muted-foreground">Build a portfolio with weekly real-world projects and code reviews.</p>
+            </div>
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background"><Sparkles size={16} /></div>
+              <div className="font-medium">Mentor support</div>
+              <p className="text-sm text-muted-foreground">Get 1:1 guidance, pair programming, and career coaching.</p>
+            </div>
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background"><Users size={16} /></div>
+              <div className="font-medium">Community</div>
+              <p className="text-sm text-muted-foreground">Join a supportive PH tech community for accountability and gigs.</p>
+            </div>
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background"><Clock4 size={16} /></div>
+              <div className="font-medium">Flexible schedule</div>
+              <p className="text-sm text-muted-foreground">Built for busy pros—follow flexible, async-friendly modules.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Programs */}
+      <section className="border-t">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
+          <div className="mb-6 flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-semibold">Programs</h2>
+              <p className="text-sm text-muted-foreground">Choose a path and start building.</p>
+            </div>
+            <Link href="/courses" className="text-sm text-muted-foreground hover:text-foreground">
+              View all →
+            </Link>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+      <Link href="/courses/web-dev" className="group rounded-lg border hover:bg-accent overflow-hidden">
+              <div className="aspect-[16/9] w-full border-b bg-secondary/40">
+        <Image src="/images/programs/web-dev.svg" alt="Web Development" width={1200} height={675} className="h-full w-full object-cover" />
+              </div>
+              <div className="p-6">
+                <div className="font-medium group-hover:underline">Full-Stack Web Dev</div>
+                <p className="text-sm text-muted-foreground">Next.js, TypeScript, Tailwind, APIs, and deployment. Build 4 portfolio apps.</p>
+              </div>
+            </Link>
+      <Link href="/courses/ai-engineering" className="group rounded-lg border hover:bg-accent overflow-hidden">
+              <div className="aspect-[16/9] w-full border-b bg-secondary/40">
+        <Image src="/images/programs/ai-eng.svg" alt="AI Engineering" width={1200} height={675} className="h-full w-full object-cover" />
+              </div>
+              <div className="p-6">
+                <div className="font-medium group-hover:underline">AI Engineering</div>
+                <p className="text-sm text-muted-foreground">RAG, LLM apps, vector databases, agents, and production MLOps basics.</p>
+              </div>
+            </Link>
+      <Link href="/courses/data" className="group rounded-lg border hover:bg-accent overflow-hidden">
+              <div className="aspect-[16/9] w-full border-b bg-secondary/40">
+        <Image src="/images/programs/data-analytics.svg" alt="Data & Analytics" width={1200} height={675} className="h-full w-full object-cover" />
+              </div>
+              <div className="p-6">
+                <div className="font-medium group-hover:underline">Data & Analytics</div>
+                <p className="text-sm text-muted-foreground">Python, SQL, dbt, BI dashboards, and analytics engineering foundations.</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+  {/* CTA */}
+  <section className="border-t">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
+          <div className="rounded-xl border bg-gradient-to-br from-violet-600/10 via-fuchsia-600/10 to-sky-500/10 p-8">
+            <div className="grid gap-6 md:grid-cols-2 md:items-center">
+              <div>
+                <h3 className="text-xl font-semibold">Level up with momentum-based learning.</h3>
+                <p className="text-sm text-muted-foreground">Jump into guided builds and learn the essentials as you go—no lengthy theory first.</p>
+              </div>
+              <div className="flex md:justify-end gap-3">
+        <Link href="/projects" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90">Start Building</Link>
+        <Link href="/projects" className="inline-flex items-center rounded-md border px-4 py-2.5 text-sm font-medium hover:bg-accent">See Projects</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#f472b6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" rx="24" fill="url(#g2)" opacity="0.16"/>
+  <rect x="24" y="24" width="1152" height="627" rx="20" fill="#ffffff"/>
+  <!-- neural arcs -->
+  <g fill="none" stroke="#7c3aed" stroke-width="14" opacity="0.9">
+    <path d="M300 338c60-120 180-180 300-180s240 60 300 180"/>
+    <path d="M300 338c60 120 180 180 300 180s240-60 300-180" opacity="0.6"/>
+  </g>
+  <!-- nodes -->
+  <g fill="#0ea5e9" opacity="0.9">
+    <circle cx="300" cy="338" r="10"/>
+    <circle cx="420" cy="238" r="10"/>
+    <circle cx="600" cy="198" r="10"/>
+    <circle cx="780" cy="238" r="10"/>
+    <circle cx="900" cy="338" r="10"/>
+    <circle cx="420" cy="438" r="10"/>
+    <circle cx="600" cy="518" r="10"/>
+    <circle cx="780" cy="438" r="10"/>
+  </g>
+  <!-- connectors -->
+  <g stroke="#22c55e" stroke-width="8" opacity="0.6">
+    <line x1="300" y1="338" x2="420" y2="238"/>
+    <line x1="420" y1="238" x2="600" y2="198"/>
+    <line x1="600" y1="198" x2="780" y2="238"/>
+    <line x1="780" y1="238" x2="900" y2="338"/>
+    <line x1="300" y1="338" x2="420" y2="438"/>
+    <line x1="420" y1="438" x2="600" y2="518"/>
+    <line x1="600" y1="518" x2="780" y2="438"/>
+    <line x1="780" y1="438" x2="900" y2="338"/>
+  </g>
+</svg>
