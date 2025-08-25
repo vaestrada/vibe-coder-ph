@@ -22,7 +22,11 @@ export const metadata: Metadata = {
   description:
     "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
   metadataBase: new URL("https://vibecoder.ph"),
-  icons: { icon: "/logo-icon.svg" },
+  icons: { 
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
   openGraph: {
     title: "Vibe Coding Philippines",
     description:

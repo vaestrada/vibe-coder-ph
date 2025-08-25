@@ -21,6 +21,8 @@ export function Navbar() {
         <div className="flex h-16 items-center gap-4">
           <Link href="/" className="flex items-center gap-3 font-semibold">
             <Image src="/logo.svg" alt="Vibe Coding Philippines" width={144} height={36} className="h-9 w-auto" />
+            <span className="text-lg font-bold hidden sm:inline">Vibe Coding Philippines</span>
+            <span className="text-lg font-bold sm:hidden">Vibe Coder PH</span>
           </Link>
 
           <div className="flex-1" />

@@ -1,18 +1,36 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Sparkles, Users, Clock4, Code2 } from "lucide-react";
 import { Testimonials } from "@/components/site/testimonials";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function Home() {
   return (
     <div className="font-sans">
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(1000px_600px_at_10%_-10%,oklch(0.98_0.02_310_/_0.6),transparent),radial-gradient(800px_500px_at_90%_-20%,oklch(0.98_0.02_210_/_0.6),transparent)]" />
-        {/* Enhanced animated glow accents */}
-        <div className="pointer-events-none absolute -top-10 -left-10 h-64 w-64 rounded-full bg-fuchsia-400/20 blur-3xl animate-pulse" />
-        <div className="pointer-events-none absolute -bottom-16 -right-16 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl [animation-duration:3s] animate-pulse" />
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-violet-400/10 blur-3xl animate-ping [animation-duration:4s]" />
+        {/* Lottie Animation Background */}
+        <div className="absolute inset-0 -z-20">
+          {/* Single Main Lottie Animation */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-60">
+            <DotLottieReact
+              src="https://lottie.host/6323b920-545b-4910-a629-f11f653ad382/nhU0Ilgb32.lottie"
+              loop
+              autoplay
+              style={{
+                width: '100%',
+                height: '100%',
+                maxWidth: '1200px',
+                maxHeight: '800px'
+              }}
+            />
+          </div>
+        </div>
+        
+        {/* Simplified background gradient */}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-violet-50 via-transparent to-fuchsia-50" />
         
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
           <div className="grid items-center gap-10 md:grid-cols-2">
@@ -38,18 +56,23 @@ export default function Home() {
               </p>
             </div>
             <div className="relative animate-fade-in-up [animation-delay:600ms]">
-              <div className="aspect-[4/3] w-full rounded-xl border bg-gradient-to-tr from-violet-600/10 via-fuchsia-600/10 to-sky-500/10 p-4 hover:scale-105 transition-transform duration-300">
-                <div className="h-full w-full overflow-hidden rounded-lg bg-background/60">
-                  <Image src="/hero.svg" alt="Vibe Coding" width={800} height={600} className="h-full w-full object-contain p-6 animate-float" />
+              <div className="aspect-[4/3] w-full rounded-xl border bg-gradient-to-tr from-violet-600/10 via-fuchsia-600/10 to-sky-500/10 p-1 hover:scale-105 transition-all duration-300 group">
+                <div className="h-full w-full overflow-hidden rounded-lg bg-black">
+                  <iframe
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/zJSY8tbf_ys?autoplay=1&mute=1&loop=1&playlist=zJSY8tbf_ys&controls=1&showinfo=0&rel=0&modestbranding=1"
+                    title="Developer coding on laptop - Programming workflow"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
                 </div>
               </div>
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 h-8 w-8 rounded-full bg-violet-500/20 animate-bounce [animation-delay:2s]" />
-              <div className="absolute -bottom-2 -left-2 h-6 w-6 rounded-full bg-fuchsia-500/20 animate-bounce [animation-delay:3s]" />
             </div>
           </div>
         </div>
       </section>
+
       {/* Testimonials */}
       <Testimonials />
 
@@ -57,24 +80,24 @@ export default function Home() {
       <section className="border-t">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-lg border bg-card p-6">
-              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background"><Code2 size={16} /></div>
-              <div className="font-medium">Project-first curriculum</div>
+            <div className="rounded-lg border bg-card p-6 hover:shadow-xl hover:shadow-violet-500/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 group">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"><Code2 size={16} /></div>
+              <div className="font-medium group-hover:text-violet-600 transition-colors duration-300">Project-first curriculum</div>
               <p className="text-sm text-muted-foreground">Build a portfolio with weekly real-world projects and code reviews.</p>
             </div>
-            <div className="rounded-lg border bg-card p-6">
-              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background"><Sparkles size={16} /></div>
-              <div className="font-medium">Mentor support</div>
+            <div className="rounded-lg border bg-card p-6 hover:shadow-xl hover:shadow-fuchsia-500/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 group">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"><Sparkles size={16} /></div>
+              <div className="font-medium group-hover:text-fuchsia-600 transition-colors duration-300">Mentor support</div>
               <p className="text-sm text-muted-foreground">Get 1:1 guidance, pair programming, and career coaching.</p>
             </div>
-            <div className="rounded-lg border bg-card p-6">
-              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background"><Users size={16} /></div>
-              <div className="font-medium">Community</div>
+            <div className="rounded-lg border bg-card p-6 hover:shadow-xl hover:shadow-cyan-500/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 group">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"><Users size={16} /></div>
+              <div className="font-medium group-hover:text-cyan-600 transition-colors duration-300">Community</div>
               <p className="text-sm text-muted-foreground">Join a supportive PH tech community for accountability and gigs.</p>
             </div>
-            <div className="rounded-lg border bg-card p-6">
-              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background"><Clock4 size={16} /></div>
-              <div className="font-medium">Flexible schedule</div>
+            <div className="rounded-lg border bg-card p-6 hover:shadow-xl hover:shadow-purple-500/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 group">
+              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600 text-background group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"><Clock4 size={16} /></div>
+              <div className="font-medium group-hover:text-purple-600 transition-colors duration-300">Flexible schedule</div>
               <p className="text-sm text-muted-foreground">Built for busy pros—follow flexible, async-friendly modules.</p>
             </div>
           </div>
