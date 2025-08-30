@@ -9,7 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <Image src="/logo-icon.svg" alt="Vibe Coding Philippines" width={40} height={40} className="h-10 w-10" />
+              <Image src="/logo.svg" alt="Vibe Coding Philippines" width={40} height={40} className="h-10 w-10" />
               <span className="font-semibold text-lg">Vibe Coding Philippines</span>
             </div>
             <p className="text-sm text-muted-foreground max-w-sm">
