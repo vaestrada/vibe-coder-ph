@@ -1,4 +1,5 @@
 Vibe Coding School Philippines website built with Next.js 15, Tailwind CSS v4, and shadcn-ui structure.
+SMALL EDIT
 
 ## Development
 
