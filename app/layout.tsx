@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vibe Coding Philippines",
-    template: "%s | Vibe Coding PH",
+    template: "%s | Vibe Coders Philippines",
+    default: "Vibe Coders Philippines",
   },
   description:
     "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
@@ -28,17 +29,17 @@ export const metadata: Metadata = {
     apple: "/logo.svg",
   },
   openGraph: {
-    title: "Vibe Coding Philippines",
+    title: "Vibe Coders Philippines",
     description:
       "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
     url: "https://vibecoder.ph",
-    siteName: "Vibe Coding PH",
+    siteName: "Vibe Coders PH",
     type: "website",
     locale: "en_PH",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vibe Coding Philippines",
+    title: "Vibe Coders Philippines",
     description:
       "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
   },
@@ -50,13 +51,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-  <Navbar />
-  <main className="min-h-[calc(100dvh-64px-240px)]">{children}</main>
-  <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="min-h-[calc(100dvh-64px-240px)]">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 # 🎨 UI/UX Enhancement Roadmap
-**Vibe Coding Philippines Website**
+**Vibe Coders Philippines Website**
 
 ---
 
