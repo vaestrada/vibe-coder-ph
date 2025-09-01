@@ -1,140 +1,237 @@
 "use client";
 
 import Link from "next/link";
-import { Code, Brain, BarChart3 } from "lucide-react";
+import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { getAllBlogPosts } from "@/lib/blog-data";
 
-const courses = [
-  {
-    slug: "web-dev",
-    title: "Full-Stack Web Development",
-    duration: "12 weeks, part-time",
-    blurb:
-      "Next.js, TypeScript, Tailwind, APIs, databases, and deployment. Build 4 portfolio-grade apps.",
-    icon: Code,
-  },
-  {
-    slug: "ai-engineering",
-    title: "AI Engineering",
-    duration: "10 weeks, part-time",
-    blurb:
-      "RAG, LLM apps, vector DBs, embeddings, agents, and production deployment patterns.",
-    icon: Brain,
-  },
-  {
-    slug: "data",
-    title: "Data & Analytics",
-    duration: "10 weeks, part-time",
-    blurb:
-      "Python, SQL, dbt, data modeling, ETL/ELT, and BI dashboarding for analytics engineering.",
-    icon: BarChart3,
-  },
-];
+export default function BlogPage() {
+  const blogPosts = getAllBlogPosts();
+  const featuredPosts = blogPosts.filter(post => post.featured);
+  const recentPosts = blogPosts.slice(0, 6);
 
-export default function CoursesPage() {
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case "Web Development":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
+      case "AI Engineering":
+        return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200";
+      case "Data Analytics":
+        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
+      case "Process & Culture":
+        return "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
+    }
+  };
+
   return (
     <motion.div 
-      className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14"
+      className="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.h1 
-        className="text-3xl font-bold"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        Courses
-      </motion.h1>
-      <motion.p 
-        className="mt-2 text-muted-foreground"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        Practical, mentor-guided tracks. Learn by building and ship weekly.
-      </motion.p>
+      {/* Header Section */}
+      <div className="text-center mb-12">
+        <motion.h1 
+          className="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          Vibe Coder <span className="text-primary">Blog</span>
+        </motion.h1>
+        <motion.p 
+          className="text-lg text-muted-foreground max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Insights, tutorials, and deep dives into web development, AI engineering, and data analytics. 
+          Learn from real projects and industry best practices.
+        </motion.p>
+      </div>
 
-      <motion.div 
-        className="mt-8 grid gap-6 md:grid-cols-3"
+      {/* Featured Posts */}
+      {featuredPosts.length > 0 && (
+        <motion.div 
+          className="mb-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="flex items-center gap-2 mb-6">
+            <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <h2 className="text-2xl font-semibold">Featured Posts</h2>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2">
+            {featuredPosts.map((post, index) => (
+              <motion.article
+                key={post.slug}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.4 + index * 0.1
+                }}
+                whileHover={{ 
+                  y: -4,
+                  transition: { duration: 0.2 }
+                }}
+              >
+                <Link 
+                  href={`/blog/${post.slug}`} 
+                  className="group block rounded-2xl border bg-card p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <span className={`text-xs px-3 py-1 rounded-full font-medium ${getCategoryColor(post.category)}`}>
+                      {post.category}
+                    </span>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Calendar className="h-3 w-3" />
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric', 
+                        year: 'numeric' 
+                      })}
+                    </div>
+                  </div>
+                  
+                  <h3 className="font-bold text-xl mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground mb-4 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <User className="h-3 w-3" />
+                        {post.author}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-3 w-3" />
+                        {post.readTime}
+                      </div>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </motion.article>
+            ))}
+          </div>
+        </motion.div>
+      )}
+
+      {/* Recent Posts */}
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
       >
-        {courses.map((c, index) => {
-          const IconComponent = c.icon;
-          return (
-            <motion.div
-              key={c.slug}
-              initial={{ opacity: 0, y: 30, rotateY: -15 }}
-              animate={{ opacity: 1, y: 0, rotateY: 0 }}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-semibold">Recent Posts</h2>
+          <Link 
+            href="/blog/all" 
+            className="text-sm text-primary hover:underline flex items-center gap-1"
+          >
+            View all posts
+            <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {recentPosts.map((post, index) => (
+            <motion.article
+              key={post.slug}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ 
-                duration: 0.6, 
-                delay: 0.4 + index * 0.15,
-                type: "spring",
-                stiffness: 100,
-                damping: 15
+                duration: 0.5, 
+                delay: 0.6 + index * 0.05
               }}
               whileHover={{ 
-                y: -8, 
-                scale: 1.03,
-                rotateY: 5,
-                transition: { duration: 0.3 }
+                y: -2,
+                transition: { duration: 0.2 }
               }}
-              whileTap={{ scale: 0.98 }}
             >
-              <Link href={`/courses/${c.slug}`} className="group block rounded-lg border p-6 hover:bg-accent">
-                <motion.div 
-                  className="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-600"
-                  whileHover={{ 
-                    rotate: 10,
-                    scale: 1.1,
-                    transition: { duration: 0.2 }
-                  }}
-                >
-                  <motion.div
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ 
-                      delay: 0.6 + index * 0.15, 
-                      duration: 0.5,
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 15
-                    }}
-                  >
-                    <IconComponent className="h-5 w-5 text-white" />
-                  </motion.div>
-                </motion.div>
-                <motion.div 
-                  className="font-medium group-hover:underline"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
-                >
-                  {c.title}
-                </motion.div>
-                <motion.div 
-                  className="text-xs text-muted-foreground"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                >
-                  {c.duration}
-                </motion.div>
-                <motion.p 
-                  className="mt-2 text-sm text-muted-foreground"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
-                >
-                  {c.blurb}
-                </motion.p>
+              <Link 
+                href={`/blog/${post.slug}`} 
+                className="group block rounded-xl border bg-card p-5 transition-all duration-300 hover:shadow-md"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span className={`text-xs px-2 py-1 rounded-full ${getCategoryColor(post.category)}`}>
+                    {post.category}
+                  </span>
+                  {post.featured && (
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  )}
+                </div>
+                
+                <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  {post.title}
+                </h3>
+                
+                <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                  {post.excerpt}
+                </p>
+                
+                <div className="flex flex-wrap gap-1 mb-3">
+                  {post.tags.slice(0, 2).map((tag) => (
+                    <span key={tag} className="text-xs bg-secondary px-2 py-1 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                  {post.tags.length > 2 && (
+                    <span className="text-xs text-muted-foreground">
+                      +{post.tags.length - 2}
+                    </span>
+                  )}
+                </div>
+                
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="h-3 w-3" />
+                    {new Date(post.publishedAt).toLocaleDateString('en-US', { 
+                      month: 'short', 
+                      day: 'numeric' 
+                    })}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Clock className="h-3 w-3" />
+                    {post.readTime}
+                  </div>
+                </div>
               </Link>
-            </motion.div>
-          );
-        })}
+            </motion.article>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Newsletter CTA */}
+      <motion.div 
+        className="mt-16 rounded-2xl border bg-gradient-to-r from-primary/5 to-primary/10 p-8 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        <h3 className="text-xl font-semibold mb-2">Stay Updated</h3>
+        <p className="text-muted-foreground mb-6">
+          Get the latest tutorials, project guides, and industry insights delivered to your inbox.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="flex-1 px-4 py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+          <button className="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">
+            Subscribe
+          </button>
+        </div>
       </motion.div>
     </motion.div>
   );
