@@ -9,6 +9,8 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.github
+.specify
 
 # testing
 /coverage
@@ -19,6 +21,8 @@
 
 # production
 /build
+/specs
+
 
 # misc
 .DS_Store
