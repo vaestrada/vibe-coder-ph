@@ -230,7 +230,7 @@ export default function ProjectsPage() {
           whileTap={{ scale: 0.95 }}
         >
           <Link href="/courses" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90">
-            Read Blog
+            See Courses
           </Link>
         </motion.div>
       </motion.div>
