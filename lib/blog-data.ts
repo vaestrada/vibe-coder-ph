@@ -150,7 +150,7 @@ export const blogPosts: BlogPost[] = [
         </p>
       </div>
     `,
-    author: "Viron Gil Estrada",
+    author: "Joseph Miguel Guerrero",
     publishedAt: "2025-09-19",
     category: "AI Engineering",
     tags: ["MCP", "AI", "Integration", "Protocol", "Machine Learning"],
