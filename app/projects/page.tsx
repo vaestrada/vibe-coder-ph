@@ -14,25 +14,36 @@ const projects = [
     link: "https://www.virongilestrada.online/",
   },
   {
-    title: "Public Link Shortener",
-    desc: "Create a tiny URL service with rate limiting and analytics.",
-    tech: "Next.js App Router, Prisma, SQLite",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=300&fit=crop&auto=format",
-    alt: "Network connection visualization showing link shortening concept",
+    title: "ALJ Agnas - Personal Website",
+    desc: "A creative personal portfolio website featuring modern design elements and showcasing professional projects and skills.",
+    tech: "React, CSS, JavaScript",
+    image: "/images/Alj-Agnas-website.png",
+    alt: "ALJ Agnas personal website screenshot",
+    link: "https://alj-personal-website.vercel.app/",
   },
   {
-    title: "Mini RAG Notes",
-    desc: "Upload markdown notes and ask questions with retrieval-augmented generation.",
-    tech: "Next.js, embeddings, a vector store (e.g., SQLite FTS or pgvector)",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop&auto=format",
-    alt: "AI brain visualization with neural networks and data processing",
+    title: "Gian Baturiano - Personal Website",
+    desc: "A sleek personal portfolio website highlighting technical expertise and creative projects with responsive design.",
+    tech: "Next.js, Tailwind CSS, TypeScript",
+    image: "/images/Gian-Baturiano-website.png",
+    alt: "Gian Baturiano personal website screenshot",
+    link: "https://personal-website-gibaturiano-tawny-64.vercel.app/",
   },
   {
-    title: "Analytics Dashboard",
-    desc: "Pull data from an API, transform it, and render charts and KPIs.",
-    tech: "Next.js, Chart library, Edge runtime",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop&auto=format",
-    alt: "Modern analytics dashboard with charts and data visualization",
+    title: "Ken Realingo - Personal Website",
+    desc: "A professional portfolio website demonstrating coding skills and project showcase with clean, modern aesthetics.",
+    tech: "React, Styled Components, JavaScript",
+    image: "/images/ken-realingo-website.png",
+    alt: "Ken Realingo personal website screenshot",
+    link: "https://personal-website-self-nine-30.vercel.app/",
+  },
+  {
+    title: "Joseph Guerrero - Personal Website",
+    desc: "An innovative personal portfolio featuring interactive elements and comprehensive project documentation.",
+    tech: "Next.js, Framer Motion, Tailwind CSS",
+    image: "/images/joseph-guerrero-website.png",
+    alt: "Joseph Guerrero personal website screenshot",
+    link: "https://jnguerrero.vercel.app/",
   },
 ];
 
@@ -56,7 +67,7 @@ export default function ProjectsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Sample Projects
+          Community Showcases
         </motion.h1>
         <motion.p 
           className="mt-2 text-muted-foreground text-sm"
@@ -64,7 +75,7 @@ export default function ProjectsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Follow these project briefs to build your portfolio. Each takes ~1–2 weeks part-time.
+          Personal websites and portfolios built by our amazing Vibecoders community members.
         </motion.p>
       </motion.div>
 

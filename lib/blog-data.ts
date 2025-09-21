@@ -24,21 +24,21 @@ export const blogPosts: BlogPost[] = [
           Job hunting is a journey full of small strategies and hidden tools. Every detail matters—the company research, the role, and, of course, the people who will sit across the table and decide your future. That's why, like many of you, I don't just prepare answers—I prepare for who I'll be answering to.
         </p>
         <p class="mb-4 leading-relaxed">
-          Recently, while navigating interviews, I stumbled upon a problem that opened my eyes to a game-changing technology: <strong>Model Context Protocols (MCPs)</strong>.
+          Recently, while navigating interviews, I stumbled upon a problem that opened my eyes to a game-changing technology called <strong>Model Context Protocols (MCPs)</strong>.
         </p>
       </div>
 
       <!-- The Problem Section -->
       <div class="mb-8">
-        <h2 class="text-2xl font-bold mb-6 text-foreground">The Dilemma: LinkedIn Without Being Seen</h2>
+        <h2 class="text-2xl font-bold mb-6 text-foreground">The Dilemma - LinkedIn Without Being Seen</h2>
         <p class="mb-4 leading-relaxed">
-          Picture this: I had just received an email with the names of my upcoming interviewers—the recruiter and the hiring manager. Naturally, I wanted to learn more about them: their background, their style, their career trajectory. This context can make the difference between a surface-level conversation and one where you truly connect.
+          Picture this - I had just received an email with the names of my upcoming interviewers—the recruiter and the hiring manager. Naturally, I wanted to learn more about them - their background, their style, their career trajectory. This context can make the difference between a surface-level conversation and one where you truly connect.
         </p>
         <p class="mb-4 leading-relaxed">
           My first instinct? Search for them on LinkedIn.
         </p>
         <div class="principle-highlight">
-          <p><strong>But here's the catch:</strong> LinkedIn notifies users when you view their profiles. That's fine if you're networking casually, but in a high-stakes interview scenario, the last thing I wanted was for the recruiter or hiring manager to know I was studying their profile the night before.</p>
+          <p><strong>But here's the catch</strong> - LinkedIn notifies users when you view their profiles. That's fine if you're networking casually, but in a high-stakes interview scenario, the last thing I wanted was for the recruiter or hiring manager to know I was studying their profile the night before.</p>
         </div>
         <p class="mb-4 leading-relaxed">
           So, how could I gather insights without leaving digital footprints?
@@ -47,7 +47,7 @@ export const blogPosts: BlogPost[] = [
 
       <!-- The Discovery Section -->
       <div class="mb-8">
-        <h2 class="text-2xl font-bold mb-6 text-foreground">The Discovery: MCPs</h2>
+        <h2 class="text-2xl font-bold mb-6 text-foreground">The Discovery - MCPs</h2>
         <p class="mb-4 leading-relaxed">
           In my search for a solution, I discovered <strong>Model Context Protocols (MCPs)</strong>—a relatively new framework that lets AI models interact with external tools and data sources safely and effectively.
         </p>
@@ -62,7 +62,7 @@ export const blogPosts: BlogPost[] = [
       <!-- The Solution Section -->
       <div class="mb-8">
         <h2 class="text-2xl font-bold mb-6 text-foreground">The Practical Application: Bright Data MCP + Claude</h2>
-        <p class="mb-4 leading-relaxed">Here's what I set up:</p>
+        <p class="mb-4 leading-relaxed">Here's what I set up</p>
         
         <div class="space-y-4 mb-6">
           <div class="principle-highlight">
@@ -78,9 +78,9 @@ export const blogPosts: BlogPost[] = [
         </p>
 
         <div class="mb-6 p-6 bg-accent/30 rounded-xl border">
-          <h3 class="text-lg font-bold mb-3">What this meant in practice:</h3>
+          <h3 class="text-lg font-bold mb-3">What this meant in practice</h3>
           <ul class="space-y-2">
-            <li>• I could ask Claude: "Tell me about this recruiter's career history and recent role."</li>
+            <li>• I could ask Claude "Tell me about this recruiter's career history and recent role."</li>
             <li>• Claude, using the Bright Data MCP, would fetch the information for me.</li>
             <li>• The recruiter never got a notification. I stayed invisible, while still being prepared.</li>
           </ul>
@@ -96,24 +96,24 @@ export const blogPosts: BlogPost[] = [
         
         <div class="space-y-4">
           <div class="principle-highlight">
-            <p>� <strong>Confidence boost:</strong> Going into an interview already knowing who you'll speak to—what roles they've held, what industries they've touched—lets you tailor your conversation in a way that feels natural and informed.</p>
+            <p>💪 <strong>Confidence boost</strong> - Going into an interview already knowing who you'll speak to—what roles they've held, what industries they've touched—lets you tailor your conversation in a way that feels natural and informed.</p>
           </div>
           
           <div class="principle-highlight">
-            <p>⚖️ <strong>Fair playing field:</strong> Recruiters and hiring managers often research candidates extensively before interviews. Why shouldn't candidates do the same, discreetly and respectfully?</p>
+            <p>⚖️ <strong>Fair playing field</strong> - Recruiters and hiring managers often research candidates extensively before interviews. Why shouldn't candidates do the same, discreetly and respectfully?</p>
           </div>
           
           <div class="principle-highlight">
-            <p>🚀 <strong>Practical AI:</strong> MCPs aren't abstract anymore. They're not just for developers or researchers—they're for anyone navigating real-world problems, like job hunting.</p>
+            <p>🚀 <strong>Practical AI</strong> - MCPs aren't abstract anymore. They're not just for developers or researchers—they're for anyone navigating real-world problems, like job hunting.</p>
           </div>
         </div>
       </div>
 
       <!-- Bigger Picture Section -->
       <div class="mb-8">
-        <h2 class="text-2xl font-bold mb-6 text-foreground">The Bigger Picture: MCPs Beyond Job Hunting</h2>
+        <h2 class="text-2xl font-bold mb-6 text-foreground">The Bigger Picture - MCPs Beyond Job Hunting</h2>
         <p class="mb-4 leading-relaxed">
-          Once I saw MCPs in action, it became clear that this is just the beginning. Imagine:
+          Once I saw MCPs in action, it became clear that this is just the beginning. Imagine
         </p>
         
         <ul class="space-y-3 mb-6">
@@ -137,7 +137,7 @@ export const blogPosts: BlogPost[] = [
           If you're in the middle of a job hunt, don't just polish your resume. Explore the tools that can give you an edge. For me, it was Bright Data MCP + Claude Desktop, and it transformed the way I prepare.
         </p>
         <p class="font-semibold">
-          And that's the power of MCPs—taking real-world problems and quietly, elegantly solving them.
+          And that's the power of MCPs - taking real-world problems and quietly, elegantly solving them.
         </p>
       </div>
 
