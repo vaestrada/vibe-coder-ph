@@ -3,51 +3,68 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { getProjects, Project } from "@/lib/supabase";
 
-const projects = [
+// Fallback static projects (for reliability)
+const staticProjects = [
   {
+    id: "static-1",
     title: "Viron Gil Estrada - Personal Website",
-    desc: "A modern personal portfolio website showcasing professional experience, skills, and projects with elegant design and smooth animations.",
-    tech: "Next.js, TypeScript, Tailwind CSS",
-    image: "/images/vironestrada-personal-website.png",
-    alt: "Viron Gil Estrada personal website screenshot",
-    link: "https://www.virongilestrada.online/",
+    description: "A modern personal portfolio website showcasing professional experience, skills, and projects with elegant design and smooth animations.",
+    tech_stack: "Next.js, TypeScript, Tailwind CSS",
+    media_url: "/images/vironestrada-personal-website.png",
+    media_type: "image" as const,
+    live_url: "https://www.virongilestrada.online/",
+    featured: true,
+    order_index: 1,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    thumbnail_url: null
   },
-  {
-    title: "ALJ Agnas - Personal Website",
-    desc: "A creative personal portfolio website featuring modern design elements and showcasing professional projects and skills.",
-    tech: "React, CSS, JavaScript",
-    image: "/images/Alj-Agnas-website.png",
-    alt: "ALJ Agnas personal website screenshot",
-    link: "https://alj-personal-website.vercel.app/",
-  },
-  {
-    title: "Gian Baturiano - Personal Website",
-    desc: "A sleek personal portfolio website highlighting technical expertise and creative projects with responsive design.",
-    tech: "Next.js, Tailwind CSS, TypeScript",
-    image: "/images/Gian-Baturiano-website.png",
-    alt: "Gian Baturiano personal website screenshot",
-    link: "https://personal-website-gibaturiano-tawny-64.vercel.app/",
-  },
-  {
-    title: "Ken Realingo - Personal Website",
-    desc: "A professional portfolio website demonstrating coding skills and project showcase with clean, modern aesthetics.",
-    tech: "React, Styled Components, JavaScript",
-    image: "/images/ken-realingo-website.png",
-    alt: "Ken Realingo personal website screenshot",
-    link: "https://personal-website-self-nine-30.vercel.app/",
-  },
-  {
-    title: "Joseph Guerrero - Personal Website",
-    desc: "An innovative personal portfolio featuring interactive elements and comprehensive project documentation.",
-    tech: "Next.js, Framer Motion, Tailwind CSS",
-    image: "/images/joseph-guerrero-website.png",
-    alt: "Joseph Guerrero personal website screenshot",
-    link: "https://jnguerrero.vercel.app/",
-  },
+  // Add other static projects as needed
 ];
 
 export default function ProjectsPage() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const supabaseProjects = await getProjects();
+        
+        // Use Supabase projects if available, otherwise fall back to static
+        if (supabaseProjects.length > 0) {
+          setProjects(supabaseProjects);
+        } else {
+          setProjects(staticProjects);
+        }
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+        setProjects(staticProjects);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <motion.div 
+        className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14 flex items-center justify-center min-h-[400px]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading community showcases...</p>
+        </div>
+      </motion.div>
+    );
+  }
   return (
     <motion.div 
       className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14"
@@ -88,7 +105,7 @@ export default function ProjectsPage() {
         {projects.map((p, index) => {
           const ProjectCard = (
             <motion.div 
-              key={p.title} 
+              key={p.id} 
               className="rounded-lg border overflow-hidden cursor-pointer bg-card"
               initial={{ opacity: 0, y: 30, rotateX: -15 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -106,7 +123,7 @@ export default function ProjectsPage() {
               }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Project Image */}
+              {/* Project Media */}
               <motion.div 
                 className="relative h-48 w-full overflow-hidden"
                 initial={{ scale: 1.2, opacity: 0 }}
@@ -116,13 +133,26 @@ export default function ProjectsPage() {
                   delay: 0.6 + index * 0.1,
                 }}
               >
-                <Image
-                  src={p.image}
-                  alt={p.alt}
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                {p.media_type === 'video' && p.media_url ? (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
+                    poster={p.thumbnail_url || undefined}
+                  >
+                    <source src={p.media_url} type="video/mp4" />
+                  </video>
+                ) : (
+                  <Image
+                    src={p.media_url || '/images/placeholder.jpg'}
+                    alt={`${p.title} screenshot`}
+                    fill
+                    className="object-cover transition-transform duration-300 hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                )}
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
                   initial={{ opacity: 0 }}
@@ -147,7 +177,7 @@ export default function ProjectsPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
                 >
-                  {p.desc}
+                  {p.description}
                 </motion.p>
                 <motion.div 
                   className="flex items-center gap-2"
@@ -157,10 +187,10 @@ export default function ProjectsPage() {
                 >
                   <div className="h-2 w-2 rounded-full bg-violet-500" />
                   <p className="text-xs text-muted-foreground font-medium">
-                    {p.tech}
+                    {p.tech_stack}
                   </p>
                 </motion.div>
-                {p.link && (
+                {p.live_url && (
                   <motion.div 
                     className="mt-3 flex items-center gap-1 text-xs text-violet-500 font-medium"
                     initial={{ opacity: 0, x: -20 }}
@@ -177,10 +207,10 @@ export default function ProjectsPage() {
             </motion.div>
           );
 
-          return p.link ? (
+          return p.live_url ? (
             <Link 
-              key={p.title}
-              href={p.link} 
+              key={p.id}
+              href={p.live_url} 
               target="_blank" 
               rel="noopener noreferrer"
               className="block"
