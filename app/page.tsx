@@ -39,16 +39,19 @@ export default function Home() {
               </p>
             </div>
             <div className="relative animate-fade-in-up [animation-delay:600ms]">
-              <div className="aspect-[4/3] w-full rounded-xl border bg-gradient-to-tr from-violet-600/10 via-fuchsia-600/10 to-sky-500/10 dark:from-violet-600/20 dark:via-fuchsia-600/20 dark:to-sky-500/20 p-1 hover:scale-105 transition-all duration-300 group">
+              <div className="aspect-video w-full rounded-xl border bg-gradient-to-tr from-violet-600/10 via-fuchsia-600/10 to-sky-500/10 dark:from-violet-600/20 dark:via-fuchsia-600/20 dark:to-sky-500/20 p-1 hover:scale-105 transition-all duration-300 group">
                 <div className="h-full w-full overflow-hidden rounded-lg bg-background/60 dark:bg-background/80">
-                  <iframe
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/zJSY8tbf_ys?autoplay=1&mute=1&loop=1&playlist=zJSY8tbf_ys&controls=1&showinfo=0&rel=0&modestbranding=1"
-                    title="Developer coding on laptop - Programming workflow"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
+                  <video
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster=""
+                  >
+                    <source src="https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/hero/a3e1dd6d-232c-4051-a1d8-a2d2701dfd0d.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </div>
             </div>
