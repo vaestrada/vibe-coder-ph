@@ -6,31 +6,6 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getProjects, Project } from "@/lib/supabase";
 
-export const metadata = {
-  title: "Community Showcases",
-  description: "Personal websites and portfolios built by our amazing Vibecoders community members. See what's possible with hands-on coding education.",
-  openGraph: {
-    title: "Community Showcases | Vibe Coders Philippines",
-    description: "Personal websites and portfolios built by our amazing Vibecoders community members. See what's possible with hands-on coding education.",
-    type: "website",
-    url: "https://vibecoder.ph/projects",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Community Showcases - Vibe Coders Philippines",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Community Showcases | Vibe Coders Philippines",
-    description: "Personal websites and portfolios built by our amazing Vibecoders community members. See what's possible with hands-on coding education.",
-    images: ["/og-image.png"],
-  },
-};
-
 // Fallback static projects (for reliability)
 const staticProjects = [
   {
@@ -58,7 +33,7 @@ export default function ProjectsPage() {
     const fetchProjects = async () => {
       try {
         const supabaseProjects = await getProjects();
-        
+
         // Use Supabase projects if available, otherwise fall back to static
         if (supabaseProjects.length > 0) {
           setProjects(supabaseProjects);
@@ -78,7 +53,7 @@ export default function ProjectsPage() {
 
   if (loading) {
     return (
-      <motion.div 
+      <motion.div
         className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14 flex items-center justify-center min-h-[400px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
