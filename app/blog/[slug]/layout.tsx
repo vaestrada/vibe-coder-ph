@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: BlogPostLayoutProps): Promise
       publishedTime: blogPost.publishedAt,
       authors: [blogPost.author],
       tags: blogPost.tags,
-      url: `https://vibecoder.ph/blog/${slug}`,
+      url: `https://vibe-coder-ph.vercel.app/blog/${slug}`,
       images: [
         {
           url: "/og-image.png",

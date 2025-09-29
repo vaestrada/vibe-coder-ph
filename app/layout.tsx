@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   description:
     "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
-  metadataBase: new URL("https://vibecoder.ph"),
+  metadataBase: new URL("https://vibe-coder-ph.vercel.app"),
   icons: { 
     icon: "/logo.svg",
     shortcut: "/logo.svg",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Vibe Coders Philippines",
     description:
       "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
-    url: "https://vibecoder.ph",
+    url: "https://vibe-coder-ph.vercel.app",
     siteName: "Vibe Coders PH",
     type: "website",
     locale: "en_PH",

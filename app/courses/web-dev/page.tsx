@@ -7,7 +7,7 @@ export const metadata = {
     title: "Full-Stack Web Development | Vibe Coders Philippines",
     description: "Build modern web applications from scratch. Learn layout and styling with Tailwind, component patterns with React + Next.js, API design, authentication, databases, and deployment.",
     type: "website",
-    url: "https://vibecoder.ph/courses/web-dev",
+    url: "https://vibe-coder-ph.vercel.app/courses/web-dev",
     images: [
       {
         url: "/og-image.png",
