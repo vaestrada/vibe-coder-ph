@@ -1,6 +1,29 @@
 import Link from "next/link";
 
-export const metadata = { title: "Full-Stack Web Development" };
+export const metadata = {
+  title: "Full-Stack Web Development",
+  description: "Build modern web applications from scratch. Learn layout and styling with Tailwind, component patterns with React + Next.js, API design, authentication, databases, and deployment.",
+  openGraph: {
+    title: "Full-Stack Web Development | Vibe Coders Philippines",
+    description: "Build modern web applications from scratch. Learn layout and styling with Tailwind, component patterns with React + Next.js, API design, authentication, databases, and deployment.",
+    type: "website",
+    url: "https://vibecoder.ph/courses/web-dev",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Full-Stack Web Development Course - Vibe Coders Philippines",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Full-Stack Web Development | Vibe Coders Philippines",
+    description: "Build modern web applications from scratch. Learn layout and styling with Tailwind, component patterns with React + Next.js, API design, authentication, databases, and deployment.",
+    images: ["/og-image.png"],
+  },
+};
 
 export default function WebDevCourse() {
   return (

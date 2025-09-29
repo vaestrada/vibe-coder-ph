@@ -1,18 +1,55 @@
-"use client";
-
 import Link from "next/link";
 import { Calendar, Clock, User, ArrowLeft, Tag } from "lucide-react";
 import { motion } from "framer-motion";
 import { notFound } from "next/navigation";
 import { getBlogPostBySlug } from "@/lib/blog-data";
-import { use } from "react";
+import { Metadata } from "next";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = use(params);
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const blogPost = getBlogPostBySlug(slug);
+
+  if (!blogPost) {
+    return {
+      title: "Blog Post Not Found",
+    };
+  }
+
+  return {
+    title: blogPost.title,
+    description: blogPost.excerpt,
+    openGraph: {
+      title: blogPost.title,
+      description: blogPost.excerpt,
+      type: "article",
+      publishedTime: blogPost.publishedAt,
+      authors: [blogPost.author],
+      tags: blogPost.tags,
+      url: `https://vibecoder.ph/blog/${slug}`,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: blogPost.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blogPost.title,
+      description: blogPost.excerpt,
+      images: ["/og-image.png"],
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params;
   const blogPost = getBlogPostBySlug(slug);
   
   if (!blogPost) {

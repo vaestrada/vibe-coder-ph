@@ -36,12 +36,21 @@ export const metadata: Metadata = {
     siteName: "Vibe Coders PH",
     type: "website",
     locale: "en_PH",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Vibe Coders Philippines - Hands-on coding education",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Vibe Coders Philippines",
     description:
       "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
+    images: ["/og-image.png"],
   },
 };
 
