@@ -582,6 +582,224 @@ feature:       ●──●  (feature-login-form)
     tags: ["Process", "Productivity", "Team Management", "Software Development"],
     featured: true,
   },
+  {
+    slug: "adding-og-images-vibecoders-noob-experience",
+    title: "Adding OG Images to VibecodersPH: My Experience (as a Noob)",
+    excerpt: "Those preview images you see on Slack, LinkedIn, Twitter when someone shares a link? They're called link previews — and they're STILL not that easy to make. Here's my noob experience fixing this.",
+    content: `
+      <!-- Intro Section -->
+      <div class="mb-8 p-6 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border">
+        <p class="mb-4 leading-relaxed">
+          Those preview images you see on Slack, LinkedIn, Twitter (X), or Facebook when someone shares a link? They're called <strong>link previews</strong> — and they're STILL not that easy to make.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          Yes, there are services and APIs to help, but they all come with little annoyances depending on your experience.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          For me, I'm a total noob at this. Honestly, I didn't even wanna do it. But these are the little things that make a <strong>BRAND</strong>. Imagine sending your startup site to an investor on LinkedIn chat and it just shows a blank gray box… MEH.
+        </p>
+
+        <!-- Before Image -->
+        <div class="my-6">
+          <p class="mb-2 text-sm font-medium text-muted-foreground">❌ Before (what investors saw):</p>
+          <img src="/no-og.png" alt="Before: Link preview without OG image showing blank gray box" class="rounded-lg border shadow-sm" />
+        </div>
+
+        <p class="mb-4 leading-relaxed">
+          So I got curious: what's the simplest way to actually fix this?<br/>
+          This is my experience.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Step 1 -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold">🤖</span>
+          Step 1. Ask AI
+        </h2>
+        <p class="mb-4">If you ask your favorite AI agent:</p>
+        <div class="my-4 p-4 bg-secondary/30 rounded-lg font-mono text-sm italic">
+          i want to improve link previews in social sites, guide me
+        </div>
+        <p class="mb-4">You'll definitely get something like:</p>
+        <div class="principle-highlight">
+          <p>"Implement Open Graph meta tags and Twitter Card."</p>
+        </div>
+        <p class="mb-4">
+          <strong>So what's Open Graph?</strong><br/>
+          TL;DR: it's a standard created by Facebook, now used by almost every social site, that tells platforms what title, description, and image to display when someone shares your link.
+        </p>
+        <p class="mb-4">
+          <strong>The catch:</strong> you actually need to design a proper image (1200x630px) and add it to your codebase.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Step 2 -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold">🎨</span>
+          Step 2. Choose a Tool
+        </h2>
+        <p class="mb-4">I don't wanna design images manually. I have no design skill.</p>
+        <p class="mb-4">
+          There are a bunch of options, but I ended up using <strong>Bulktopus</strong>. Why?
+        </p>
+        <ul class="space-y-3 my-4 list-none">
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-green-500 font-bold mt-0.5">•</span>
+            No sign-up
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-green-500 font-bold mt-0.5">•</span>
+            No-code design
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-green-500 font-bold mt-0.5">•</span>
+            Pre-built sizes for OG images (well, mostly pre-built)
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-green-500 font-bold mt-0.5">•</span>
+            Upload background image + logo support
+          </li>
+        </ul>
+        <p class="mb-4"><strong>It has limitations though:</strong></p>
+        <ul class="space-y-3 my-4 list-none">
+          <li class="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-950/30 rounded-lg">
+            <span class="text-red-500 font-bold mt-0.5">•</span>
+            Few design options (colors, typography, fixed text locations)
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-950/30 rounded-lg">
+            <span class="text-red-500 font-bold mt-0.5">•</span>
+            You must share to X or LinkedIn before you can download (annoying)
+          </li>
+        </ul>
+        <p class="mb-4">But it works.</p>
+        <div class="principle-highlight">
+          <p><strong>The hardest part?</strong> Design itself.</p>
+        </div>
+        <p class="mb-4">
+          Luckily, ChatGPT helped brainstorm colors, text, and layouts — and even generated mockups. I couldn't replicate everything exactly in Bulktopus (limitations), but it was enough to get started.
+        </p>
+        <p class="mb-4">Here's the OG image I ended up with 👇</p>
+
+        <!-- After Image -->
+        <div class="my-6">
+          <img src="/og-image.png" alt="Final OG image with purple gradient, Vibe Coders Philippines branding" class="rounded-lg border shadow-sm" />
+          <div class="mt-2 p-3 bg-secondary/30 rounded-lg font-mono text-sm">
+            Saved as: <code>/public/og-image.png</code> (1200x630px)
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Step 3 -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold">📁</span>
+          Step 3. More Pages = More OGs
+        </h2>
+        <p class="mb-4">My coding agent actually suggested I create different OG images for different pages:</p>
+        <ul class="space-y-3 my-4 list-none">
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-blue-500 font-bold mt-0.5">•</span>
+            <code>/public/og-image.png</code> → Main site
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-blue-500 font-bold mt-0.5">•</span>
+            <code>/public/og-projects.png</code> → Projects page
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-blue-500 font-bold mt-0.5">•</span>
+            <code>/public/og-course-web-dev.png</code> → Web Dev course
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-blue-500 font-bold mt-0.5">•</span>
+            <code>/public/og-blog-{slug}.png</code> → Individual blog posts
+          </li>
+        </ul>
+        <p class="mb-4">
+          That means different statements, maybe even slight design changes for each.<br/>
+          I think I'll leave that as an <strong>exercise for our core members</strong>.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Step 4 -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold">🚀</span>
+          Step 4. Bigger Idea — Automating OGs?
+        </h2>
+        <p class="mb-4">Here's where I started thinking: <strong>business opportunity?</strong></p>
+        <div class="principle-highlight">
+          <p><strong>What I actually wanted:</strong> My coding agent, already aware of my brand, colors, texts, and logo, should just make all OG images automatically and integrate them in the codebase.</p>
+        </div>
+        <p class="mb-4">
+          That's where I see MCP coming in.<br/>
+          With MCP, an AI agent could:
+        </p>
+        <ul class="space-y-3 my-4 list-none">
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">1.</span>
+            Generate branding copy + design
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">2.</span>
+            Create multiple OG variants
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">3.</span>
+            Place them in the right folders (<code>/public/</code>)
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">4.</span>
+            Update the <code>&lt;meta&gt;</code> tags automatically
+          </li>
+        </ul>
+        <p class="mb-4">Basically: recreate my whole workflow end-to-end.</p>
+        <div class="principle-highlight">
+          <p>What do you think?<br/>I say we build it — and compete in the market.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Takeaways -->
+      <div class="mb-8 p-6 bg-gradient-to-r from-secondary/10 to-secondary/20 rounded-xl border">
+        <h2 class="text-2xl font-bold mb-4">📝 Takeaways</h2>
+        <ul class="space-y-3 list-none">
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">•</span>
+            OG images aren't optional — they're part of your brand.
+          </li>
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">•</span>
+            One 1200x630 image per page is enough for all major platforms (FB, LinkedIn, Twitter, Discord, Slack).
+          </li>
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">•</span>
+            Tools like Bulktopus + AI mockups = simple way to start.
+          </li>
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">•</span>
+            But the real play is automation — <strong>OG as a Service</strong>.
+          </li>
+        </ul>
+      </div>
+
+    `,
+    author: "Jayson Cunanan",
+    publishedAt: "2025-09-29",
+    category: "Web Development",
+    tags: ["Open Graph", "Social Media", "SEO", "Meta Tags", "Branding"],
+    featured: true,
+  },
 ];
 
 export const categories = ["All", "Process & Culture", "Web Development", "AI Engineering", "Data Analytics"];
