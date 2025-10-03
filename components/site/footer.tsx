@@ -20,11 +20,11 @@ export function Footer() {
           {/* Links */}
           <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
             <div>
-              <div className="font-medium mb-3">Programs</div>
+              <div className="font-medium mb-3">Content</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/courses/web-dev" className="hover:text-foreground">Web Development</Link></li>
-                <li><Link href="/courses/ai-engineering" className="hover:text-foreground">AI Engineering</Link></li>
-                <li><Link href="/courses/data" className="hover:text-foreground">Data & Analytics</Link></li>
+                <li><Link href="/blog/all" className="hover:text-foreground">All Posts</Link></li>
+                <li><Link href="/projects" className="hover:text-foreground">Projects</Link></li>
+                <li><Link href="/courses" className="hover:text-foreground">Blog</Link></li>
               </ul>
             </div>
 
@@ -37,10 +37,10 @@ export function Footer() {
             </div>
 
             <div>
-              <div className="font-medium mb-3">Legal</div>
+              <div className="font-medium mb-3">Community</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/terms" className="hover:text-foreground">Terms</Link></li>
-                <li><Link href="/privacy" className="hover:text-foreground">Privacy</Link></li>
+                <li><Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Join Discord</Link></li>
+                <li><Link href="/about" className="hover:text-foreground">About Us</Link></li>
               </ul>
             </div>
           </div>
