@@ -223,34 +223,6 @@ export default function ProjectsPage() {
         })}
       </motion.div>
 
-      <motion.div 
-        className="mt-8 rounded-lg border p-6"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.0 }}
-        whileHover={{ 
-          scale: 1.02, 
-          transition: { duration: 0.2 } 
-        }}
-      >
-        <motion.div 
-          className="font-medium"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.5 }}
-        >
-          Community shout-outs
-        </motion.div>
-        <motion.p 
-          className="text-sm text-muted-foreground"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
-        >
-          Built something with these briefs? Share it and we can feature it here as a testimonial.
-          Send links to <a className="underline" href="mailto:hello@vibecoder.ph">hello@vibecoder.ph</a>.
-        </motion.p>
-      </motion.div>
 
       <motion.div 
         className="mt-8 flex gap-3"
@@ -262,16 +234,16 @@ export default function ProjectsPage() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link href="/gallery" className="inline-flex items-center rounded-md border px-4 py-2.5 text-sm font-medium hover:bg-accent">
-            See Gallery
+          <Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90">
+            Join Discord
           </Link>
         </motion.div>
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link href="/courses" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90">
-            See Courses
+          <Link href="/blog/all" className="inline-flex items-center rounded-md border px-4 py-2.5 text-sm font-medium hover:bg-accent">
+            Read Blog
           </Link>
         </motion.div>
       </motion.div>

@@ -1,9 +1,29 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Sparkles, Users, Clock4, Code2 } from "lucide-react";
-import { Testimonials } from "@/components/site/testimonials";
+import { Sparkles, Users, Clock4, Code2, Calendar, ArrowRight } from "lucide-react";
+import { getAllBlogPosts } from "@/lib/blog-data";
 
 export default function Home() {
+  const blogPosts = getAllBlogPosts();
+  const featuredPosts = blogPosts
+    .filter(post => post.featured)
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .slice(0, 3);
+
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case "Web Development":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
+      case "AI Engineering":
+        return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200";
+      case "Data Analytics":
+        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
+      case "Process & Culture":
+        return "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
+    }
+  };
+
   return (
     <div className="font-sans">
       {/* Hero */}
@@ -18,6 +38,12 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div className="animate-fade-in-up [animation-delay:200ms]">
+              <div className="mb-4">
+                <span className="inline-flex items-center gap-2 text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-3 py-1 rounded-full">
+                  <span>🏗️</span>
+                  Community-built platform
+                </span>
+              </div>
               <h1 className="text-4xl/tight sm:text-5xl/tight font-bold tracking-tight">
                 <span className="inline-block animate-fade-in-up [animation-delay:400ms]">Learn to code with momentum.</span>{" "}
                 <span className="inline-block animate-fade-in-up [animation-delay:600ms]">Build real projects.</span>{" "}
@@ -27,8 +53,8 @@ export default function Home() {
                 Vibe Coders Philippines shares hands-on guides and community-driven content in Web Development, AI, and Data. Project-first, mentor-guided, community-backed.
               </p>
               <div className="mt-6 flex flex-wrap gap-3 animate-fade-in-up [animation-delay:1200ms]">
-                <Link href="/projects" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90 hover:scale-105 transition-all duration-200">
-                  Start Building
+                <Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90 hover:scale-105 transition-all duration-200">
+                  Join the Community
                 </Link>
                 <Link href="/projects" className="inline-flex items-center rounded-md border px-4 py-2.5 text-sm font-medium hover:bg-accent hover:scale-105 transition-all duration-200">
                   See Projects
@@ -54,13 +80,17 @@ export default function Home() {
                   </video>
                 </div>
               </div>
+              <div className="mt-3 text-center">
+                <span className="inline-flex items-center gap-2 text-xs text-muted-foreground bg-secondary/50 px-3 py-1 rounded-full">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  Hackathon project by Vibe Coders members
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <Testimonials />
 
       {/* Features */}
       <section className="border-t">
@@ -90,46 +120,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Programs */}
+      {/* Featured Posts */}
       <section className="border-t">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
           <div className="mb-6 flex items-end justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-semibold">Programs</h2>
-              <p className="text-sm text-muted-foreground">Choose a path and start building.</p>
+              <h2 className="text-2xl font-semibold">Featured Posts</h2>
+              <p className="text-sm text-muted-foreground">Real-world guides and insights from our community.</p>
             </div>
-            <Link href="/courses" className="text-sm text-muted-foreground hover:text-foreground">
-              View all →
+            <Link href="/blog/all" className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-1">
+              View all posts
+              <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-      <Link href="/courses/web-dev" className="group rounded-lg border hover:bg-accent overflow-hidden">
-              <div className="aspect-[16/9] w-full border-b bg-secondary/40">
-        <Image src="/images/programs/web-dev.svg" alt="Web Development" width={1200} height={675} className="h-full w-full object-cover" />
-              </div>
-              <div className="p-6">
-                <div className="font-medium group-hover:underline">Full-Stack Web Dev</div>
-                <p className="text-sm text-muted-foreground">Next.js, TypeScript, Tailwind, APIs, and deployment. Build 4 portfolio apps.</p>
-              </div>
-            </Link>
-      <Link href="/courses/ai-engineering" className="group rounded-lg border hover:bg-accent overflow-hidden">
-              <div className="aspect-[16/9] w-full border-b bg-secondary/40">
-        <Image src="/images/programs/ai-eng.svg" alt="AI Engineering" width={1200} height={675} className="h-full w-full object-cover" />
-              </div>
-              <div className="p-6">
-                <div className="font-medium group-hover:underline">AI Engineering</div>
-                <p className="text-sm text-muted-foreground">RAG, LLM apps, vector databases, agents, and production MLOps basics.</p>
-              </div>
-            </Link>
-      <Link href="/courses/data" className="group rounded-lg border hover:bg-accent overflow-hidden">
-              <div className="aspect-[16/9] w-full border-b bg-secondary/40">
-        <Image src="/images/programs/data-analytics.svg" alt="Data & Analytics" width={1200} height={675} className="h-full w-full object-cover" />
-              </div>
-              <div className="p-6">
-                <div className="font-medium group-hover:underline">Data & Analytics</div>
-                <p className="text-sm text-muted-foreground">Python, SQL, dbt, BI dashboards, and analytics engineering foundations.</p>
-              </div>
-            </Link>
+            {featuredPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="group rounded-lg border hover:bg-accent overflow-hidden transition-all duration-300 hover:shadow-lg">
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-xs px-3 py-1 rounded-full font-medium ${getCategoryColor(post.category)}`}>
+                      {post.category}
+                    </span>
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <Calendar className="h-3 w-3" />
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric'
+                      })}
+                    </div>
+                  </div>
+                  <div className="font-medium group-hover:underline mb-2 line-clamp-2">{post.title}</div>
+                  <p className="text-sm text-muted-foreground line-clamp-3">{post.excerpt}</p>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-xs text-muted-foreground">{post.readTime}</span>
+                    <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -143,7 +171,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground">Jump into guided builds and learn the essentials as you go—no lengthy theory first.</p>
               </div>
               <div className="flex md:justify-end gap-3">
-        <Link href="/projects" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90">Start Building</Link>
+        <Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90">Join the Community</Link>
         <Link href="/projects" className="inline-flex items-center rounded-md border px-4 py-2.5 text-sm font-medium hover:bg-accent">See Projects</Link>
               </div>
             </div>

@@ -32,8 +32,7 @@ export function Footer() {
               <div className="font-medium mb-3">Company</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="/about" className="hover:text-foreground">About</Link></li>
-                <li><Link href="/faq" className="hover:text-foreground">FAQ</Link></li>
-                <li><Link href="/contact" className="hover:text-foreground">Contact</Link></li>
+                <li><Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Discord</Link></li>
               </ul>
             </div>
 
@@ -48,7 +47,10 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Vibe Coders Philippines. All rights reserved.</p>
+          <div className="flex flex-col gap-1">
+            <p>© {new Date().getFullYear()} Vibe Coders Philippines. All rights reserved.</p>
+            <p className="text-xs">Fully built by our community members - design, code, database, and deployment.</p>
+          </div>
           <p>Made in the PH 🇵🇭</p>
         </div>
       </div>

@@ -7,8 +7,12 @@ import { getAllBlogPosts } from "@/lib/blog-data";
 
 export default function BlogPage() {
   const blogPosts = getAllBlogPosts();
-  const featuredPosts = blogPosts.filter(post => post.featured);
-  const recentPosts = blogPosts.slice(0, 6);
+  const featuredPosts = blogPosts
+    .filter(post => post.featured)
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  const recentPosts = blogPosts
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .slice(0, 6);
 
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -211,26 +215,32 @@ export default function BlogPage() {
         </div>
       </motion.div>
 
-      {/* Newsletter CTA */}
-      <motion.div 
+      {/* Community CTA */}
+      <motion.div
         className="mt-16 rounded-2xl border bg-gradient-to-r from-primary/5 to-primary/10 p-8 text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
       >
-        <h3 className="text-xl font-semibold mb-2">Stay Updated</h3>
+        <h3 className="text-xl font-semibold mb-2">Join the Community</h3>
         <p className="text-muted-foreground mb-6">
-          Get the latest tutorials, project guides, and industry insights delivered to your inbox.
+          Connect with Filipino developers, share your projects, and get help with your coding journey.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="flex-1 px-4 py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-          />
-          <button className="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">
-            Subscribe
-          </button>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="https://discord.gg/zSxpXTh8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          >
+            Join Discord Community
+          </Link>
+          <Link
+            href="/projects"
+            className="px-6 py-2 border rounded-lg font-medium hover:bg-accent transition-colors"
+          >
+            See Projects
+          </Link>
         </div>
       </motion.div>
     </motion.div>
