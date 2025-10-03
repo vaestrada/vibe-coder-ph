@@ -53,4 +53,4 @@ Disallow: /_next/
 Disallow: /*.json$
 
 # Point to sitemap for better discoverability
-Sitemap: https://vibe-coder-ph.vercel.app/sitemap.xml
+Sitemap: https://www.vibecoders.ph/sitemap.xml
