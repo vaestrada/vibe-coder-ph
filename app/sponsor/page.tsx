@@ -8,6 +8,23 @@ export const metadata = {
     title: "Sponsor a Bounty | VibeCoders Philippines",
     description: "Access top Filipino developers through project-based bounties. Sponsor real-world challenges and discover talent while supporting the local tech community.",
     type: "website",
+    url: "https://www.vibecoders.ph/sponsor",
+    siteName: "Vibe Coders PH",
+    locale: "en_PH",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Sponsor a Bounty - VibeCoders Philippines",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sponsor a Bounty | VibeCoders Philippines",
+    description: "Access top Filipino developers through project-based bounties. Sponsor real-world challenges and discover talent while supporting the local tech community.",
+    images: ["/og-image.png"],
   },
 };
 
