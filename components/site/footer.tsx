@@ -24,7 +24,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="/blog/all" className="hover:text-foreground">All Posts</Link></li>
                 <li><Link href="/projects" className="hover:text-foreground">Projects</Link></li>
-                <li><Link href="/courses" className="hover:text-foreground">Blog</Link></li>
+                <li><Link href="/blog/all" className="hover:text-foreground">Blog</Link></li>
               </ul>
             </div>
 
@@ -40,6 +40,7 @@ export function Footer() {
               <div className="font-medium mb-3">Community</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Join Discord</Link></li>
+                <li><Link href="/sponsor" className="hover:text-foreground">Sponsor Bounty</Link></li>
                 <li><Link href="/about" className="hover:text-foreground">About Us</Link></li>
               </ul>
             </div>
