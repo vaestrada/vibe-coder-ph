@@ -20,17 +20,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Team */}
-      <div className="mb-12">
-        <h2 className="text-xl font-semibold mb-4">Meet the Founders</h2>
-        <div className="bg-card border rounded-lg p-8 text-center">
-          <h3 className="text-lg font-medium mb-2">Coming Soon</h3>
-          <p className="text-muted-foreground">
-            We&apos;re building Vibe Coders with a passionate team of developers and content creators.
-            Stay tuned to meet the founders and core contributors behind the community.
-          </p>
-        </div>
-      </div>
 
       {/* What We Offer */}
       <div className="mb-12">
