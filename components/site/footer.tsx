@@ -30,16 +30,17 @@ export function Footer() {
 
             <div>
               <div className="font-medium mb-3">Company</div>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/about" className="hover:text-foreground">About</Link></li>
-                <li><Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Discord</Link></li>
+                            <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><Link href="/about">About</Link></li>
+                <li><Link href="https://discord.gg/HgKuev28wg" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Discord</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
               </ul>
             </div>
 
             <div>
               <div className="font-medium mb-3">Community</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Join Discord</Link></li>
+                <li><Link href="https://discord.gg/HgKuev28wg" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Join Discord</Link></li>
                 <li><Link href="/sponsor" className="hover:text-foreground">Sponsor Bounty</Link></li>
                 <li><Link href="/about" className="hover:text-foreground">About Us</Link></li>
               </ul>

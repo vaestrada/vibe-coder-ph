@@ -88,7 +88,7 @@ export default function AboutPage() {
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
           <Link
-            href="https://discord.gg/zSxpXTh8"
+            href="https://discord.gg/HgKuev28wg"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90"

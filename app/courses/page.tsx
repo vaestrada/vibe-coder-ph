@@ -228,12 +228,12 @@ export default function BlogPage() {
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
-            href="https://discord.gg/zSxpXTh8"
+            href="https://discord.gg/HgKuev28wg"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
           >
-            Join Discord Community
+            Join Discord
           </Link>
           <Link
             href="/projects"

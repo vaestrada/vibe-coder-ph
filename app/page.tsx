@@ -53,7 +53,7 @@ export default function Home() {
                 Vibe Coders Philippines shares hands-on guides and community-driven content in Web Development, AI, and Data. Project-first, mentor-guided, community-backed.
               </p>
               <div className="mt-6 flex flex-wrap gap-3 animate-fade-in-up [animation-delay:1200ms]">
-                <Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90 hover:scale-105 transition-all duration-200">
+                <Link href="https://discord.gg/HgKuev28wg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90 hover:scale-105 transition-all duration-200">
                   Join the Community
                 </Link>
                 <Link href="/projects" className="inline-flex items-center rounded-md border px-4 py-2.5 text-sm font-medium hover:bg-accent hover:scale-105 transition-all duration-200">
@@ -171,7 +171,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground">Jump into guided builds and learn the essentials as you go—no lengthy theory first.</p>
               </div>
               <div className="flex md:justify-end gap-3">
-        <Link href="https://discord.gg/zSxpXTh8" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90">Join the Community</Link>
+        <Link href="https://discord.gg/HgKuev28wg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90">Join the Community</Link>
         <Link href="/projects" className="inline-flex items-center rounded-md border px-4 py-2.5 text-sm font-medium hover:bg-accent">See Projects</Link>
               </div>
             </div>
