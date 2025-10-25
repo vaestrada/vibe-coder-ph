@@ -13,6 +13,274 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "building-my-own-ai-stack",
+    title: "How I Built My Own AI Stack (and Why It Changed How I Work)",
+    excerpt: "AI tools are everywhere, but productivity doesn't come from using more tools. It comes from understanding how they fit together. Here's my journey from overwhelm to building a cohesive AI chain that actually works.",
+    content: `
+      <!-- Intro Section -->
+      <div class="mb-8 p-6 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border">
+        <h2 class="text-2xl font-bold mb-4 text-primary">The Overwhelm of Too Many AI Tools</h2>
+        <p class="mb-4 leading-relaxed">
+          AI tools are everywhere. Every week, a new one appears, promising to make you faster, smarter, or more creative.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          When I first started exploring them, I fell into the same trap most developers do. I tried everything. I signed up for every beta, joined every waitlist, and bookmarked every "Top 100 AI Tools" list I could find.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          It felt exciting at first. Then it got exhausting.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          At some point, I realized I wasn't learning faster. I was just juggling more apps.
+        </p>
+        <div class="principle-highlight">
+          <p>So I stepped back and asked myself: Do I really need more tools, or do I just need the right ones working together?</p>
+        </div>
+        <p class="mb-4 leading-relaxed">
+          That question changed how I approach AI forever.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- The Discovery -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">The Discovery: Building My Own Stack</h2>
+        <p class="mb-4 leading-relaxed">
+          It started as an experiment. I wanted to see what would happen if I stopped collecting tools and started connecting them instead.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          Each AI platform had its own strength. ChatGPT could explain complex ideas in plain English. Comet could verify them with live sources. Copilot could turn those ideas into code. Claude could review that code and refactor it intelligently.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          I didn't need to pick one. I needed them to work together.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          That's when I coined the term <strong>AI Chaining</strong> — the process of linking multiple AI tools so that each one contributes its unique strength to your workflow.
+        </p>
+        <div class="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-xl border mb-6">
+          <p class="mb-4 leading-relaxed font-medium">
+            AI Chaining isn't about automation or scripting. It's about designing a flow of thought:
+          </p>
+          <ul class="space-y-3 list-none">
+            <li class="flex items-start gap-3 p-3 bg-white/50 dark:bg-black/20 rounded-lg">
+              <span class="text-primary font-bold mt-0.5">•</span>
+              One AI generates, another validates.
+            </li>
+            <li class="flex items-start gap-3 p-3 bg-white/50 dark:bg-black/20 rounded-lg">
+              <span class="text-primary font-bold mt-0.5">•</span>
+              One builds, another explains.
+            </li>
+            <li class="flex items-start gap-3 p-3 bg-white/50 dark:bg-black/20 rounded-lg">
+              <span class="text-primary font-bold mt-0.5">•</span>
+              One creates, another refines.
+            </li>
+          </ul>
+        </div>
+        <p class="mb-4 leading-relaxed">
+          When you chain AIs together, you stop using them like separate tools and start using them like teammates.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          Here's what my AI stack looks like today and how each piece fits into the chain.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Research -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">Research: Facts Meet Conversation</h2>
+        <p class="mb-4 leading-relaxed">
+          Every project starts with research.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          I use <strong>Comet by Perplexity</strong> when I need structured, verified answers. It's fast, factual, and always cites its sources — something every developer and researcher can appreciate.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          Once I have the data, I move to <strong>ChatGPT</strong> to make sense of it. ChatGPT helps me translate technical information into explanations, drafts, or documentation that other people can understand.
+        </p>
+        <div class="principle-highlight">
+          <p>In my workflow, Comet is the fact-checker and ChatGPT is the storyteller. One gives me clarity, the other gives me voice.</p>
+        </div>
+        <p class="mb-4 leading-relaxed">
+          That combination is the first link in my AI chain: truth and tone.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Coding -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">Coding: Copilot and Claude Code</h2>
+        <p class="mb-4 leading-relaxed">
+          Coding used to be where I hit decision fatigue the hardest. Do I trust autocomplete, or do I rewrite everything myself?
+        </p>
+        <p class="mb-4 leading-relaxed">
+          Then I learned to split the workload.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          <strong>GitHub Copilot</strong> is my everyday companion in VS Code. It handles the small stuff like variable names, boilerplate, and repetitive syntax. It helps me stay in flow instead of getting stuck on structure.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          <strong>Claude Code</strong>, on the other hand, is my reviewer. It reads entire repositories, explains logic, and helps me reason through architecture decisions. When I'm deep in a project, I'll often ask Claude to summarize what a specific file or module does before I start editing it.
+        </p>
+        <div class="principle-highlight">
+          <p>It's like having two co-developers: one focused on speed, the other on strategy. Together, they create a rhythm that feels natural.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Deployment -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">Deployment: Vercel</h2>
+        <p class="mb-4 leading-relaxed">
+          Every idea deserves to go live, and <strong>Vercel</strong> is where mine do.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          It's fast, generous on its free tier, and built for modern frameworks. For me, it's not just about hosting — it's about iteration. I can push code, test it in production-like previews, and share it instantly with collaborators.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          That loop of build, preview, refine fits perfectly into my AI chain.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Database -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">Database: Supabase</h2>
+        <p class="mb-4 leading-relaxed">
+          For backend work, <strong>Supabase</strong> handles everything I need without slowing me down. It's open-source, reliable, and deeply integrated with modern stacks.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          It gives me Postgres power with Firebase simplicity. Whenever I build something new, Supabase quietly handles authentication, storage, and real-time data without requiring me to set up another backend.
+        </p>
+        <div class="principle-highlight">
+          <p>In my AI chain, Supabase is the anchor — the solid foundation that holds all the moving parts together.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Creative Tools -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">Creative and Productivity Tools: Exploring the Edges</h2>
+        <p class="mb-4 leading-relaxed">
+          I also experiment with tools that stretch beyond code. These don't directly affect my backend logic, but they improve how I communicate and visualize ideas.
+        </p>
+        <ul class="space-y-3 list-none mb-6">
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">•</span>
+            <strong>Visily</strong> helps me mock up app layouts quickly, even without deep design experience.
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">•</span>
+            <strong>Notion</strong> is my second brain where I take notes, outline projects, and summarize research.
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">•</span>
+            <strong>Excalidraw</strong> is my favorite for flowcharts and architecture diagrams.
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">•</span>
+            <strong>Screen Studio</strong> and <strong>Rapidemo</strong> help me turn working builds into clean, professional video demos.
+          </li>
+        </ul>
+        <p class="mb-4 leading-relaxed">
+          These are the quieter parts of my stack. They help me think more clearly and share more effectively.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- In Production -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">In Production: The Website Tools That Keep It Running</h2>
+        <p class="mb-4 leading-relaxed">
+          Beyond development, my own website relies on tools that make the experience faster, safer, and smarter.
+        </p>
+        <ul class="space-y-3 list-none mb-6">
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">•</span>
+            <strong>OG Image Playground</strong> automatically generates clean, shareable previews for every post.
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">•</span>
+            <strong>Sentry</strong> monitors for errors and performance issues using AI-powered anomaly detection.
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">•</span>
+            <strong>Vercel Speed Insights</strong> helps me optimize performance and Core Web Vitals in real time.
+          </li>
+        </ul>
+        <p class="mb-4 leading-relaxed">
+          They may not be glamorous, but they're what make everything feel production-ready — the invisible layer of intelligence that keeps my projects stable.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- The Bigger Picture -->
+      <div class="mb-8 p-6 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 rounded-xl border">
+        <h2 class="text-2xl font-bold mb-4 text-green-700 dark:text-green-400">The Bigger Picture: Why AI Chaining Matters</h2>
+        <p class="mb-4 leading-relaxed">
+          AI Chaining taught me something important. Productivity doesn't come from using more tools. It comes from understanding how they fit together.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          When you stop chasing every new release and start building your own ecosystem, you unlock focus. You start thinking less about what to use and more about what to create.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          AI tools are at their best when they complement each other, not compete. Once you find that balance, you realize that AI isn't replacing creativity or coding. It's extending it.
+        </p>
+        <div class="principle-highlight">
+          <p>Each link in your chain becomes an extension of your thought process, from research to deployment to design. And suddenly, everything just flows.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Final Thoughts -->
+      <div class="mb-8 p-6 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border">
+        <h2 class="text-2xl font-bold mb-4">Final Thoughts</h2>
+        <p class="mb-4 leading-relaxed">
+          If you're a developer, researcher, or creator trying to keep up with the flood of new AI tools, take a step back. You don't need to master all of them. You just need to find the ones that move with you.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          For me, that's Comet, ChatGPT, Copilot, Claude, Vercel, Supabase, and a handful of creative companions. Together, they form my AI chain — the system that keeps me grounded, focused, and creative.
+        </p>
+        <div class="principle-highlight">
+          <p>So build your own stack. Experiment. Chain your tools together until they feel like extensions of how you think. That's where AI stops being a trend and starts becoming a craft.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- CTA -->
+      <div class="mb-8 p-6 bg-gradient-to-r from-secondary/10 to-secondary/20 rounded-xl border">
+        <h2 class="text-2xl font-bold mb-4">📝 Ready to Explore Your Own AI Chain?</h2>
+        <ul class="space-y-3 list-none">
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">→</span>
+            Start with one tool. See how it fits into your process.
+          </li>
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">→</span>
+            Then connect it to the next.
+          </li>
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">→</span>
+            Before long, you'll have a system that doesn't just work — it grows with you.
+          </li>
+        </ul>
+      </div>
+    `,
+    author: "Joseph Miguel Guerrero",
+    publishedAt: "2025-10-25",
+    category: "AI Engineering",
+    tags: ["AI", "Productivity", "Workflow", "Tools", "Developer Experience"],
+    featured: true,
+  },
+  {
     slug: "model-context-protocol-mcp-guide",
     title: "How I Discovered the Power of MCPs While Job Hunting",
     excerpt: "Job hunting led me to discover Model Context Protocols (MCPs) - a game-changing technology that solved my LinkedIn research problem and opened my eyes to the future of AI integration.",
