@@ -13,6 +13,166 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "settling-into-my-next-job-as-ai-developer",
+    title: "Settling In To My Next Job as an AI Developer",
+    excerpt: "A reflection on finding rhythm and purpose in my second AI role — from designing chatbots to rediscovering what makes collaboration meaningful.",
+    content: `
+      <!-- Intro Section -->
+      <div class="mb-8 p-6 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border">
+        <h2 class="text-2xl font-bold mb-4 text-primary">The Transition: A New Chapter, Familiar Mission</h2>
+        <p class="mb-4 leading-relaxed">
+          Starting a new job as an AI Developer feels a lot like starting a new project: full of potential, slightly uncertain, and quietly thrilling.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          After my time at Diliman Labs and countless builds through Vibe Coders PH, I've learned that no two roles are ever the same, even if they share the same title. Each position stretches a different muscle, teaches a new rhythm, and reminds you why you started building in the first place.
+        </p>
+        <div class="principle-highlight">
+          <p>Settling into this new company has been just that — a mix of rediscovery and refinement.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- The Setup -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">The Setup: Exploring New AI Tools and Developer Platforms</h2>
+        <p class="mb-4 leading-relaxed">
+          One of the first things that stood out in my new role was the access to cutting-edge AI tools and developer platforms.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          From <strong>Cursor</strong> and <strong>Codex</strong> to <strong>n8n</strong> and <strong>ElevenLabs</strong>, the playground just got bigger. Each tool feels like an extension of thought, helping me automate, design, and experiment faster than ever.
+        </p>
+        <div class="principle-highlight">
+          <p>It's the kind of environment that lets ideas flow naturally. You don't just code anymore; you compose.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- The Task -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">The Task: Designing the Company Chatbot</h2>
+        <p class="mb-4 leading-relaxed">
+          My first major assignment was to design the company's AI chatbot. It's a familiar challenge, but one that never loses its excitement.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          Thankfully, this wasn't new territory. At Diliman Labs, we built systems that helped clients communicate better through automation. At VibeCoders PH, I worked on open-source chatbot projects that explored user experience and conversational design.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          So when I was asked to build one here, it didn't feel like starting from scratch. It felt like continuing a conversation I've been having for years.
+        </p>
+        <div class="principle-highlight">
+          <p>The exciting part isn't just about writing prompts or setting up APIs. It's about shaping how people interact with AI every day — designing something that's helpful, human, and dynamic.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- The People -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">The People: Building Connections That Matter</h2>
+        <p class="mb-4 leading-relaxed">
+          Every new job comes with its own quiet challenge — connecting with new people.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          No matter how advanced your stack is, you can't automate human connection. Thankfully, this has been the easiest part of all.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          People here have been warm, collaborative, and genuinely curious about what I bring to the table. I've had conversations that start with code and end with shared stories and ideas.
+        </p>
+        <div class="principle-highlight">
+          <p>It reminded me that workplace culture isn't built by policy or process alone. It's built through people who care about what they're building — and who they're building it with.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- The Adjustment -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-foreground">The Adjustment: Learning to Flow, Not Force</h2>
+        <p class="mb-4 leading-relaxed">
+          Transitions are rarely seamless. There are always new workflows to learn, systems to adapt to, and teammates to understand.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          But I've realized that settling in isn't about proving yourself fast. It's about finding your rhythm and aligning your strengths with the team's flow.
+        </p>
+        <div class="principle-highlight">
+          <p>Once you find that rhythm, things start to click: the tools make more sense, projects move smoother, and collaboration becomes second nature.</p>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- The Bigger Picture -->
+      <div class="mb-8 p-6 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 rounded-xl border">
+        <h2 class="text-2xl font-bold mb-4 text-green-700 dark:text-green-400">The Bigger Picture: Growth Through Every Role</h2>
+        <p class="mb-4 leading-relaxed">
+          This experience reminded me of something I learned early in my career — every environment you join becomes part of your AI chain.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          Each tool, teammate, and project adds a new link that strengthens how you build, think, and lead.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          This new job isn't just a continuation of what I've done before; it's an evolution of it.
+        </p>
+        <div class="principle-highlight">
+          <p>New stack. New people. Same curiosity driving everything forward.</p>
+        </div>
+        <p class="mb-4 leading-relaxed">
+          And that's what makes this journey worth it.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- Final Thoughts -->
+      <div class="mb-8 p-6 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border">
+        <h2 class="text-2xl font-bold mb-4">Final Thoughts: Rediscovering Purpose Through Practice</h2>
+        <p class="mb-4 leading-relaxed">
+          Settling into this new company has been more than just onboarding. It's been a rediscovery.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          Rediscovering how I build. How I collaborate. How I grow.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          If there's one thing I've learned so far, it's this:
+        </p>
+        <div class="principle-highlight">
+          <p>You don't just adapt to a new environment — you let it shape the next version of you.</p>
+        </div>
+        <p class="mb-4 leading-relaxed">
+          And as I keep building, learning, and connecting, I can already tell this version will be my favorite one yet.
+        </p>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <!-- CTA -->
+      <div class="mb-8 p-6 bg-gradient-to-r from-secondary/10 to-secondary/20 rounded-xl border">
+        <h2 class="text-2xl font-bold mb-4">📝 Ready to Explore Your Own AI Journey?</h2>
+        <ul class="space-y-3 list-none">
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">→</span>
+            Start with one new tool. See how it fits into your process.
+          </li>
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">→</span>
+            Then connect it to the next.
+          </li>
+          <li class="flex items-start gap-3 p-4 bg-background/60 rounded-lg border">
+            <span class="text-green-500 font-bold mt-0.5">→</span>
+            Before long, you'll have a system that grows with you.
+          </li>
+        </ul>
+      </div>
+    `,
+    author: "Joseph Miguel Guerrero",
+    publishedAt: "2025-11-13",
+    category: "AI Engineering",
+    tags: ["AI", "Productivity", "Workflow", "Career", "Developer Experience"],
+    featured: true,
+  },
+  {
     slug: "building-my-own-ai-stack",
     title: "How I Built My Own AI Stack (and Why It Changed How I Work)",
     excerpt: "AI tools are everywhere, but productivity doesn't come from using more tools. It comes from understanding how they fit together. Here's my journey from overwhelm to building a cohesive AI chain that actually works.",
