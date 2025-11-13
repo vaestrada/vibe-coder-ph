@@ -169,7 +169,7 @@ export const blogPosts: BlogPost[] = [
     author: "Joseph Miguel Guerrero",
     publishedAt: "2025-11-13",
     category: "AI Engineering",
-    tags: ["AI", "Productivity", "Workflow", "Career", "Developer Experience"],
+    tags: ["AI", "Productivity", "Workflow", "Career", "Developer Experience", "Success Story"],
     featured: true,
   },
   {
