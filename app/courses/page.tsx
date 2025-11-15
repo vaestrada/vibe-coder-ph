@@ -69,7 +69,7 @@ export default function BlogPage() {
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <h2 className="text-2xl font-semibold">Featured Posts</h2>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {featuredPosts.map((post, index) => (
               <motion.article
                 key={post.slug}
@@ -83,10 +83,11 @@ export default function BlogPage() {
                   y: -4,
                   transition: { duration: 0.2 }
                 }}
+                className="h-full"
               >
                 <Link 
                   href={`/blog/${post.slug}`} 
-                  className="group block rounded-2xl border bg-card p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                  className="group flex flex-col h-full rounded-2xl border bg-card p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <span className={`text-xs px-3 py-1 rounded-full font-medium ${getCategoryColor(post.category)}`}>
@@ -106,11 +107,11 @@ export default function BlogPage() {
                     {post.title}
                   </h3>
                   
-                  <p className="text-muted-foreground mb-4 line-clamp-3">
+                  <p className="text-muted-foreground mb-4 line-clamp-2 flex-grow">
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mt-auto">
                     <div className="flex items-center gap-4 text-xs text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <User className="h-3 w-3" />
@@ -161,10 +162,11 @@ export default function BlogPage() {
                 y: -2,
                 transition: { duration: 0.2 }
               }}
+              className="h-full"
             >
               <Link 
                 href={`/blog/${post.slug}`} 
-                className="group block rounded-xl border bg-card p-5 transition-all duration-300 hover:shadow-md"
+                className="group flex flex-col h-full rounded-xl border bg-card p-5 transition-all duration-300 hover:shadow-md"
               >
                 <div className="flex items-center justify-between mb-3">
                   <span className={`text-xs px-2 py-1 rounded-full ${getCategoryColor(post.category)}`}>
@@ -179,7 +181,7 @@ export default function BlogPage() {
                   {post.title}
                 </h3>
                 
-                <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                <p className="text-sm text-muted-foreground mb-3 line-clamp-2 flex-grow">
                   {post.excerpt}
                 </p>
                 
@@ -196,7 +198,7 @@ export default function BlogPage() {
                   )}
                 </div>
                 
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
                   <div className="flex items-center gap-1">
                     <Calendar className="h-3 w-3" />
                     {new Date(post.publishedAt).toLocaleDateString('en-US', { 
