@@ -17,20 +17,6 @@ export const blogPosts: BlogPost[] = [
     title: "The AI Engineer's Survival Guide: Prototyping Fast with Supabase MCP and Vibe Coding",
     excerpt: "Discover how modern AI/ML engineers are shifting from building models to shipping full-stack prototypes using LLMs, vibe coding, and the Supabase MCP protocol. Learn how one engineer went from zero database experience to full product velocity.",
     content: `
-      <!-- Resources Section -->
-      <div class="mb-8 p-5 bg-blue-50 dark:bg-blue-950/20 rounded-xl border border-blue-500/20">
-        <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Official Resources
-        </h3>
-        <div class="space-y-2 text-sm">
-          <p><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">→ Supabase MCP Official Documentation</a></p>
-          <p><a href="https://github.com/supabase-community/supabase-mcp" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">→ Supabase MCP GitHub Repository</a></p>
-          <p><a href="https://dzone.com/articles/vibe-coding-conversational-software-development" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">→ Vibe Coding: Conversational Software Development (DZone)</a></p>
-          <p><a href="https://medium.com/@vignarajj/exploring-supabases-advanced-capabilities-model-context-protocol-cli-and-edge-functions-37a1ce4771d4" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">→ Exploring Supabase's Advanced Capabilities (Medium)</a></p>
-        </div>
-      </div>
-
       <!-- Intro Section -->
       <div class="mb-8 p-6 bg-muted/50 rounded-xl border">
         <h2 class="text-2xl font-bold mb-4">The New Era of AI Engineering</h2>
@@ -41,7 +27,7 @@ export const blogPosts: BlogPost[] = [
           We're no longer primarily training models from scratch — today we're integrating ready-made large language models (LLMs) like <strong>ChatGPT</strong>, <strong>Claude</strong>, and <strong>Gemini</strong> into real-world solutions. And frankly, we're writing less code than ever.
         </p>
         <p class="mb-4 leading-relaxed">
-          Instead, we focus on <strong>building working prototypes</strong>, delivering results fast, and creating real value for stakeholders. That's where the concept of <strong>"vibe coding"</strong> and tools like <strong>Supabase MCP (Model Context Protocol)</strong> become critical.
+          Instead, we focus on <strong>building working prototypes</strong>, delivering results fast, and creating real value for stakeholders. That's where the concept of <strong><a href="https://dzone.com/articles/vibe-coding-conversational-software-development" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">"vibe coding"</a></strong> and tools like <strong><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Supabase MCP (Model Context Protocol)</a></strong> become critical.
         </p>
         <div class="p-4 rounded-lg border bg-muted/30">
           <p class="font-medium">But despite the buzz, this new era demands more than just pointing an AI at a problem. If you want to thrive as an AI engineer today, you must pivot into a full-stack mindset: build the software, set up the database, deploy to production — rapidly.</p>
@@ -476,7 +462,7 @@ export const blogPosts: BlogPost[] = [
                 <li class="flex items-start gap-2"><span class="text-foreground">→</span> <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline"><strong>Gemini</strong></a> for drafts/slides/images</li>
                 <li class="flex items-start gap-2"><span class="text-foreground">→</span> <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline"><strong>Cursor</strong></a> for AI-powered IDE</li>
               </ul>
-              <p class="mt-3">Pair them with <strong>MCP + Supabase</strong> for the backend and you're set.</p>
+              <p class="mt-3">Integrate <strong><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase MCP</a></strong> directly in your IDE—no dashboard needed. Your AI agent handles database operations through natural conversation.</p>
             </div>
           </div>
         </div>
