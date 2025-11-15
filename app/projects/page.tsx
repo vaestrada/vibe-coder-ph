@@ -197,7 +197,7 @@ export default function ProjectsPage() {
       </motion.div>
 
       <motion.div 
-        className="grid gap-6 md:grid-cols-2"
+        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -206,7 +206,7 @@ export default function ProjectsPage() {
           const ProjectCard = (
             <motion.div 
               key={p.id} 
-              className="rounded-lg border overflow-hidden cursor-pointer bg-card"
+              className="rounded-lg border overflow-hidden cursor-pointer bg-card h-full flex flex-col"
               initial={{ opacity: 0, y: 30, rotateX: -15 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ 
@@ -225,7 +225,7 @@ export default function ProjectsPage() {
             >
               {/* Project Media */}
               <motion.div 
-                className="relative h-48 w-full overflow-hidden"
+                className="relative h-48 w-full overflow-hidden flex-shrink-0"
                 initial={{ scale: 1.2, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ 
@@ -262,7 +262,7 @@ export default function ProjectsPage() {
               </motion.div>
 
               {/* Project Content */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <motion.div 
                   className="font-medium text-lg mb-2"
                   initial={{ opacity: 0, x: -20 }}
@@ -272,7 +272,7 @@ export default function ProjectsPage() {
                   {p.title}
                 </motion.div>
                 <motion.p 
-                  className="text-sm text-muted-foreground mb-3"
+                  className="text-sm text-muted-foreground mb-3 flex-grow"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
@@ -280,7 +280,7 @@ export default function ProjectsPage() {
                   {p.description}
                 </motion.p>
                 <motion.div 
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 mt-auto"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
