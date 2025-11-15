@@ -101,23 +101,29 @@ export const blogPosts: BlogPost[] = [
           <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline font-semibold">Supabase</a> is an open-source <strong>Backend-as-a-Service (BaaS)</strong> built on PostgreSQL. It provides:
         </p>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-          <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">✓ Authentication</p>
+          <div class="p-3 bg-muted/50 border rounded-lg flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="font-semibold text-sm">Authentication</p>
           </div>
-          <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">✓ Database</p>
+          <div class="p-3 bg-muted/50 border rounded-lg flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="font-semibold text-sm">Database</p>
           </div>
-          <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">✓ Storage</p>
+          <div class="p-3 bg-muted/50 border rounded-lg flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="font-semibold text-sm">Storage</p>
           </div>
-          <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">✓ Realtime</p>
+          <div class="p-3 bg-muted/50 border rounded-lg flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="font-semibold text-sm">Realtime</p>
           </div>
-          <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">✓ APIs</p>
+          <div class="p-3 bg-muted/50 border rounded-lg flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="font-semibold text-sm">APIs</p>
           </div>
-          <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">✓ Edge Functions</p>
+          <div class="p-3 bg-muted/50 border rounded-lg flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="font-semibold text-sm">Edge Functions</p>
           </div>
         </div>
         <p class="mb-6 leading-relaxed">
