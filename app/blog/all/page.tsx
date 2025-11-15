@@ -118,10 +118,11 @@ export default function AllBlogPostsPage() {
               y: -4,
               transition: { duration: 0.2 }
             }}
+            className="h-full"
           >
             <Link 
               href={`/blog/${post.slug}`} 
-              className="group block rounded-xl border bg-card p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+              className="group flex flex-col h-full rounded-xl border bg-card p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="flex items-center justify-between mb-3">
                 <span className={`text-xs px-2 py-1 rounded-full ${getCategoryColor(post.category)}`}>
@@ -136,7 +137,7 @@ export default function AllBlogPostsPage() {
                 {post.title}
               </h3>
               
-              <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+              <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-grow">
                 {post.excerpt}
               </p>
               
@@ -153,7 +154,7 @@ export default function AllBlogPostsPage() {
                 )}
               </div>
               
-              <div className="flex items-center justify-between text-xs text-muted-foreground">
+              <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1">
                     <User className="h-3 w-3" />
