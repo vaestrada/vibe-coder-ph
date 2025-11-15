@@ -137,7 +137,7 @@ export const blogPosts: BlogPost[] = [
         <p class="mb-2 text-sm text-muted-foreground">Example prompt:</p>
         <div class="bg-slate-900 text-slate-50 rounded-lg p-4 mb-3 relative group">
           <p class="font-mono text-sm leading-relaxed text-green-400">"Use Supabase MCP to create table Projects with fields title, description, video_url, tags."</p>
-          <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Use Supabase MCP to create table Projects with fields title, description, video_url, tags.')">Copy</button>
+          <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 p-2 rounded" onclick="navigator.clipboard.writeText('Use Supabase MCP to create table Projects with fields title, description, video_url, tags.')" title="Copy to clipboard"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
         </div>
         <p class="mb-6 text-sm text-muted-foreground">✓ Behind the scenes, Supabase MCP generates the migration, updates your database, links your tables.</p>
 
@@ -203,7 +203,7 @@ export const blogPosts: BlogPost[] = [
           <p class="font-mono text-sm leading-relaxed text-green-400">
             "Can you add another project in the Featured Projects section using the details in project001.md and upload this screen-recorded video to the database using Supabase MCP?"
           </p>
-          <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Can you add another project in the Featured Projects section using the details in project001.md and upload this screen-recorded video to the database using Supabase MCP?')">Copy</button>
+          <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 p-2 rounded" onclick="navigator.clipboard.writeText('Can you add another project in the Featured Projects section using the details in project001.md and upload this screen-recorded video to the database using Supabase MCP?')" title="Copy to clipboard"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
         </div>
         <p class="text-sm text-muted-foreground mb-2">The agent (via Supabase MCP) does the table update, uploads the video, adjusts the metadata.</p>
         <p class="mb-6 text-violet-600 dark:text-violet-400 font-semibold">I focus on the prompt, the flow. I don't code every line. That's "vibe coding" in action.</p>
@@ -250,7 +250,7 @@ export const blogPosts: BlogPost[] = [
             <p class="text-muted-foreground text-sm mb-2">Example prompt:</p>
             <div class="bg-slate-900 rounded-lg p-4 mb-2 relative group">
               <code class="block text-green-400 text-sm font-mono">"Generate API route for getting featured projects from Supabase, using Next.js."</code>
-              <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Generate API route for getting featured projects from Supabase, using Next.js.')">Copy</button>
+              <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 p-2 rounded" onclick="navigator.clipboard.writeText('Generate API route for getting featured projects from Supabase, using Next.js.')" title="Copy to clipboard"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
             </div>
           </div>
 
@@ -259,7 +259,7 @@ export const blogPosts: BlogPost[] = [
             <p class="text-muted-foreground text-sm mb-2">Example prompt:</p>
             <div class="bg-slate-900 rounded-lg p-4 mb-2 relative group">
               <code class="block text-green-400 text-sm font-mono">"Create a FeaturedProjects table with fields for title, description, video URL, and tags."</code>
-              <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Create a FeaturedProjects table with fields for title, description, video URL, and tags.')">Copy</button>
+              <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 p-2 rounded" onclick="navigator.clipboard.writeText('Create a FeaturedProjects table with fields for title, description, video URL, and tags.')" title="Copy to clipboard"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
             </div>
             <p class="text-green-600 dark:text-green-400 font-semibold text-sm">Your AI agent handles it — you're done. ✓</p>
           </div>
@@ -269,7 +269,7 @@ export const blogPosts: BlogPost[] = [
             <p class="text-muted-foreground text-sm mb-2">Example prompt:</p>
             <div class="bg-slate-900 rounded-lg p-4 mb-2 relative group">
               <code class="block text-green-400 text-sm font-mono">"Use Supabase MCP to upload this video to project-media storage and link it to my FeaturedProjects table."</code>
-              <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Use Supabase MCP to upload this video to project-media storage and link it to my FeaturedProjects table.')">Copy</button>
+              <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 p-2 rounded" onclick="navigator.clipboard.writeText('Use Supabase MCP to upload this video to project-media storage and link it to my FeaturedProjects table.')" title="Copy to clipboard"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
             </div>
             <p class="text-muted-foreground text-sm">Your AI agent uploads the file, stores the URL, and updates the metadata automatically.</p>
           </div>
