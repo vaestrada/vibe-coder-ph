@@ -15,77 +15,108 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ai-engineer-survival-guide-supabase-mcp-vibe-coding",
     title: "The AI Engineer's Survival Guide: Prototyping Fast with Supabase MCP and Vibe Coding",
-    excerpt: "Discover how modern AI/ML engineers are shifting from building models to shipping full-stack prototypes using LLMs, vibe coding, and the Supabase MCP protocol. Learn how one engineer went from zero database experience to full product velocity.",
+    excerpt: "Two months ago, I couldn't build a database. This week, I shipped three full-stack AI prototypes. Learn how Supabase MCP and vibe coding transformed me from an AI engineer who knew models into a full-stack builder who ships working prototypes in hours.",
     content: `
       <!-- Intro Section -->
       <div class="mb-8 p-6 bg-muted/50 rounded-xl border">
-        <h2 class="text-2xl font-bold mb-4">The New Era of AI Engineering</h2>
-        <p class="mb-4 leading-relaxed">
-          I've been working as an AI/ML engineer for the past two years. But with the surge of generative AI, the role has fundamentally shifted. 
+        <p class="text-lg mb-4 leading-relaxed font-medium">
+          Two months ago, I couldn't build a database from scratch. This week, I shipped three full-stack AI prototypes—complete with backends, databases, and live deployments.
         </p>
         <p class="mb-4 leading-relaxed">
-          We're no longer primarily training models from scratch — today we're integrating ready-made large language models (LLMs) like <strong>ChatGPT</strong>, <strong>Claude</strong>, and <strong>Gemini</strong> into real-world solutions. And frankly, we're writing less code than ever.
+          What changed? I discovered <strong><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Supabase MCP</a></strong> (Model Context Protocol) and embraced <strong>"vibe coding"</strong>—a conversational approach to software development where you prompt AI agents to handle database setup, migrations, and backend scaffolding.
         </p>
-        <p class="mb-4 leading-relaxed">
-          Instead, we focus on <strong>building working prototypes</strong>, delivering results fast, and creating real value for stakeholders. That's where the concept of <strong><a href="https://dzone.com/articles/vibe-coding-conversational-software-development" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">"vibe coding"</a></strong> and tools like <strong><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Supabase MCP</a></strong> become critical.
-        </p>
-        <div class="p-4 rounded-lg border bg-muted/30">
-          <p class="font-medium">But despite the buzz, this new era demands more than just pointing an AI at a problem. If you want to thrive as an AI engineer today, you must pivot into a full-stack mindset: build the software, set up the database, deploy to production — rapidly.</p>
+        
+        <div class="p-4 rounded-lg border bg-blue-50 dark:bg-blue-950/20 border-blue-500/30 mb-4">
+          <p class="font-semibold mb-2 text-blue-700 dark:text-blue-400">What is "Vibe Coding"?</p>
+          <p class="text-sm leading-relaxed">Vibe coding is a conversational development approach where you use natural language prompts with AI assistants (like <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">GitHub Copilot</a>, <a href="https://www.cursor.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Cursor</a>, or <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Claude</a>) to generate code, create schemas, and build features. Instead of writing every line manually, you focus on the <em>intent</em> and let AI handle the implementation details. <a href="https://dzone.com/articles/vibe-coding-conversational-software-development" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">Learn more →</a></p>
         </div>
+
+        <p class="mb-4 leading-relaxed">
+          As an AI/ML engineer, I spent two years integrating LLMs like <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">ChatGPT</a>, <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Claude</a>, and <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Gemini</a> into workflows. But when stakeholders asked <em>"Where's the demo?"</em> or <em>"Can we see this live?"</em>, I hit a wall. I could query databases—if someone else built them. I could write business logic—if the backend was already set up.
+        </p>
+        
+        <div class="p-4 rounded-lg border bg-amber-50 dark:bg-amber-950/20 border-amber-500/30">
+          <p class="font-medium text-amber-700 dark:text-amber-400">The problem? I wasn't <strong>full-stack capable</strong>. And in today's AI engineering landscape, if you can't ship a working prototype end-to-end, you're falling behind.</p>
+        </div>
+      </div>
+
+      <!-- Is This Guide For You? -->
+      <div class="mb-8 p-6 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 rounded-xl border border-violet-500/20">
+        <h2 class="text-2xl font-bold mb-4 text-foreground">Is This Guide For You?</h2>
+        <p class="mb-4 leading-relaxed">This guide is for you if:</p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
+            <span>You're an <strong>AI/ML engineer</strong> who knows models but struggles to ship production-ready features</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
+            <span>You can write queries but have <strong>never built a database from scratch</strong></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
+            <span>Stakeholders keep asking <strong>"Can we see a working demo?"</strong> and you don't know where to start</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
+            <span>You want to <strong>prototype AI features in hours, not weeks</strong></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
+            <span>You're ready to embrace a <strong>full-stack mindset</strong>: code + database + deployment</span>
+          </li>
+        </ul>
+        <p class="mt-4 text-sm text-muted-foreground italic">By the end of this guide, you'll know how to go from idea to deployed prototype in a single afternoon—using natural language prompts and the Supabase MCP protocol.</p>
       </div>
 
       <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <!-- The Changing Role -->
       <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-6">The Changing Role of an AI/ML Engineer</h2>
+        <h2 class="text-3xl font-bold mb-6">Why AI Engineers Must Go Full-Stack</h2>
         
-        <h3 class="text-xl font-semibold mb-4">What We Used to Do: Build and Train Models</h3>
-        <p class="mb-4 leading-relaxed">
-          Back in the day, an AI/ML engineer's workflow typically involved:
-        </p>
-        <ul class="list-disc list-inside space-y-2 mb-6 ml-4">
-          <li>Gathering and cleaning data</li>
-          <li>Selecting and designing model architectures</li>
-          <li>Training models (often from scratch)</li>
-          <li>Tuning hyperparameters</li>
-          <li>Deploying in limited, experimental form</li>
-        </ul>
-        <p class="mb-6 leading-relaxed">
-          The skillset was heavily centered around <strong>model architecture</strong>, <strong>optimization</strong>, <strong>dataset engineering</strong>, and deep understanding of ML frameworks like TensorFlow and PyTorch.
+        <p class="mb-6 leading-relaxed text-lg">
+          The AI engineering role has evolved dramatically. I'm no longer just training models—I'm <strong>shipping products</strong>. Here's what changed:
         </p>
 
-        <h3 class="text-xl font-semibold mb-4">The Gen AI Era: Plugging Into Proprietary LLMs</h3>
-        <p class="mb-4 leading-relaxed">
-          Today, the game is different. We don't always build models from scratch. Instead, we <strong>consume APIs</strong> like <a href="https://openai.com/chatgpt" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">ChatGPT</a>, <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Claude</a>, and <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Gemini</a>, and integrate them into workflows.
-        </p>
-        <div class="bg-muted/50 border rounded-lg p-6 mb-6">
-          <p class="mb-3 font-semibold">Because of this shift:</p>
-          <ul class="space-y-2 list-none">
-            <li class="flex items-start gap-2"><span>→</span> We use AI to generate content (drafts, slides, images) rather than train models</li>
-            <li class="flex items-start gap-2"><span>→</span> We rely on LLMs for general tasks and agents for domain-specific workflows</li>
-            <li class="flex items-start gap-2"><span>→</span> We focus on integration, not always the architecture of the model itself</li>
-          </ul>
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="p-5 bg-muted/30 border rounded-lg">
+            <h3 class="font-bold text-lg mb-3 text-red-600 dark:text-red-400">❌ The Old Way</h3>
+            <ul class="space-y-2 text-sm text-muted-foreground">
+              <li>• Build models from scratch</li>
+              <li>• Train on custom datasets</li>
+              <li>• Focus on accuracy metrics</li>
+              <li>• Limited deployment scope</li>
+              <li>• Experimental mindset</li>
+            </ul>
+          </div>
+          
+          <div class="p-5 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
+            <h3 class="font-bold text-lg mb-3 text-green-600 dark:text-green-400">✓ The New Reality</h3>
+            <ul class="space-y-2 text-sm">
+              <li>• Integrate existing LLMs (ChatGPT, Claude, Gemini)</li>
+              <li>• Build full-stack applications</li>
+              <li>• Focus on user value & speed</li>
+              <li>• Production-ready from day one</li>
+              <li>• Product-driven mindset</li>
+            </ul>
+          </div>
         </div>
 
-        <h3 class="text-xl font-semibold mb-4">The New Expectations: Shipping Working Prototypes Rapidly</h3>
-        <p class="mb-4 leading-relaxed">
-          In business settings, the demand is clear: <em>"We want AI in our workflow — yesterday."</em> Stakeholders want to see results, not just models.
-        </p>
         <div class="bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 rounded-xl border border-violet-500/20 p-6 mb-6">
-          <p class="mb-3 font-semibold">So as an AI engineer, you must be able to:</p>
+          <p class="mb-3 font-semibold text-lg">Today's expectations are clear:</p>
           <ul class="space-y-2">
-            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> Rapidly prototype working features (not just experiments)</li>
-            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> Display something real to executives: a dashboard, an assistant, something <em>live</em></li>
-            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> Cover full-stack responsibilities: frontend, backend, database, deployment</li>
-            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> Be comfortable moving fast, iterating, and delivering value</li>
+            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> <strong>Prototype working features in hours</strong>, not months of experiments</li>
+            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> <strong>Show stakeholders something live</strong>: a dashboard, an assistant, a real product</li>
+            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> <strong>Own the full stack</strong>: frontend, backend, database, deployment</li>
+            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> <strong>Move fast and iterate</strong>—velocity is the new competitive advantage</li>
           </ul>
         </div>
 
         <div class="principle-highlight bg-yellow-50 dark:bg-yellow-950/20 border-yellow-500/30 p-5 rounded-lg border">
-          <h4 class="font-bold text-yellow-700 dark:text-yellow-400 mb-2">⚠️ Why This Shift Matters for You</h4>
+          <h4 class="font-bold text-yellow-700 dark:text-yellow-400 mb-2">⚠️ The Bottom Line</h4>
           <p class="leading-relaxed text-foreground">
-            If you only know model research and can't deliver product features, you may fall behind in this era. The expectation is evolving: you must be <strong>full-stack capable</strong>, <strong>product-driven</strong>, and <strong>velocity-focused</strong>.
+            If you can only build models but can't ship features, you're missing the biggest opportunity in AI engineering. The market doesn't want experiments—it wants <strong>working prototypes, delivered fast</strong>.
           </p>
         </div>
       </div>
@@ -215,25 +246,36 @@ export const blogPosts: BlogPost[] = [
         <p class="mb-6 text-violet-600 dark:text-violet-400 font-semibold">I focus on the prompt, the flow. I don't code every line. That's "vibe coding" in action.</p>
 
         <h3 class="text-2xl font-semibold mb-4 text-foreground">What Changed</h3>
+        <p class="mb-4 leading-relaxed text-lg font-medium text-violet-600 dark:text-violet-400">
+          In one week, I went from zero database experience to shipping three production-ready prototypes.
+        </p>
         <div class="grid gap-4 mb-6">
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
               <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
-              <span>I went from "no database" to "database exists, live project uploaded, table created, metadata in place"</span>
+              <span><strong>Project 1:</strong> Featured projects gallery with video uploads — idea to deployed in <strong>4 hours</strong></span>
             </p>
           </div>
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
               <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
-              <span>I moved from just being an AI engineer to being <strong>the entire stack</strong>: software + database + deployment</span>
+              <span><strong>Project 2:</strong> Course management system with authentication — prototyped in <strong>6 hours</strong></span>
             </p>
           </div>
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
               <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
-              <span>I can now <strong>prototype features in hours</strong>, deploy them, show stakeholders — that's the value shift</span>
+              <span><strong>Project 3:</strong> Blog platform with metadata and search — built and deployed in one afternoon</span>
             </p>
           </div>
+        </div>
+        <div class="bg-gradient-to-r from-violet-100 to-fuchsia-100 dark:from-violet-900/30 dark:to-fuchsia-900/30 border border-violet-500/30 rounded-lg p-6 mb-6">
+          <p class="font-bold text-lg mb-2">The transformation:</p>
+          <ul class="space-y-2">
+            <li>• From "I can't build databases" to <strong>"database exists, live, with data"</strong></li>
+            <li>• From "just an AI engineer" to <strong>"full-stack builder"</strong>: software + database + deployment</li>
+            <li>• From "weeks per prototype" to <strong>"hours per prototype"</strong></li>
+          </ul>
         </div>
       </div>
 
