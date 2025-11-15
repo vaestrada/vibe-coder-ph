@@ -94,7 +94,7 @@ export const blogPosts: BlogPost[] = [
 
       <!-- Section 2 -->
       <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-6 text-foreground">Meet Supabase and the Model Context Protocol (MCP)</h2>
+        <h2 class="text-3xl font-bold mb-6 text-foreground">Meet Supabase and Model Context Protocol (MCP)</h2>
         
         <h3 class="text-2xl font-semibold mb-4 text-foreground">What is Supabase?</h3>
         <p class="mb-4 leading-relaxed">
@@ -124,7 +124,7 @@ export const blogPosts: BlogPost[] = [
           It's built for <strong>rapid product development</strong>: set up a schema, manage data, store files/videos, expose endpoints. Perfect for prototyping fast.
         </p>
 
-        <h3 class="text-2xl font-semibold mb-4 text-foreground">What is the Model Context Protocol (MCP)?</h3>
+        <h3 class="text-2xl font-semibold mb-4 text-foreground">What is Model Context Protocol (MCP)?</h3>
         <p class="mb-4 leading-relaxed">
           The <strong>Model Context Protocol (MCP)</strong> is a standard designed to allow <strong>Large Language Models (LLMs)</strong> and <strong>AI agents</strong> to interact directly with platforms like Supabase.
         </p>
