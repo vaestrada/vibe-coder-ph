@@ -134,14 +134,12 @@ export const blogPosts: BlogPost[] = [
           <p class="text-sm italic">Learn more: <a href="https://supabase.com/docs/guides/ai/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase MCP Documentation</a></p>
         </div>
 
-        <div class="bg-slate-900 text-slate-50 rounded-lg p-6 mb-6">
-          <p class="mb-2 text-slate-400 text-sm">Example prompt:</p>
-          <div class="relative group">
-            <p class="font-mono text-sm leading-relaxed text-green-400">"Use Supabase MCP to create table Projects with fields title, description, video_url, tags."</p>
-            <button class="absolute top-1 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Use Supabase MCP to create table Projects with fields title, description, video_url, tags.')">Copy</button>
-          </div>
-          <p class="mt-4 text-green-400 text-sm">✓ Behind the scenes, Supabase MCP generates the migration, updates your database, links your tables.</p>
+        <p class="mb-2 text-sm text-muted-foreground">Example prompt:</p>
+        <div class="bg-slate-900 text-slate-50 rounded-lg p-4 mb-3 relative group">
+          <p class="font-mono text-sm leading-relaxed text-green-400">"Use Supabase MCP to create table Projects with fields title, description, video_url, tags."</p>
+          <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Use Supabase MCP to create table Projects with fields title, description, video_url, tags.')">Copy</button>
         </div>
+        <p class="mb-6 text-sm text-muted-foreground">✓ Behind the scenes, Supabase MCP generates the migration, updates your database, links your tables.</p>
 
         <h3 class="text-2xl font-semibold mb-4 text-foreground">How MCP Accelerates Development</h3>
         <ul class="space-y-3 mb-6">
@@ -200,17 +198,15 @@ export const blogPosts: BlogPost[] = [
         <p class="mb-4 leading-relaxed">
           I started using LLMs (<strong>Claude</strong> for domain logic, <strong>ChatGPT</strong> for day-to-day queries/automation, <strong>Gemini</strong> for drafts, slides, images) and paired them with <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">GitHub Copilot</a> and <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Cursor</a>.
         </p>
-        <div class="bg-slate-900 text-slate-50 rounded-lg p-6 mb-6">
-          <p class="mb-3 text-slate-400 text-sm">Example prompt:</p>
-          <div class="relative group">
-            <p class="font-mono text-sm mb-4 leading-relaxed text-green-400">
-              "Can you add another project in the Featured Projects section using the details in project001.md and upload this screen-recorded video to the database using Supabase MCP?"
-            </p>
-            <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Can you add another project in the Featured Projects section using the details in project001.md and upload this screen-recorded video to the database using Supabase MCP?')">Copy</button>
-          </div>
-          <p class="text-slate-300 text-sm">The agent (via Supabase MCP) does the table update, uploads the video, adjusts the metadata.</p>
-          <p class="mt-3 text-violet-400 font-semibold">I focus on the prompt, the flow. I don't code every line. That's "vibe coding" in action.</p>
+        <p class="mb-2 text-sm text-muted-foreground">Example prompt:</p>
+        <div class="bg-slate-900 text-slate-50 rounded-lg p-4 mb-3 relative group">
+          <p class="font-mono text-sm leading-relaxed text-green-400">
+            "Can you add another project in the Featured Projects section using the details in project001.md and upload this screen-recorded video to the database using Supabase MCP?"
+          </p>
+          <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Can you add another project in the Featured Projects section using the details in project001.md and upload this screen-recorded video to the database using Supabase MCP?')">Copy</button>
         </div>
+        <p class="text-sm text-muted-foreground mb-2">The agent (via Supabase MCP) does the table update, uploads the video, adjusts the metadata.</p>
+        <p class="mb-6 text-violet-600 dark:text-violet-400 font-semibold">I focus on the prompt, the flow. I don't code every line. That's "vibe coding" in action.</p>
 
         <h3 class="text-2xl font-semibold mb-4 text-foreground">What Changed</h3>
         <div class="grid gap-4 mb-6">
@@ -251,28 +247,28 @@ export const blogPosts: BlogPost[] = [
 
           <div class="border-l-4 border-primary pl-6 py-2">
             <h4 class="font-bold text-lg mb-2">2. Use Your IDE + GitHub Copilot / LLM to Scaffold Front/Back Code</h4>
-            <p class="text-muted-foreground mb-2">Example prompt:</p>
-            <div class="relative group">
-              <code class="block bg-slate-900 text-green-400 p-3 rounded text-sm">"Generate API route for getting featured projects from Supabase, using Next.js."</code>
+            <p class="text-muted-foreground text-sm mb-2">Example prompt:</p>
+            <div class="bg-slate-900 rounded-lg p-4 mb-2 relative group">
+              <code class="block text-green-400 text-sm font-mono">"Generate API route for getting featured projects from Supabase, using Next.js."</code>
               <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Generate API route for getting featured projects from Supabase, using Next.js.')">Copy</button>
             </div>
           </div>
 
           <div class="border-l-4 border-primary pl-6 py-2">
             <h4 class="font-bold text-lg mb-2">3. Use Supabase MCP to Create Tables/Migrations Directly from Prompts</h4>
-            <p class="text-muted-foreground mb-2">Example prompt:</p>
-            <div class="relative group">
-              <code class="block bg-slate-900 text-green-400 p-3 rounded text-sm mb-2">"Create a FeaturedProjects table with fields for title, description, video URL, and tags."</code>
+            <p class="text-muted-foreground text-sm mb-2">Example prompt:</p>
+            <div class="bg-slate-900 rounded-lg p-4 mb-2 relative group">
+              <code class="block text-green-400 text-sm font-mono">"Create a FeaturedProjects table with fields for title, description, video URL, and tags."</code>
               <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Create a FeaturedProjects table with fields for title, description, video URL, and tags.')">Copy</button>
             </div>
-            <p class="text-green-600 dark:text-green-400 font-semibold">Your AI agent handles it — you're done. ✓</p>
+            <p class="text-green-600 dark:text-green-400 font-semibold text-sm">Your AI agent handles it — you're done. ✓</p>
           </div>
 
           <div class="border-l-4 border-primary pl-6 py-2">
             <h4 class="font-bold text-lg mb-2">4. Connect Storage (Videos/Files) + Metadata Tables in Supabase</h4>
-            <p class="text-muted-foreground mb-2">Example prompt:</p>
-            <div class="relative group">
-              <code class="block bg-slate-900 text-green-400 p-3 rounded text-sm mb-2">"Use Supabase MCP to upload this video to project-media storage and link it to my FeaturedProjects table."</code>
+            <p class="text-muted-foreground text-sm mb-2">Example prompt:</p>
+            <div class="bg-slate-900 rounded-lg p-4 mb-2 relative group">
+              <code class="block text-green-400 text-sm font-mono">"Use Supabase MCP to upload this video to project-media storage and link it to my FeaturedProjects table."</code>
               <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs" onclick="navigator.clipboard.writeText('Use Supabase MCP to upload this video to project-media storage and link it to my FeaturedProjects table.')">Copy</button>
             </div>
             <p class="text-muted-foreground text-sm">Your AI agent uploads the file, stores the URL, and updates the metadata automatically.</p>
