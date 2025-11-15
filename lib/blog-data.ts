@@ -248,7 +248,7 @@ export const blogPosts: BlogPost[] = [
         <div class="space-y-6 mb-8">
           <div class="border-l-4 border-primary pl-6 py-2">
             <h4 class="font-bold text-lg mb-2">1. Define the Idea and Required Data Model</h4>
-            <p class="text-muted-foreground">Start with what you want to build: e.g., "Featured Projects page with video uploads, title, description, tags, category."</p>
+            <p class="text-muted-foreground">Start with what you want to build: e.g., "<a href="/projects" class="text-foreground hover:underline">Featured Projects page</a> with video uploads, title, description, tags, category."</p>
           </div>
 
           <div class="border-l-4 border-primary pl-6 py-2">
@@ -635,7 +635,7 @@ export const blogPosts: BlogPost[] = [
           One of the first things that stood out in my new role was the access to cutting-edge AI tools and developer platforms.
         </p>
         <p class="mb-4 leading-relaxed">
-          From <strong>Cursor</strong> and <strong>Codex</strong> to <strong>n8n</strong> and <strong>ElevenLabs</strong>, the playground just got bigger. Each tool feels like an extension of thought, helping me automate, design, and experiment faster than ever.
+          From <a href="https://www.cursor.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline"><strong>Cursor</strong></a> and <strong>Codex</strong> to <a href="https://n8n.io" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline"><strong>n8n</strong></a> and <a href="https://elevenlabs.io" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline"><strong>ElevenLabs</strong></a>, the playground just got bigger. Each tool feels like an extension of thought, helping me automate, design, and experiment faster than ever.
         </p>
         <div class="principle-highlight">
           <p>It's the kind of environment that lets ideas flow naturally. You don't just code anymore; you compose.</p>
@@ -889,7 +889,7 @@ export const blogPosts: BlogPost[] = [
       <div class="mb-8">
         <h2 class="text-2xl font-bold mb-6 text-foreground">Deployment: Vercel</h2>
         <p class="mb-4 leading-relaxed">
-          Every idea deserves to go live, and <strong>Vercel</strong> is where mine do.
+          Every idea deserves to go live, and <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline"><strong>Vercel</strong></a> is where mine do.
         </p>
         <p class="mb-4 leading-relaxed">
           It's fast, generous on its free tier, and built for modern frameworks. For me, it's not just about hosting — it's about iteration. I can push code, test it in production-like previews, and share it instantly with collaborators.
@@ -965,7 +965,7 @@ export const blogPosts: BlogPost[] = [
           </li>
           <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
             <span class="text-primary font-bold mt-0.5">•</span>
-            <strong>Vercel Speed Insights</strong> helps me optimize performance and Core Web Vitals in real time.
+            <a href="https://vercel.com/docs/speed-insights" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline"><strong>Vercel Speed Insights</strong></a> helps me optimize performance and Core Web Vitals in real time.
           </li>
         </ul>
         <p class="mb-4 leading-relaxed">
@@ -1001,7 +1001,7 @@ export const blogPosts: BlogPost[] = [
           If you're a developer, researcher, or creator trying to keep up with the flood of new AI tools, take a step back. You don't need to master all of them. You just need to find the ones that move with you.
         </p>
         <p class="mb-4 leading-relaxed">
-          For me, that's Comet, ChatGPT, Copilot, Claude, Vercel, Supabase, and a handful of creative companions. Together, they form my AI chain — the system that keeps me grounded, focused, and creative.
+          For me, that's Comet, <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">ChatGPT</a>, <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Copilot</a>, <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Claude</a>, <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Vercel</a>, <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase</a>, and a handful of creative companions. Together, they form my AI chain — the system that keeps me grounded, focused, and creative.
         </p>
         <div class="principle-highlight">
           <p>So build your own stack. Experiment. Chain your tools together until they feel like extensions of how you think. That's where AI stops being a trend and starts becoming a craft.</p>
@@ -1734,7 +1734,7 @@ feature:       ●──●  (feature-login-form)
           </li>
           <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
             <span class="text-blue-500 font-bold mt-0.5">•</span>
-            <code>/public/og-projects.png</code> → Projects page
+            <code>/public/og-projects.png</code> → <a href="/projects" class="text-foreground hover:underline">Projects page</a>
           </li>
           <li class="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
             <span class="text-blue-500 font-bold mt-0.5">•</span>
