@@ -136,8 +136,8 @@ export const blogPosts: BlogPost[] = [
 
         <div class="bg-slate-900 text-slate-50 rounded-lg p-6 mb-6">
           <p class="mb-2 text-slate-400 text-sm font-mono">Example prompt:</p>
-          <p class="font-mono text-sm leading-relaxed">"Create table Projects with fields title, description, video_url, tags."</p>
-          <p class="mt-4 text-green-400 text-sm">✓ Behind the scenes, the MCP server generates the migration, updates your database, links your tables.</p>
+          <p class="font-mono text-sm leading-relaxed">"Use Supabase MCP to create table Projects with fields title, description, video_url, tags."</p>
+          <p class="mt-4 text-green-400 text-sm">✓ Behind the scenes, Supabase MCP generates the migration, updates your database, links your tables.</p>
         </div>
 
         <h3 class="text-2xl font-semibold mb-4 text-foreground">How MCP Accelerates Development</h3>
@@ -160,7 +160,7 @@ export const blogPosts: BlogPost[] = [
           <h4 class="font-bold text-red-700 dark:text-red-400 mb-3">⚠️ Security & Risk Considerations</h4>
           <p class="mb-3 leading-relaxed">Because you're giving an AI agent access to your database backend, you need to think about:</p>
           <ul class="space-y-2">
-            <li class="flex items-start gap-2"><span class="text-red-500">•</span> <strong>Permissions:</strong> Who can access your MCP server, what rights they have (<a href="https://supabase.com/docs/guides/auth/row-level-security" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline">RLS policies</a>)</li>
+            <li class="flex items-start gap-2"><span class="text-red-500">•</span> <strong>Permissions:</strong> Who can access Supabase MCP, what rights they have (<a href="https://supabase.com/docs/guides/auth/row-level-security" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline">RLS policies</a>)</li>
             <li class="flex items-start gap-2"><span class="text-red-500">•</span> <strong>Maintainability:</strong> AI-generated tables may not be built for scale</li>
             <li class="flex items-start gap-2"><span class="text-red-500">•</span> <strong>Debugging:</strong> AI-generated code may introduce subtle bugs — you still need oversight</li>
           </ul>
@@ -233,7 +233,7 @@ export const blogPosts: BlogPost[] = [
 
       <!-- Section 4 -->
       <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-6 text-foreground">How to Prototype Fast with MCP + Vibe Coding</h2>
+        <h2 class="text-3xl font-bold mb-6 text-foreground">How to Prototype Fast with Supabase MCP and Vibe Coding</h2>
         
         <h3 class="text-2xl font-semibold mb-4 text-foreground">Step-by-Step Workflow</h3>
         
@@ -250,10 +250,10 @@ export const blogPosts: BlogPost[] = [
           </div>
 
           <div class="border-l-4 border-primary pl-6 py-2">
-            <h4 class="font-bold text-lg mb-2">3. Use Supabase + MCP to Create Tables/Migrations Directly from Prompts</h4>
+            <h4 class="font-bold text-lg mb-2">3. Use Supabase MCP to Create Tables/Migrations Directly from Prompts</h4>
             <p class="text-muted-foreground mb-2">For example:</p>
-            <code class="block bg-slate-900 text-slate-50 p-3 rounded text-sm mb-2">"Create table FeaturedProjects (id uuid primary key, title text, description text, video_url text, tags text[])."</code>
-            <p class="text-green-600 dark:text-green-400 font-semibold">Use MCP server — you're done. ✓</p>
+            <code class="block bg-slate-900 text-slate-50 p-3 rounded text-sm mb-2">"Use Supabase MCP to create table FeaturedProjects (id uuid primary key, title text, description text, video_url text, tags text[])."</code>
+            <p class="text-green-600 dark:text-green-400 font-semibold">Your AI agent handles it — you're done. ✓</p>
           </div>
 
           <div class="border-l-4 border-primary pl-6 py-2">
@@ -438,9 +438,9 @@ export const blogPosts: BlogPost[] = [
           </div>
 
           <div class="p-6 bg-card border rounded-xl hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-bold mb-3 text-foreground">Q3: Is using MCP safe for production?</h3>
+            <h3 class="text-xl font-bold mb-3 text-foreground">Q3: Is using Supabase MCP safe for production?</h3>
             <p class="leading-relaxed text-muted-foreground">
-              You need to manage access/permissions carefully. The <a href="https://supabase.com/docs/guides/auth/row-level-security" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">security documentation</a> warns against exposing MCP servers directly to the internet without protection. Always implement proper authentication and Row-Level Security (RLS) policies.
+              You need to manage access/permissions carefully. The <a href="https://supabase.com/docs/guides/auth/row-level-security" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">security documentation</a> warns against exposing Supabase MCP directly to the internet without protection. Always implement proper authentication and Row-Level Security (RLS) policies.
             </p>
           </div>
 
