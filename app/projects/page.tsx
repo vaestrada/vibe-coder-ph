@@ -35,19 +35,15 @@ export default function ProjectsPage() {
       try {
         const supabaseProjects = await getProjects();
 
-        // Separate automation projects from personal websites
-        const automationProjects = supabaseProjects.filter(p => 
-          p.tech_stack?.toLowerCase().includes('n8n') ||
-          p.title.toLowerCase().includes('logger') ||
-          p.title.toLowerCase().includes('tracker')
-        );
-        
-        const personalProjects = supabaseProjects.filter(p => 
-          !automationProjects.some(auto => auto.id === p.id)
-        );
+        // Separate featured projects from community showcases based on featured field
+        const featured = supabaseProjects.filter(p => p.featured === true);
+        const community = supabaseProjects.filter(p => p.featured !== true);
 
-        setFeaturedProjects(automationProjects);
-        setProjects(personalProjects.length > 0 ? personalProjects : staticProjects);
+        // Sort featured projects by order_index
+        featured.sort((a, b) => (a.order_index || 0) - (b.order_index || 0));
+
+        setFeaturedProjects(featured);
+        setProjects(community.length > 0 ? community : staticProjects);
       } catch (error) {
         console.error('Error fetching projects:', error);
         setProjects(staticProjects);
