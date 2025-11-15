@@ -17,6 +17,20 @@ export const blogPosts: BlogPost[] = [
     title: "The AI Engineer's Survival Guide: Prototyping Fast with Supabase MCP and Vibe Coding",
     excerpt: "Discover how modern AI/ML engineers are shifting from building models to shipping full-stack prototypes using LLMs, vibe coding, and the Supabase MCP protocol. Learn how one engineer went from zero database experience to full product velocity.",
     content: `
+      <!-- Resources Section -->
+      <div class="mb-8 p-5 bg-blue-50 dark:bg-blue-950/20 rounded-xl border border-blue-500/20">
+        <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Official Resources
+        </h3>
+        <div class="space-y-2 text-sm">
+          <p><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">→ Supabase MCP Official Documentation</a></p>
+          <p><a href="https://github.com/supabase-community/supabase-mcp" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">→ Supabase MCP GitHub Repository</a></p>
+          <p><a href="https://dzone.com/articles/vibe-coding-conversational-software-development" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">→ Vibe Coding: Conversational Software Development (DZone)</a></p>
+          <p><a href="https://medium.com/@vignarajj/exploring-supabases-advanced-capabilities-model-context-protocol-cli-and-edge-functions-37a1ce4771d4" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">→ Exploring Supabase's Advanced Capabilities (Medium)</a></p>
+        </div>
+      </div>
+
       <!-- Intro Section -->
       <div class="mb-8 p-6 bg-muted/50 rounded-xl border">
         <h2 class="text-2xl font-bold mb-4">The New Era of AI Engineering</h2>
@@ -102,22 +116,22 @@ export const blogPosts: BlogPost[] = [
         </p>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
           <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">🔐 Authentication</p>
+            <p class="font-semibold text-sm">✓ Authentication</p>
           </div>
           <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">🗄️ Database</p>
+            <p class="font-semibold text-sm">✓ Database</p>
           </div>
           <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">📦 Storage</p>
+            <p class="font-semibold text-sm">✓ Storage</p>
           </div>
           <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">⚡ Realtime</p>
+            <p class="font-semibold text-sm">✓ Realtime</p>
           </div>
           <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">🔌 APIs</p>
+            <p class="font-semibold text-sm">✓ APIs</p>
           </div>
           <div class="p-3 bg-muted/50 border rounded-lg text-center">
-            <p class="font-semibold text-sm">🚀 Edge Functions</p>
+            <p class="font-semibold text-sm">✓ Edge Functions</p>
           </div>
         </div>
         <p class="mb-6 leading-relaxed">
@@ -271,31 +285,31 @@ export const blogPosts: BlogPost[] = [
         <div class="grid gap-4">
           <div class="p-4 bg-muted/50 border rounded-lg">
             <p class="flex items-start gap-2">
-              <span class="text-foreground">💡</span>
+              <span class="text-foreground"><svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span>
               <span><strong>Start with simple scope</strong> — you can improve later</span>
             </p>
           </div>
           <div class="p-4 bg-muted/50 border rounded-lg">
             <p class="flex items-start gap-2">
-              <span class="text-foreground">💡</span>
+              <span class="text-foreground"><svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span>
               <span><strong>Keep your schema clean</strong> — naming conventions, types, indexes matter</span>
             </p>
           </div>
           <div class="p-4 bg-muted/50 border rounded-lg">
             <p class="flex items-start gap-2">
-              <span class="text-foreground">💡</span>
+              <span class="text-foreground"><svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span>
               <span><strong>Use branching and version control</strong> for your database changes too</span>
             </p>
           </div>
           <div class="p-4 bg-muted/50 border rounded-lg">
             <p class="flex items-start gap-2">
-              <span class="text-foreground">💡</span>
+              <span class="text-foreground"><svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span>
               <span><strong>Use prompt templates</strong> — reuse prompts for MCP and code scaffolding</span>
             </p>
           </div>
           <div class="p-4 bg-muted/50 border rounded-lg">
             <p class="flex items-start gap-2">
-              <span class="text-foreground">💡</span>
+              <span class="text-foreground"><svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span>
               <span><strong>Don't treat the database as an afterthought</strong> — You now wear the database engineer hat</span>
             </p>
           </div>
@@ -340,28 +354,28 @@ export const blogPosts: BlogPost[] = [
         <h3 class="text-2xl font-semibold mb-4 text-foreground">The Hats You'll Wear</h3>
         <div class="space-y-3 mb-8">
           <div class="flex items-start gap-4 p-4 bg-card border rounded-lg">
-            <span class="text-3xl">🤖</span>
+            <span class="text-3xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></span>
             <div>
               <p class="font-bold">AI Engineer</p>
               <p class="text-sm text-muted-foreground">You integrate LLMs and design AI workflows</p>
             </div>
           </div>
           <div class="flex items-start gap-4 p-4 bg-card border rounded-lg">
-            <span class="text-3xl">💻</span>
+            <span class="text-3xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></span>
             <div>
               <p class="font-bold">Software Engineer</p>
               <p class="text-sm text-muted-foreground">You build the codebase, routes, interfaces</p>
             </div>
           </div>
           <div class="flex items-start gap-4 p-4 bg-card border rounded-lg">
-            <span class="text-3xl">🗄️</span>
+            <span class="text-3xl">✓</span>
             <div>
               <p class="font-bold">Database Engineer</p>
               <p class="text-sm text-muted-foreground">You design schema, manage migrations, model data</p>
             </div>
           </div>
           <div class="flex items-start gap-4 p-4 bg-card border rounded-lg">
-            <span class="text-3xl">🚀</span>
+            <span class="text-3xl">✓</span>
             <div>
               <p class="font-bold">DevOps/Deployment</p>
               <p class="text-sm text-muted-foreground">You deploy to production, handle environment configs, monitor</p>
@@ -413,7 +427,7 @@ export const blogPosts: BlogPost[] = [
           So what are you waiting for? Try it out for yourself. Explore <a href="https://supabase.com/docs/guides/ai/mcp" target="_blank" rel="noopener noreferrer" class="text-green-600 dark:text-green-400 hover:underline font-semibold">Supabase MCP</a>, adopt vibe coding, and build your next prototype.
         </p>
         <p class="text-lg font-semibold">
-          I'll be here, exploring more AI tools and sharing what I learn. So long — and happy coding. 🚀
+          I'll be here, exploring more AI tools and sharing what I learn. So long — and happy coding. ✓
         </p>
       </div>
 
@@ -470,9 +484,97 @@ export const blogPosts: BlogPost[] = [
 
       <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
+      <!-- Further Reading & Resources -->
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold mb-8 text-center">Further Reading & Resources</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="p-6 bg-card border rounded-xl hover:shadow-lg transition-shadow">
+            <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path></svg>
+              Official Documentation
+            </h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                Supabase MCP Official Guide
+              </a></li>
+              <li><a href="https://supabase.com/docs/guides/auth/row-level-security" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                Row-Level Security (RLS) Documentation
+              </a></li>
+              <li><a href="https://github.com/supabase-community/supabase-mcp" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                Supabase MCP GitHub Repository
+              </a></li>
+              <li><a href="https://www.postgresql.org/docs/current/tutorial.html" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                PostgreSQL Tutorial
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="p-6 bg-card border rounded-xl hover:shadow-lg transition-shadow">
+            <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+              Community Articles
+            </h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="https://dzone.com/articles/vibe-coding-conversational-software-development" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                Vibe Coding: Conversational Development (DZone)
+              </a></li>
+              <li><a href="https://medium.com/@vignarajj/exploring-supabases-advanced-capabilities-model-context-protocol-cli-and-edge-functions-37a1ce4771d4" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                Exploring Supabase's Advanced Capabilities (Medium)
+              </a></li>
+              <li><a href="https://dzone.com/articles/the-evolving-crafts-of-software-engineering-with-a" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                How Software Engineering is Evolving With AI
+              </a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-6 bg-blue-50 dark:bg-blue-950/20 border border-blue-500/20 rounded-xl">
+          <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path></svg>
+            Essential Tools & Platforms
+          </h3>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div>
+              <p class="font-semibold mb-2 text-sm">AI Tools</p>
+              <ul class="space-y-1 text-sm">
+                <li><a href="https://openai.com/chatgpt" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">ChatGPT</a></li>
+                <li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Claude AI</a></li>
+                <li><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Google Gemini</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold mb-2 text-sm">Development Tools</p>
+              <ul class="space-y-1 text-sm">
+                <li><a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">GitHub Copilot</a></li>
+                <li><a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Cursor IDE</a></li>
+                <li><a href="https://n8n.io" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">n8n Automation</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold mb-2 text-sm">Deployment</p>
+              <ul class="space-y-1 text-sm">
+                <li><a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Vercel</a></li>
+                <li><a href="https://netlify.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Netlify</a></li>
+                <li><a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Supabase</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <!-- CTA -->
-      <div class="mb-8 p-8 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-2xl border-2 border-violet-500/30">
-        <h2 class="text-3xl font-bold mb-4 text-center">🚀 Ready to Start Your AI Engineering Journey?</h2>
+      <div class="mb-8 p-8 bg-muted/50 rounded-2xl border">
+        <h2 class="text-3xl font-bold mb-4 text-center">✓ Ready to Start Your AI Engineering Journey?</h2>
         <div class="grid md:grid-cols-3 gap-4 mt-6">
           <div class="p-5 bg-background/80 backdrop-blur rounded-lg border border-violet-500/20 hover:border-violet-500/50 transition-colors">
             <p class="font-bold mb-2 text-foreground">1. Learn Supabase MCP</p>
@@ -982,7 +1084,7 @@ export const blogPosts: BlogPost[] = [
         
         <div class="space-y-4 mb-6">
           <div class="principle-highlight">
-            <p>🤖 <strong>Claude Desktop App</strong> → my AI assistant.</p>
+            <p><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> <strong>Claude Desktop App</strong> → my AI assistant.</p>
           </div>
           <div class="principle-highlight">
             <p>🌐 <strong>Bright Data MCP</strong> → a tool that can fetch data from the web, including LinkedIn, in a structured and anonymous way.</p>
@@ -1020,7 +1122,7 @@ export const blogPosts: BlogPost[] = [
           </div>
           
           <div class="principle-highlight">
-            <p>🚀 <strong>Practical AI</strong> - MCPs aren't abstract anymore. They're not just for developers or researchers—they're for anyone navigating real-world problems, like job hunting.</p>
+            <p>✓ <strong>Practical AI</strong> - MCPs aren't abstract anymore. They're not just for developers or researchers—they're for anyone navigating real-world problems, like job hunting.</p>
           </div>
         </div>
       </div>
@@ -1532,7 +1634,7 @@ feature:       ●──●  (feature-login-form)
       <!-- Step 1 -->
       <div class="mb-8">
         <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-          <span class="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold">🤖</span>
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></span>
           Step 1. Ask AI
         </h2>
         <p class="mb-4">If you ask your favorite AI agent:</p>
@@ -1649,7 +1751,7 @@ feature:       ●──●  (feature-login-form)
       <!-- Step 4 -->
       <div class="mb-8">
         <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-          <span class="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold">🚀</span>
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold">✓</span>
           Step 4. Bigger Idea — Automating OGs?
         </h2>
         <p class="mb-4">Here's where I started thinking: <strong>business opportunity?</strong></p>
