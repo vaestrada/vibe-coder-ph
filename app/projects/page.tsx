@@ -27,6 +27,7 @@ const staticProjects = [
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,12 +35,19 @@ export default function ProjectsPage() {
       try {
         const supabaseProjects = await getProjects();
 
-        // Use Supabase projects if available, otherwise fall back to static
-        if (supabaseProjects.length > 0) {
-          setProjects(supabaseProjects);
-        } else {
-          setProjects(staticProjects);
-        }
+        // Separate automation projects from personal websites
+        const automationProjects = supabaseProjects.filter(p => 
+          p.tech_stack?.toLowerCase().includes('n8n') ||
+          p.title.toLowerCase().includes('logger') ||
+          p.title.toLowerCase().includes('tracker')
+        );
+        
+        const personalProjects = supabaseProjects.filter(p => 
+          !automationProjects.some(auto => auto.id === p.id)
+        );
+
+        setFeaturedProjects(automationProjects);
+        setProjects(personalProjects.length > 0 ? personalProjects : staticProjects);
       } catch (error) {
         console.error('Error fetching projects:', error);
         setProjects(staticProjects);
@@ -72,6 +80,102 @@ export default function ProjectsPage() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Featured Projects Section - 3 Column Grid */}
+      {featuredProjects.length > 0 && (
+        <motion.div className="mb-14">
+          <motion.h1 
+            className="text-3xl font-bold mb-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            Featured Projects
+          </motion.h1>
+          <motion.p 
+            className="text-muted-foreground text-sm mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Innovative automation and tooling projects built by our community members.
+          </motion.p>
+
+          <motion.div 
+            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            {featuredProjects.map((p, index) => {
+              const ProjectCard = (
+                <motion.div 
+                  key={p.id} 
+                  className="rounded-xl border overflow-hidden bg-card hover:shadow-xl hover:shadow-violet-500/20 transition-all duration-300 group h-full flex flex-col"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                >
+                  {/* Video Display */}
+                  <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 flex-shrink-0">
+                    {p.media_type === 'video' && p.media_url ? (
+                      <video 
+                        autoPlay 
+                        muted 
+                        loop 
+                        playsInline 
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                      >
+                        <source src={p.media_url} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <Image 
+                        src={p.media_url || '/images/placeholder.jpg'} 
+                        alt={p.title} 
+                        fill 
+                        className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  
+                  {/* Content Section */}
+                  <div className="p-5 flex flex-col flex-grow">
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-violet-500 transition-colors line-clamp-2">
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3 flex-grow">
+                      {p.description}
+                    </p>
+                    
+                    <div className="flex items-center gap-2 flex-wrap mt-auto">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/20">
+                        <div className="h-1.5 w-1.5 rounded-full bg-violet-500 animate-pulse" />
+                        <p className="text-xs font-medium text-violet-600 dark:text-violet-400">
+                          {p.tech_stack}
+                        </p>
+                      </div>
+                      {p.live_url && (
+                        <div className="flex items-center gap-1 text-xs text-violet-500 font-medium">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                          View
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+              return p.live_url ? (
+                <Link key={p.id} href={p.live_url} target="_blank" rel="noopener noreferrer" className="block">{ProjectCard}</Link>
+              ) : ProjectCard;
+            })}
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* Community Showcases Section */}
       <motion.div 
         className="mb-6"
         initial={{ opacity: 0, y: 20 }}
