@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ai-engineer-survival-guide-supabase-mcp-vibe-coding",
     title: "The AI Engineer's Survival Guide: Prototyping Fast with Supabase MCP and Vibe Coding",
-    excerpt: "Two months ago, I couldn't build a database. This week, I built the Featured Projects section for vibecoders.ph—complete with video uploads and full backend. Learn how Supabase MCP and vibe coding transformed me from an AI engineer who knew models into a full-stack builder who ships production features in hours.",
+    excerpt: "Two months ago, I couldn't build a database. This week, I shipped the entire Projects page for vibecoders.ph—complete with video uploads and full backend. Learn how Supabase MCP and vibe coding transformed me from an AI engineer who knew models into a full-stack builder who ships production features in hours.",
     content: `
       <!-- Hero Section with Modern Layout -->
       <div class="relative mb-12">
@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
         <div class="py-8 px-6 md:px-8">
           <!-- Lead Paragraph - Strong Hook -->
           <p class="text-xl md:text-2xl leading-relaxed mb-8 text-foreground font-medium">
-            Two months ago, I couldn't build a database from scratch. This week, I built the <a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">Featured Projects section</a> for <a href="https://www.vibecoders.ph/" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">vibecoders.ph</a>—complete with video uploads, database backend, and live deployment.
+            Two months ago, I couldn't build a database from scratch. This week, I shipped the entire <a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">Projects page</a> for <a href="https://www.vibecoders.ph/" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">vibecoders.ph</a>—complete with video uploads, database backend, and live deployment.
           </p>
 
           <!-- Key Stats Row -->
@@ -48,26 +48,26 @@ export const blogPosts: BlogPost[] = [
           <!-- Problem Statement -->
           <div class="border-l-4 border-violet-500 pl-6 py-4 bg-violet-500/5 rounded-r-xl mb-6">
             <p class="text-base md:text-lg leading-relaxed">
-              <span class="font-semibold text-foreground">The Challenge:</span> As an AI/ML engineer, I could integrate LLMs like <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">ChatGPT</a> and <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">Claude</a>. But when our community needed a <strong>Projects showcase with video uploads</strong>—I couldn't deliver. I needed to become <strong>full-stack capable</strong>.
+              <span class="font-semibold text-foreground">The Challenge:</span> As an AI/ML engineer, I could integrate LLMs like <a href="https://platform.openai.com/" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">OpenAI</a> and <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">Claude</a>. But when our community needed a <strong>full Projects page with video uploads and project management</strong>—I was stuck on the sidelines. I could <em>use</em> AI, but I couldn't <em>build</em> with it.
             </p>
           </div>
 
           <!-- Solution -->
           <div class="bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl border border-green-500/20 p-6">
-            <p class="text-base md:text-lg font-semibold mb-4 text-green-700 dark:text-green-400">The Solution:</p>
+            <p class="text-base md:text-lg font-semibold mb-4 text-green-700 dark:text-green-400">The Breakthrough:</p>
             <div class="grid md:grid-cols-2 gap-4">
               <div class="flex items-start gap-3">
                 <svg class="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 <div>
                   <p class="font-semibold text-sm md:text-base mb-1"><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase MCP</a></p>
-                  <p class="text-xs md:text-sm text-muted-foreground">Natural language database operations—no SQL required</p>
+                  <p class="text-xs md:text-sm text-muted-foreground">Control your database by just describing what you want</p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
                 <svg class="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 <div>
                   <p class="font-semibold text-sm md:text-base mb-1">Vibe Coding</p>
-                  <p class="text-xs md:text-sm text-muted-foreground">Built our Projects showcase in just 4 hours</p>
+                  <p class="text-xs md:text-sm text-muted-foreground">Focus on what you're building, not how to code it</p>
                 </div>
               </div>
             </div>
@@ -161,7 +161,7 @@ export const blogPosts: BlogPost[] = [
         <h2 class="text-3xl font-bold mb-6">Why AI Engineers Must Go Full-Stack</h2>
         
         <p class="mb-6 leading-relaxed text-lg">
-          The AI engineering role has evolved dramatically. I'm no longer just training models—I'm <strong>shipping products</strong>. Here's what changed:
+          Here's the reality: the AI engineering role has shifted. It's no longer just about training models—it's about <strong>shipping products</strong>. If you can't build the full stack, you're missing half the opportunity.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6 mb-8">
@@ -212,6 +212,10 @@ export const blogPosts: BlogPost[] = [
       <div class="mb-8">
         <h2 class="text-3xl font-bold mb-6 text-foreground">Meet Supabase and Model Context Protocol (MCP)</h2>
         
+        <p class="mb-6 leading-relaxed text-lg">
+          So how do you actually build full-stack prototypes in hours instead of weeks? Two tools changed everything for me: <strong>Supabase</strong> and <strong>Model Context Protocol</strong>.
+        </p>
+        
         <h3 class="text-2xl font-semibold mb-4 text-foreground">What is Supabase?</h3>
         <p class="mb-4 leading-relaxed">
           <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline font-semibold">Supabase</a> is an open-source <strong>Backend-as-a-Service (BaaS)</strong> built on PostgreSQL. It provides:
@@ -248,11 +252,11 @@ export const blogPosts: BlogPost[] = [
 
         <h3 class="text-2xl font-semibold mb-4 text-foreground">What is Model Context Protocol (MCP)?</h3>
         <p class="mb-4 leading-relaxed">
-          The <strong>Model Context Protocol (MCP)</strong> is a standard designed to allow <strong>Large Language Models (LLMs)</strong> and <strong>AI agents</strong> to interact directly with platforms like Supabase.
+          The <strong>Model Context Protocol (MCP)</strong> is a standard that lets <strong>Large Language Models (LLMs)</strong> and <strong>AI agents</strong> interact directly with platforms like Supabase.
         </p>
         <div class="bg-muted/50 border rounded-xl p-6 mb-6">
-          <p class="font-bold text-lg mb-3 text-foreground">In short: Your LLM can talk to your Supabase backend 🤯</p>
-          <p class="mb-3 leading-relaxed">Create tables, run queries, manage storage — all via prompts.</p>
+          <p class="font-bold text-lg mb-3 text-foreground">Translation: Your AI can control your database 🤯</p>
+          <p class="mb-3 leading-relaxed">Create tables, run queries, manage storage—all through conversation.</p>
           <p class="text-sm italic">Learn more: <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase MCP Documentation</a></p>
         </div>
 
@@ -267,15 +271,15 @@ export const blogPosts: BlogPost[] = [
         <ul class="space-y-3 mb-6">
           <li class="flex items-start gap-3">
             <span class="text-foreground text-xl">→</span>
-            <p><strong>No manual migrations:</strong> You don't need to hand-craft schemas — drive the database via natural language</p>
+            <p><strong>No manual migrations:</strong> Describe what you need, and your AI builds the schema</p>
           </li>
           <li class="flex items-start gap-3">
             <span class="text-foreground text-xl">→</span>
-            <p><strong>Integrated workflows:</strong> Upload videos/files, create metadata tables, prompt your agent to update content</p>
+            <p><strong>Integrated workflows:</strong> Upload videos, create tables, update content—all through prompts</p>
           </li>
           <li class="flex items-start gap-3">
             <span class="text-foreground text-xl">→</span>
-            <p><strong>Removes friction:</strong> When prototyping, you don't want to spend days on backend setup — you want to ship quickly</p>
+            <p><strong>Removes friction:</strong> Skip days of backend setup and ship working features today</p>
           </li>
         </ul>
 
