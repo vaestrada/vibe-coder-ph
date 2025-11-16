@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ai-engineer-survival-guide-supabase-mcp-vibe-coding",
     title: "The AI Engineer's Survival Guide: Prototyping Fast with Supabase MCP and Vibe Coding",
-    excerpt: "Two months ago, I couldn't build a database. This week, I shipped three full-stack AI prototypes. Learn how Supabase MCP and vibe coding transformed me from an AI engineer who knew models into a full-stack builder who ships working prototypes in hours.",
+    excerpt: "Two months ago, I couldn't build a database. This week, I built the Featured Projects section for vibecoders.ph—complete with video uploads and full backend. Learn how Supabase MCP and vibe coding transformed me from an AI engineer who knew models into a full-stack builder who ships production features in hours.",
     content: `
       <!-- Hero Section with Modern Layout -->
       <div class="relative mb-12">
@@ -26,29 +26,29 @@ export const blogPosts: BlogPost[] = [
         <div class="py-8 px-6 md:px-8">
           <!-- Lead Paragraph - Strong Hook -->
           <p class="text-xl md:text-2xl leading-relaxed mb-8 text-foreground font-medium">
-            Two months ago, I couldn't build a database from scratch. This week, I shipped three production-ready AI prototypes with full backends, databases, and live deployments.
+            Two months ago, I couldn't build a database from scratch. This week, I built the <a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">Featured Projects section</a> for <a href="https://www.vibecoders.ph/" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">vibecoders.ph</a>—complete with video uploads, database backend, and live deployment.
           </p>
 
           <!-- Key Stats Row -->
           <div class="grid grid-cols-3 gap-4 md:gap-6 mb-8 max-w-3xl">
             <div class="text-center p-4 bg-background/60 backdrop-blur rounded-xl border">
-              <div class="text-3xl md:text-4xl font-bold text-violet-600 dark:text-violet-400 mb-1">3</div>
-              <div class="text-xs md:text-sm text-muted-foreground">Prototypes</div>
+              <div class="text-3xl md:text-4xl font-bold text-violet-600 dark:text-violet-400 mb-1">1</div>
+              <div class="text-xs md:text-sm text-muted-foreground">Major Feature</div>
             </div>
             <div class="text-center p-4 bg-background/60 backdrop-blur rounded-xl border">
-              <div class="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-1">4-6</div>
-              <div class="text-xs md:text-sm text-muted-foreground">Hours Each</div>
+              <div class="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-1">4</div>
+              <div class="text-xs md:text-sm text-muted-foreground">Hours Total</div>
             </div>
             <div class="text-center p-4 bg-background/60 backdrop-blur rounded-xl border">
-              <div class="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-1">1</div>
-              <div class="text-xs md:text-sm text-muted-foreground">Week Total</div>
+              <div class="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-1">3</div>
+              <div class="text-xs md:text-sm text-muted-foreground">Projects Showcased</div>
             </div>
           </div>
 
           <!-- Problem Statement -->
           <div class="border-l-4 border-violet-500 pl-6 py-4 bg-violet-500/5 rounded-r-xl mb-6">
             <p class="text-base md:text-lg leading-relaxed">
-              <span class="font-semibold text-foreground">The Challenge:</span> As an AI/ML engineer, I could integrate LLMs like <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">ChatGPT</a> and <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">Claude</a>. But when stakeholders asked <em>"Where's the demo?"</em>—I couldn't deliver. I needed to become <strong>full-stack capable</strong>.
+              <span class="font-semibold text-foreground">The Challenge:</span> As an AI/ML engineer, I could integrate LLMs like <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">ChatGPT</a> and <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">Claude</a>. But when our community needed a <strong>Projects showcase with video uploads</strong>—I couldn't deliver. I needed to become <strong>full-stack capable</strong>.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ export const blogPosts: BlogPost[] = [
                 <svg class="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 <div>
                   <p class="font-semibold text-sm md:text-base mb-1">Vibe Coding</p>
-                  <p class="text-xs md:text-sm text-muted-foreground">Prompt-driven development with AI assistants</p>
+                  <p class="text-xs md:text-sm text-muted-foreground">Built our Projects showcase in just 4 hours</p>
                 </div>
               </div>
             </div>
@@ -311,25 +311,31 @@ export const blogPosts: BlogPost[] = [
 
         <h3 class="text-2xl font-semibold mb-4 text-foreground">The Results</h3>
         <p class="mb-4 leading-relaxed text-lg font-medium text-violet-600 dark:text-violet-400">
-          In one week, I shipped three production-ready prototypes with full databases, authentication, and live deployments.
+          In just 4 hours, I built the <a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline font-bold">Featured Projects section</a> for <a href="https://www.vibecoders.ph/" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-bold">vibecoders.ph</a>—complete with database backend, video upload capability, and live deployment.
         </p>
         <div class="grid gap-4 mb-6">
-          <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
-            <p class="flex items-start gap-2">
-              <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
-              <span><strong>Project 1:</strong> Featured projects gallery — <strong>4 hours</strong> from idea to deployed</span>
+          <div class="p-6 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 border-2 border-violet-500/30 rounded-xl shadow-sm">
+            <p class="flex items-start gap-3">
+              <span class="text-violet-600 dark:text-violet-400 text-2xl">🎯</span>
+              <span class="text-base"><strong class="text-violet-700 dark:text-violet-300">The Main Achievement:</strong> Built our community's <strong><a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline">Projects showcase page</a></strong> with video uploads, project descriptions, tags, and categories — fully deployed on the same website hosting this blog.</span>
             </p>
           </div>
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
               <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
-              <span><strong>Project 2:</strong> Course management system — <strong>6 hours</strong> with full auth</span>
+              <span><strong>Video Upload System:</strong> Integrated <a href="https://supabase.com/storage" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">Supabase Storage</a> for seamless video handling with automatic optimization</span>
             </p>
           </div>
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
               <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
-              <span><strong>Project 3:</strong> Blog platform with search — <strong>one afternoon</strong></span>
+              <span><strong>Database Backend:</strong> PostgreSQL tables with proper relations for projects, tags, categories, and featured content</span>
+            </p>
+          </div>
+          <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
+            <p class="flex items-start gap-2">
+              <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
+              <span><strong>Admin Panel:</strong> Complete project management with video previews, status controls, and featured project toggles</span>
             </p>
           </div>
         </div>
