@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ai-engineer-survival-guide-supabase-mcp-vibe-coding",
     title: "The AI Engineer's Survival Guide: Prototyping Fast with Supabase MCP and Vibe Coding",
-    excerpt: "Two months ago, I couldn't build a database. This week, I shipped the entire Projects page for vibecoders.ph—complete with video uploads and full backend. Learn how Supabase MCP and vibe coding transformed me from an AI engineer who knew models into a full-stack builder who ships production features in hours.",
+    excerpt: "Two months ago, I couldn't build a database. This week, I shipped the entire Projects page for vibecoders.ph—complete with video storage and full backend. Learn how Supabase MCP and vibe coding transformed me from an AI engineer who knew models into a full-stack builder who ships production features in hours.",
     content: `
       <!-- Hero Section with Modern Layout -->
       <div class="relative mb-12">
@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
         <div class="py-8 px-6 md:px-8">
           <!-- Lead Paragraph - Strong Hook -->
           <p class="text-xl md:text-2xl leading-relaxed mb-8 text-foreground font-medium">
-            Two months ago, I couldn't build a database from scratch. This week, I shipped the entire <a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">Projects page</a> for <a href="https://www.vibecoders.ph/" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">vibecoders.ph</a>—complete with video uploads, database backend, and live deployment.
+            Two months ago, I couldn't build a database from scratch. This week, I shipped the entire <a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">Projects page</a> for <a href="https://www.vibecoders.ph/" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">vibecoders.ph</a>—complete with video storage, database backend, and live deployment.
           </p>
 
           <!-- Key Stats Row -->
@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
 
           <!-- Solution -->
           <div class="bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl border border-green-500/20 p-6">
-            <p class="text-base md:text-lg font-semibold mb-4 text-green-700 dark:text-green-400">The Breakthrough:</p>
+            <p class="text-base md:text-lg font-semibold mb-4 text-green-700 dark:text-green-400">The Solution:</p>
             <div class="grid md:grid-cols-2 gap-4">
               <div class="flex items-start gap-3">
                 <svg class="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -84,7 +84,7 @@ export const blogPosts: BlogPost[] = [
           <div class="flex-1">
             <h3 class="text-xl font-bold mb-2 text-blue-900 dark:text-blue-300">What is "Vibe Coding"?</h3>
             <p class="leading-relaxed text-foreground mb-4">
-              Vibe coding is a <strong>conversational development approach</strong> where you use natural language prompts with AI assistants to generate code, create schemas, and build features. Instead of writing every line manually, you focus on the <em>intent</em> and let AI handle the implementation.
+              Think of it like <strong>talking to AI to build your app</strong>. Instead of typing out every single line of code yourself, you just describe what you want in plain English—"create a database table for users" or "add a video upload feature"—and AI writes the code for you. You focus on <em>what</em> you want to build, AI handles <em>how</em> to build it.
             </p>
             <div class="flex flex-wrap gap-2 mb-3">
               <span class="text-xs font-medium">Works with:</span>
@@ -101,55 +101,49 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <!-- Is This Guide For You? - Redesigned with Better Visual Hierarchy -->
-      <div class="my-12 p-8 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 rounded-2xl border-2 border-violet-500/20">
-        <div class="text-center mb-8">
-          <div class="inline-flex items-center justify-center w-16 h-16 bg-violet-500/10 rounded-2xl mb-4">
-            <svg class="w-8 h-8 text-violet-600 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      <div class="my-12 p-6 md:p-8 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 rounded-2xl border-2 border-violet-500/20">
+        <div class="text-center mb-6">
+          <div class="inline-flex items-center justify-center w-12 h-12 bg-violet-500/10 rounded-2xl mb-3">
+            <svg class="w-6 h-6 text-violet-600 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           </div>
-          <h2 class="text-3xl font-bold mb-3 text-foreground">Is This Guide For You?</h2>
-          <p class="text-muted-foreground max-w-2xl mx-auto">Check if this guide matches your current challenges and goals</p>
+          <h2 class="text-2xl md:text-3xl font-bold mb-2 text-foreground">Is This Guide For You?</h2>
+          <p class="text-sm text-muted-foreground max-w-2xl mx-auto">Check if this guide matches your current challenges</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
-            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        <div class="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto mb-4">
+          <div class="flex items-start gap-2 p-3 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
+            <div class="w-5 h-5 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
-            <span class="text-sm leading-relaxed">You're an <strong>AI/ML engineer</strong> who knows models but struggles to ship production features</span>
+            <span class="text-sm leading-relaxed">You're an <strong>AI/ML engineer</strong> who knows models but struggles to ship features</span>
           </div>
           
-          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
-            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <div class="flex items-start gap-2 p-3 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
+            <div class="w-5 h-5 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
             <span class="text-sm leading-relaxed">You can write queries but have <strong>never built a database from scratch</strong></span>
           </div>
           
-          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
-            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <div class="flex items-start gap-2 p-3 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
+            <div class="w-5 h-5 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
-            <span class="text-sm leading-relaxed">Stakeholders ask <strong>"Can we see a working demo?"</strong> and you don't know where to start</span>
+            <span class="text-sm leading-relaxed">Stakeholders ask <strong>"Can we see a demo?"</strong> and you don't know where to start</span>
           </div>
           
-          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
-            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <div class="flex items-start gap-2 p-3 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
+            <div class="w-5 h-5 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
-            <span class="text-sm leading-relaxed">You want to <strong>prototype AI features in hours, not weeks</strong></span>
-          </div>
-          
-          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20 md:col-span-2">
-            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-            </div>
-            <span class="text-sm leading-relaxed">You're ready to embrace a <strong>full-stack mindset</strong>: code + database + deployment</span>
+            <span class="text-sm leading-relaxed">You want to <strong>prototype in hours, not weeks</strong></span>
           </div>
         </div>
 
-        <div class="mt-6 p-4 bg-violet-500/10 rounded-xl border border-violet-500/20 text-center">
-          <p class="text-sm text-foreground font-medium">
-            ✨ By the end of this guide, you'll know how to go from <span class="font-bold">idea to deployed prototype in a single afternoon</span>
+        <div class="p-3 bg-violet-500/10 rounded-xl border border-violet-500/20 text-center">
+          <p class="text-xs md:text-sm text-foreground font-medium flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 text-violet-600 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <span>By the end: go from <span class="font-bold">idea to deployed prototype in a single afternoon</span></span>
           </p>
         </div>
       </div>
@@ -161,12 +155,15 @@ export const blogPosts: BlogPost[] = [
         <h2 class="text-3xl font-bold mb-6">Why AI Engineers Must Go Full-Stack</h2>
         
         <p class="mb-6 leading-relaxed text-lg">
-          Here's the reality: the AI engineering role has shifted. It's no longer just about training models—it's about <strong>shipping products</strong>. If you can't build the full stack, you're missing half the opportunity.
+          Here's the reality: the AI engineering role has shifted. It's no longer just about training models—it's about <strong>shipping products</strong>. If you can't build the full stack, you're getting left behind.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6 mb-8">
           <div class="p-5 bg-muted/30 border rounded-lg">
-            <h3 class="font-bold text-lg mb-3 text-red-600 dark:text-red-400">❌ The Old Way</h3>
+            <h3 class="font-bold text-lg mb-3 text-red-600 dark:text-red-400 flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              The Old Way
+            </h3>
             <ul class="space-y-2 text-sm text-muted-foreground">
               <li>• Build models from scratch</li>
               <li>• Train on custom datasets</li>
@@ -177,9 +174,12 @@ export const blogPosts: BlogPost[] = [
           </div>
           
           <div class="p-5 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
-            <h3 class="font-bold text-lg mb-3 text-green-600 dark:text-green-400">✓ The New Reality</h3>
+            <h3 class="font-bold text-lg mb-3 text-green-600 dark:text-green-400 flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              The New Reality
+            </h3>
             <ul class="space-y-2 text-sm">
-              <li>• Integrate existing LLMs (ChatGPT, Claude, Gemini)</li>
+              <li>• Integrate existing LLMs</li>
               <li>• Build full-stack applications</li>
               <li>• Focus on user value & speed</li>
               <li>• Production-ready from day one</li>
@@ -188,18 +188,33 @@ export const blogPosts: BlogPost[] = [
           </div>
         </div>
 
-        <div class="bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 rounded-xl border border-violet-500/20 p-6 mb-6">
-          <p class="mb-3 font-semibold text-lg">Today's expectations are clear:</p>
+        <div class="bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 rounded-xl border border-violet-500/20 p-4 md:p-6 mb-6">
+          <p class="mb-3 font-semibold text-base md:text-lg">Today's expectations are clear:</p>
           <ul class="space-y-2">
-            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> <strong>Prototype working features in hours</strong>, not months of experiments</li>
-            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> <strong>Show stakeholders something live</strong>: a dashboard, an assistant, a real product</li>
-            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> <strong>Own the full stack</strong>: frontend, backend, database, deployment</li>
-            <li class="flex items-start gap-2"><span class="text-foreground">✓</span> <strong>Move fast and iterate</strong>—velocity is the new competitive advantage</li>
+            <li class="flex items-start gap-2 text-sm md:text-base">
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>Prototype working features in hours</strong>, not months of experiments</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm md:text-base">
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>Show stakeholders something live</strong>: a dashboard, an assistant, a real product</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm md:text-base">
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>Own the full stack</strong>: frontend, backend, database, deployment</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm md:text-base">
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>Move fast and iterate</strong>—velocity is the new competitive advantage</span>
+            </li>
           </ul>
         </div>
 
         <div class="principle-highlight bg-yellow-50 dark:bg-yellow-950/20 border-yellow-500/30 p-5 rounded-lg border">
-          <h4 class="font-bold text-yellow-700 dark:text-yellow-400 mb-2">⚠️ The Bottom Line</h4>
+          <h4 class="font-bold text-yellow-700 dark:text-yellow-400 mb-2 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            The Bottom Line
+          </h4>
           <p class="leading-relaxed text-foreground">
             If you can only build models but can't ship features, you're missing the biggest opportunity in AI engineering. The market doesn't want experiments—it wants <strong>working prototypes, delivered fast</strong>.
           </p>
@@ -255,7 +270,7 @@ export const blogPosts: BlogPost[] = [
           The <strong>Model Context Protocol (MCP)</strong> is a standard that lets <strong>Large Language Models (LLMs)</strong> and <strong>AI agents</strong> interact directly with platforms like Supabase.
         </p>
         <div class="bg-muted/50 border rounded-xl p-6 mb-6">
-          <p class="font-bold text-lg mb-3 text-foreground">Translation: Your AI can control your database 🤯</p>
+          <p class="font-bold text-lg mb-3 text-foreground">Translation: Your AI assistant can talk to your database �</p>
           <p class="mb-3 leading-relaxed">Create tables, run queries, manage storage—all through conversation.</p>
           <p class="text-sm italic">Learn more: <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase MCP Documentation</a></p>
         </div>
@@ -265,7 +280,10 @@ export const blogPosts: BlogPost[] = [
           <p class="font-mono text-sm leading-relaxed text-green-400">"Use Supabase MCP to create table Projects with fields title, description, video_url, tags."</p>
           <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 p-2 rounded" onclick="navigator.clipboard.writeText('Use Supabase MCP to create table Projects with fields title, description, video_url, tags.')" title="Copy to clipboard"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
         </div>
-        <p class="mb-6 text-sm text-muted-foreground">✓ Behind the scenes, Supabase MCP generates the migration, updates your database, links your tables.</p>
+        <p class="mb-6 text-sm text-muted-foreground flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <span>Behind the scenes, Supabase MCP generates the migration, updates your database, links your tables.</span>
+        </p>
 
         <h3 class="text-2xl font-semibold mb-4 text-foreground">How MCP Accelerates Development</h3>
         <ul class="space-y-3 mb-6">
@@ -284,7 +302,10 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
         <div class="principle-highlight bg-red-50 dark:bg-red-950/20 border-red-500/30 p-5 rounded-lg border">
-          <h4 class="font-bold text-red-700 dark:text-red-400 mb-3">⚠️ Security & Risk Considerations</h4>
+          <h4 class="font-bold text-red-700 dark:text-red-400 mb-3 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            Security & Risk Considerations
+          </h4>
           <p class="mb-3 leading-relaxed">Because you're giving an AI agent access to your database backend, you need to think about:</p>
           <ul class="space-y-2">
             <li class="flex items-start gap-2"><span class="text-red-500">•</span> <strong>Permissions:</strong> Who can access Supabase MCP, what rights they have (<a href="https://supabase.com/docs/guides/auth/row-level-security" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline">RLS policies</a>)</li>
@@ -320,25 +341,25 @@ export const blogPosts: BlogPost[] = [
         <div class="grid gap-4 mb-6">
           <div class="p-6 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 border-2 border-violet-500/30 rounded-xl shadow-sm">
             <p class="flex items-start gap-3">
-              <span class="text-violet-600 dark:text-violet-400 text-2xl">🎯</span>
-              <span class="text-base"><strong class="text-violet-700 dark:text-violet-300">The Main Achievement:</strong> Built our community's <strong><a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline">Projects showcase page</a></strong> with video uploads, project descriptions, tags, and categories — fully deployed on the same website hosting this blog.</span>
+              <svg class="w-6 h-6 text-violet-600 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+              <span class="text-base"><strong class="text-violet-700 dark:text-violet-300">The Main Achievement:</strong> Built our community's <strong><a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline">Projects showcase page</a></strong> with video storage, project descriptions, tags, and categories — fully deployed on the same website hosting this blog.</span>
             </p>
           </div>
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
-              <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
               <span><strong>Video Upload System:</strong> Integrated <a href="https://supabase.com/storage" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">Supabase Storage</a> for seamless video handling with automatic optimization</span>
             </p>
           </div>
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
-              <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
               <span><strong>Database Backend:</strong> PostgreSQL tables with proper relations for projects, tags, categories, and featured content</span>
             </p>
           </div>
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
-              <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
               <span><strong>Admin Panel:</strong> Complete project management with video previews, status controls, and featured project toggles</span>
             </p>
           </div>
@@ -375,7 +396,10 @@ export const blogPosts: BlogPost[] = [
               <code class="block text-green-400 text-sm font-mono">"Create a FeaturedProjects table with fields for title, description, video URL, and tags."</code>
               <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 p-2 rounded" onclick="navigator.clipboard.writeText('Create a FeaturedProjects table with fields for title, description, video URL, and tags.')" title="Copy to clipboard"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
             </div>
-            <p class="text-green-600 dark:text-green-400 font-semibold text-sm">Your AI agent handles it — you're done. ✓</p>
+            <p class="text-green-600 dark:text-green-400 font-semibold text-sm flex items-center gap-2">
+              <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Your AI agent handles it — you're done.</span>
+            </p>
           </div>
 
           <div class="border-l-4 border-primary pl-6 py-2">
@@ -428,7 +452,7 @@ export const blogPosts: BlogPost[] = [
           </div>
           <div class="p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-500/30 rounded-lg">
             <p class="flex items-start gap-2">
-              <span class="text-amber-600 dark:text-amber-400">⚠️</span>
+              <svg class="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
               <span>While "vibe coding" emphasizes speed, keep <strong>maintainability</strong> in mind: add tests, code review, ensure you understand "what's under the hood"</span>
             </p>
           </div>
@@ -438,22 +462,92 @@ export const blogPosts: BlogPost[] = [
       <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <!-- Conclusion -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl border border-green-500/20">
-        <h2 class="text-3xl font-bold mb-6">The Future is Full-Stack AI</h2>
-        <p class="mb-4 leading-relaxed text-lg">
-          The barrier between "AI engineer" and "product builder" is disappearing. Tools like <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-green-600 dark:text-green-400 hover:underline font-semibold">Supabase MCP</a> and vibe coding are making it possible for a single developer to prototype complete AI-powered applications in hours, not months.
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-8 text-center">The Future is Full-Stack AI</h2>
+        <p class="mb-10 leading-relaxed text-lg text-center max-w-3xl mx-auto">
+          Tools like <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-green-600 dark:text-green-400 hover:underline font-semibold">Supabase MCP</a> and vibe coding are making it possible for a single developer to prototype complete AI-powered applications in hours, not months.
         </p>
-        <p class="mb-4 leading-relaxed">
-          This isn't about replacing traditional skills—it's about amplifying them. Database fundamentals, security practices, and system design still matter. But now you can move from idea to deployed prototype before your stakeholders finish their coffee.
-        </p>
-        <div class="principle-highlight bg-green-500/10 border-green-500/30 p-5 rounded-lg border my-6">
-          <p class="text-lg font-semibold">The question isn't whether AI will change how we build software. It's whether you'll be one of the builders shaping that future.</p>
+        
+        <!-- Key Takeaway Callout - Enhanced Design -->
+        <div class="my-12 p-8 md:p-10 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950/30 dark:via-emerald-950/20 dark:to-teal-950/20 rounded-3xl border-2 border-green-500/30 shadow-2xl shadow-green-500/20 relative overflow-hidden">
+          <!-- Decorative background pattern -->
+          <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-green-500 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500 rounded-full blur-3xl"></div>
+          </div>
+          
+          <div class="relative">
+            <div class="flex flex-col items-center text-center mb-6">
+              <div class="inline-flex items-center justify-center w-16 h-16 bg-green-500/20 rounded-2xl mb-6 shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+              
+              <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-green-800 dark:text-green-200">
+                Your first shipped prototype is worth more than a thousand tutorials watched.
+              </h3>
+              
+              <p class="text-base md:text-lg text-green-700/80 dark:text-green-300/80 max-w-2xl">
+                The only way to become an AI builder is to actually build something—no matter how small.
+              </p>
+            </div>
+          </div>
         </div>
-        <p class="mb-4 leading-relaxed text-lg">
-          Start small. Pick one prototype idea. Use Supabase MCP to handle the database. Let AI generate your boilerplate. Deploy it live. Show someone.
-        </p>
-        <p class="text-lg font-semibold">
-          Then do it again, faster. That's how you become the engineer the AI era needs. ✓
+        
+        <!-- Action Steps -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8 max-w-4xl mx-auto">
+          <div class="p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:border-green-500/50 transition-all hover:shadow-lg">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-green-600 dark:text-green-400 font-bold">1</span>
+              </div>
+              <div>
+                <p class="font-semibold text-foreground mb-1">Start Small</p>
+                <p class="text-sm text-muted-foreground">Pick one feature. Don't try to build everything at once.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:border-green-500/50 transition-all hover:shadow-lg">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-green-600 dark:text-green-400 font-bold">2</span>
+              </div>
+              <div>
+                <p class="font-semibold text-foreground mb-1">Use Supabase MCP</p>
+                <p class="text-sm text-muted-foreground">Let AI handle your database setup and queries.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:border-green-500/50 transition-all hover:shadow-lg">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-green-600 dark:text-green-400 font-bold">3</span>
+              </div>
+              <div>
+                <p class="font-semibold text-foreground mb-1">Deploy It</p>
+                <p class="text-sm text-muted-foreground">Get it live. Perfection comes from iteration, not planning.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:border-green-500/50 transition-all hover:shadow-lg">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-green-600 dark:text-green-400 font-bold">4</span>
+              </div>
+              <div>
+                <p class="font-semibold text-foreground mb-1">Show Someone</p>
+                <p class="text-sm text-muted-foreground">Share it. Get feedback. That's how you grow.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <p class="text-lg md:text-xl leading-relaxed text-center text-muted-foreground max-w-3xl mx-auto">
+          That's how you stop being the engineer who <em class="text-foreground font-semibold">studies</em> AI and become the one who <em class="text-green-600 dark:text-green-400 font-semibold">ships</em> with it.
         </p>
       </div>
 
@@ -617,7 +711,7 @@ export const blogPosts: BlogPost[] = [
     `,
     author: "Viron Gil Estrada",
     publishedAt: "2025-11-16",
-    readTime: "12 min read",
+    readTime: "8 min read",
     category: "AI Engineering",
     tags: ["AI", "Supabase", "MCP", "Vibe Coding", "Full-Stack", "Prototyping", "Database", "LLMs", "Productivity"],
     featured: true,
