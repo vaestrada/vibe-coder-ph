@@ -338,6 +338,17 @@ export const blogPosts: BlogPost[] = [
         <p class="mb-4 leading-relaxed text-lg font-medium text-violet-600 dark:text-violet-400">
           In just 4 hours, I built the <a href="/projects" class="text-violet-600 dark:text-violet-400 hover:underline font-bold">Featured Projects section</a> for <a href="https://www.vibecoders.ph/" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-bold">vibecoders.ph</a>—complete with database backend, video upload capability, and live deployment.
         </p>
+        
+        <!-- Projects Page Screenshot -->
+        <div class="my-8 rounded-xl overflow-hidden border-2 border-violet-500/30 shadow-2xl">
+          <img src="/images/Projects-Page.png" alt="Projects page showing Featured Projects and Community Projects sections" class="w-full h-auto" />
+          <div class="bg-gradient-to-r from-violet-50 to-fuchsia-50 dark:from-violet-950/30 dark:to-fuchsia-950/30 px-6 py-3 border-t border-violet-500/20">
+            <p class="text-sm text-center text-muted-foreground">
+              <strong class="text-violet-700 dark:text-violet-300">Live Projects Page</strong> — Built in 4 hours using Supabase MCP and vibe coding
+            </p>
+          </div>
+        </div>
+        
         <div class="grid gap-4 mb-6">
           <div class="p-6 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 border-2 border-violet-500/30 rounded-xl shadow-sm">
             <p class="flex items-start gap-3">
