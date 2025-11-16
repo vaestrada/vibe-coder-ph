@@ -35,7 +35,7 @@ export default function ProjectsPage() {
       try {
         const supabaseProjects = await getProjects();
 
-        // Separate featured projects from community showcases based on featured field
+        // Separate featured projects from community projects based on featured field
         const featured = supabaseProjects.filter(p => p.featured === true);
         const community = supabaseProjects.filter(p => p.featured !== true);
 
@@ -64,7 +64,7 @@ export default function ProjectsPage() {
       >
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading community showcases...</p>
+          <p className="text-muted-foreground">Loading community projects...</p>
         </div>
       </motion.div>
     );
@@ -171,7 +171,7 @@ export default function ProjectsPage() {
         </motion.div>
       )}
 
-      {/* Community Showcases Section */}
+      {/* Community Projects Section */}
       <motion.div 
         className="mb-6"
         initial={{ opacity: 0, y: 20 }}
@@ -184,7 +184,7 @@ export default function ProjectsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Community Showcases
+          Community Projects
         </motion.h1>
         <motion.p 
           className="mt-2 text-muted-foreground text-sm"
