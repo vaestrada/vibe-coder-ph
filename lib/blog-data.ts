@@ -479,81 +479,22 @@ export const blogPosts: BlogPost[] = [
           Tools like <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-green-600 dark:text-green-400 hover:underline font-semibold">Supabase MCP</a> and vibe coding are making it possible for a single developer to prototype complete AI-powered applications in hours, not months.
         </p>
         
-        <!-- Key Takeaway Callout - Enhanced Design -->
-        <div class="my-12 p-8 md:p-10 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950/30 dark:via-emerald-950/20 dark:to-teal-950/20 rounded-3xl border-2 border-green-500/30 shadow-2xl shadow-green-500/20 relative overflow-hidden">
+        <!-- Key Takeaway Callout - Compact Design -->
+        <div class="my-10 p-6 md:p-8 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950/30 dark:via-emerald-950/20 dark:to-teal-950/20 rounded-2xl border-2 border-green-500/30 shadow-xl shadow-green-500/10 relative overflow-hidden">
           <!-- Decorative background pattern -->
           <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-green-500 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500 rounded-full blur-3xl"></div>
+            <div class="absolute top-0 right-0 w-48 h-48 bg-green-500 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-emerald-500 rounded-full blur-3xl"></div>
           </div>
           
-          <div class="relative">
-            <div class="flex flex-col items-center text-center mb-6">
-              <div class="inline-flex items-center justify-center w-16 h-16 bg-green-500/20 rounded-2xl mb-6 shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                </svg>
-              </div>
-              
-              <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-green-800 dark:text-green-200">
-                Your first shipped prototype is worth more than a thousand tutorials watched.
-              </h3>
-              
-              <p class="text-base md:text-lg text-green-700/80 dark:text-green-300/80 max-w-2xl">
-                The only way to become an AI builder is to actually build something—no matter how small.
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Action Steps -->
-        <div class="grid md:grid-cols-2 gap-6 mb-8 max-w-4xl mx-auto">
-          <div class="p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:border-green-500/50 transition-all hover:shadow-lg">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                <span class="text-green-600 dark:text-green-400 font-bold">1</span>
-              </div>
-              <div>
-                <p class="font-semibold text-foreground mb-1">Start Small</p>
-                <p class="text-sm text-muted-foreground">Pick one feature. Don't try to build everything at once.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:border-green-500/50 transition-all hover:shadow-lg">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                <span class="text-green-600 dark:text-green-400 font-bold">2</span>
-              </div>
-              <div>
-                <p class="font-semibold text-foreground mb-1">Use Supabase MCP</p>
-                <p class="text-sm text-muted-foreground">Let AI handle your database setup and queries.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:border-green-500/50 transition-all hover:shadow-lg">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                <span class="text-green-600 dark:text-green-400 font-bold">3</span>
-              </div>
-              <div>
-                <p class="font-semibold text-foreground mb-1">Deploy It</p>
-                <p class="text-sm text-muted-foreground">Get it live. Perfection comes from iteration, not planning.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:border-green-500/50 transition-all hover:shadow-lg">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                <span class="text-green-600 dark:text-green-400 font-bold">4</span>
-              </div>
-              <div>
-                <p class="font-semibold text-foreground mb-1">Show Someone</p>
-                <p class="text-sm text-muted-foreground">Share it. Get feedback. That's how you grow.</p>
-              </div>
-            </div>
+          <div class="relative text-center">
+            <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-green-800 dark:text-green-200 mb-3">
+              You already know enough AI.<br />Now learn to ship.
+            </h3>
+            
+            <p class="text-sm md:text-base text-green-700/80 dark:text-green-300/80">
+              Pick something small. Use MCPs. Deploy it. Share it!.
+            </p>
           </div>
         </div>
         
@@ -564,41 +505,56 @@ export const blogPosts: BlogPost[] = [
 
       <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <!-- FAQs -->
+      <!-- FAQs - Compact Accordion Style -->
       <div class="mb-8">
         <h2 class="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
-        <div class="space-y-6">
-          <div class="p-6 bg-card border rounded-xl hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-bold mb-3 text-foreground">Q1: How do I get started with Supabase MCP if I've never used Supabase before?</h3>
-            <p class="leading-relaxed text-muted-foreground">
+        <div class="space-y-3 max-w-4xl mx-auto">
+          <details class="group p-5 bg-card border rounded-xl hover:shadow-lg transition-all">
+            <summary class="flex items-center justify-between cursor-pointer text-lg font-bold text-foreground list-none">
+              <span>Q1: How do I get started with Supabase MCP if I've never used Supabase before?</span>
+              <svg class="w-5 h-5 text-muted-foreground transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
               Start with a <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">free Supabase account</a>, create a project, then follow the <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">MCP setup guide</a>. You'll configure it in your AI assistant (Copilot, Cursor, Claude) by providing your Supabase project credentials. From there, you can use natural language prompts to create tables, manage data, and handle storage—no SQL required.
             </p>
-          </div>
+          </details>
 
-          <div class="p-6 bg-card border rounded-xl hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-bold mb-3 text-foreground">Q2: Does Supabase MCP replace traditional database development?</h3>
-            <p class="leading-relaxed text-muted-foreground">
+          <details class="group p-5 bg-card border rounded-xl hover:shadow-lg transition-all">
+            <summary class="flex items-center justify-between cursor-pointer text-lg font-bold text-foreground list-none">
+              <span>Q2: Does Supabase MCP replace traditional database development?</span>
+              <svg class="w-5 h-5 text-muted-foreground transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
               Not entirely. MCP accelerates it by letting an agent/machine create and manage schema/data via prompts, but you still need to understand schema design, query efficiency, and production-readiness.
             </p>
-          </div>
+          </details>
 
-          <div class="p-6 bg-card border rounded-xl hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-bold mb-3 text-foreground">Q3: Is using Supabase MCP safe for production?</h3>
-            <p class="leading-relaxed text-muted-foreground">
+          <details class="group p-5 bg-card border rounded-xl hover:shadow-lg transition-all">
+            <summary class="flex items-center justify-between cursor-pointer text-lg font-bold text-foreground list-none">
+              <span>Q3: Is using Supabase MCP safe for production?</span>
+              <svg class="w-5 h-5 text-muted-foreground transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
               You need to manage access/permissions carefully. The <a href="https://supabase.com/docs/guides/auth/row-level-security" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">security documentation</a> warns against exposing Supabase MCP directly to the internet without protection. Always implement proper authentication and Row-Level Security (RLS) policies.
             </p>
-          </div>
+          </details>
 
-          <div class="p-6 bg-card border rounded-xl hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-bold mb-3 text-foreground">Q4: Do I still need to know SQL or database design?</h3>
-            <p class="leading-relaxed text-muted-foreground">
+          <details class="group p-5 bg-card border rounded-xl hover:shadow-lg transition-all">
+            <summary class="flex items-center justify-between cursor-pointer text-lg font-bold text-foreground list-none">
+              <span>Q4: Do I still need to know SQL or database design?</span>
+              <svg class="w-5 h-5 text-muted-foreground transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
               <strong>Absolutely.</strong> Even though tools help, understanding database fundamentals (normalization, indexes, migrations, data modeling) is what keeps your system robust. Learn more: <a href="https://www.postgresql.org/docs/current/tutorial.html" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">PostgreSQL Tutorial</a>
             </p>
-          </div>
+          </details>
 
-          <div class="p-6 bg-card border rounded-xl hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-bold mb-3 text-foreground">Q5: What LLMs or tools do you recommend for vibe coding?</h3>
-            <div class="leading-relaxed text-muted-foreground">
+          <details class="group p-5 bg-card border rounded-xl hover:shadow-lg transition-all">
+            <summary class="flex items-center justify-between cursor-pointer text-lg font-bold text-foreground list-none">
+              <span>Q5: What LLMs or tools do you recommend for vibe coding?</span>
+              <svg class="w-5 h-5 text-muted-foreground transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="mt-4 leading-relaxed text-muted-foreground">
               <p class="mb-3">Use:</p>
               <ul class="space-y-2 list-none ml-4">
                 <li class="flex items-start gap-2"><span class="text-foreground">→</span> <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline"><strong>GitHub Copilot</strong></a> for code generation</li>
@@ -609,7 +565,7 @@ export const blogPosts: BlogPost[] = [
               </ul>
               <p class="mt-3">Integrate <strong><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase MCP</a></strong> directly in your IDE—no dashboard needed. Your AI agent handles database operations through natural conversation.</p>
             </div>
-          </div>
+          </details>
         </div>
       </div>
 
