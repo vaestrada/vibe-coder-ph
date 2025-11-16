@@ -17,56 +17,141 @@ export const blogPosts: BlogPost[] = [
     title: "The AI Engineer's Survival Guide: Prototyping Fast with Supabase MCP and Vibe Coding",
     excerpt: "Two months ago, I couldn't build a database. This week, I shipped three full-stack AI prototypes. Learn how Supabase MCP and vibe coding transformed me from an AI engineer who knew models into a full-stack builder who ships working prototypes in hours.",
     content: `
-      <!-- Intro Section -->
-      <div class="mb-8 p-6 bg-muted/50 rounded-xl border">
-        <p class="text-lg mb-4 leading-relaxed font-medium">
-          Two months ago, I couldn't build a database from scratch. This week, I shipped three full-stack AI prototypes—complete with backends, databases, and live deployments.
-        </p>
-        <p class="mb-4 leading-relaxed">
-          What changed? I discovered <strong><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Supabase MCP</a></strong> (Model Context Protocol) and embraced <strong>"vibe coding"</strong>—a conversational approach to software development where you prompt AI agents to handle database setup, migrations, and backend scaffolding.
-        </p>
+      <!-- Hero Section with Modern Layout -->
+      <div class="relative mb-12">
+        <!-- Gradient Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-fuchsia-500/5 to-blue-500/5 rounded-3xl -z-10"></div>
         
-        <div class="p-4 rounded-lg border bg-blue-50 dark:bg-blue-950/20 border-blue-500/30 mb-4">
-          <p class="font-semibold mb-2 text-blue-700 dark:text-blue-400">What is "Vibe Coding"?</p>
-          <p class="text-sm leading-relaxed">Vibe coding is a conversational development approach where you use natural language prompts with AI assistants (like <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">GitHub Copilot</a>, <a href="https://www.cursor.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Cursor</a>, or <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Claude</a>) to generate code, create schemas, and build features. Instead of writing every line manually, you focus on the <em>intent</em> and let AI handle the implementation details. <a href="https://dzone.com/articles/vibe-coding-conversational-software-development" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">Learn more →</a></p>
-        </div>
+        <!-- Hero Content -->
+        <div class="py-8 px-6 md:px-8">
+          <!-- Lead Paragraph - Strong Hook -->
+          <p class="text-xl md:text-2xl leading-relaxed mb-8 text-foreground font-medium">
+            Two months ago, I couldn't build a database from scratch. This week, I shipped three production-ready AI prototypes with full backends, databases, and live deployments.
+          </p>
 
-        <p class="mb-4 leading-relaxed">
-          As an AI/ML engineer, I spent two years integrating LLMs like <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">ChatGPT</a>, <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Claude</a>, and <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Gemini</a> into workflows. But when stakeholders asked <em>"Where's the demo?"</em> or <em>"Can we see this live?"</em>, I hit a wall. I could query databases—if someone else built them. I could write business logic—if the backend was already set up.
-        </p>
-        
-        <div class="p-4 rounded-lg border bg-amber-50 dark:bg-amber-950/20 border-amber-500/30">
-          <p class="font-medium text-amber-700 dark:text-amber-400">The problem? I wasn't <strong>full-stack capable</strong>. And in today's AI engineering landscape, if you can't ship a working prototype end-to-end, you're falling behind.</p>
+          <!-- Key Stats Row -->
+          <div class="grid grid-cols-3 gap-4 md:gap-6 mb-8 max-w-3xl">
+            <div class="text-center p-4 bg-background/60 backdrop-blur rounded-xl border">
+              <div class="text-3xl md:text-4xl font-bold text-violet-600 dark:text-violet-400 mb-1">3</div>
+              <div class="text-xs md:text-sm text-muted-foreground">Prototypes</div>
+            </div>
+            <div class="text-center p-4 bg-background/60 backdrop-blur rounded-xl border">
+              <div class="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-1">4-6</div>
+              <div class="text-xs md:text-sm text-muted-foreground">Hours Each</div>
+            </div>
+            <div class="text-center p-4 bg-background/60 backdrop-blur rounded-xl border">
+              <div class="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-1">1</div>
+              <div class="text-xs md:text-sm text-muted-foreground">Week Total</div>
+            </div>
+          </div>
+
+          <!-- Problem Statement -->
+          <div class="border-l-4 border-violet-500 pl-6 py-4 bg-violet-500/5 rounded-r-xl mb-6">
+            <p class="text-base md:text-lg leading-relaxed">
+              <span class="font-semibold text-foreground">The Challenge:</span> As an AI/ML engineer, I could integrate LLMs like <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">ChatGPT</a> and <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-medium">Claude</a>. But when stakeholders asked <em>"Where's the demo?"</em>—I couldn't deliver. I needed to become <strong>full-stack capable</strong>.
+            </p>
+          </div>
+
+          <!-- Solution -->
+          <div class="bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl border border-green-500/20 p-6">
+            <p class="text-base md:text-lg font-semibold mb-4 text-green-700 dark:text-green-400">The Solution:</p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <div>
+                  <p class="font-semibold text-sm md:text-base mb-1"><a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase MCP</a></p>
+                  <p class="text-xs md:text-sm text-muted-foreground">Natural language database operations—no SQL required</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <div>
+                  <p class="font-semibold text-sm md:text-base mb-1">Vibe Coding</p>
+                  <p class="text-xs md:text-sm text-muted-foreground">Prompt-driven development with AI assistants</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Is This Guide For You? -->
-      <div class="mb-8 p-6 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 rounded-xl border border-violet-500/20">
-        <h2 class="text-2xl font-bold mb-4 text-foreground">Is This Guide For You?</h2>
-        <p class="mb-4 leading-relaxed">This guide is for you if:</p>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3">
-            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
-            <span>You're an <strong>AI/ML engineer</strong> who knows models but struggles to ship production-ready features</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
-            <span>You can write queries but have <strong>never built a database from scratch</strong></span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
-            <span>Stakeholders keep asking <strong>"Can we see a working demo?"</strong> and you don't know where to start</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
-            <span>You want to <strong>prototype AI features in hours, not weeks</strong></span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-violet-600 dark:text-violet-400 text-xl font-bold">✓</span>
-            <span>You're ready to embrace a <strong>full-stack mindset</strong>: code + database + deployment</span>
-          </li>
-        </ul>
-        <p class="mt-4 text-sm text-muted-foreground italic">By the end of this guide, you'll know how to go from idea to deployed prototype in a single afternoon—using natural language prompts and the Supabase MCP protocol.</p>
+      <!-- What is Vibe Coding - Redesigned Info Box -->
+      <div class="my-12 p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 rounded-2xl border-2 border-blue-500/20">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="p-3 bg-blue-500/10 rounded-xl">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold mb-2 text-blue-900 dark:text-blue-300">What is "Vibe Coding"?</h3>
+            <p class="leading-relaxed text-foreground mb-4">
+              Vibe coding is a <strong>conversational development approach</strong> where you use natural language prompts with AI assistants to generate code, create schemas, and build features. Instead of writing every line manually, you focus on the <em>intent</em> and let AI handle the implementation.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="text-xs font-medium">Works with:</span>
+              <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="px-2 py-1 bg-blue-500/10 text-blue-700 dark:text-blue-300 rounded text-xs hover:bg-blue-500/20 transition-colors">GitHub Copilot</a>
+              <a href="https://www.cursor.com" target="_blank" rel="noopener noreferrer" class="px-2 py-1 bg-blue-500/10 text-blue-700 dark:text-blue-300 rounded text-xs hover:bg-blue-500/20 transition-colors">Cursor</a>
+              <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="px-2 py-1 bg-blue-500/10 text-blue-700 dark:text-blue-300 rounded text-xs hover:bg-blue-500/20 transition-colors">Claude</a>
+            </div>
+            <a href="https://dzone.com/articles/vibe-coding-conversational-software-development" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+              Learn more about vibe coding 
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Is This Guide For You? - Redesigned with Better Visual Hierarchy -->
+      <div class="my-12 p-8 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 rounded-2xl border-2 border-violet-500/20">
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-violet-500/10 rounded-2xl mb-4">
+            <svg class="w-8 h-8 text-violet-600 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h2 class="text-3xl font-bold mb-3 text-foreground">Is This Guide For You?</h2>
+          <p class="text-muted-foreground max-w-2xl mx-auto">Check if this guide matches your current challenges and goals</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
+            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span class="text-sm leading-relaxed">You're an <strong>AI/ML engineer</strong> who knows models but struggles to ship production features</span>
+          </div>
+          
+          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
+            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span class="text-sm leading-relaxed">You can write queries but have <strong>never built a database from scratch</strong></span>
+          </div>
+          
+          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
+            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span class="text-sm leading-relaxed">Stakeholders ask <strong>"Can we see a working demo?"</strong> and you don't know where to start</span>
+          </div>
+          
+          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20">
+            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span class="text-sm leading-relaxed">You want to <strong>prototype AI features in hours, not weeks</strong></span>
+          </div>
+          
+          <div class="flex items-start gap-3 p-4 bg-background/60 backdrop-blur rounded-xl border border-violet-500/20 md:col-span-2">
+            <div class="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span class="text-sm leading-relaxed">You're ready to embrace a <strong>full-stack mindset</strong>: code + database + deployment</span>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 bg-violet-500/10 rounded-xl border border-violet-500/20 text-center">
+          <p class="text-sm text-foreground font-medium">
+            ✨ By the end of this guide, you'll know how to go from <span class="font-bold">idea to deployed prototype in a single afternoon</span>
+          </p>
+        </div>
       </div>
 
       <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -168,7 +253,7 @@ export const blogPosts: BlogPost[] = [
         <div class="bg-muted/50 border rounded-xl p-6 mb-6">
           <p class="font-bold text-lg mb-3 text-foreground">In short: Your LLM can talk to your Supabase backend 🤯</p>
           <p class="mb-3 leading-relaxed">Create tables, run queries, manage storage — all via prompts.</p>
-          <p class="text-sm italic">Learn more: <a href="https://supabase.com/docs/guides/ai/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase MCP Documentation</a></p>
+          <p class="text-sm italic">Learn more: <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase MCP Documentation</a></p>
         </div>
 
         <p class="mb-2 text-sm text-muted-foreground">Example prompt:</p>
@@ -207,34 +292,14 @@ export const blogPosts: BlogPost[] = [
 
       <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <!-- Section 3 -->
+      <!-- Section 3 - Condensed Personal Journey -->
       <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-6 text-foreground">My Real-World Journey: From AI Engineer to Full-Stack Builder</h2>
+        <h2 class="text-3xl font-bold mb-6 text-foreground">How I Made the Shift</h2>
         
-        <h3 class="text-2xl font-semibold mb-4 text-foreground">The Problem I Faced</h3>
-        <p class="mb-4 leading-relaxed">
-          After two years as an ML/AI engineer, I realized I had <strong>never built a database from scratch</strong>. I knew SQL queries, but only in the sense of "if I already have a database set up, I can query it."
-        </p>
-        <div class="principle-highlight bg-amber-50 dark:bg-amber-950/20 border-amber-500/30 p-5 rounded-lg border mb-6">
-          <p class="italic text-lg">But designing a schema? Managing migrations? Deploying the backend? That was foreign territory.</p>
-          <p class="mt-3 font-semibold text-amber-700 dark:text-amber-400">It felt like: "I can query... if I don't have a database in the first place!"</p>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 text-foreground">How I Discovered Supabase MCP</h3>
-        <p class="mb-4 leading-relaxed">
-          While exploring ways to ship prototypes faster, I came across <a href="https://supabase.com/docs/guides/ai/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase's MCP documentation</a>.
-        </p>
-        <p class="mb-4 leading-relaxed">
-          I read their guides, watched tutorials, and thought — <em>maybe I can spin up a backend with minimal fuss.</em>
-        </p>
-        <p class="mb-6 leading-relaxed">
-          And when I realized that MCP allowed me to <strong>delegate schema and data modeling to an AI/agent</strong>, the game changed.
+        <p class="mb-4 leading-relaxed text-lg">
+          After discovering <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Supabase's MCP documentation</a>, I realized I could delegate database setup and schema design to AI agents. Combined with vibe coding through <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">GitHub Copilot</a> and <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Cursor</a>, my entire workflow transformed.
         </p>
 
-        <h3 class="text-2xl font-semibold mb-4 text-foreground">How "Vibe Coding" Entered the Scene</h3>
-        <p class="mb-4 leading-relaxed">
-          I started using LLMs (<strong>Claude</strong> for domain logic, <strong>ChatGPT</strong> for day-to-day queries/automation, <strong>Gemini</strong> for drafts, slides, images) and paired them with <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">GitHub Copilot</a> and <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Cursor</a>.
-        </p>
         <p class="mb-2 text-sm text-muted-foreground">Example prompt:</p>
         <div class="bg-slate-900 text-slate-50 rounded-lg p-4 mb-3 relative group">
           <p class="font-mono text-sm leading-relaxed text-green-400">
@@ -242,40 +307,31 @@ export const blogPosts: BlogPost[] = [
           </p>
           <button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-700 hover:bg-slate-600 text-slate-200 p-2 rounded" onclick="navigator.clipboard.writeText('Can you add another project in the Featured Projects section using the details in project001.md and upload this screen-recorded video to the database using Supabase MCP?')" title="Copy to clipboard"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
         </div>
-        <p class="text-sm text-muted-foreground mb-2">The agent (via Supabase MCP) does the table update, uploads the video, adjusts the metadata.</p>
-        <p class="mb-6 text-violet-600 dark:text-violet-400 font-semibold">I focus on the prompt, the flow. I don't code every line. That's "vibe coding" in action.</p>
+        <p class="mb-6 text-violet-600 dark:text-violet-400 font-semibold">The agent handles table updates, video uploads, and metadata automatically. I focus on the prompt and the flow—that's vibe coding.</p>
 
-        <h3 class="text-2xl font-semibold mb-4 text-foreground">What Changed</h3>
+        <h3 class="text-2xl font-semibold mb-4 text-foreground">The Results</h3>
         <p class="mb-4 leading-relaxed text-lg font-medium text-violet-600 dark:text-violet-400">
-          In one week, I went from zero database experience to shipping three production-ready prototypes.
+          In one week, I shipped three production-ready prototypes with full databases, authentication, and live deployments.
         </p>
         <div class="grid gap-4 mb-6">
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
               <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
-              <span><strong>Project 1:</strong> Featured projects gallery with video uploads — idea to deployed in <strong>4 hours</strong></span>
+              <span><strong>Project 1:</strong> Featured projects gallery — <strong>4 hours</strong> from idea to deployed</span>
             </p>
           </div>
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
               <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
-              <span><strong>Project 2:</strong> Course management system with authentication — prototyped in <strong>6 hours</strong></span>
+              <span><strong>Project 2:</strong> Course management system — <strong>6 hours</strong> with full auth</span>
             </p>
           </div>
           <div class="p-4 bg-green-50 dark:bg-green-950/20 border border-green-500/30 rounded-lg">
             <p class="flex items-start gap-2">
               <span class="text-green-600 dark:text-green-400 text-xl">✓</span>
-              <span><strong>Project 3:</strong> Blog platform with metadata and search — built and deployed in one afternoon</span>
+              <span><strong>Project 3:</strong> Blog platform with search — <strong>one afternoon</strong></span>
             </p>
           </div>
-        </div>
-        <div class="bg-gradient-to-r from-violet-100 to-fuchsia-100 dark:from-violet-900/30 dark:to-fuchsia-900/30 border border-violet-500/30 rounded-lg p-6 mb-6">
-          <p class="font-bold text-lg mb-2">The transformation:</p>
-          <ul class="space-y-2">
-            <li>• From "I can't build databases" to <strong>"database exists, live, with data"</strong></li>
-            <li>• From "just an AI engineer" to <strong>"full-stack builder"</strong>: software + database + deployment</li>
-            <li>• From "weeks per prototype" to <strong>"hours per prototype"</strong></li>
-          </ul>
         </div>
       </div>
 
@@ -371,110 +427,23 @@ export const blogPosts: BlogPost[] = [
 
       <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <!-- Section 5 -->
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-6 text-foreground">The Mindset Shift: From Researcher to Builder</h2>
-        
-        <h3 class="text-2xl font-semibold mb-4 text-foreground">Why Being Comfortable with Code, Database, Deployment Matters</h3>
-        <p class="mb-6 leading-relaxed">
-          In the Gen AI era, just knowing how to call an LLM isn't enough. You need to:
-        </p>
-        <div class="grid md:grid-cols-2 gap-4 mb-8">
-          <div class="p-5 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 border border-violet-500/20 rounded-lg">
-            <p class="font-semibold mb-2 text-foreground">✓ Integrate it in a product</p>
-            <p class="text-sm text-muted-foreground">Not just experiments</p>
-          </div>
-          <div class="p-5 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 border border-violet-500/20 rounded-lg">
-            <p class="font-semibold mb-2 text-foreground">✓ Build the backend and frontend</p>
-            <p class="text-sm text-muted-foreground">Full-stack capable</p>
-          </div>
-          <div class="p-5 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 border border-violet-500/20 rounded-lg">
-            <p class="font-semibold mb-2 text-foreground">✓ Ship something live</p>
-            <p class="text-sm text-muted-foreground">Production-ready</p>
-          </div>
-          <div class="p-5 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 border border-violet-500/20 rounded-lg">
-            <p class="font-semibold mb-2 text-foreground">✓ Be accountable for the full workflow</p>
-            <p class="text-sm text-muted-foreground">End-to-end ownership</p>
-          </div>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 text-foreground">The Hats You'll Wear</h3>
-        <div class="space-y-3 mb-8">
-          <div class="flex items-start gap-4 p-4 bg-card border rounded-lg">
-            <span class="text-3xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></span>
-            <div>
-              <p class="font-bold">AI Engineer</p>
-              <p class="text-sm text-muted-foreground">You integrate LLMs and design AI workflows</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4 p-4 bg-card border rounded-lg">
-            <span class="text-3xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></span>
-            <div>
-              <p class="font-bold">Software Engineer</p>
-              <p class="text-sm text-muted-foreground">You build the codebase, routes, interfaces</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4 p-4 bg-card border rounded-lg">
-            <span class="text-3xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg></span>
-            <div>
-              <p class="font-bold">Database Engineer</p>
-              <p class="text-sm text-muted-foreground">You design schema, manage migrations, model data</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4 p-4 bg-card border rounded-lg">
-            <span class="text-3xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg></span>
-            <div>
-              <p class="font-bold">DevOps/Deployment</p>
-              <p class="text-sm text-muted-foreground">You deploy to production, handle environment configs, monitor</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-muted/50 border rounded-xl p-6">
-          <h3 class="text-2xl font-semibold mb-4 text-foreground">Embrace the Vibe-Coding Mantra</h3>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <span class="text-foreground text-xl">→</span>
-              <p><strong>Rapid iteration > perfection</strong> (initially)</p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-foreground text-xl">→</span>
-              <p>Show a working prototype to <strong>validate the idea</strong>. Then refine.</p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-foreground text-xl">→</span>
-              <p>The tools exist — LLMs, agents, MCP, Supabase. <strong>Use them</strong>.</p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-foreground text-xl">→</span>
-              <p>But remember: you still need to <strong>validate, maintain, understand</strong>.</p>
-            </li>
-          </ul>
-          <div class="mt-6 p-4 bg-violet-500/20 border border-violet-500/30 rounded-lg">
-            <p class="font-bold text-lg text-foreground">Your role evolves: from "I build models" to "I build complete AI-powered products."</p>
-          </div>
-        </div>
-      </div>
-
-      <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
       <!-- Conclusion -->
       <div class="mb-8 p-6 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl border border-green-500/20">
-        <h2 class="text-3xl font-bold mb-6">Conclusion</h2>
+        <h2 class="text-3xl font-bold mb-6">The Future is Full-Stack AI</h2>
         <p class="mb-4 leading-relaxed text-lg">
-          In the Gen AI era, the role of the AI/ML engineer has <strong>fundamentally changed</strong>. It's no longer just about training models — now it's about <strong>shipping working AI-powered solutions at velocity</strong>.
+          The barrier between "AI engineer" and "product builder" is disappearing. Tools like <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-green-600 dark:text-green-400 hover:underline font-semibold">Supabase MCP</a> and vibe coding are making it possible for a single developer to prototype complete AI-powered applications in hours, not months.
         </p>
         <p class="mb-4 leading-relaxed">
-          Using tools like <strong>Supabase</strong> and its <strong>Model Context Protocol (MCP)</strong>, combined with a <strong>vibe-coding mindset</strong>, you can prototype faster, iterate quicker, and deliver real value.
+          This isn't about replacing traditional skills—it's about amplifying them. Database fundamentals, security practices, and system design still matter. But now you can move from idea to deployed prototype before your stakeholders finish their coffee.
         </p>
         <div class="principle-highlight bg-green-500/10 border-green-500/30 p-5 rounded-lg border my-6">
-          <p class="text-lg font-semibold">I went from never building a database to shipping live features in a matter of hours. The shift from ML engineer to full-stack builder is real — and you can do it too.</p>
+          <p class="text-lg font-semibold">The question isn't whether AI will change how we build software. It's whether you'll be one of the builders shaping that future.</p>
         </div>
         <p class="mb-4 leading-relaxed text-lg">
-          So what are you waiting for? Try it out for yourself. Explore <a href="https://supabase.com/docs/guides/ai/mcp" target="_blank" rel="noopener noreferrer" class="text-green-600 dark:text-green-400 hover:underline font-semibold">Supabase MCP</a>, adopt vibe coding, and build your next prototype.
+          Start small. Pick one prototype idea. Use Supabase MCP to handle the database. Let AI generate your boilerplate. Deploy it live. Show someone.
         </p>
         <p class="text-lg font-semibold">
-          I'll be here, exploring more AI tools and sharing what I learn. So long — and happy coding. ✓
+          Then do it again, faster. That's how you become the engineer the AI era needs. ✓
         </p>
       </div>
 
@@ -485,9 +454,9 @@ export const blogPosts: BlogPost[] = [
         <h2 class="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
         <div class="space-y-6">
           <div class="p-6 bg-card border rounded-xl hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-bold mb-3 text-foreground">Q1: What exactly is "vibe coding"?</h3>
+            <h3 class="text-xl font-bold mb-3 text-foreground">Q1: How do I get started with Supabase MCP if I've never used Supabase before?</h3>
             <p class="leading-relaxed text-muted-foreground">
-              Vibe coding is a development style where you describe what you want in natural language and an LLM/agent generates much of the code. The developer guides, tests, and iterates — but doesn't write every line manually. <a href="https://dzone.com/articles/vibe-driven-development" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">(DZone article)</a>
+              Start with a <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">free Supabase account</a>, create a project, then follow the <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">MCP setup guide</a>. You'll configure it in your AI assistant (Copilot, Cursor, Claude) by providing your Supabase project credentials. From there, you can use natural language prompts to create tables, manage data, and handle storage—no SQL required.
             </p>
           </div>
 
@@ -620,26 +589,20 @@ export const blogPosts: BlogPost[] = [
       <hr class="my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <!-- CTA -->
-      <div class="mb-8 p-8 bg-muted/50 rounded-2xl border">
-        <h2 class="text-3xl font-bold mb-4 text-center">✓ Ready to Start Your AI Engineering Journey?</h2>
-        <div class="grid md:grid-cols-3 gap-4 mt-6">
-          <div class="p-5 bg-background/80 backdrop-blur rounded-lg border border-violet-500/20 hover:border-violet-500/50 transition-colors">
-            <p class="font-bold mb-2 text-foreground">1. Learn Supabase MCP</p>
-            <p class="text-sm text-muted-foreground mb-3">Explore the official documentation and tutorials</p>
-            <a href="https://supabase.com/docs/guides/ai/mcp" target="_blank" rel="noopener noreferrer" class="text-xs text-foreground hover:underline">Start here →</a>
-          </div>
-          <div class="p-5 bg-background/80 backdrop-blur rounded-lg border border-violet-500/20 hover:border-violet-500/50 transition-colors">
-            <p class="font-bold mb-2 text-foreground">2. Try Vibe Coding</p>
-            <p class="text-sm text-muted-foreground mb-3">Start with GitHub Copilot or Cursor IDE</p>
-            <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="text-xs text-foreground hover:underline">Get Copilot →</a>
-          </div>
-          <div class="p-5 bg-background/80 backdrop-blur rounded-lg border border-violet-500/20 hover:border-violet-500/50 transition-colors">
-            <p class="font-bold mb-2 text-foreground">3. Build Your First Prototype</p>
-            <p class="text-sm text-muted-foreground mb-3">Apply what you learned and ship something real</p>
-            <a href="https://vibecoders.ph/projects" class="text-xs text-foreground hover:underline">See examples →</a>
-          </div>
+      <div class="mb-8 p-8 bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/20 dark:to-fuchsia-950/20 rounded-2xl border border-violet-500/20">
+        <h2 class="text-3xl font-bold mb-4 text-center text-foreground">Ready to Build Your First Prototype?</h2>
+        <p class="text-center text-lg mb-6 text-muted-foreground max-w-2xl mx-auto">
+          The tools are here. The documentation is clear. The only thing missing is your first project. Pick an idea, open the <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="text-violet-600 dark:text-violet-400 hover:underline font-semibold">Supabase MCP docs</a>, and start building.
+        </p>
+        <div class="flex justify-center gap-4 flex-wrap">
+          <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-foreground text-background rounded-lg font-semibold hover:opacity-90 transition-opacity">
+            Start with Supabase MCP →
+          </a>
+          <a href="/projects" class="px-6 py-3 bg-muted border rounded-lg font-semibold hover:bg-muted/80 transition-colors">
+            See Example Projects
+          </a>
         </div>
-        <p class="text-center mt-8 text-lg font-semibold">Join the community building the future of AI engineering 🌟</p>
+        <p class="text-center mt-6 text-sm text-muted-foreground italic">Join the community building the future of AI engineering</p>
       </div>
     `,
     author: "Viron Gil Estrada",
