@@ -119,7 +119,8 @@ export default function ProjectsPage() {
                         autoPlay 
                         muted 
                         loop 
-                        playsInline 
+                        playsInline
+                        preload="metadata"
                         className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                       >
                         <source src={p.media_url} type="video/mp4" />
@@ -144,7 +145,7 @@ export default function ProjectsPage() {
                       {p.description}
                     </p>
                     
-                    <div className="flex items-center gap-2 flex-wrap mt-auto">
+                    <div className="flex items-center gap-2 mt-auto">
                       <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/20">
                         <div className="h-1.5 w-1.5 rounded-full bg-violet-500 animate-pulse" />
                         <p className="text-xs font-medium text-violet-600 dark:text-violet-400">

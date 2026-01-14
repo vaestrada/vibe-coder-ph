@@ -75,7 +75,7 @@ export default function Home() {
                     playsInline
                     poster=""
                   >
-                    <source src="https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/hero/a3e1dd6d-232c-4051-a1d8-a2d2701dfd0d.mp4" type="video/mp4" />
+                    <source src="https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/projects/hero-video.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
