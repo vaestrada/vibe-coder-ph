@@ -147,6 +147,20 @@ pnpm lint          # ESLint check
 3. Update navbar links in `components/site/navbar.tsx` if needed
 4. Verify metadata in browser dev tools (Open Graph tags)
 
+### Video Upload Workflow
+**To add project videos:**
+1. Compress to 10-second preview (~400KB target):
+   ```bash
+   ffmpeg -i source.mp4 -ss 5 -t 10 -vf "scale=1280:-2" -c:v libx264 -crf 32 -preset fast -c:a aac -b:a 128k -movflags +faststart preview.mp4
+   ```
+2. Upload to Supabase (auto-deletes local file):
+   ```bash
+   node scripts/upload-video.mjs preview.mp4
+   ```
+3. Update project record with new `media_url` in Supabase database
+
+**Important:** All `.mp4` files are gitignored. Upload script auto-deletes source files after successful upload.
+
 ### Performance Checklist (per spec.md)
 - Use `next/image` for all images (auto WebP/AVIF)
 - Set `priority` on above-the-fold images
@@ -192,6 +206,7 @@ pnpm lint          # ESLint check
 | Add static page | `app/new-path/page.tsx` + `app/sitemap.ts` | Export metadata |
 | Update nav | `components/site/navbar.tsx` | Edit `links` array |
 | Fetch projects | `lib/supabase.ts` | Use `getProjects()` |
+| Upload video | `scripts/upload-video.mjs` | Auto-deletes after upload |
 | Theme toggle | `components/theme-toggle.tsx` | Uses next-themes |
 | SEO reference | `spec.md` lines 1-200 | Full metadata requirements |
 | Style utilities | `lib/utils.ts` | `cn()` function |
