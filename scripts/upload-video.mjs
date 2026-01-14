@@ -58,6 +58,15 @@ async function uploadVideo() {
     console.log('✅ Upload successful!');
     console.log('📎 Public URL:', publicUrl);
     
+    // Clean up: delete local file after successful upload
+    try {
+      const { unlinkSync } = await import('fs');
+      unlinkSync(filePath);
+      console.log('🗑️  Deleted local file:', filePath);
+    } catch (cleanupErr) {
+      console.warn('⚠️  Could not delete local file:', cleanupErr.message);
+    }
+    
     return publicUrl;
   } catch (err) {
     console.error('❌ Error:', err.message);
