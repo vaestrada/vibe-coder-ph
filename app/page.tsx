@@ -73,17 +73,18 @@ export default function Home() {
                     muted
                     loop
                     playsInline
-                    poster=""
+                    preload="metadata"
+                    aria-label="SentroLink - Intelligent Healthcare Triage System demo video"
                   >
-                    <source src="https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/projects/hero-video.mp4" type="video/mp4" />
+                    <source src="https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/projects/sentro-link-preview.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
               </div>
               <div className="mt-3 text-center">
                 <span className="inline-flex items-center gap-2 text-xs text-muted-foreground bg-secondary/50 px-3 py-1 rounded-full">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  Hackathon project by Vibe Coders members
+                  <div className="w-2 h-2 bg-violet-500 rounded-full animate-pulse"></div>
+                  SentroLink - AI Healthcare Triage by Team Sili-con Valley
                 </span>
               </div>
             </div>
