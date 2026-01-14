@@ -76,7 +76,7 @@ export default function Home() {
                     preload="metadata"
                     aria-label="SentroLink - Intelligent Healthcare Triage System demo video"
                   >
-                    <source src="https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/projects/sentro-link-preview.mp4" type="video/mp4" />
+                    <source src="https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/projects/sentrolink-full.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
