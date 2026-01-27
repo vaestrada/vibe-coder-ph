@@ -232,3 +232,41 @@ html {
     line-clamp: 3;
   }
 }
+
+/* Blog post content styles */
+.blog-content h2 {
+  @apply text-2xl font-bold mb-6 mt-8 text-foreground;
+}
+
+.blog-content .principle-number {
+  @apply inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold mr-3;
+}
+
+.blog-content .section-divider {
+  @apply my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent;
+}
+
+.blog-content .principle-highlight {
+  @apply my-6 p-4 bg-accent/50 border-l-4 border-primary rounded-r-lg;
+}
+
+.blog-content .principle-highlight p {
+  @apply mb-0 font-semibold text-lg;
+}
+
+.blog-content ul {
+  @apply space-y-3 my-4;
+}
+
+.blog-content li {
+  @apply p-3 bg-muted/30 rounded-lg list-none;
+}
+
+.blog-content code {
+  @apply px-2 py-1 bg-secondary text-secondary-foreground rounded text-sm font-mono border;
+}
+
+.blog-content .key-points p {
+  @apply p-4 bg-background rounded-lg border-l-4 border-primary font-medium;
+}
+

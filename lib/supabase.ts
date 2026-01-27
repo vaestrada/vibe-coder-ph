@@ -1,7 +1,11 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase environment variables. Please check NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY')
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
@@ -30,7 +34,9 @@ export const getProjects = async (): Promise<Project[]> => {
     .order('created_at', { ascending: false })
 
   if (error) {
-    console.error('Error fetching projects:', error)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching projects:', error)
+    }
     return []
   }
 
@@ -45,7 +51,9 @@ export const getFeaturedProjects = async (): Promise<Project[]> => {
     .order('order_index', { ascending: true })
 
   if (error) {
-    console.error('Error fetching featured projects:', error)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching featured projects:', error)
+    }
     return []
   }
 
@@ -60,7 +68,9 @@ export const getProjectById = async (id: string): Promise<Project | null> => {
     .single()
 
   if (error) {
-    console.error('Error fetching project:', error)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching project:', error)
+    }
     return null
   }
 
