@@ -65,7 +65,7 @@ export function AnnouncementBar() {
             <span className="text-white/80">|</span>
             <span className="text-white/90">March 17, 2026</span>
             <span className="hidden md:inline text-white/80">|</span>
-            <span className="hidden md:inline text-white/90">David M. Consunji Theater, UP Diliman</span>
+            <span className="hidden md:inline text-white/90">David M. Consunji Theater, ICE, UP Diliman</span>
           </span>
 
           {/* CTA */}

@@ -144,7 +144,7 @@ export function EventAnnouncementModal() {
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-fuchsia-400" />
-                    <span>David M. Consunji Theater, ICE, UP Diliman</span>
+                    <span>David M. Consunji Theater, Institute of Civil Engineering, UP Diliman</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4 text-cyan-400" />
