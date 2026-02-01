@@ -218,7 +218,7 @@ export default function GenAItoZPage() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '800ms' }}>
               <Link
-                href="#register"
+                href="/events/gen-ai-to-z/register"
                 className="group inline-flex items-center justify-center gap-2 min-h-[48px] min-w-[200px] px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white rounded-lg text-lg font-semibold shadow-lg shadow-violet-500/50 transition-all hover:scale-105 hover:shadow-xl hover:shadow-violet-500/60 touch-action-manipulation"
               >
                 Register Free
@@ -512,15 +512,13 @@ export default function GenAItoZPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <a
-                href="https://forms.gle/placeholder"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/events/gen-ai-to-z/register"
                 className="group inline-flex items-center justify-center gap-3 min-h-[64px] min-w-[280px] px-12 py-6 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 hover:from-violet-400 hover:via-fuchsia-400 hover:to-cyan-400 text-white rounded-2xl text-xl font-bold shadow-2xl shadow-violet-500/40 transition-all hover:scale-105 hover:shadow-violet-500/60 touch-action-manipulation"
               >
                 Register Now — It&apos;s Free
                 <Sparkles className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-              </a>
+              </Link>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
