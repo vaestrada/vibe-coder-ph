@@ -1,5 +1,7 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import RegistrationForm from "./registration-form";
+import VerificationStatus from "./verification-status";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -33,6 +35,11 @@ export default function RegisterPage() {
           <ArrowLeft className="w-4 h-4" />
           Back to Event Page
         </Link>
+
+        {/* Verification Status Messages */}
+        <Suspense fallback={null}>
+          <VerificationStatus />
+        </Suspense>
 
         {/* Header */}
         <div className="text-center mb-12">

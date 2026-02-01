@@ -1,4 +1,5 @@
 import { supabase } from "./supabase";
+import { sendVerificationEmail } from "./email";
 
 export interface EventRegistration {
   id?: string;
@@ -49,13 +50,13 @@ export async function registerForEvent(data: EventRegistration) {
     ...data,
     consent_timestamp: new Date().toISOString(),
     privacy_notice_version: 'v1.0',
-    status: 'pending',
+    status: 'pending', // pending = awaiting email verification
   };
 
   const { data: result, error } = await supabase
     .from('event_registrations')
     .insert(registrationData)
-    .select()
+    .select('*, verification_token')
     .single();
 
   if (error) {
@@ -63,6 +64,19 @@ export async function registerForEvent(data: EventRegistration) {
       throw new Error("You have already registered for this event.");
     }
     throw error;
+  }
+
+  // Send verification email (non-blocking for UX, but log errors)
+  try {
+    await sendVerificationEmail({
+      email: data.email,
+      fullName: data.full_name,
+      verificationToken: result.verification_token,
+      eventSlug: data.event_slug,
+    });
+  } catch (emailError) {
+    console.error('Failed to send verification email:', emailError);
+    // Don't throw - registration is still valid, email can be resent
   }
 
   return result;

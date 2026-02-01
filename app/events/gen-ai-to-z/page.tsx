@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, MapPin, Users, Sparkles, Code2, GraduationCap, ChevronDown, Check, Eye, Target, MessageSquare, Handshake, Lightbulb, BookOpen, Compass, Flag, Mic, ShieldCheck, Ticket } from "lucide-react";
+import { Calendar, MapPin, Users, Sparkles, Code2, GraduationCap, ChevronDown, Check, Handshake, BookOpen, Compass, Flag, Mic, ShieldCheck, Ticket } from "lucide-react";
 import CountdownTimer from "./components/countdown-timer";
 import PersonaCards from "./components/persona-cards";
 import ScheduleSection from "./components/schedule-section";

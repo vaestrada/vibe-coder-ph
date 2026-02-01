@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import { X, Calendar, MapPin, Users, Clock, Zap, Mic2, Coffee, ArrowRight } from "lucide-react";
+import { X, Calendar, MapPin, Users, Zap, Mic2, Coffee, ArrowRight } from "lucide-react";
 
 export function EventAnnouncementModal() {
   const [isOpen, setIsOpen] = useState(false);

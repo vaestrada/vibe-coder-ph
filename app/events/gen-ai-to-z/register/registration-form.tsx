@@ -1,16 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { registerForEvent } from "@/lib/event-registration";
 import { Check, Loader2, AlertCircle, CheckCircle2, Info } from "lucide-react";
 import Link from "next/link";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+
+type AffiliationType = '' | 'College Student' | 'Senior High Student' | 'Faculty/Staff' | 'Professional' | 'Independent Creator' | 'Career Shifter' | 'Other';
 
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
     phone: "",
-    affiliation: "" as any,
+    affiliation: "" as AffiliationType,
     organization: "",
     year_level: "",
     expectations: "",
@@ -20,6 +23,10 @@ export default function RegistrationForm() {
 
   // Honeypot field to catch bots (should remain empty)
   const [honeypot, setHoneypot] = useState("");
+  
+  // Cloudflare Turnstile
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const [showPrivacyNotice, setShowPrivacyNotice] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,6 +43,15 @@ export default function RegistrationForm() {
       setSubmitStatus({ type: 'success', message: "Registration successful!" });
       return;
     }
+
+    // Verify Turnstile token
+    if (!turnstileToken) {
+      setSubmitStatus({
+        type: 'error',
+        message: "Please complete the security verification"
+      });
+      return;
+    }
     
     if (!formData.consent_given) {
       setSubmitStatus({
@@ -45,18 +61,29 @@ export default function RegistrationForm() {
       return;
     }
 
+    if (!formData.affiliation) {
+      setSubmitStatus({
+        type: 'error',
+        message: "Please select your affiliation"
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      await registerForEvent({
+      // Cast formData with validated affiliation
+      const registrationData = {
         ...formData,
+        affiliation: formData.affiliation as Exclude<AffiliationType, ''>,
         event_slug: 'gen-ai-to-z',
-      });
+      };
+      await registerForEvent(registrationData);
 
       setSubmitStatus({
         type: 'success',
-        message: "Registration successful! Check your email for confirmation."
+        message: "Almost there! We've sent a verification email to your inbox. Please click the link to confirm your registration."
       });
 
       // Reset form
@@ -64,20 +91,25 @@ export default function RegistrationForm() {
         full_name: "",
         email: "",
         phone: "",
-        affiliation: "" as any,
+        affiliation: "" as AffiliationType,
         organization: "",
         year_level: "",
         expectations: "",
         how_did_you_hear: "",
         consent_given: false,
       });
-    } catch (error: any) {
+      
+      // Reset Turnstile
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
+    } catch (error: unknown) {
       // Check for duplicate email error
-      const errorMessage = error.message || "";
+      const err = error as { message?: string; code?: string };
+      const errorMessage = err.message || "";
       const isDuplicate = errorMessage.includes("duplicate") || 
                           errorMessage.includes("unique") ||
                           errorMessage.includes("already registered") ||
-                          error.code === "23505"; // PostgreSQL unique violation
+                          err.code === "23505"; // PostgreSQL unique violation
       
       setSubmitStatus({
         type: 'error',
@@ -294,7 +326,7 @@ export default function RegistrationForm() {
               <div className="text-sm text-muted-foreground space-y-3 mt-4">
                 <p><strong className="text-foreground">Data Controller:</strong> UP EMC² Fraternity, UP College of Engineering</p>
                 
-                <p><strong className="text-foreground">Purpose:</strong> We collect your personal information to process your registration for the "Gen AI to Z" event on March 17, 2026, and to communicate event-related information.</p>
+                <p><strong className="text-foreground">Purpose:</strong> We collect your personal information to process your registration for the &ldquo;Gen AI to Z&rdquo; event on March 17, 2026, and to communicate event-related information.</p>
                 
                 <p><strong className="text-foreground">Data Collected:</strong></p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
@@ -347,6 +379,27 @@ export default function RegistrationForm() {
             <strong>I consent</strong> to the collection, processing, and storage of my personal data as described in the Privacy Notice above, in accordance with the Data Privacy Act of 2012 (RA 10173). <span className="text-red-500">*</span>
           </span>
         </label>
+      </div>
+
+      {/* Cloudflare Turnstile CAPTCHA */}
+      <div className="flex justify-center">
+        <Turnstile
+          ref={turnstileRef}
+          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
+          onSuccess={(token) => setTurnstileToken(token)}
+          onError={() => {
+            setTurnstileToken(null);
+            setSubmitStatus({
+              type: 'error',
+              message: "Security verification failed. Please try again."
+            });
+          }}
+          onExpire={() => setTurnstileToken(null)}
+          options={{
+            theme: "dark",
+            size: "normal",
+          }}
+        />
       </div>
 
       {/* Status Messages */}
