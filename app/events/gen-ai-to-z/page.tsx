@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, MapPin, Users, Sparkles, Code2, GraduationCap, ChevronDown } from "lucide-react";
+import { Calendar, MapPin, Users, Sparkles, Code2, GraduationCap, ChevronDown, Check } from "lucide-react";
 import CountdownTimer from "./components/countdown-timer";
 import PersonaCards from "./components/persona-cards";
 import ScheduleSection from "./components/schedule-section";
@@ -26,37 +26,37 @@ export const metadata: Metadata = {
 const personas = [
   {
     id: "student",
-    icon: "🎓",
+    icon: "GraduationCap",
     title: "College or Senior High Student",
     description: "Figuring out what skills actually matter in an AI-driven workplace"
   },
   {
     id: "engineer",
-    icon: "⚙️",
+    icon: "Wrench",
     title: "Future Engineer or Developer",
     description: "Learning how AI tools amplify your technical capabilities"
   },
   {
     id: "creative",
-    icon: "🎨",
+    icon: "Palette",
     title: "Creative Professional",
     description: "Exploring AI in design, media, film, or content creation"
   },
   {
     id: "shifter",
-    icon: "🔄",
+    icon: "RefreshCw",
     title: "Career Shifter",
     description: "Feeling left behind by tech and ready to catch up"
   },
   {
     id: "curious",
-    icon: "💡",
+    icon: "Lightbulb",
     title: "Simply Curious",
     description: "Asking 'Where do I even start with AI?'"
   },
   {
     id: "builder",
-    icon: "🚀",
+    icon: "Rocket",
     title: "Future Builder",
     description: "Ready to leverage AI as a career multiplier"
   }
@@ -98,11 +98,12 @@ export default function GenAItoZPage() {
     "eventStatus": "https://schema.org/EventScheduled",
     "location": {
       "@type": "Place",
-      "name": "David M. Consunji Theater",
+      "name": "David M. Consunji Theater, Institute of Civil Engineering",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "UP College of Engineering",
+        "streetAddress": "T.H. Pardo de Tavera St, Institute of Civil Engineering, UP Diliman",
         "addressLocality": "Quezon City",
+        "postalCode": "1101",
         "addressRegion": "Metro Manila",
         "addressCountry": "PH"
       }
@@ -280,7 +281,7 @@ export default function GenAItoZPage() {
                   "Confidence to experiment, learn, and adapt"
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-card/50 border border-violet-500/20">
-                    <span className="text-violet-400 font-bold">✓</span>
+                    <Check className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{item}</span>
                   </div>
                 ))}
@@ -302,9 +303,9 @@ export default function GenAItoZPage() {
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">David M. Consunji Theater</h3>
                   <address className="not-italic text-lg text-muted-foreground space-y-1">
-                    <p>UP College of Engineering</p>
-                    <p>University of the Philippines Diliman</p>
-                    <p>Quezon City, Metro Manila</p>
+                    <p>Institute of Civil Engineering</p>
+                    <p>T.H. Pardo de Tavera St, UP Diliman</p>
+                    <p>Quezon City, 1101 Metro Manila</p>
                   </address>
                 </div>
 
@@ -318,7 +319,7 @@ export default function GenAItoZPage() {
                 </div>
 
                 <a
-                  href="https://maps.google.com/?q=David+M+Consunji+Theater+UP+Diliman"
+                  href="https://www.google.com/maps/dir/?api=1&destination=Institute+of+Civil+Engineering,+David+M.+Consunji+Theater,+T.H.+Pardo+de+Tavera+St,+Diliman,+Quezon+City,+1101+Metro+Manila"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-colors min-h-[44px]"
@@ -328,17 +329,17 @@ export default function GenAItoZPage() {
                 </a>
               </div>
 
-              {/* Map placeholder */}
+              {/* Map */}
               <div className="relative h-[400px] rounded-xl overflow-hidden border-2 border-violet-500/20">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.7244!2d121.0641!3d14.6548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDM5JzE3LjMiTiAxMjHCsDAzJzUxLjIiRQ!5e0!3m2!1sen!2sph!4v1234567890"
+                  src="https://maps.google.com/maps?q=Institute+of+Civil+Engineering,+David+M.+Consunji+Theater,+T.H.+Pardo+de+Tavera+St,+Diliman,+Quezon+City,+1101+Metro+Manila&t=&z=17&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Map to David M. Consunji Theater, UP Diliman"
+                  title="Map to David M. Consunji Theater, Institute of Civil Engineering, UP Diliman"
                   className="grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Sparkles, Users, Clock4, Code2, Calendar, ArrowRight } from "lucide-react";
+import { Sparkles, Users, Clock4, Code2, Calendar, ArrowRight, Hammer } from "lucide-react";
 import { getAllBlogPosts } from "@/lib/blog-data";
+import { EventAnnouncementModal } from "@/components/event-announcement-modal";
 
 export default function Home() {
   const blogPosts = getAllBlogPosts();
@@ -26,6 +27,9 @@ export default function Home() {
 
   return (
     <div className="font-sans">
+      {/* Event Announcement Modal */}
+      <EventAnnouncementModal />
+
       {/* Hero */}
       <section className="relative overflow-hidden">
         {/* Dark mode friendly background */}
@@ -40,7 +44,7 @@ export default function Home() {
             <div className="animate-fade-in-up [animation-delay:200ms]">
               <div className="mb-4">
                 <span className="inline-flex items-center gap-2 text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-3 py-1 rounded-full">
-                  <span>🏗️</span>
+                  <Hammer className="w-3.5 h-3.5" />
                   Community-built platform
                 </span>
               </div>
