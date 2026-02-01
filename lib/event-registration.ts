@@ -50,9 +50,7 @@ export async function registerForEvent(data: EventRegistration) {
     ...data,
     consent_timestamp: new Date().toISOString(),
     privacy_notice_version: 'v1.0',
-    // TEMPORARY: Auto-confirm registrations (email verification disabled)
-    status: 'confirmed', // Change back to 'pending' when email is enabled
-    email_verified_at: new Date().toISOString(), // Auto-verify for now
+    status: 'pending', // Awaiting email verification
   };
 
   const { data: result, error } = await supabase
@@ -68,19 +66,18 @@ export async function registerForEvent(data: EventRegistration) {
     throw error;
   }
 
-  // TODO: Enable email verification once Resend domain is verified
   // Send verification email (non-blocking for UX, but log errors)
-  // try {
-  //   await sendVerificationEmail({
-  //     email: data.email,
-  //     fullName: data.full_name,
-  //     verificationToken: result.verification_token,
-  //     eventSlug: data.event_slug,
-  //   });
-  // } catch (emailError) {
-  //   console.error('Failed to send verification email:', emailError);
-  //   // Don't throw - registration is still valid, email can be resent
-  // }
+  try {
+    await sendVerificationEmail({
+      email: data.email,
+      fullName: data.full_name,
+      verificationToken: result.verification_token,
+      eventSlug: data.event_slug,
+    });
+  } catch (emailError) {
+    console.error('Failed to send verification email:', emailError);
+    // Don't throw - registration is still valid, email can be resent
+  }
 
   return result;
 }

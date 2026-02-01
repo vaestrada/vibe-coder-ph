@@ -83,7 +83,7 @@ export default function RegistrationForm() {
 
       setSubmitStatus({
         type: 'success',
-        message: "Registration successful! You're all set for the event. We'll send you updates as March 17 approaches."
+        message: "Almost there! We've sent a verification email to your inbox. Please click the link to confirm your registration."
       });
 
       // Reset form
