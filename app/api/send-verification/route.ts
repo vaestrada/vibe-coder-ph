@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     const verificationUrl = `${baseUrl}/api/verify-email?token=${verificationToken}&event=${eventSlug}`;
     
     const { data, error } = await resend.emails.send({
-      from: 'Vibe Coders PH <updates@vibecoders.ph>',
+      from: 'Vibe Coders PH <noreply@updates.vibecoders.ph>',
       to: email,
       subject: 'Confirm your registration for Gen AI to Z',
       html: `
