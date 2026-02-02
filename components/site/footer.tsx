@@ -9,8 +9,8 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-2">
-              <Image src="/logo.svg" alt="Vibe Coders Philippines" width={40} height={40} className="h-10 w-10" />
-              <span className="font-semibold text-lg">Vibe Coders Philippines</span>
+              <Image src="/logo.svg" alt="Vibe Coders PH" width={40} height={40} className="h-10 w-10" />
+              <span className="font-semibold text-lg">Vibe Coders PH</span>
             </div>
             <p className="text-sm text-muted-foreground max-w-sm">
               Project-first coding content and community. Learn by shipping real projects.
@@ -50,7 +50,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted-foreground">
           <div className="flex flex-col gap-1">
-            <p>© {new Date().getFullYear()} Vibe Coders Philippines. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Vibe Coders PH. All rights reserved.</p>
             <p className="text-xs">Fully built by our community members - design, code, database, and deployment.</p>
           </div>
           <p>Made in the PH 🇵🇭</p>

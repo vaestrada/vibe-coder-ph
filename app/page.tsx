@@ -54,7 +54,7 @@ export default function Home() {
                 <span className="inline-block animate-fade-in-up [animation-delay:800ms] bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">Land real work.</span>
               </h1>
               <p className="mt-4 text-muted-foreground text-lg animate-fade-in-up [animation-delay:1000ms]">
-                Vibe Coders Philippines shares hands-on guides and community-driven content in Web Development, AI, and Data. Project-first, mentor-guided, community-backed.
+                Vibe Coders PH shares hands-on guides and community-driven content in Web Development, AI, and Data. Project-first, mentor-guided, community-backed.
               </p>
               <div className="mt-6 flex flex-wrap gap-3 animate-fade-in-up [animation-delay:1200ms]">
                 <Link href="https://discord.gg/HgKuev28wg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-foreground px-4 py-2.5 text-background text-sm font-medium hover:opacity-90 hover:scale-105 transition-all duration-200">

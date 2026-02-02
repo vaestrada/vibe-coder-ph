@@ -284,7 +284,7 @@ async headers() {
 
 ## Reference Implementation
 
-See Vibe Coders Philippines as a reference:
+See Vibe Coders PH as a reference:
 - [Root Layout](app/layout.tsx) - Complete metadata setup
 - [Page Example](app/sponsor/page.tsx) - Page-specific metadata
 - [Next Config](next.config.ts) - Security headers & optimization

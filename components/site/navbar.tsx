@@ -26,13 +26,13 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-3 font-semibold">
             <Image 
               src="/logo.svg" 
-              alt="Vibe Coders Philippines" 
+              alt="Vibe Coders PH" 
               width={144} 
               height={36} 
               priority
               className="h-9 w-auto" 
             />
-            <span className="text-lg font-bold hidden sm:inline">Vibe Coders Philippines</span>
+            <span className="text-lg font-bold hidden sm:inline">Vibe Coders PH</span>
             <span className="text-lg font-bold sm:hidden">Vibe Coder PH</span>
           </Link>
 

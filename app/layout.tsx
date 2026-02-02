@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Vibe Coders Philippines",
-    default: "Vibe Coders Philippines",
+    template: "%s | Vibe Coders PH",
+    default: "Vibe Coders PH",
   },
   description:
     "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     apple: "/logo.svg",
   },
   openGraph: {
-    title: "Vibe Coders Philippines",
+    title: "Vibe Coders PH",
     description:
       "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
     url: "https://www.vibecoders.ph",
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Vibe Coders Philippines - Hands-on coding education",
+        alt: "Vibe Coders PH - Hands-on coding education",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vibe Coders Philippines",
+    title: "Vibe Coders PH",
     description:
       "Hands-on coding content and project briefs in the Philippines. Learn Web, AI, and Data—project-first, mentor-guided.",
     images: ["/og-image.png"],

@@ -2624,7 +2624,7 @@ feature:       ●──●  (feature-login-form)
 
         <!-- After Image -->
         <div class="my-6">
-          <img src="/og-image.png" alt="Final OG image with purple gradient, Vibe Coders Philippines branding" class="rounded-lg border shadow-sm" />
+          <img src="/og-image.png" alt="Final OG image with purple gradient, Vibe Coders PH branding" class="rounded-lg border shadow-sm" />
           <div class="mt-2 p-3 bg-secondary/30 rounded-lg font-mono text-sm">
             Saved as: <code>/public/og-image.png</code> (1200x630px)
           </div>

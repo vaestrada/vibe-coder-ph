@@ -5,14 +5,14 @@ export const metadata = { title: "About" };
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
-      <h1 className="text-3xl font-bold mb-6">About Vibe Coders Philippines</h1>
+      <h1 className="text-3xl font-bold mb-6">About Vibe Coders PH</h1>
 
       {/* Mission */}
       <div className="mb-12">
         <h2 className="text-xl font-semibold mb-4">Our Mission</h2>
         <div className="space-y-4 text-muted-foreground leading-7">
           <p>
-            Vibe Coders Philippines is a community-driven platform sharing hands-on technical content and real-world project insights. We believe the best way to learn is through building, sharing, and learning together.
+            Vibe Coders PH is a community-driven platform sharing hands-on technical content and real-world project insights. We believe the best way to learn is through building, sharing, and learning together.
           </p>
           <p>
             Instead of lengthy theory, we focus on practical tutorials, project breakdowns, and the kind of knowledge you actually use in the field. Our content covers Web Development, AI Engineering, and Data Analytics with a project-first approach.
