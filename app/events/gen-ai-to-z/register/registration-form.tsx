@@ -5,6 +5,8 @@ import { registerForEvent } from "@/lib/event-registration";
 import { Check, Loader2, AlertCircle, CheckCircle2, Info } from "lucide-react";
 import Link from "next/link";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 type AffiliationType = '' | 'College Student' | 'Senior High Student' | 'Faculty/Staff' | 'Professional' | 'Independent Creator' | 'Career Shifter' | 'Other';
 
@@ -12,7 +14,7 @@ export default function RegistrationForm() {
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
-    phone: "",
+    phone: "" as string | undefined,
     affiliation: "" as AffiliationType,
     organization: "",
     year_level: "",
@@ -64,7 +66,15 @@ export default function RegistrationForm() {
     if (!formData.affiliation) {
       setSubmitStatus({
         type: 'error',
-        message: "Please select your affiliation"
+        message: "Please select your occupation"
+      });
+      return;
+    }
+
+    if (!formData.phone) {
+      setSubmitStatus({
+        type: 'error',
+        message: "Please enter your phone number"
       });
       return;
     }
@@ -90,7 +100,7 @@ export default function RegistrationForm() {
       setFormData({
         full_name: "",
         email: "",
-        phone: "",
+        phone: "" as string | undefined,
         affiliation: "" as AffiliationType,
         organization: "",
         year_level: "",
@@ -186,23 +196,25 @@ export default function RegistrationForm() {
           {/* Phone */}
           <div>
             <label htmlFor="phone" className="block text-sm font-medium mb-2">
-              Phone Number <span className="text-muted-foreground text-xs">(Optional)</span>
+              Phone Number <span className="text-red-500">*</span>
             </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
+            <PhoneInput
+              international
+              defaultCountry="PH"
               value={formData.phone}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
-              placeholder="+63 912 345 6789"
+              onChange={(value) => setFormData(prev => ({ ...prev, phone: value }))}
+              className="phone-input-custom w-full"
+              numberInputProps={{
+                className: "w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500",
+                required: true,
+              }}
             />
           </div>
 
-          {/* Affiliation */}
+          {/* Occupation */}
           <div>
             <label htmlFor="affiliation" className="block text-sm font-medium mb-2">
-              Affiliation <span className="text-red-500">*</span>
+              Occupation <span className="text-red-500">*</span>
             </label>
             <select
               id="affiliation"
@@ -212,7 +224,7 @@ export default function RegistrationForm() {
               required
               className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
             >
-              <option value="">Select your affiliation</option>
+              <option value="">Select your occupation</option>
               <option value="College Student">College Student</option>
               <option value="Senior High Student">Senior High Student</option>
               <option value="Faculty/Staff">Faculty/Staff</option>
@@ -223,10 +235,10 @@ export default function RegistrationForm() {
             </select>
           </div>
 
-          {/* Organization */}
+          {/* Affiliation */}
           <div>
             <label htmlFor="organization" className="block text-sm font-medium mb-2">
-              School/Company/Organization <span className="text-muted-foreground text-xs">(Optional)</span>
+              Affiliation <span className="text-muted-foreground text-xs">(Optional)</span>
             </label>
             <input
               type="text"

@@ -270,3 +270,38 @@ html {
   @apply p-4 bg-background rounded-lg border-l-4 border-primary font-medium;
 }
 
+/* Phone Input Styles */
+.phone-input-custom .PhoneInputCountry {
+  padding: 12px;
+  background: hsl(var(--background));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-right: none;
+}
+
+.phone-input-custom .PhoneInputCountrySelect {
+  background: transparent;
+  border: none;
+  color: hsl(var(--foreground));
+  cursor: pointer;
+}
+
+.phone-input-custom .PhoneInputCountrySelect:focus {
+  outline: none;
+}
+
+.phone-input-custom .PhoneInputCountryIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.phone-input-custom .PhoneInputInput {
+  border-left: none !important;
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+}
+
+.phone-input-custom .PhoneInputInput:focus {
+  border-color: rgba(139, 92, 246, 1) !important;
+}
+
