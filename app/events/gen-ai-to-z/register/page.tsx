@@ -79,7 +79,7 @@ export default function RegisterPage() {
               </svg>
             </a>
             <a 
-              href="https://linkedin.com/company/vibecodersph" 
+              href="https://www.linkedin.com/company/vibe-coders-ph" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-violet-400 hover:text-violet-300 transition-colors"
@@ -101,7 +101,7 @@ export default function RegisterPage() {
               </svg>
             </a>
             <a 
-              href="https://discord.gg/vibecodersph" 
+              href="https://discord.gg/7necGrk8" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-violet-400 hover:text-violet-300 transition-colors"

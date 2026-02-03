@@ -161,7 +161,7 @@ All learning from each other.
 
 ### Who’s behind this
 
-Organized by **UP EMC² Fraternity**,  
+Organized by **EMC² Fraternity & Vibe Coders PH**,  
 a recognized organization under the **UP College of Engineering**,  
 in coordination with faculty advisers and university units.
 

@@ -195,7 +195,7 @@ export function EventAnnouncementModal() {
                   ))}
                 </div>
                 <p className="mt-4 text-center text-[10px] text-white/40">
-                  Organized by UP EMC² Fraternity
+                  Organized by EMC² Fraternity & Vibe Coders PH
                 </p>
               </div>
             </div>

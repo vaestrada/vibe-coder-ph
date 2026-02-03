@@ -336,7 +336,7 @@ export default function RegistrationForm() {
               </button>
             ) : (
               <div className="text-sm text-muted-foreground space-y-3 mt-4">
-                <p><strong className="text-foreground">Data Controller:</strong> UP EMC² Fraternity, UP College of Engineering</p>
+                <p><strong className="text-foreground">Data Controller:</strong> EMC² Fraternity & Vibe Coders PH, UP College of Engineering</p>
                 
                 <p><strong className="text-foreground">Purpose:</strong> We collect your personal information to process your registration for the &ldquo;Gen AI to Z&rdquo; event on March 17, 2026, and to communicate event-related information.</p>
                 

@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
         This verification link expires in 24 hours.
       </p>
       <p style="color: #71717a; font-size: 12px; margin: 0;">
-        Organized by UP EMC² Fraternity in partnership with Vibe Coders PH
+        Organized by EMC² Fraternity & Vibe Coders PH
       </p>
     </div>
   </div>

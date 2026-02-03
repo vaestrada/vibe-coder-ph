@@ -4,7 +4,7 @@
 **The Blurb:**  
 > *"Stop manually typing your future. Whether you're a coder, creative, or corporate hopeful, the rules have changed. Come learn how to turn 'Artificial' Intelligence into 'Hired' Intelligence."*
 
-**Proposed by:** UP EMC² Fraternity  
+**Proposed by:** EMC² Fraternity & Vibe Coders PH  
 **Proposed Venue:** David M. Consunji Theater, Institute of Civil Engineering, UP Diliman  
 **Proposed Date:** March 17, 2026 (Tuesday)  
 **Duration:** One (1) Day  
@@ -91,4 +91,4 @@ The event will seek support from industry partners, technology companies, startu
 
 ## VII. ORGANIZING BODY
 
-The event will be organized by **UP EMC² Fraternity**, a duly recognized fraternity under the UP College of Engineering. The organizing body will coordinate closely with a designated faculty adviser and relevant UP Diliman units to ensure alignment with university policies, proper governance, and smooth event execution.
+The event will be organized by **EMC² Fraternity & Vibe Coders PH**, a duly recognized fraternity under the UP College of Engineering. The organizing body will coordinate closely with a designated faculty adviser and relevant UP Diliman units to ensure alignment with university policies, proper governance, and smooth event execution.

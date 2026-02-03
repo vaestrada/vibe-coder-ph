@@ -135,7 +135,7 @@ export default function GenAItoZPage() {
     },
     "organizer": {
       "@type": "Organization",
-      "name": "UP EMC² Fraternity",
+      "name": "EMC² Fraternity & Vibe Coders PH",
       "url": "https://www.vibecoders.ph"
     },
     "offers": {
@@ -477,9 +477,9 @@ export default function GenAItoZPage() {
             <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 rounded-full border border-cyan-500/20">
               Organized By
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">UP EMC² Fraternity</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">EMC² Fraternity & Vibe Coders PH</h2>
             <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-              A recognized organization under the <strong className="text-foreground">UP College of Engineering</strong>, coordinating with faculty advisers and university units to bring you this career forum.
+              A recognized organization under the <strong className="text-foreground">UP College of Engineering</strong>, in partnership with <strong className="text-foreground">Vibe Coders PH</strong>, coordinating with faculty advisers and university units to bring you this career forum.
             </p>
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 flex items-center justify-center">
