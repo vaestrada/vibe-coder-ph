@@ -39,7 +39,7 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-md animate-fade-in"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
@@ -47,21 +47,22 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-2xl max-h-[90vh] bg-gradient-to-b from-slate-900 to-slate-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-scale-in"
+        className="relative w-full max-w-2xl max-h-[95vh] sm:max-h-[90vh] bg-gradient-to-b from-slate-900 to-slate-950 border border-white/10 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden animate-scale-in"
+        style={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8)' }}
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-gradient-to-r from-violet-900/50 to-fuchsia-900/50 border-b border-white/10 backdrop-blur-sm">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-violet-500/20 rounded-lg">
-              <Shield className="w-5 h-5 text-violet-400" />
+        <div className="sticky top-0 z-10 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-violet-900/90 to-fuchsia-900/90 border-b border-white/10 backdrop-blur-md">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="p-1.5 sm:p-2 bg-violet-500/20 rounded-lg border border-violet-500/30">
+              <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-violet-400" />
             </div>
-            <h2 id="privacy-modal-title" className="text-xl font-bold text-foreground">
+            <h2 id="privacy-modal-title" className="text-lg sm:text-xl font-bold text-foreground">
               Data Privacy Notice
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="p-1.5 sm:p-2 hover:bg-white/20 rounded-lg transition-all hover:scale-110"
             aria-label="Close privacy notice"
           >
             <X className="w-5 h-5" />
@@ -69,7 +70,7 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto max-h-[calc(90vh-140px)] p-6 space-y-6">
+        <div className="overflow-y-auto max-h-[calc(95vh-120px)] sm:max-h-[calc(90vh-140px)] p-4 sm:p-6 space-y-4 sm:space-y-6 scrollbar-thin scrollbar-thumb-violet-500/50 scrollbar-track-transparent">
           {/* Introduction */}
           <div className="p-4 bg-violet-950/30 border border-violet-500/20 rounded-xl">
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -208,10 +209,10 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
         </div>
 
         {/* Footer */}
-        <div className="sticky bottom-0 flex items-center justify-end gap-3 px-6 py-4 bg-slate-900/95 border-t border-white/10 backdrop-blur-sm">
+        <div className="sticky bottom-0 flex items-center justify-end gap-3 px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-slate-900/95 to-slate-950/95 border-t border-white/10 backdrop-blur-md">
           <button
             onClick={onClose}
-            className="px-6 py-2.5 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 rounded-lg font-semibold transition-all"
+            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 rounded-lg font-semibold transition-all hover:scale-105 hover:shadow-lg hover:shadow-violet-500/50 active:scale-95"
           >
             I Understand
           </button>
