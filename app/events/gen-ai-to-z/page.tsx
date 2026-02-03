@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "Full-day career forum at UP Diliman. Learn how AI is reshaping work with talks, panels, and community networking. For students & professionals. Free admission. 300-500 expected attendees.",
   openGraph: {
     title: "Gen AI to Z - A Career Guide in an AI-Driven Workplace",
-    description: "March 17, 2026 at Institute of Civil Engineering, UP Diliman. Discover AI career paths with talks, panels, and hands-on demonstrations. Free admission.",
+    description: "March 17, 2026 at David M. Consunji Theater, ICE, UP Diliman. Discover AI career paths with talks, panels, and hands-on demonstrations. Free admission.",
     images: [{ url: "/events/gen-ai-to-z-og.jpg", width: 1200, height: 630 }],
     type: "website",
   },
@@ -123,7 +123,7 @@ export default function GenAItoZPage() {
     "eventStatus": "https://schema.org/EventScheduled",
     "location": {
       "@type": "Place",
-      "name": "David M. Consunji Theater, Institute of Civil Engineering",
+      "name": "David M. Consunji Theater, ICE, UP Diliman",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Institute of Civil Engineering, T.H. Pardo de Tavera St, UP Diliman",
@@ -201,7 +201,7 @@ export default function GenAItoZPage() {
               <span className="hidden sm:inline text-violet-400">•</span>
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-fuchsia-400" />
-                <span>Institute of Civil Engineering, UP Diliman</span>
+                <span>David M. Consunji Theater, ICE, UP Diliman</span>
               </div>
               <span className="hidden sm:inline text-violet-400">•</span>
               <div className="flex items-center gap-2">
@@ -463,7 +463,7 @@ export default function GenAItoZPage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Map to David M. Consunji Theater, Institute of Civil Engineering, UP Diliman"
+                  title="Map to David M. Consunji Theater, ICE, UP Diliman"
                   className="grayscale-[70%] hover:grayscale-0 transition-all duration-500"
                 />
               </div>
@@ -529,7 +529,7 @@ export default function GenAItoZPage() {
               <span className="text-violet-400">•</span>
               <div className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-fuchsia-400" />
-                <span>Institute of Civil Engineering, UP Diliman</span>
+                <span>David M. Consunji Theater, ICE, UP Diliman</span>
               </div>
               <span className="text-violet-400">•</span>
               <div className="flex items-center gap-1.5">

@@ -3,11 +3,12 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { registerForEvent } from "@/lib/event-registration";
-import { Check, Loader2, AlertCircle, CheckCircle2, Info } from "lucide-react";
+import { Check, Loader2, AlertCircle, CheckCircle2, Shield, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import PrivacyModal from "./privacy-modal";
 
 type AffiliationType = '' | 'College Student' | 'Senior High Student' | 'Faculty/Staff' | 'Professional' | 'Independent Creator' | 'Career Shifter' | 'Other';
 
@@ -32,7 +33,7 @@ export default function RegistrationForm() {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance>(null);
 
-  const [showPrivacyNotice, setShowPrivacyNotice] = useState(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error' | null;
@@ -292,82 +293,47 @@ export default function RegistrationForm() {
         </div>
       </div>
 
-      {/* Privacy Notice */}
-      <div className="bg-violet-950/30 border border-violet-500/30 rounded-lg p-6">
+      {/* Privacy Notice & Consent */}
+      <div className="bg-gradient-to-br from-violet-950/40 to-fuchsia-950/20 border border-violet-500/30 rounded-xl p-6">
         <div className="flex items-start gap-3 mb-4">
-          <Info className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
-          <div>
-            <h3 className="font-bold text-lg mb-2">Data Privacy Notice</h3>
-            <p className="text-sm text-muted-foreground mb-3">
-              Your personal data is protected under the Data Privacy Act of 2012 (Republic Act 10173).
+          <div className="p-2 bg-violet-500/20 rounded-lg flex-shrink-0">
+            <Shield className="w-5 h-5 text-violet-400" />
+          </div>
+          <div className="space-y-3">
+            <h3 className="font-bold text-lg">Data Privacy Notice</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Your personal data is protected under the <strong className="text-foreground">Data Privacy Act of 2012</strong> (Republic Act 10173). We only collect information necessary to process your registration and communicate event updates.
             </p>
             
-            {!showPrivacyNotice ? (
-              <button
-                type="button"
-                onClick={() => setShowPrivacyNotice(true)}
-                className="text-sm text-violet-400 hover:text-violet-300 underline"
-              >
-                Read Full Privacy Notice
-              </button>
-            ) : (
-              <div className="text-sm text-muted-foreground space-y-3 mt-4">
-                <p><strong className="text-foreground">Data Controller:</strong> EMC² Fraternity & Vibe Coders PH, UP College of Engineering</p>
-                
-                <p><strong className="text-foreground">Purpose:</strong> We collect your personal information to process your registration for the &ldquo;Gen AI to Z&rdquo; event on March 17, 2026, and to communicate event-related information.</p>
-                
-                <p><strong className="text-foreground">Data Collected:</strong></p>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Name, email, phone number</li>
-                  <li>Affiliation and organization</li>
-                  <li>Your expectations and feedback (optional)</li>
-                </ul>
-                
-                <p><strong className="text-foreground">Processing:</strong> Your data will be stored securely in our database (Supabase) with encryption at rest and in transit. Access is limited to authorized event organizers only.</p>
-                
-                <p><strong className="text-foreground">Retention:</strong> Your data will be retained for 1 year after the event for record-keeping purposes, then securely deleted unless you request earlier deletion.</p>
-                
-                <p><strong className="text-foreground">Your Rights under RA 10173:</strong></p>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Right to access your data</li>
-                  <li>Right to request correction of inaccurate data</li>
-                  <li>Right to request deletion of your data</li>
-                  <li>Right to withdraw consent (before the event)</li>
-                </ul>
-                
-                <p><strong className="text-foreground">Contact:</strong> For data privacy concerns or to exercise your rights, email us at{" "}
-                  <a href="mailto:privacy@vibecoders.ph" className="text-violet-400 hover:text-violet-300">
-                    privacy@vibecoders.ph
-                  </a>
-                </p>
-                
-                <button
-                  type="button"
-                  onClick={() => setShowPrivacyNotice(false)}
-                  className="text-sm text-violet-400 hover:text-violet-300 underline mt-3"
-                >
-                  Hide Privacy Notice
-                </button>
-              </div>
-            )}
+            <button
+              type="button"
+              onClick={() => setShowPrivacyModal(true)}
+              className="inline-flex items-center gap-2 text-sm text-violet-400 hover:text-violet-300 font-medium transition-colors group"
+            >
+              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              Read Full Privacy Notice
+            </button>
           </div>
         </div>
 
         {/* Consent Checkbox */}
-        <label className="flex items-start gap-3 cursor-pointer mt-4 p-4 rounded-lg border border-white/10 hover:bg-white/5 transition-colors">
+        <label className="flex items-start gap-3 cursor-pointer mt-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
           <input
             type="checkbox"
             name="consent_given"
             checked={formData.consent_given}
             onChange={handleChange}
             required
-            className="mt-1 w-5 h-5 rounded border-white/20 text-violet-600 focus:ring-2 focus:ring-violet-500"
+            className="mt-1 w-5 h-5 rounded border-white/20 text-violet-600 focus:ring-2 focus:ring-violet-500 focus:ring-offset-0"
           />
-          <span className="text-sm">
-            <strong>I consent</strong> to the collection, processing, and storage of my personal data as described in the Privacy Notice above, in accordance with the Data Privacy Act of 2012 (RA 10173). <span className="text-red-500">*</span>
+          <span className="text-sm leading-relaxed">
+            <strong>I consent</strong> to the collection, processing, and storage of my personal data as described in the Privacy Notice, in accordance with the Data Privacy Act of 2012 (RA 10173). <span className="text-red-500">*</span>
           </span>
         </label>
       </div>
+
+      {/* Privacy Modal */}
+      <PrivacyModal isOpen={showPrivacyModal} onClose={() => setShowPrivacyModal(false)} />
 
       {/* Cloudflare Turnstile CAPTCHA */}
       <div className="flex justify-center">

@@ -62,7 +62,7 @@ function SuccessContent() {
               </div>
               <div className="flex items-center justify-center gap-2">
                 <MapPin className="w-4 h-4 text-fuchsia-400" />
-                <span>David M. Consunji Theater, UP Diliman</span>
+                <span>David M. Consunji Theater, ICE, UP Diliman</span>
               </div>
             </div>
           </div>
