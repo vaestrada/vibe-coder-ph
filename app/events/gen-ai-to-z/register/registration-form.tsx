@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { registerForEvent } from "@/lib/event-registration";
 import { Check, Loader2, AlertCircle, CheckCircle2, Info } from "lucide-react";
 import Link from "next/link";
@@ -11,6 +12,7 @@ import 'react-phone-number-input/style.css';
 type AffiliationType = '' | 'College Student' | 'Senior High Student' | 'Faculty/Staff' | 'Professional' | 'Independent Creator' | 'Career Shifter' | 'Other';
 
 export default function RegistrationForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
@@ -71,14 +73,6 @@ export default function RegistrationForm() {
       return;
     }
 
-    if (!formData.phone) {
-      setSubmitStatus({
-        type: 'error',
-        message: "Please enter your phone number"
-      });
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
@@ -91,27 +85,9 @@ export default function RegistrationForm() {
       };
       await registerForEvent(registrationData);
 
-      setSubmitStatus({
-        type: 'success',
-        message: "Almost there! We've sent a verification email to your inbox. Please click the link to confirm your registration."
-      });
-
-      // Reset form
-      setFormData({
-        full_name: "",
-        email: "",
-        phone: "" as string | undefined,
-        affiliation: "" as AffiliationType,
-        organization: "",
-        year_level: "",
-        expectations: "",
-        how_did_you_hear: "",
-        consent_given: false,
-      });
-      
-      // Reset Turnstile
-      turnstileRef.current?.reset();
-      setTurnstileToken(null);
+      // Redirect to success page with email
+      const encodedEmail = encodeURIComponent(formData.email);
+      router.push(`/events/gen-ai-to-z/register/success?email=${encodedEmail}`);
     } catch (error: unknown) {
       // Check for duplicate email error
       const err = error as { message?: string; code?: string };
@@ -196,7 +172,7 @@ export default function RegistrationForm() {
           {/* Phone */}
           <div>
             <label htmlFor="phone" className="block text-sm font-medium mb-2">
-              Phone Number <span className="text-red-500">*</span>
+              Phone Number <span className="text-muted-foreground text-xs">(Optional)</span>
             </label>
             <PhoneInput
               international
@@ -447,7 +423,7 @@ export default function RegistrationForm() {
         ) : (
           <>
             <Check className="w-5 h-5" />
-            Complete Registration
+            Register
           </>
         )}
       </button>

@@ -64,9 +64,9 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Redirect to success page
+    // Redirect to confirmed/thank you page
     return NextResponse.redirect(
-      new URL('/events/gen-ai-to-z/register?verified=success', request.url)
+      new URL('/events/gen-ai-to-z/register/confirmed', request.url)
     );
   } catch (error) {
     console.error('Verification error:', error);
