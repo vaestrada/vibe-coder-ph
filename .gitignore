@@ -47,3 +47,7 @@ next-env.d.ts
 *.avi
 *.webm
 .env*.local
+
+# copilot skills (local development)
+.agents/skills/
+.github/skills/
