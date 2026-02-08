@@ -1,5 +1,5 @@
 # GEN AI TO Z  
-### A Career Guide in an AI-Driven Workplace  
+### A Career Summit in an AI-Driven World  
 
 **March 17, 2026 | 8:00 AM – 5:00 PM**  
 **David M. Consunji Theater, UP Diliman**
@@ -181,4 +181,4 @@ The question isn’t **“Will AI change my career?”**
 It’s **“Will I know how to use it when it does?”**
 
 **Gen AI to Z**  
-*A Career Guide in an AI-Driven Workplace*
+*A Career Summit in an AI-Driven World*

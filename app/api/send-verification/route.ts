@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       <h1 style="font-size: 24px; font-weight: bold; background: linear-gradient(to right, #8b5cf6, #d946ef, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
         Gen AI to Z
       </h1>
-      <p style="color: #a1a1aa; margin-top: 8px;">A Career Guide in an AI-Driven Workplace</p>
+      <p style="color: #a1a1aa; margin-top: 8px;">A Career Summit in an AI-Driven World</p>
     </div>
     
     <!-- Main Content -->
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       <h2 style="font-size: 20px; margin: 0 0 16px 0;">Hi ${fullName}! 👋</h2>
       
       <p style="color: #d4d4d8; line-height: 1.6; margin: 0 0 24px 0;">
-        Thank you for registering for <strong>Gen AI to Z: A Career Guide in an AI-Driven Workplace</strong>. 
+        Thank you for registering for <strong>Gen AI to Z: A Career Summit in an AI-Driven World</strong>. 
         Please confirm your email address to complete your registration.
       </p>
       

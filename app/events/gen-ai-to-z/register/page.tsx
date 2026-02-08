@@ -7,7 +7,7 @@ import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Register - Gen AI to Z Event | March 17, 2026",
-  description: "Register for Gen AI to Z: A Career Guide in an AI-Driven Workplace. Free admission. March 17, 2026 at David M. Consunji Theater, ICE, UP Diliman.",
+  description: "Register for Gen AI to Z: A Career Summit in an AI-Driven World. Free admission. March 17, 2026 at David M. Consunji Theater, ICE, UP Diliman.",
   robots: { index: true, follow: true },
 };
 

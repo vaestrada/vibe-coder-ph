@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Gen AI to Z - Career Guide in AI-Driven Workplace | March 17, 2026",
   description: "Full-day career forum at UP Diliman. Learn how AI is reshaping work with talks, panels, and community networking. For students & professionals. Free admission. 300-500 expected attendees.",
   openGraph: {
-    title: "Gen AI to Z - A Career Guide in an AI-Driven Workplace",
+    title: "Gen AI to Z - A Career Summit in an AI-Driven World",
     description: "March 17, 2026 at David M. Consunji Theater, ICE, UP Diliman. Discover AI career paths with talks, panels, and hands-on demonstrations. Free admission.",
     images: [{ url: "/events/gen-ai-to-z-og.jpg", width: 1200, height: 630 }],
     type: "website",
@@ -116,7 +116,7 @@ export default function GenAItoZPage() {
   const eventSchema = {
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": "Gen AI to Z: A Career Guide in an AI-Driven Workplace",
+    "name": "Gen AI to Z: A Career Summit in an AI-Driven World",
     "startDate": "2026-03-17T08:00:00+08:00",
     "endDate": "2026-03-17T17:00:00+08:00",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -190,7 +190,7 @@ export default function GenAItoZPage() {
             </h1>
 
             <p className="text-2xl sm:text-3xl text-cyan-400 mb-6 font-semibold animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-              A Career Guide in an AI-Driven Workplace
+              A Career Summit in an AI-Driven World
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg mb-8 text-muted-foreground animate-fade-in-up" style={{ animationDelay: '400ms' }}>

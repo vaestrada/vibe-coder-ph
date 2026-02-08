@@ -116,7 +116,7 @@ export function EventAnnouncementModal() {
                   Gen AI to Z
                 </h2>
                 <p id="event-modal-desc" className="mt-1 text-base text-white/70">
-                  A Career Guide in an AI-Driven Workplace
+                  A Career Summit in an AI-Driven World
                 </p>
 
                 {/* Event highlights - horizontal */}

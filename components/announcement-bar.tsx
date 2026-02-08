@@ -59,7 +59,7 @@ export function AnnouncementBar() {
           <span className="flex items-center gap-2 font-medium">
             <Sparkles className="w-4 h-4 flex-shrink-0" />
             <span className="hidden sm:inline">
-              Gen AI to Z: A Career Guide in an AI-Driven Workplace
+              Gen AI to Z: A Career Summit in an AI-Driven World
             </span>
             <span className="sm:hidden">Gen AI to Z</span>
             <span className="text-white/80">|</span>
