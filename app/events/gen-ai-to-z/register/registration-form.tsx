@@ -74,6 +74,14 @@ export default function RegistrationForm() {
       return;
     }
 
+    if (!formData.organization || formData.organization.trim() === '') {
+      setSubmitStatus({
+        type: 'error',
+        message: "Please provide your affiliation (school, company, or organization)"
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
@@ -215,16 +223,20 @@ export default function RegistrationForm() {
           {/* Affiliation */}
           <div>
             <label htmlFor="organization" className="block text-sm font-medium mb-2">
-              Affiliation <span className="text-muted-foreground text-xs">(Optional)</span>
+              Affiliation <span className="text-red-500">*</span>
             </label>
+            <p className="text-sm text-muted-foreground mb-2">
+              Enter your school, company, or organization. If you're from a partner org or sponsor, please indicate their name.
+            </p>
             <input
               type="text"
               id="organization"
               name="organization"
               value={formData.organization}
               onChange={handleChange}
+              required
               className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
-              placeholder="UP Diliman, Company Inc., etc."
+              placeholder="e.g., UP Diliman, ABC Company, XYZ Corporation"
             />
           </div>
 
