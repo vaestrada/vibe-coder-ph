@@ -226,7 +226,7 @@ export default function RegistrationForm() {
               Affiliation <span className="text-red-500">*</span>
             </label>
             <p className="text-sm text-muted-foreground mb-2">
-              Enter your school, company, or organization. If you're from a partner org or sponsor, please indicate their name.
+              Enter your school, company, or organization. If you&apos;re from a partner org or sponsor, please indicate their name.
             </p>
             <input
               type="text"
