@@ -180,8 +180,8 @@ export default function GenAItoZPage() {
           </div>
 
           {/* Hero content — two-column on desktop */}
-          <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-20">
-            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
+          <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-20">
+            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
               {/* Left column: text, countdown, CTAs */}
               <div className="flex-1 text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-green-500/20 border border-green-500/30 rounded-full text-green-400 text-sm font-mono">

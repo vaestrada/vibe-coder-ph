@@ -26,6 +26,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      country-flag-icons:
+        specifier: ^1.6.13
+        version: 1.6.13
       framer-motion:
         specifier: ^12.23.12
         version: 12.23.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -875,8 +878,8 @@ packages:
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
-  country-flag-icons@1.6.12:
-    resolution: {integrity: sha512-tWxbBylam6Fkkg0nu+112jmny4WomHXgmdTQFobs/+evTyizSc06bCp//HAh4W1i+g1m06uqlbPuyLC5mrimkQ==}
+  country-flag-icons@1.6.13:
+    resolution: {integrity: sha512-mR9GoTXtj3zAXoZXBkb3J4QvyDllFEPtEfZvHb9U23TAHYXfkJyP03pRtZiR0spxo6Ibja3R/hn6a68T4LHBuA==}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -2877,7 +2880,7 @@ snapshots:
 
   concat-map@0.0.1: {}
 
-  country-flag-icons@1.6.12: {}
+  country-flag-icons@1.6.13: {}
 
   cross-spawn@7.0.6:
     dependencies:
@@ -3939,7 +3942,7 @@ snapshots:
   react-phone-number-input@3.4.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       classnames: 2.5.1
-      country-flag-icons: 1.6.12
+      country-flag-icons: 1.6.13
       input-format: 0.3.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       libphonenumber-js: 1.12.36
       prop-types: 15.8.1

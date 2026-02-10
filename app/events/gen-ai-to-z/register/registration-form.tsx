@@ -7,6 +7,7 @@ import { Check, Loader2, AlertCircle, CheckCircle2, Shield, ExternalLink } from 
 import Link from "next/link";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import PhoneInput from 'react-phone-number-input';
+import flags from 'react-phone-number-input/flags';
 import 'react-phone-number-input/style.css';
 import PrivacyModal from "./privacy-modal";
 
@@ -186,6 +187,7 @@ export default function RegistrationForm() {
             <PhoneInput
               international
               defaultCountry="PH"
+              flags={flags}
               value={formData.phone}
               onChange={(value) => setFormData(prev => ({ ...prev, phone: value }))}
               className="phone-input-custom w-full"
