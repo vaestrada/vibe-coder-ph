@@ -180,8 +180,8 @@ export default function GenAItoZPage() {
           </div>
 
           {/* Hero content — two-column on desktop */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
-            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-20">
+            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
               {/* Left column: text, countdown, CTAs */}
               <div className="flex-1 text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-green-500/20 border border-green-500/30 rounded-full text-green-400 text-sm font-mono">
@@ -239,15 +239,15 @@ export default function GenAItoZPage() {
               </div>
 
               {/* Right column: Event poster (desktop) */}
-              <div className="hidden lg:block flex-shrink-0 w-full max-w-[360px] animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+              <div className="hidden lg:block flex-shrink-0 w-full max-w-[380px] animate-fade-in-up" style={{ animationDelay: '400ms' }}>
                 <div className="relative">
                   {/* Ambient glow behind poster */}
                   <div className="absolute -inset-6 bg-gradient-to-br from-violet-500/20 via-fuchsia-500/15 to-cyan-500/10 rounded-3xl blur-2xl" />
                   <Image
                     src="/events/Poster-gen-ai-to-z.png"
                     alt="Gen AI to Z official event poster — March 17, 2026 at David M. Consunji Theater, ICE, UP Diliman"
-                    width={360}
-                    height={509}
+                    width={380}
+                    height={537}
                     className="relative w-full h-auto rounded-2xl shadow-2xl shadow-violet-950/60 border border-white/10 ring-1 ring-white/5"
                     priority
                   />

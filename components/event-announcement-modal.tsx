@@ -96,7 +96,7 @@ export function EventAnnouncementModal() {
         className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
       >
         <div
-          className={`pointer-events-auto relative w-full max-w-[680px] transition-all duration-[450ms] ease-[cubic-bezier(.16,1,.3,1)] ${
+          className={`pointer-events-auto relative w-full max-w-[720px] transition-all duration-[450ms] ease-[cubic-bezier(.16,1,.3,1)] ${
             isVisible
               ? "opacity-100 translate-y-0 scale-100"
               : "opacity-0 translate-y-5 scale-[0.97]"
@@ -121,15 +121,15 @@ export function EventAnnouncementModal() {
 
             <div className="flex flex-col md:flex-row md:items-stretch">
               {/* Poster — fully visible, no cropping */}
-              <div className="relative flex-shrink-0 md:w-[230px] bg-black/30">
-                <div className="flex items-center justify-center p-4 md:p-3 h-[200px] md:h-full">
+              <div className="relative flex-shrink-0 md:w-[260px] bg-black/30">
+                <div className="flex items-center justify-center p-4 md:p-3 h-[220px] md:h-full">
                   <Image
                     src="/events/Poster-gen-ai-to-z.png"
                     alt="Gen AI to Z — A Career Summit in an AI-Driven World, March 17 2026 at UP Diliman"
-                    width={230}
-                    height={325}
+                    width={260}
+                    height={368}
                     className="h-full w-auto max-w-full object-contain rounded-lg shadow-lg shadow-black/40"
-                    sizes="(max-width: 768px) 160px, 230px"
+                    sizes="(max-width: 768px) 180px, 260px"
                     priority
                   />
                 </div>
