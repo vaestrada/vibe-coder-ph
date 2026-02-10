@@ -158,7 +158,7 @@ export default function GenAItoZPage() {
       />
 
       <div className="min-h-screen bg-background">
-        {/* Hero Section */}
+        {/* Hero Section — Split layout: content + poster */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           {/* Animated background with grid pattern */}
           <div className="absolute inset-0 bg-gradient-to-br from-violet-950/90 via-background to-fuchsia-950/90 dark:from-violet-950 dark:via-background dark:to-fuchsia-950">
@@ -179,78 +179,100 @@ export default function GenAItoZPage() {
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-fuchsia-500/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
           </div>
 
-          {/* Hero content */}
-          <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-green-500/20 border border-green-500/30 rounded-full text-green-400 text-sm font-mono">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              Free Admission • Open to All
-            </div>
+          {/* Hero content — two-column on desktop */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+              {/* Left column: text, countdown, CTAs */}
+              <div className="flex-1 text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-green-500/20 border border-green-500/30 rounded-full text-green-400 text-sm font-mono">
+                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  Free Admission • Open to All
+                </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent animate-fade-in-up">
-              GEN AI TO Z
-            </h1>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent animate-fade-in-up">
+                  GEN AI TO Z
+                </h1>
 
-            <p className="text-2xl sm:text-3xl text-cyan-400 mb-6 font-semibold animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-              A Career Summit in an AI-Driven World
-            </p>
+                <p className="text-2xl sm:text-3xl text-cyan-400 mb-6 font-semibold animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+                  A Career Summit in an AI-Driven World
+                </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg mb-8 text-muted-foreground animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-              <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-violet-400" />
-                <time dateTime="2026-03-17T08:00">March 17, 2026</time>
+                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 text-base mb-8 text-muted-foreground animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-violet-400" />
+                    <time dateTime="2026-03-17T08:00">March 17, 2026</time>
+                  </div>
+                  <span className="hidden sm:inline text-violet-400">•</span>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-fuchsia-400" />
+                    <span>UP Diliman</span>
+                  </div>
+                  <span className="hidden sm:inline text-violet-400">•</span>
+                  <div className="flex items-center gap-2">
+                    <Users className="w-5 h-5 text-cyan-400" />
+                    <span>300-500 Attendees</span>
+                  </div>
+                </div>
+
+                {/* Countdown Timer */}
+                <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
+                  <CountdownTimer targetDate="2026-03-17T08:00:00+08:00" />
+                </div>
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up" style={{ animationDelay: '800ms' }}>
+                  <Link
+                    href="/events/gen-ai-to-z/register"
+                    className="group inline-flex items-center justify-center gap-2 min-h-[48px] min-w-[200px] px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white rounded-lg text-lg font-semibold shadow-lg shadow-violet-500/50 transition-all hover:scale-105 hover:shadow-xl hover:shadow-violet-500/60 touch-action-manipulation"
+                  >
+                    Register Free
+                    <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                  </Link>
+                  <Link
+                    href="#about"
+                    className="inline-flex items-center justify-center gap-2 min-h-[48px] min-w-[200px] px-8 py-4 border-2 border-violet-500 hover:bg-violet-500/10 rounded-lg text-lg font-semibold transition-all touch-action-manipulation"
+                  >
+                    Learn More
+                    <ChevronDown className="w-5 h-5" />
+                  </Link>
+                </div>
               </div>
-              <span className="hidden sm:inline text-violet-400">•</span>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-fuchsia-400" />
-                <span>David M. Consunji Theater, ICE, UP Diliman</span>
-              </div>
-              <span className="hidden sm:inline text-violet-400">•</span>
-              <div className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-cyan-400" />
-                <span>300-500 Attendees</span>
-              </div>
-            </div>
 
-            {/* Countdown Timer */}
-            <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
-              <CountdownTimer targetDate="2026-03-17T08:00:00+08:00" />
-            </div>
+              {/* Right column: Event poster (desktop) */}
+              <div className="hidden lg:block flex-shrink-0 w-full max-w-[360px] animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+                <div className="relative">
+                  {/* Ambient glow behind poster */}
+                  <div className="absolute -inset-6 bg-gradient-to-br from-violet-500/20 via-fuchsia-500/15 to-cyan-500/10 rounded-3xl blur-2xl" />
+                  <Image
+                    src="/events/Poster-gen-ai-to-z.png"
+                    alt="Gen AI to Z official event poster — March 17, 2026 at David M. Consunji Theater, ICE, UP Diliman"
+                    width={360}
+                    height={509}
+                    className="relative w-full h-auto rounded-2xl shadow-2xl shadow-violet-950/60 border border-white/10 ring-1 ring-white/5"
+                    priority
+                  />
+                </div>
+              </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '800ms' }}>
-              <Link
-                href="/events/gen-ai-to-z/register"
-                className="group inline-flex items-center justify-center gap-2 min-h-[48px] min-w-[200px] px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white rounded-lg text-lg font-semibold shadow-lg shadow-violet-500/50 transition-all hover:scale-105 hover:shadow-xl hover:shadow-violet-500/60 touch-action-manipulation"
-              >
-                Register Free
-                <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              </Link>
-              <Link
-                href="#about"
-                className="inline-flex items-center justify-center gap-2 min-h-[48px] min-w-[200px] px-8 py-4 border-2 border-violet-500 hover:bg-violet-500/10 rounded-lg text-lg font-semibold transition-all touch-action-manipulation"
-              >
-                Learn More
-                <ChevronDown className="w-5 h-5" />
-              </Link>
+              {/* Mobile poster — shown below CTAs, smaller */}
+              <div className="lg:hidden w-full max-w-[280px] mx-auto animate-fade-in-up" style={{ animationDelay: '1000ms' }}>
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-br from-violet-500/15 to-fuchsia-500/10 rounded-2xl blur-xl" />
+                  <Image
+                    src="/events/Poster-gen-ai-to-z.png"
+                    alt="Gen AI to Z official event poster — March 17, 2026 at David M. Consunji Theater, ICE, UP Diliman"
+                    width={280}
+                    height={396}
+                    className="relative w-full h-auto rounded-xl shadow-xl border border-white/10"
+                    priority
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Scroll indicator */}
-            <ScrollIndicator />
-          </div>
-        </section>
-
-        {/* Event Poster Section */}
-        <section className="py-16 bg-gradient-to-b from-violet-950/40 to-background">
-          <div className="max-w-2xl mx-auto px-4 text-center">
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-violet-500/10">
-              <Image
-                src="/events/Poster-gen-ai-to-z.png"
-                alt="Gen AI to Z - A Career Summit in an AI-Driven World, March 17, 2026 at David M. Consunji Theater, ICE, UP Diliman"
-                width={800}
-                height={1131}
-                className="w-full h-auto"
-                priority
-              />
+            <div className="mt-8 flex justify-center">
+              <ScrollIndicator />
             </div>
           </div>
         </section>

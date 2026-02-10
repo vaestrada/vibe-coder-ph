@@ -120,20 +120,21 @@ export function EventAnnouncementModal() {
             </button>
 
             <div className="flex flex-col md:flex-row md:items-stretch">
-              {/* Poster */}
-              <div className="relative flex-shrink-0 md:w-[240px]">
-                <div className="relative h-[180px] md:h-full overflow-hidden">
+              {/* Poster — fully visible, no cropping */}
+              <div className="relative flex-shrink-0 md:w-[230px] bg-black/30">
+                <div className="flex items-center justify-center p-4 md:p-3 h-[200px] md:h-full">
                   <Image
                     src="/events/Poster-gen-ai-to-z.png"
                     alt="Gen AI to Z — A Career Summit in an AI-Driven World, March 17 2026 at UP Diliman"
-                    fill
-                    className="object-cover object-[center_20%] md:object-center"
-                    sizes="(max-width: 768px) 100vw, 240px"
+                    width={230}
+                    height={325}
+                    className="h-full w-auto max-w-full object-contain rounded-lg shadow-lg shadow-black/40"
+                    sizes="(max-width: 768px) 160px, 230px"
                     priority
                   />
-                  {/* Bottom fade on mobile */}
-                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0a0a0f] to-transparent md:hidden" />
                 </div>
+                {/* Blend edge into card on desktop */}
+                <div className="hidden md:block absolute inset-y-0 right-0 w-8 bg-gradient-to-r from-transparent to-[#0a0a0f]" />
               </div>
 
               {/* Content */}
