@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, MapPin, Users, Sparkles, Code2, GraduationCap, ChevronDown, Check, Handshake, BookOpen, Compass, Flag, Mic, ShieldCheck, Ticket } from "lucide-react";
 import CountdownTimer from "./components/countdown-timer";
 import PersonaCards from "./components/persona-cards";
@@ -235,6 +236,22 @@ export default function GenAItoZPage() {
 
             {/* Scroll indicator */}
             <ScrollIndicator />
+          </div>
+        </section>
+
+        {/* Event Poster Section */}
+        <section className="py-16 bg-gradient-to-b from-violet-950/40 to-background">
+          <div className="max-w-2xl mx-auto px-4 text-center">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-violet-500/10">
+              <Image
+                src="/events/Poster-gen-ai-to-z.png"
+                alt="Gen AI to Z - A Career Summit in an AI-Driven World, March 17, 2026 at David M. Consunji Theater, ICE, UP Diliman"
+                width={800}
+                height={1131}
+                className="w-full h-auto"
+                priority
+              />
+            </div>
           </div>
         </section>
 
