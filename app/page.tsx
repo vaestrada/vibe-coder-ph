@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Sparkles, Users, Clock4, Code2, Calendar, ArrowRight, Hammer } from "lucide-react";
 import { getAllBlogPosts } from "@/lib/blog-data";
 import { EventAnnouncementModal } from "@/components/event-announcement-modal";
+import HeroVideo from "@/components/hero-video";
 
 export default function Home() {
   const blogPosts = getAllBlogPosts();
@@ -71,18 +72,10 @@ export default function Home() {
             <div className="relative animate-fade-in-up [animation-delay:600ms]">
               <div className="aspect-video w-full rounded-xl border bg-gradient-to-tr from-violet-600/10 via-fuchsia-600/10 to-sky-500/10 dark:from-violet-600/20 dark:via-fuchsia-600/20 dark:to-sky-500/20 p-1 hover:scale-105 transition-all duration-300 group">
                 <div className="h-full w-full overflow-hidden rounded-lg bg-background/60 dark:bg-background/80">
-                  <video
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    aria-label="SentroLink - Intelligent Healthcare Triage System demo video"
-                  >
-                    <source src="https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/projects/sentrolink-full.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  <HeroVideo
+                    src="/media/projects/sentrolink-full.mp4"
+                    alt="SentroLink - Intelligent Healthcare Triage System demo video"
+                  />
                 </div>
               </div>
               <div className="mt-3 text-center">

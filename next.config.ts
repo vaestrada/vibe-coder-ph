@@ -31,6 +31,16 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        // Proxy Supabase storage through Vercel's CDN to use Vercel bandwidth
+        // instead of Supabase cached egress. Vercel free tier: 100GB/mo vs Supabase: 5GB/mo
+        source: '/media/:path*',
+        destination: 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

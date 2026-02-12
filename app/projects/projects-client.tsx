@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Project } from "@/lib/supabase";
+import LazyVideo from "@/components/lazy-video";
 
 interface ProjectsClientProps {
   projects: Project[];
@@ -63,16 +64,12 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                 }}
               >
                 {p.media_type === 'video' && p.media_url ? (
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
-                    poster={p.thumbnail_url || undefined}
-                  >
-                    <source src={p.media_url} type="video/mp4" />
-                  </video>
+                  <LazyVideo
+                    src={p.media_url}
+                    poster={p.thumbnail_url}
+                    alt={`${p.title} demo video`}
+                    className="object-cover w-full h-full"
+                  />
                 ) : (
                   <Image
                     src={p.media_url || '/images/placeholder.jpg'}

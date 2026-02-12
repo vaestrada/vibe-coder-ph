@@ -18,7 +18,7 @@ export const uploadProjectMedia = async (
     const { error: uploadError } = await supabase.storage
       .from('project-media')
       .upload(filePath, file, {
-        cacheControl: '3600',
+        cacheControl: '31536000', // 1 year — video content rarely changes
         upsert: false
       })
 

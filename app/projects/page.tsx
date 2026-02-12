@@ -2,6 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { getProjects, Project } from "@/lib/supabase";
 import ProjectsClient from "./projects-client";
+import LazyVideo from "@/components/lazy-video";
+
+// Revalidate every hour — reduces Supabase API egress by caching the page
+export const revalidate = 3600;
 
 // Fallback static projects (for reliability)
 const staticProjects: Project[] = [
@@ -54,16 +58,12 @@ export default async function ProjectsPage() {
                   {/* Video Display */}
                   <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 flex-shrink-0">
                     {p.media_type === 'video' && p.media_url ? (
-                      <video 
-                        autoPlay 
-                        muted 
-                        loop 
-                        playsInline
-                        preload="metadata"
-                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                      >
-                        <source src={p.media_url} type="video/mp4" />
-                      </video>
+                      <LazyVideo
+                        src={p.media_url}
+                        poster={p.thumbnail_url}
+                        alt={`${p.title} demo video`}
+                        className="object-cover w-full h-full"
+                      />
                     ) : (
                       <Image 
                         src={p.media_url || '/images/placeholder.jpg'} 
