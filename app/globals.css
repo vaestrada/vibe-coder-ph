@@ -93,6 +93,11 @@ html {
 .animate-slow-rotate {
   animation: slow-rotate 20s linear infinite;
 }
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));

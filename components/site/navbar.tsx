@@ -15,6 +15,8 @@ const links = [
   { href: "/about", label: "About" },
 ];
 
+const COHORT_HREF = "/ai-builder-cohort";
+
 export function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -49,6 +51,16 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
+            <Link
+              href={COHORT_HREF}
+              className={`ml-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-all duration-200 ${
+                pathname === COHORT_HREF
+                  ? "border-violet-500 bg-violet-600 text-white"
+                  : "border-violet-500/50 text-violet-400 hover:border-violet-500 hover:bg-violet-500/10 hover:text-violet-300"
+              }`}
+            >
+              AI Builder Cohort
+            </Link>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -80,14 +92,25 @@ export function Navbar() {
                   href={l.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                    pathname === l.href 
-                      ? "bg-accent text-accent-foreground" 
+                    pathname === l.href
+                      ? "bg-accent text-accent-foreground"
                       : "text-muted-foreground hover:text-accent-foreground hover:bg-accent"
                   }`}
                 >
                   {l.label}
                 </Link>
               ))}
+              <Link
+                href={COHORT_HREF}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-3 py-2 rounded-md text-base font-semibold transition-colors ${
+                  pathname === COHORT_HREF
+                    ? "bg-violet-600 text-white"
+                    : "text-violet-400 hover:bg-violet-500/10 hover:text-violet-300"
+                }`}
+              >
+                AI Builder Cohort ✦
+              </Link>
             </div>
           </div>
         )}
