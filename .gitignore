@@ -46,6 +46,11 @@ next-env.d.ts
 *.mov
 *.avi
 *.webm
+
+# CSV and Excel files (contact databases)
+*.csv
+*.xlsx
+*.xls
 .env*.local
 
 # copilot skills (local development)
