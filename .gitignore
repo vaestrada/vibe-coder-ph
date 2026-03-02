@@ -33,6 +33,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -47,12 +48,19 @@ next-env.d.ts
 *.avi
 *.webm
 
-# CSV and Excel files (contact databases)
+# large event assets (hosted on Supabase Storage)
+main_poster_gen_ai_to_z.png
+public/images/gen-ai-to-z-poster.png
+
+# CSV and Excel files (contact databases — stored in data/contacts/)
 *.csv
 *.xlsx
 *.xls
-.env*.local
+data/contacts/
+
+# pnpm
+pnpm-workspace.yaml
 
 # copilot skills (local development)
-.agents/skills/
+.agents/
 .github/skills/
