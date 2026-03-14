@@ -16,18 +16,43 @@ function getSupabaseClient() {
 }
 
 /**
- * Build the reminder email HTML for a registrant
+ * Partner org matching patterns — maps org names to SQL ILIKE patterns
  */
-function buildReminderEmail(fullName: string): string {
+const PARTNER_ORG_PATTERNS: Record<string, string[]> = {
+  'UP Data Science Society': ['%UP Data Science%', '%UPDSS%'],
+  'GDG on Campus PUP': ['%GDG%PUP%', '%GDGoC PUP%', '%GDGoC-PUP%', '%Google Developer Group%PUP%'],
+  'GDG on Campus NU Manila': ['%GDG%National University%', '%GDG%NU Manila%', '%GDGoC NU%', '%GDGoC-NU%', '%Google Developer Group%NU%', '%GDG on Campus NU%', '%GDGOC%NU%', '%GDGoC National%'],
+  'AWS Cloud Club PUP': ['%AWS Cloud Club PUP%', '%AWS%Cloud%Club%PUP%'],
+  'AWS Cloud Clubs Philippines': ['%AWS Cloud Club%Philippines%'],
+  'AWS UG e:Novators PH': ['%AWS%eNovators%', '%AWS%e:Novators%', '%AWS User Group%', '%AWS%Novator%'],
+  'Microsoft Azure Community PH': ['%Microsoft Azure%', '%Azure Community%'],
+  'Power BI Pilipinas': ['%Power BI%'],
+  'DEVCON Manila': ['%DEVCON%'],
+  'JPCS TIP QC': ['%JPCS%TIP%', '%JPCS TIP%'],
+  'JPCS FEU Tech': ['%JPCS%FEU%'],
+  'COMSA – EARIST': ['%COMSA%', '%Computer Science Student Association%'],
+  'PUP ASCII': ['%ASCII%', '%PUP ASCII%'],
+  'Hack Club Philippines': ['%Hack Club%'],
+  'FWDP': ['%FWDP%', '%Filipino Web Dev%', '%Filipino Web Development%'],
+};
+
+function buildSeatsUpdateEmail(fullName: string, isPartnerOrg: boolean, orgName?: string): string {
   const firstName = fullName.split(' ')[0];
   const posterUrl = 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/gen-ai-to-z-poster.png';
+
+  const partnerOrgNote = isPartnerOrg && orgName
+    ? `<p style="color: #d4d4d8; line-height: 1.7; margin: 0 0 20px 0;">
+        As part of <strong style="color: #c084fc;">${orgName}'s delegation</strong>, we want to make sure you and your org-mates get seats. Coordinate with your group and plan to arrive together early!
+      </p>`
+    : '';
+
   return `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>See You at Gen AI to Z!</title>
+  <title>Limited Seats — Arrive Early! | Gen AI to Z</title>
 </head>
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0a0a0a; color: #ffffff; margin: 0; padding: 0;">
   <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
@@ -46,9 +71,11 @@ function buildReminderEmail(fullName: string): string {
       </a>
     </div>
 
-    <!-- Countdown Banner -->
-    <div style="text-align: center; background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(217, 70, 239, 0.25)); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 12px; padding: 20px; margin-bottom: 24px;">
-      <p style="font-size: 36px; font-weight: 800; margin: 0; background: linear-gradient(to right, #c084fc, #f0abfc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">3 Days to Go! 🔥</p>
+    <!-- LIMITED SEATS Banner -->
+    <div style="text-align: center; background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(234, 88, 12, 0.25)); border: 1px solid rgba(239, 68, 68, 0.5); border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+      <p style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; color: #fca5a5; margin: 0 0 8px 0;">⚠️ Important Update</p>
+      <p style="font-size: 28px; font-weight: 800; margin: 0; color: #ffffff;">Limited Seats Only</p>
+      <p style="font-size: 15px; color: #fca5a5; margin: 8px 0 0 0;">First-come, first-served — arrive early!</p>
     </div>
 
     <!-- Main Content -->
@@ -56,12 +83,37 @@ function buildReminderEmail(fullName: string): string {
       <h2 style="font-size: 20px; margin: 0 0 16px 0;">Hi ${firstName}! 👋</h2>
 
       <p style="color: #d4d4d8; line-height: 1.7; margin: 0 0 20px 0;">
-        We hope you're as excited as we are! <strong>Gen AI to Z: A Career Summit in an AI-Driven World</strong> is just <strong>3 days away</strong>, and we can't wait to see you there.
+        We're thrilled by the overwhelming response — <strong style="color: #c084fc;">over 500 people</strong> have registered for Gen AI to Z! 🎉
       </p>
 
-      <p style="color: #d4d4d8; line-height: 1.7; margin: 0 0 24px 0;">
-        Here's a quick recap of what to expect:
+      <p style="color: #d4d4d8; line-height: 1.7; margin: 0 0 20px 0;">
+        Due to the high demand, <strong>seating inside the David M. Consunji Theater is limited to 250</strong>. Entry will be on a <strong>first-come, first-served basis</strong>. We strongly encourage you to arrive early to secure your seat.
       </p>
+
+      ${partnerOrgNote}
+
+      <!-- Key Info Card -->
+      <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 20px; margin-bottom: 24px;">
+        <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; color: #f87171; margin: 0 0 16px 0;">🚪 Doors &amp; Seating</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="color: #a1a1aa; padding: 8px 0; vertical-align: top; width: 30px;">📝</td>
+            <td style="color: #d4d4d8; padding: 8px 0;"><strong>Registration opens at 7:00 AM</strong> — line up early!</td>
+          </tr>
+          <tr>
+            <td style="color: #a1a1aa; padding: 8px 0; vertical-align: top;">⏰</td>
+            <td style="color: #d4d4d8; padding: 8px 0;"><strong>Program starts at exactly 8:00 AM</strong></td>
+          </tr>
+          <tr>
+            <td style="color: #a1a1aa; padding: 8px 0; vertical-align: top;">💺</td>
+            <td style="color: #d4d4d8; padding: 8px 0;"><strong>250 theater seats</strong> — once full, remaining attendees can enjoy the lobby area with sponsor booths</td>
+          </tr>
+          <tr>
+            <td style="color: #a1a1aa; padding: 8px 0; vertical-align: top;">🪪</td>
+            <td style="color: #d4d4d8; padding: 8px 0;">Bring a <strong>valid ID</strong> for check-in</td>
+          </tr>
+        </table>
+      </div>
 
       <!-- Event Details Card -->
       <div style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 20px; margin-bottom: 24px;">
@@ -72,42 +124,18 @@ function buildReminderEmail(fullName: string): string {
             <td style="color: #d4d4d8; padding: 6px 0;"><strong>March 17, 2026</strong> (Tuesday)</td>
           </tr>
           <tr>
-            <td style="color: #a1a1aa; padding: 6px 0; vertical-align: top;">📝</td>
-            <td style="color: #d4d4d8; padding: 6px 0;"><strong>Registration opens at 7:00 AM</strong></td>
-          </tr>
-          <tr>
-            <td style="color: #a1a1aa; padding: 6px 0; vertical-align: top;">⏰</td>
-            <td style="color: #d4d4d8; padding: 6px 0;"><strong>Event starts at exactly 8:00 AM</strong></td>
-          </tr>
-          <tr>
             <td style="color: #a1a1aa; padding: 6px 0; vertical-align: top;">📍</td>
             <td style="color: #d4d4d8; padding: 6px 0;"><strong>David M. Consunji Theater</strong><br>Institute of Civil Engineering (ICE), UP Diliman, Quezon City</td>
           </tr>
           <tr>
             <td style="color: #a1a1aa; padding: 6px 0; vertical-align: top;">💰</td>
-            <td style="color: #d4d4d8; padding: 6px 0;"><strong>FREE admission</strong> — open to all</td>
+            <td style="color: #d4d4d8; padding: 6px 0;"><strong>FREE admission</strong></td>
           </tr>
         </table>
       </div>
 
-      <!-- Reminders -->
-      <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: 8px; padding: 20px; margin-bottom: 24px;">
-        <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; color: #06b6d4; margin: 0 0 12px 0;">🎒 Quick Reminders</h3>
-        <ul style="color: #d4d4d8; line-height: 1.8; margin: 0; padding-left: 20px;">
-          <li>🚨 <strong>First come, first served!</strong> Due to high demand, seats are limited — come early to secure yours</li>
-          <li><strong>Arrive early!</strong> Registration starts at 7:00 AM — the event begins at exactly 8:00 AM</li>
-          <li>Bring a <strong>valid ID</strong> for check-in at the registration desk</li>
-          <li>🍱 <strong>BYOB — Bring Your Own Baon!</strong> Lunch won't be provided, sorry!</li>
-          <li>Nearby canteens on campus: <strong>ICE Canteen</strong>, <strong>NIGS Canteen</strong>, and <strong>CS Library Canteen</strong></li>
-          <li>Wear something comfortable — it's going to be a full day of learning!</li>
-          <li>Bring a notebook or laptop if you'd like to take notes</li>
-          <li>Connect with fellow attendees — networking is half the fun!</li>
-        </ul>
-      </div>
-
-      <!-- What to Expect -->
       <p style="color: #d4d4d8; line-height: 1.7; margin: 0 0 16px 0;">
-        Get ready for insightful talks, hands-on workshops, and conversations with industry leaders on how AI is reshaping careers across every field. Whether you're a student, professional, or career shifter — there's something for you.
+        Get ready for insightful talks, hands-on workshops, and conversations with industry leaders on how AI is reshaping careers across every field.
       </p>
 
       <!-- CTA -->
@@ -116,20 +144,6 @@ function buildReminderEmail(fullName: string): string {
           View Full Schedule
         </a>
       </div>
-    </div>
-
-    <!-- Share & Invite -->
-    <div style="text-align: center; margin-top: 32px; padding: 24px; background: rgba(139, 92, 246, 0.06); border: 1px solid rgba(139, 92, 246, 0.15); border-radius: 12px;">
-      <p style="color: #d4d4d8; font-size: 16px; font-weight: 600; margin: 0 0 8px 0;">
-        📣 Share this with friends & family!
-      </p>
-      <p style="color: #a1a1aa; font-size: 14px; line-height: 1.6; margin: 0 0 16px 0;">
-        Know someone who'd benefit from this summit? Invite them!<br>
-        Walk-ins are welcome but seats are limited — tell them to come early!
-      </p>
-      <p style="color: #d4d4d8; font-size: 14px; margin: 0;">
-        Registration link: <a href="https://www.vibecoders.ph/events/gen-ai-to-z/register" style="color: #8b5cf6; text-decoration: underline; font-weight: 600;">vibecoders.ph/events/gen-ai-to-z/register</a>
-      </p>
     </div>
 
     <!-- Follow Us -->
@@ -163,7 +177,7 @@ function buildReminderEmail(fullName: string): string {
         See you on March 17! 🚀
       </p>
       <p style="color: #71717a; font-size: 12px; margin: 0 0 4px 0;">
-        Organized by EMC² Fraternity & Vibe Coders PH
+        Organized by EMC² Fraternity &amp; Vibe Coders PH
       </p>
       <p style="color: #52525b; font-size: 11px; margin: 16px 0 0 0;">
         You're receiving this because you registered for Gen AI to Z.<br>
@@ -177,24 +191,18 @@ function buildReminderEmail(fullName: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    // Authenticate with admin key
-    const { adminKey, dryRun, testEmail } = await request.json();
+    const { adminKey, dryRun, testEmail, partnersOnly } = await request.json();
     const expectedKey = process.env.ADMIN_API_KEY;
 
     if (!expectedKey || adminKey !== expectedKey) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const resend = getResendClient();
+    const supabase = getSupabaseClient();
 
-    // ── Test mode: send a single test email, pull real name from Supabase ──
+    // ── Test mode: send one test email ──
     if (testEmail) {
-      const supabase = getSupabaseClient();
-
-      // Try to find the registrant's real name from Supabase
       let recipientName = 'Friend';
       const { data: registrant } = await supabase
         .from('event_registrations')
@@ -207,122 +215,130 @@ export async function POST(request: NextRequest) {
         recipientName = registrant.full_name;
       }
 
-      try {
-        const { data, error } = await resend.emails.send({
-          from: 'Vibe Coders PH <noreply@updates.vibecoders.ph>',
-          to: testEmail,
-          replyTo: 'hello@vibecoders.ph',
-          subject: `[TEST ${new Date().toLocaleTimeString('en-PH', { hour: '2-digit', minute: '2-digit' })}] 3 Days to Go! 🚀 Gen AI to Z Summit — See You on March 17!`,
-          html: buildReminderEmail(recipientName),
-          tags: [
-            { name: 'type', value: 'event-reminder-test' },
-            { name: 'event', value: 'gen-ai-to-z' },
-          ],
-        });
+      const { data, error } = await resend.emails.send({
+        from: 'Vibe Coders PH <noreply@updates.vibecoders.ph>',
+        to: testEmail,
+        replyTo: 'hello@vibecoders.ph',
+        subject: `[TEST] ⚠️ Limited Seats — Arrive Early! | Gen AI to Z Summit`,
+        html: buildSeatsUpdateEmail(recipientName, true, 'Your Org'),
+        tags: [
+          { name: 'type', value: 'seats-update-test' },
+          { name: 'event', value: 'gen-ai-to-z' },
+        ],
+      });
 
-        if (error) {
-          return NextResponse.json(
-            { error: `Failed to send test email: ${error.message}` },
-            { status: 500 }
-          );
-        }
-
-        return NextResponse.json({
-          success: true,
-          test: true,
-          sentTo: testEmail,
-          recipientName,
-          emailId: data?.id,
-        });
-      } catch (testError) {
+      if (error) {
         return NextResponse.json(
-          { error: `Test email error: ${String(testError)}` },
+          { error: `Failed to send test email: ${error.message}` },
           { status: 500 }
         );
       }
+
+      return NextResponse.json({
+        success: true,
+        test: true,
+        sentTo: testEmail,
+        recipientName,
+        emailId: data?.id,
+      });
     }
 
-    // ── Production mode: send to all registrants ──
-    const supabase = getSupabaseClient();
-
-    // Get all confirmed AND pending registrants for gen-ai-to-z
-    // (many registrants forget to verify their email but still intend to attend)
+    // ── Fetch registrants ──
     const { data: registrants, error: dbError } = await supabase
       .from('event_registrations')
-      .select('id, full_name, email, status')
+      .select('id, full_name, email, organization, status')
       .eq('event_slug', 'gen-ai-to-z')
       .in('status', ['confirmed', 'pending']);
 
     if (dbError) {
-      console.error('Failed to fetch registrants:', dbError);
-      return NextResponse.json(
-        { error: 'Failed to fetch registrants' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to fetch registrants' }, { status: 500 });
     }
 
     if (!registrants || registrants.length === 0) {
-      return NextResponse.json({
-        success: true,
-        message: 'No registrants found',
-        sent: 0,
-      });
+      return NextResponse.json({ success: true, message: 'No registrants found', sent: 0 });
     }
 
-    const confirmed = registrants.filter(r => r.status === 'confirmed').length;
-    const pending = registrants.filter(r => r.status === 'pending').length;
+    // ── Match partner orgs ──
+    function matchPartnerOrg(org: string | null): string | null {
+      if (!org) return null;
+      const orgLower = org.toLowerCase();
+      for (const [orgName, patterns] of Object.entries(PARTNER_ORG_PATTERNS)) {
+        for (const pattern of patterns) {
+          const cleanPattern = pattern.replace(/%/g, '').toLowerCase();
+          if (orgLower.includes(cleanPattern)) {
+            return orgName;
+          }
+        }
+      }
+      return null;
+    }
 
-    // Dry run mode: just return the list without sending
+    // Build recipient list with partner org info
+    const recipients = registrants.map(r => ({
+      ...r,
+      partnerOrg: matchPartnerOrg(r.organization),
+    }));
+
+    const partnerRecipients = recipients.filter(r => r.partnerOrg);
+    const targetRecipients = partnersOnly ? partnerRecipients : recipients;
+
+    // Dry run
     if (dryRun) {
+      const orgCounts: Record<string, number> = {};
+      partnerRecipients.forEach(r => {
+        if (r.partnerOrg) {
+          orgCounts[r.partnerOrg] = (orgCounts[r.partnerOrg] || 0) + 1;
+        }
+      });
+
       return NextResponse.json({
         success: true,
         dryRun: true,
-        totalRecipients: registrants.length,
-        confirmed,
-        pending,
-        recipients: registrants.map(r => ({
+        partnersOnly: !!partnersOnly,
+        totalRegistrants: registrants.length,
+        totalPartnerOrg: partnerRecipients.length,
+        targetRecipients: targetRecipients.length,
+        partnerOrgBreakdown: Object.entries(orgCounts)
+          .sort((a, b) => b[1] - a[1])
+          .map(([org, count]) => ({ org, count })),
+        recipients: targetRecipients.map(r => ({
           name: r.full_name,
           email: r.email,
+          org: r.organization,
+          partnerOrg: r.partnerOrg,
           status: r.status,
         })),
       });
     }
 
-    // Send in batches of 100 (Resend batch limit)
+    // ── Send emails in batches ──
     const BATCH_SIZE = 100;
-    const results: { sent: number; failed: number; errors: string[] } = {
-      sent: 0,
-      failed: 0,
-      errors: [],
-    };
+    const results = { sent: 0, failed: 0, errors: [] as string[] };
 
-    for (let i = 0; i < registrants.length; i += BATCH_SIZE) {
-      const batch = registrants.slice(i, i + BATCH_SIZE);
+    for (let i = 0; i < targetRecipients.length; i += BATCH_SIZE) {
+      const batch = targetRecipients.slice(i, i + BATCH_SIZE);
 
-      const emailPayloads = batch.map(registrant => ({
-        from: 'Vibe Coders PH <noreply@updates.vibecoders.ph>',
-        to: registrant.email,
+      const emailPayloads = batch.map(r => ({
+        from: 'Vibe Coders PH <noreply@updates.vibecoders.ph>' as const,
+        to: r.email,
         replyTo: 'hello@vibecoders.ph',
-        subject: '3 Days to Go! 🚀 Gen AI to Z Summit — See You on March 17!',
-        html: buildReminderEmail(registrant.full_name),
+        subject: '⚠️ Limited Seats — Arrive Early! | Gen AI to Z Summit, March 17',
+        html: buildSeatsUpdateEmail(r.full_name, !!r.partnerOrg, r.partnerOrg || undefined),
         tags: [
-          { name: 'type', value: 'event-reminder' },
+          { name: 'type', value: 'seats-update' },
           { name: 'event', value: 'gen-ai-to-z' },
         ],
       }));
 
       try {
         const { data, error } = await resend.batch.send(emailPayloads);
-
         if (error) {
-          console.error(`Batch ${Math.floor(i / BATCH_SIZE) + 1} error:`, error);
           results.failed += batch.length;
           results.errors.push(`Batch ${Math.floor(i / BATCH_SIZE) + 1}: ${error.message}`);
         } else {
           results.sent += data?.data?.length || batch.length;
         }
       } catch (batchError) {
-        console.error(`Batch ${Math.floor(i / BATCH_SIZE) + 1} exception:`, batchError);
         results.failed += batch.length;
         results.errors.push(`Batch ${Math.floor(i / BATCH_SIZE) + 1}: ${String(batchError)}`);
       }
@@ -330,18 +346,14 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      totalRecipients: registrants.length,
-      confirmed,
-      pending,
+      partnersOnly: !!partnersOnly,
+      totalRecipients: targetRecipients.length,
       sent: results.sent,
       failed: results.failed,
       errors: results.errors.length > 0 ? results.errors : undefined,
     });
   } catch (error) {
-    console.error('Send reminder error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('Send seats update error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

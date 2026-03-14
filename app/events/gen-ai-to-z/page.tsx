@@ -64,52 +64,84 @@ const personas = [
 ];
 
 // Program segments from official concept paper
-const scheduleItems = [
+const programSchedule = [
   {
     id: "opening",
-    time: "8:00 AM - 9:00 AM",
-    title: "BIRD'S AI VIEW",
-    subtitle: "Opening Program",
-    description: "Welcome remarks, introduction of the event objectives, and an overview of the program flow. This session sets the big picture landscape for the day.",
-    topics: ["Welcome Remarks", "Event Objectives", "Program Overview"],
-    icon: "Eye"
+    label: "Registration & Opening",
+    timeRange: "7:00 – 8:45 AM",
+    icon: "Flag",
+    items: [
+      { time: "7:00 – 8:00 AM", title: "Registration", detail: "Guest arrival and networking", type: "registration" },
+      { time: "7:45 – 8:00 AM", title: "Pre-Program Hosting", detail: "Seating and program reminders", type: "transition" },
+      { time: "8:00 – 8:20 AM", title: "Opening Ceremonies", detail: "Introduction, Invocation, Lupang Hinirang, House Rules", type: "ceremony" },
+      { time: "8:20 – 8:40 AM", title: "Dean Maria Antonia N. Tanchuling", detail: "Opening Remarks", type: "talk" },
+      { time: "8:40 – 8:45 AM", title: "Transition", detail: "Host acknowledgment, stage reset", type: "transition" },
+    ],
   },
   {
-    id: "talks",
-    time: "9:00 AM - 12:00 PM",
-    title: "AI ON THE PRIZE",
-    subtitle: "Featured Talks",
-    description: "Talks by invited speakers from academe, industry, startups, and creative fields, focusing on AI development, applications, and career pathways. Each session includes a brief moderated Q&A.",
-    topics: ["AI Career Paths", "Industry Applications", "Real-World Case Studies"],
-    icon: "Target"
+    id: "ai-leadership",
+    label: "AI Leadership Talks",
+    timeRange: "8:45 – 10:15 AM",
+    icon: "Sparkles",
+    items: [
+      { time: "8:45 – 9:05 AM", title: "Jimbo Jose Emmanuel Reverente", detail: "AI innovation, research commercialization, and technopreneurship", type: "talk" },
+      { time: "9:05 – 9:25 AM", title: "Lois Anne Leal", detail: "AI in earth observation and satellite applications", type: "talk" },
+      { time: "9:25 – 9:45 AM", title: "Jaemark Tordecilla", detail: "Generative AI, media innovation, and responsible AI use", type: "talk" },
+      { time: "9:45 – 10:15 AM", title: "AI Leadership Panel Discussion", detail: "Moderated discussion", type: "panel" },
+    ],
+  },
+  {
+    id: "creative-ai",
+    label: "Creative AI Talks",
+    timeRange: "10:25 – 12:00 PM",
+    icon: "Mic",
+    items: [
+      { time: "10:15 – 10:25 AM", title: "Transition", detail: "Hosting, awarding of guests, AVP loop", type: "transition" },
+      { time: "10:25 – 10:40 AM", title: "Eplayment × Pixel", detail: "Industry Showcase Presentation", type: "showcase" },
+      { time: "10:40 – 11:00 AM", title: "Darryll Rapacon", detail: "AI-assisted filmmaking and creative workflows", type: "talk" },
+      { time: "11:00 – 11:20 AM", title: "Rodson Verr Suarez", detail: "Balancing AI tools with creative intent", type: "talk" },
+      { time: "11:20 – 11:50 AM", title: "Creative Panel Discussion", detail: "Moderated discussion", type: "panel" },
+      { time: "11:50 – 12:00 PM", title: "Transition", detail: "Hosting, awarding of guests, AVP loop", type: "transition" },
+    ],
   },
   {
     id: "lunch",
-    time: "12:00 PM - 1:00 PM",
-    title: "AS PER MY LAST PROMPT",
-    subtitle: "Networking & Partner Engagement",
-    description: "Connect with peers, mentors, and professionals. Explore partner booths and discover career opportunities. Short curated segments by industry partners.",
-    topics: ["Partner Booths", "Industry Perspectives", "Career Opportunities"],
-    icon: "Handshake"
+    label: "Lunch & Networking",
+    timeRange: "12:00 – 1:10 PM",
+    icon: "Coffee",
+    items: [
+      { time: "12:00 – 12:45 PM", title: "Networking & Sponsor Engagement", detail: "Lunch break and booth interaction", type: "break" },
+      { time: "12:45 – 1:10 PM", title: "Program Reopening & Early Raffle Draw", detail: "Hosted by InLife Foundation", type: "ceremony" },
+    ],
   },
   {
-    id: "panel",
-    time: "1:00 PM - 3:00 PM",
-    title: "BEST OF BOT WORLDS",
-    subtitle: "Panel Discussion",
-    description: "A moderated panel featuring selected speakers to discuss broader themes such as AI careers, ethical considerations, and the future of AI in the Philippine context.",
-    topics: ["AI Ethics", "Future of Work", "Academic + Industry Perspectives"],
-    icon: "MessageSquare"
+    id: "industry-ai",
+    label: "Industry AI Talks",
+    timeRange: "1:10 – 3:10 PM",
+    icon: "Briefcase",
+    items: [
+      { time: "1:10 – 1:20 PM", title: "Alibaba Cloud", detail: "Industry Showcase Presentation", type: "showcase" },
+      { time: "1:20 – 1:40 PM", title: "Jean Madrid", detail: "AI-driven business transformation and scaling organizations in the age of AI", type: "talk" },
+      { time: "1:40 – 2:00 PM", title: "Bryl Lim", detail: "AI tools and career leverage in enterprise", type: "talk" },
+      { time: "2:00 – 2:20 PM", title: "Aurelien Chu", detail: "AI education and workforce development", type: "talk" },
+      { time: "2:20 – 2:40 PM", title: "Jayson Cunanan, Ph.D.", detail: "Applied AI and startup building", type: "talk" },
+      { time: "2:40 – 3:10 PM", title: "Industry Panel Discussion", detail: "Moderated discussion", type: "panel" },
+    ],
   },
   {
     id: "community",
-    time: "3:00 PM - 5:00 PM",
-    title: "AI NAKU!",
-    subtitle: "Community Sharing & Open Forum",
-    description: "A moderated open-sharing session where participants present AI-assisted or AI-built projects, prototypes, research outputs, or creative works. A space for hallucinations turned into reality.",
-    topics: ["Project Demos", "Creative Works", "Open Discussion"],
-    icon: "Lightbulb"
-  }
+    label: "Community & Closing",
+    timeRange: "3:10 – 5:00 PM+",
+    icon: "Users",
+    items: [
+      { time: "3:10 – 3:20 PM", title: "Transition", detail: "Hosting, awarding of guests, introduction of Vibe Coders PH organizing team", type: "transition" },
+      { time: "3:20 – 4:30 PM", title: "Show & Tell", detail: "Organization Partner Presentations, seven minutes each", type: "community" },
+      { time: "4:30 – 4:50 PM", title: "Closing Remarks", detail: "Viron Gil Estrada, Event Director", type: "closing" },
+      { time: "4:50 – 5:00 PM", title: "Best Presentation Award", detail: "Recognition of selected showcase", type: "ceremony" },
+      { time: "4:50 – 5:00 PM", title: "Grand Raffle & Announcements", detail: "Sponsor recognition and prizes", type: "ceremony" },
+      { time: "5:00 PM+", title: "Networking", detail: "Photo opportunities and informal engagement", type: "break" },
+    ],
+  },
 ];
 
 export default function GenAItoZPage() {
@@ -210,7 +242,7 @@ export default function GenAItoZPage() {
                   <span className="hidden sm:inline text-violet-400">•</span>
                   <div className="flex items-center gap-2">
                     <Users className="w-5 h-5 text-cyan-400" />
-                    <span>300-500 Attendees</span>
+                    <span>600+ Registered</span>
                   </div>
                 </div>
 
@@ -300,8 +332,8 @@ export default function GenAItoZPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
               {[
                 { value: "1", label: "Full Day", sublabel: "8AM - 5PM" },
-                { value: "5", label: "Sessions", sublabel: "Talks, Panels, Demos" },
-                { value: "300+", label: "Attendees", sublabel: "Students & Pros" },
+                { value: "10+", label: "Speakers", sublabel: "Talks, Panels, Showcases" },
+                { value: "600+", label: "Registered", sublabel: "Students & Pros" },
                 { value: "FREE", label: "Admission", sublabel: "Open to All" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
@@ -447,7 +479,7 @@ export default function GenAItoZPage() {
         </section>
 
         {/* Schedule Section */}
-        <ScheduleSection items={scheduleItems} />
+        <ScheduleSection blocks={programSchedule} />
 
         {/* Location Section */}
         <section className="py-24 bg-gradient-to-b from-background to-violet-950/20" aria-labelledby="location-heading">

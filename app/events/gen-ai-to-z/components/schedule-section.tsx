@@ -1,42 +1,60 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, Eye, Target, MessageSquare, Handshake, Lightbulb } from "lucide-react";
+import { ChevronDown, Flag, Sparkles, Mic, Coffee, Briefcase, Users } from "lucide-react";
 
-interface ScheduleItem {
-  id: string;
+interface ProgramItem {
   time: string;
   title: string;
-  subtitle?: string;
-  description: string;
-  topics: string[];
-  icon?: string;
+  detail: string;
+  type: string;
+}
+
+interface ProgramBlock {
+  id: string;
+  label: string;
+  timeRange: string;
+  icon: string;
+  items: ProgramItem[];
 }
 
 interface ScheduleSectionProps {
-  items: ScheduleItem[];
+  blocks: ProgramBlock[];
 }
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Eye,
-  Target,
-  MessageSquare,
-  Handshake,
-  Lightbulb,
+  Flag,
+  Sparkles,
+  Mic,
+  Coffee,
+  Briefcase,
+  Users,
 };
 
-export default function ScheduleSection({ items }: ScheduleSectionProps) {
-  const [openItem, setOpenItem] = useState<string | null>("opening");
+const typeStyles: Record<string, { dot: string; text: string }> = {
+  registration: { dot: "bg-green-400", text: "text-muted-foreground" },
+  ceremony: { dot: "bg-violet-400", text: "text-muted-foreground" },
+  talk: { dot: "bg-fuchsia-400", text: "text-foreground" },
+  panel: { dot: "bg-cyan-400", text: "text-foreground" },
+  showcase: { dot: "bg-amber-400", text: "text-foreground" },
+  transition: { dot: "bg-zinc-500", text: "text-muted-foreground" },
+  break: { dot: "bg-green-400", text: "text-muted-foreground" },
+  community: { dot: "bg-violet-400", text: "text-foreground" },
+  closing: { dot: "bg-fuchsia-400", text: "text-muted-foreground" },
+};
 
-  const toggleItem = (id: string) => {
-    setOpenItem(openItem === id ? null : id);
-  };
+export default function ScheduleSection({ blocks }: ScheduleSectionProps) {
+  const [openBlocks, setOpenBlocks] = useState<Set<string>>(
+    new Set(blocks.map((b) => b.id))
+  );
 
-  const handleKeyDown = (e: React.KeyboardEvent, id: string) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleItem(id);
-    }
+  const toggleBlock = (id: string) => {
+    setOpenBlocks((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
   };
 
   return (
@@ -47,93 +65,90 @@ export default function ScheduleSection({ items }: ScheduleSectionProps) {
             Program Flow
           </span>
           <h2 id="schedule-heading" className="text-4xl sm:text-5xl font-bold mb-4">
-            One Day. Five Sessions.
+            Full Day Program
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A structured yet flexible program designed to balance formal talks, interactive discussions, and community-driven activities.
+            10+ speakers, 3 panel discussions, industry showcases, and a community Show &amp; Tell — from 7 AM to 5 PM.
           </p>
         </div>
 
-        <div className="space-y-3">
-          {items.map((item, index) => {
-            const isOpen = openItem === item.id;
-            const IconComponent = item.icon ? iconMap[item.icon] : null;
-            
+        <div className="space-y-4">
+          {blocks.map((block) => {
+            const isOpen = openBlocks.has(block.id);
+            const IconComponent = block.icon ? iconMap[block.icon] : null;
+
             return (
               <div
-                key={item.id}
-                className={`group relative overflow-hidden rounded-2xl border transition-all duration-300 ${
-                  isOpen 
-                    ? 'bg-gradient-to-br from-violet-950/50 to-fuchsia-950/30 border-violet-500/40 shadow-lg shadow-violet-500/10' 
-                    : 'bg-card/50 border-white/10 hover:border-violet-500/30 hover:bg-card/80'
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
+                key={block.id}
+                className="rounded-2xl border border-white/10 overflow-hidden bg-card/30"
               >
+                {/* Block header */}
                 <button
-                  onClick={() => toggleItem(item.id)}
-                  onKeyDown={(e) => handleKeyDown(e, item.id)}
-                  className="w-full text-left p-6 flex items-start gap-5 touch-action-manipulation"
+                  onClick={() => toggleBlock(block.id)}
+                  className="w-full text-left p-5 flex items-center gap-4 hover:bg-white/5 transition-colors touch-action-manipulation"
                   aria-expanded={isOpen}
-                  aria-controls={`schedule-content-${item.id}`}
                 >
-                  {/* Icon */}
                   {IconComponent && (
-                    <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
-                      isOpen 
-                        ? 'bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-lg shadow-violet-500/30' 
-                        : 'bg-violet-500/10 text-violet-400 group-hover:bg-violet-500/20'
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
+                      isOpen
+                        ? "bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-lg shadow-violet-500/30"
+                        : "bg-violet-500/10 text-violet-400"
                     }`}>
-                      <IconComponent className="w-6 h-6" />
+                      <IconComponent className="w-5 h-5" />
                     </div>
                   )}
-                  
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-1">
-                      <time className="text-violet-400 font-mono text-sm font-medium">
-                        {item.time}
-                      </time>
-                      {item.subtitle && (
-                        <>
-                          <span className="text-white/20">·</span>
-                          <span className="text-sm text-muted-foreground">{item.subtitle}</span>
-                        </>
-                      )}
-                    </div>
-                    <h3 className={`text-xl font-bold transition-colors ${
-                      isOpen ? 'text-white' : 'text-foreground group-hover:text-violet-400'
-                    }`}>
-                      {item.title}
-                    </h3>
+                    <h3 className="text-lg font-bold">{block.label}</h3>
+                    <p className="text-sm text-muted-foreground font-mono">
+                      {block.timeRange}
+                    </p>
                   </div>
-                  
-                  <ChevronDown 
-                    className={`w-5 h-5 text-violet-400 flex-shrink-0 mt-1 transition-transform duration-300 ${
-                      isOpen ? 'rotate-180' : ''
+                  <ChevronDown
+                    className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
                     }`}
-                    aria-hidden="true"
                   />
                 </button>
 
+                {/* Block items */}
                 <div
-                  id={`schedule-content-${item.id}`}
                   className={`overflow-hidden transition-all duration-300 ${
-                    isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="px-6 pb-6 pl-[4.25rem]">
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {item.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {item.topics.map((topic) => (
-                        <span
-                          key={topic}
-                          className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-white/70 font-medium"
+                  <div className="border-t border-white/5">
+                    {block.items.map((item, i) => {
+                      const style = typeStyles[item.type] || typeStyles.ceremony;
+                      return (
+                        <div
+                          key={i}
+                          className={`flex items-start gap-4 px-5 py-3.5 ${
+                            i < block.items.length - 1
+                              ? "border-b border-white/5"
+                              : ""
+                          } ${item.type === "transition" ? "opacity-50" : ""}`}
                         >
-                          {topic}
-                        </span>
-                      ))}
-                    </div>
+                          <div className="flex-shrink-0 w-[120px] sm:w-[140px]">
+                            <time className="text-sm font-mono text-muted-foreground">
+                              {item.time}
+                            </time>
+                          </div>
+                          <div className="flex items-start gap-3 min-w-0">
+                            <div
+                              className={`mt-1.5 w-2 h-2 rounded-full flex-shrink-0 ${style.dot}`}
+                            />
+                            <div>
+                              <p className={`font-semibold text-sm ${style.text}`}>
+                                {item.title}
+                              </p>
+                              <p className="text-xs text-muted-foreground mt-0.5">
+                                {item.detail}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -141,27 +156,20 @@ export default function ScheduleSection({ items }: ScheduleSectionProps) {
           })}
         </div>
 
-        {/* Expected attendance */}
+        {/* Stats */}
         <div className="mt-16 grid sm:grid-cols-3 gap-4">
           <div className="p-6 rounded-2xl bg-gradient-to-br from-violet-500/10 to-violet-500/5 border border-violet-500/20 text-center">
-            <div className="text-3xl font-bold text-violet-400 mb-1">300-500</div>
-            <div className="text-sm text-muted-foreground">Expected Attendees</div>
+            <div className="text-3xl font-bold text-violet-400 mb-1">600+</div>
+            <div className="text-sm text-muted-foreground">Registered Attendees</div>
           </div>
           <div className="p-6 rounded-2xl bg-gradient-to-br from-fuchsia-500/10 to-fuchsia-500/5 border border-fuchsia-500/20 text-center">
-            <div className="text-3xl font-bold text-fuchsia-400 mb-1">5+</div>
+            <div className="text-3xl font-bold text-fuchsia-400 mb-1">10+</div>
             <div className="text-sm text-muted-foreground">Industry Speakers</div>
           </div>
           <div className="p-6 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-cyan-500/5 border border-cyan-500/20 text-center">
             <div className="text-3xl font-bold text-cyan-400 mb-1">9 Hours</div>
             <div className="text-sm text-muted-foreground">of Learning & Networking</div>
           </div>
-        </div>
-
-        <div className="mt-8 p-6 rounded-2xl bg-white/5 border border-white/10 text-center">
-          <p className="text-lg font-semibold mb-2">Full lineup coming soon</p>
-          <p className="text-muted-foreground text-sm">
-            Specific speaker assignments and detailed timings will be announced as we coordinate with partners and university offices.
-          </p>
         </div>
       </div>
     </section>
