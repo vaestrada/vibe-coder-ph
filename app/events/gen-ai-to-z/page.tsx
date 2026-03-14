@@ -137,7 +137,6 @@ const programSchedule = [
       { time: "3:10 – 3:20 PM", title: "Transition", detail: "Hosting, awarding of guests, introduction of Vibe Coders PH organizing team", type: "transition" },
       { time: "3:20 – 4:30 PM", title: "Show & Tell", detail: "Organization Partner Presentations, seven minutes each", type: "community" },
       { time: "4:30 – 4:50 PM", title: "Closing Remarks", detail: "Viron Gil Estrada, Event Director", type: "closing" },
-      { time: "4:50 – 5:00 PM", title: "Best Presentation Award", detail: "Recognition of selected showcase", type: "ceremony" },
       { time: "4:50 – 5:00 PM", title: "Grand Raffle & Announcements", detail: "Sponsor recognition and prizes", type: "ceremony" },
       { time: "5:00 PM+", title: "Networking", detail: "Photo opportunities and informal engagement", type: "break" },
     ],
