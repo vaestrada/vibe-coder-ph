@@ -40,6 +40,7 @@ export default function RafflePage() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [currentWinner, setCurrentWinner] = useState<Registrant | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showDone, setShowDone] = useState(false);
 
   const spinIntervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -123,6 +124,7 @@ export default function RafflePage() {
     setWinners(prev => prev.slice(0, -1));
     setCurrentWinner(null);
     setCurrentDisplay("—");
+    setShowDone(false);
   }
 
   useEffect(() => {
@@ -291,7 +293,7 @@ export default function RafflePage() {
 
         {/* ── Main Stage ───────────────────────────────────────── */}
         <div className="flex-1 flex flex-col items-center justify-center px-4 py-4 gap-5">
-          {isDone ? (
+          {showDone ? (
             /* ── All Done ── */
             <div className="text-center space-y-7 w-full max-w-2xl">
               <div className="flex justify-center">
@@ -324,7 +326,7 @@ export default function RafflePage() {
           ) : (
             <>
               {/* ── Current Prize Label ── */}
-              {currentPrize && (() => { const Icon = currentPrize.Icon; return (
+              {currentPrize && !isDone && (() => { const Icon = currentPrize.Icon; return (
                 <div className="text-center">
                   <p className="text-[10px] font-mono text-white/20 tracking-[0.28em] uppercase mb-2">
                     Drawing &mdash; Prize {currentRound} of {PRIZES.length}
@@ -337,6 +339,24 @@ export default function RafflePage() {
                   </div>
                 </div>
               ); })()}
+
+              {isDone && currentWinner && (() => {
+                const lastPrize = PRIZES[PRIZES.length - 1];
+                const Icon = lastPrize.Icon;
+                return (
+                  <div className="text-center">
+                    <p className="text-[10px] font-mono text-amber-400/40 tracking-[0.28em] uppercase mb-2">
+                      Final Prize Drawn
+                    </p>
+                    <div className="flex items-center justify-center gap-2.5">
+                      <Icon className="w-5 h-5 text-amber-400/50" strokeWidth={1.5} />
+                      <span className="rf-display text-[2rem] text-amber-400/70 leading-none">
+                        {lastPrize.label}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })()}
 
               {/* ── Spinner Stage ── */}
               <div
@@ -358,29 +378,28 @@ export default function RafflePage() {
                   <div className="absolute top-0 left-0 right-0 h-px bg-amber-400/60" />
                 )}
 
-                <div className="px-8 py-10 md:px-16 md:py-14 text-center">
-                  <p className={`text-[10px] font-mono tracking-[0.3em] uppercase mb-6 transition-colors ${
+                <div className="px-6 py-8 md:px-12 md:py-10 text-center">
+                  <p className={`text-[10px] font-mono tracking-[0.3em] uppercase mb-5 transition-colors ${
                     currentWinner ? "text-amber-400/55" : isSpinning ? "text-white/25" : "text-white/12"
                   }`}>
                     {isSpinning ? "selecting" : currentWinner ? "winner" : "ready"}
                   </p>
                   <div
-                    className={`rf-ticker break-words leading-tight transition-colors duration-200 ${
-                      isSpinning
-                        ? "spinning-name text-white/45"
-                        : currentWinner
-                        ? "text-amber-300"
-                        : "text-white/18"
-                    }`}
-                    style={{
-                      fontSize: "clamp(2rem,6vw,4.5rem)",
-                      minHeight: "4rem",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
+                    className="flex items-center justify-center overflow-hidden"
+                    style={{ height: "5rem" }}
                   >
-                    {currentDisplay}
+                    <p
+                      className={`rf-ticker leading-none transition-colors duration-200 truncate w-full ${
+                        isSpinning
+                          ? "spinning-name text-white/45"
+                          : currentWinner
+                          ? "text-amber-300"
+                          : "text-white/18"
+                      }`}
+                      style={{ fontSize: "2.75rem" }}
+                    >
+                      {currentDisplay}
+                    </p>
                   </div>
                 </div>
 
@@ -392,22 +411,32 @@ export default function RafflePage() {
 
               {/* ── Controls ── */}
               <div className="flex flex-col sm:flex-row gap-2.5 w-full max-w-3xl">
-                <button
-                  onClick={pickWinner}
-                  disabled={isSpinning || eligible.length === 0}
-                  className={`flex-1 flex items-center justify-center gap-3 py-4 font-mono text-sm tracking-[0.22em] uppercase transition-all ${
-                    isSpinning || eligible.length === 0
-                      ? "bg-white/[0.04] text-white/20 cursor-not-allowed border border-white/[0.07]"
-                      : "bg-white text-black hover:bg-white/92 border border-white active:scale-[0.99]"
-                  }`}
-                >
-                  <Zap className="w-4 h-4" strokeWidth={2} />
-                  {isSpinning
-                    ? "Drawing..."
-                    : currentWinner
-                    ? `Draw Prize ${currentRound + 1}`
-                    : "Draw"}
-                </button>
+                {isDone && currentWinner ? (
+                  <button
+                    onClick={() => setShowDone(true)}
+                    className="flex-1 flex items-center justify-center gap-3 py-4 font-mono text-sm tracking-[0.22em] uppercase transition-all bg-white text-black hover:bg-white/92 border border-white active:scale-[0.99]"
+                  >
+                    <Trophy className="w-4 h-4" strokeWidth={2} />
+                    View All Winners
+                  </button>
+                ) : (
+                  <button
+                    onClick={pickWinner}
+                    disabled={isSpinning || eligible.length === 0}
+                    className={`flex-1 flex items-center justify-center gap-3 py-4 font-mono text-sm tracking-[0.22em] uppercase transition-all ${
+                      isSpinning || eligible.length === 0
+                        ? "bg-white/[0.04] text-white/20 cursor-not-allowed border border-white/[0.07]"
+                        : "bg-white text-black hover:bg-white/92 border border-white active:scale-[0.99]"
+                    }`}
+                  >
+                    <Zap className="w-4 h-4" strokeWidth={2} />
+                    {isSpinning
+                      ? "Drawing..."
+                      : currentWinner
+                      ? `Next: ${PRIZES[currentRound - 1]?.label ?? "Draw"}`
+                      : "Draw"}
+                  </button>
+                )}
 
                 {winners.length > 0 && !isSpinning && (
                   <button
@@ -424,7 +453,7 @@ export default function RafflePage() {
         </div>
 
         {/* ── Winners Sidebar ───────────────────────────────────── */}
-        {winners.length > 0 && !isDone && (
+        {winners.length > 0 && !showDone && (
           <div className="px-4 pb-10 w-full max-w-3xl mx-auto">
             <div className="border-t border-white/[0.06] pt-5">
               <p className="text-[10px] font-mono text-white/18 tracking-[0.25em] uppercase mb-3 flex items-center gap-2">
