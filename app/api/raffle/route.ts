@@ -19,8 +19,8 @@ export async function POST(request: NextRequest) {
       .from('event_registrations')
       .select('id, full_name')
       .eq('event_slug', 'gen-ai-to-z')
-      .in('status', ['confirmed', 'pending'])
-      .order('created_at');
+      .eq('checked_in', true)
+      .order('checked_in_at');
 
     if (error) {
       return NextResponse.json({ error: 'Failed to fetch registrants' }, { status: 500 });

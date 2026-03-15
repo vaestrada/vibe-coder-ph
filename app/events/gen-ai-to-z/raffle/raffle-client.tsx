@@ -1,12 +1,18 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Trophy, Shuffle, Lock, Users, Gift } from "lucide-react";
+import { Trophy, Shuffle, Lock, Users } from "lucide-react";
 
 interface Registrant {
   id: string;
   full_name: string;
 }
+
+const PRIZES = [
+  { round: 1, label: "🎽 Gen AI to Z Shirt", emoji: "🎽" },
+  { round: 2, label: "👜 Gen AI to Z Tote Bag", emoji: "👜" },
+  { round: 3, label: "✨ Gen AI to Z Sticker Pack", emoji: "✨" },
+];
 
 const SPIN_DURATION_MS = 4000;
 const FAST_INTERVAL = 60;
@@ -18,16 +24,18 @@ export default function RafflePage() {
   const [authError, setAuthError] = useState("");
   const [registrants, setRegistrants] = useState<Registrant[]>([]);
   const [eligible, setEligible] = useState<Registrant[]>([]);
-  const [winners, setWinners] = useState<{ round: number; name: string; id: string }[]>([]);
+  const [winners, setWinners] = useState<{ round: number; label: string; name: string; id: string }[]>([]);
   const [currentDisplay, setCurrentDisplay] = useState("???");
   const [isSpinning, setIsSpinning] = useState(false);
-  const [winner, setWinner] = useState<Registrant | null>(null);
-  const [round, setRound] = useState(1);
+  const [currentWinner, setCurrentWinner] = useState<Registrant | null>(null);
   const [loading, setLoading] = useState(false);
-  const [prizeLabel, setPrizeLabel] = useState("Grand Prize");
 
   const spinIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const spinTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const currentRound = winners.length + 1;
+  const currentPrize = PRIZES[currentRound - 1] ?? null;
+  const isDone = winners.length >= PRIZES.length;
 
   async function handleAuth(e: React.FormEvent) {
     e.preventDefault();
@@ -45,6 +53,11 @@ export default function RafflePage() {
         setLoading(false);
         return;
       }
+      if (data.registrants.length === 0) {
+        setAuthError("No checked-in attendees found yet.");
+        setLoading(false);
+        return;
+      }
       setRegistrants(data.registrants);
       setEligible(data.registrants);
       setIsAuthenticated(true);
@@ -55,9 +68,9 @@ export default function RafflePage() {
   }
 
   const pickWinner = useCallback(() => {
-    if (isSpinning || eligible.length === 0) return;
+    if (isSpinning || eligible.length === 0 || isDone) return;
     setIsSpinning(true);
-    setWinner(null);
+    setCurrentWinner(null);
 
     const chosen = eligible[Math.floor(Math.random() * eligible.length)];
     let elapsed = 0;
@@ -76,10 +89,14 @@ export default function RafflePage() {
       if (elapsed >= SPIN_DURATION_MS) {
         clearInterval(spinIntervalRef.current!);
         setCurrentDisplay(chosen.full_name);
-        setWinner(chosen);
+        setCurrentWinner(chosen);
         setEligible(prev => prev.filter(r => r.id !== chosen.id));
-        setWinners(prev => [...prev, { round, name: chosen.full_name, id: chosen.id }]);
-        setRound(r => r + 1);
+        setWinners(prev => [...prev, {
+          round: currentRound,
+          label: PRIZES[currentRound - 1].label,
+          name: chosen.full_name,
+          id: chosen.id,
+        }]);
         setIsSpinning(false);
       } else {
         spinIntervalRef.current = setTimeout(tick, interval);
@@ -87,7 +104,7 @@ export default function RafflePage() {
     }
 
     spinIntervalRef.current = setTimeout(tick, interval);
-  }, [isSpinning, eligible, round]);
+  }, [isSpinning, eligible, isDone, currentRound]);
 
   function undoLastWinner() {
     if (winners.length === 0 || isSpinning) return;
@@ -97,8 +114,7 @@ export default function RafflePage() {
       setEligible(prev => [...prev, registrant]);
     }
     setWinners(prev => prev.slice(0, -1));
-    setRound(r => r - 1);
-    setWinner(null);
+    setCurrentWinner(null);
     setCurrentDisplay("???");
   }
 
@@ -157,83 +173,99 @@ export default function RafflePage() {
         <div className="flex items-center justify-center gap-4 mt-2 text-sm text-zinc-500">
           <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" />{eligible.length} eligible</span>
           <span>·</span>
-          <span className="flex items-center gap-1"><Trophy className="w-3.5 h-3.5 text-yellow-500" />{winners.length} drawn</span>
+          <span className="flex items-center gap-1"><Trophy className="w-3.5 h-3.5 text-yellow-500" />{winners.length}/{PRIZES.length} drawn</span>
         </div>
+      </div>
+
+      {/* Prize Progress */}
+      <div className="flex justify-center gap-3 px-4 py-3 flex-wrap">
+        {PRIZES.map((p) => {
+          const won = winners.find(w => w.round === p.round);
+          const isCurrent = currentRound === p.round && !isDone;
+          return (
+            <div
+              key={p.round}
+              className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all ${
+                won
+                  ? 'bg-yellow-500/10 border-yellow-500/50 text-yellow-400'
+                  : isCurrent
+                  ? 'bg-fuchsia-600/20 border-fuchsia-500 text-fuchsia-300 shadow-[0_0_12px_rgba(217,70,239,0.3)]'
+                  : 'bg-zinc-900 border-zinc-800 text-zinc-600'
+              }`}
+            >
+              {p.emoji} {won ? `${p.label.split(' ').slice(1).join(' ')} → ${won.name.split(' ')[0]}` : p.label}
+            </div>
+          );
+        })}
       </div>
 
       {/* Main Stage */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 py-6 gap-6">
 
-        {/* Prize Label */}
-        <div className="flex items-center gap-2">
-          <Gift className="w-5 h-5 text-fuchsia-400" />
-          <input
-            type="text"
-            value={prizeLabel}
-            onChange={e => setPrizeLabel(e.target.value)}
-            placeholder="Prize label (e.g. Grand Prize)"
-            disabled={isSpinning}
-            className="bg-transparent border-b border-zinc-700 focus:border-fuchsia-500 outline-none text-center text-fuchsia-300 font-semibold text-lg px-2 py-1 w-64"
-          />
-        </div>
-
-        {/* Spinner Display */}
-        <div className={`relative w-full max-w-2xl rounded-3xl border-2 p-8 md:p-12 text-center transition-all duration-300 ${
-          winner
-            ? 'border-yellow-400 bg-yellow-400/5 shadow-[0_0_60px_rgba(250,204,21,0.2)]'
-            : isSpinning
-            ? 'border-fuchsia-500 bg-fuchsia-500/5 shadow-[0_0_40px_rgba(217,70,239,0.2)]'
-            : 'border-zinc-800 bg-zinc-900/40'
-        }`}>
-          {winner && (
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider">
-              🏆 Winner!
-            </div>
-          )}
-          <p className="text-zinc-500 text-sm uppercase tracking-widest mb-4">
-            {isSpinning ? "Drawing..." : winner ? prizeLabel : "Ready to Draw"}
-          </p>
-          <div
-            className={`text-3xl md:text-5xl font-extrabold leading-tight break-words transition-all ${
-              isSpinning
-                ? 'text-fuchsia-300 animate-pulse'
-                : winner
-                ? 'text-yellow-300'
-                : 'text-zinc-600'
-            }`}
-            style={{ minHeight: '4rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            {currentDisplay}
+        {isDone ? (
+          <div className="text-center space-y-4">
+            <div className="text-6xl">🎊</div>
+            <h2 className="text-2xl font-bold text-white">All prizes have been drawn!</h2>
+            <p className="text-zinc-500">Congratulations to all winners!</p>
           </div>
-          {winner && (
-            <p className="text-zinc-500 text-sm mt-4">
-              Round #{round - 1} winner 🎊
-            </p>
-          )}
-        </div>
+        ) : (
+          <>
+            {/* Current Prize Banner */}
+            <div className="text-center">
+              <p className="text-zinc-500 text-xs uppercase tracking-widest mb-1">Now Drawing — Prize {currentRound} of {PRIZES.length}</p>
+              <p className="text-2xl font-bold text-white">{currentPrize?.label}</p>
+            </div>
 
-        {/* Controls */}
-        <div className="flex gap-3 flex-wrap justify-center">
-          <button
-            onClick={pickWinner}
-            disabled={isSpinning || eligible.length === 0}
-            className="flex items-center gap-2 px-8 py-4 rounded-2xl font-black text-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-fuchsia-500/30 active:scale-95"
-          >
-            <Shuffle className="w-6 h-6" />
-            {isSpinning ? "Drawing..." : eligible.length === 0 ? "No more entries" : "Draw!"}
-          </button>
-          {winners.length > 0 && !isSpinning && (
-            <button
-              onClick={undoLastWinner}
-              className="px-5 py-4 rounded-2xl font-semibold text-sm bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 transition-all text-zinc-400"
-            >
-              Undo Last
-            </button>
-          )}
-        </div>
+            {/* Spinner Display */}
+            <div className={`relative w-full max-w-2xl rounded-3xl border-2 p-8 md:p-12 text-center transition-all duration-300 ${
+              currentWinner
+                ? 'border-yellow-400 bg-yellow-400/5 shadow-[0_0_60px_rgba(250,204,21,0.2)]'
+                : isSpinning
+                ? 'border-fuchsia-500 bg-fuchsia-500/5 shadow-[0_0_40px_rgba(217,70,239,0.2)]'
+                : 'border-zinc-800 bg-zinc-900/40'
+            }`}>
+              {currentWinner && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider">
+                  🏆 Winner!
+                </div>
+              )}
+              <p className="text-zinc-500 text-sm uppercase tracking-widest mb-4">
+                {isSpinning ? "Drawing..." : currentWinner ? "Congratulations!" : "Ready to Draw"}
+              </p>
+              <div
+                className={`text-3xl md:text-5xl font-extrabold leading-tight break-words transition-all ${
+                  isSpinning
+                    ? 'text-fuchsia-300 animate-pulse'
+                    : currentWinner
+                    ? 'text-yellow-300'
+                    : 'text-zinc-600'
+                }`}
+                style={{ minHeight: '4rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                {currentDisplay}
+              </div>
+            </div>
 
-        {eligible.length === 0 && (
-          <p className="text-zinc-500 text-sm">All {registrants.length} entries have been drawn!</p>
+            {/* Controls */}
+            <div className="flex gap-3 flex-wrap justify-center">
+              <button
+                onClick={pickWinner}
+                disabled={isSpinning || eligible.length === 0}
+                className="flex items-center gap-2 px-8 py-4 rounded-2xl font-black text-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-fuchsia-500/30 active:scale-95"
+              >
+                <Shuffle className="w-6 h-6" />
+                {isSpinning ? "Drawing..." : currentWinner ? `Draw Prize ${currentRound + 1}` : "Draw!"}
+              </button>
+              {winners.length > 0 && !isSpinning && (
+                <button
+                  onClick={undoLastWinner}
+                  className="px-5 py-4 rounded-2xl font-semibold text-sm bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 transition-all text-zinc-400"
+                >
+                  Undo Last
+                </button>
+              )}
+            </div>
+          </>
         )}
       </div>
 
@@ -248,7 +280,10 @@ export default function RafflePage() {
               <div key={w.id} className="flex items-center justify-between bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3">
                 <div className="flex items-center gap-3">
                   <span className="text-yellow-500 font-bold text-sm w-6">#{w.round}</span>
-                  <span className="text-white font-semibold">{w.name}</span>
+                  <div>
+                    <p className="text-white font-semibold">{w.name}</p>
+                    <p className="text-zinc-500 text-xs">{w.label}</p>
+                  </div>
                 </div>
               </div>
             ))}
