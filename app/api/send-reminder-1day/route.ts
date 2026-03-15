@@ -19,6 +19,7 @@ function buildEmail(fullName: string): string {
   const firstName = fullName.split(' ')[0];
   const mainPosterUrl = 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/gen-ai-to-z-main-poster.png';
   const rulesUrl = 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/rules-and-reminders.png';
+  const merchUrl = 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/gen-ai-to-z-merch.png';
   return `
 <!DOCTYPE html>
 <html>
@@ -132,6 +133,15 @@ function buildEmail(fullName: string): string {
         <p style="color: #d4d4d8; font-size: 15px; line-height: 2; margin: 0; text-align: center;">
           <strong>Joyride</strong> &nbsp;•&nbsp; <strong>Eskwelabs</strong> &nbsp;•&nbsp; <strong>Tito's Latin BBQ &amp; Brew</strong> &nbsp;•&nbsp; <strong>FlowerStore.ph</strong> &nbsp;•&nbsp; <strong>Potico.ph</strong>
         </p>
+      </div>
+
+      <!-- Merch -->
+      <div style="background: rgba(6, 182, 212, 0.07); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 8px; padding: 20px; margin-bottom: 16px;">
+        <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; color: #06b6d4; margin: 0 0 10px 0;">👕 Official Merch — Available On-site!</h3>
+        <p style="color: #a1a1aa; font-size: 13px; margin: 0 0 14px 0;">We have official Gen AI to Z merch available at the event. Grab yours while supplies last!</p>
+        <div style="text-align: center;">
+          <img src="${merchUrl}" alt="Gen AI to Z Official Merchandise" style="width: 100%; max-width: 400px; height: auto; border-radius: 10px; border: 1px solid rgba(6, 182, 212, 0.2);" />
+        </div>
       </div>
 
       <!-- Community Partners -->
