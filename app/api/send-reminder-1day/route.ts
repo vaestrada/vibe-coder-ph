@@ -18,8 +18,9 @@ function getSupabaseClient() {
 function buildEmail(fullName: string): string {
   const firstName = fullName.split(' ')[0];
   const mainPosterUrl = 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/gen-ai-to-z-main-poster.png';
-  const rulesUrl = 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/rules-and-reminders.png';
-  const merchUrl = 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/gen-ai-to-z-merch.png';
+  const storageBase = 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events';
+  const reminderUrls = [1,2,3,4].map(i => `${storageBase}/reminder-${i}.png`);
+  const merchUrls = [1,2,3,4].map(i => `${storageBase}/merch-${i}.png`);
   return `
 <!DOCTYPE html>
 <html>
@@ -86,9 +87,9 @@ function buildEmail(fullName: string): string {
         </table>
       </div>
 
-      <!-- Rules & Reminders Image -->
-      <div style="text-align: center; margin-bottom: 24px;">
-        <img src="${rulesUrl}" alt="Rules and Reminders: Bring Your Own Baon, First Come First Serve, Please Follow Rules" style="width: 100%; max-width: 500px; height: auto; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.2);" />
+      <!-- Reminders Images -->
+      <div style="margin-bottom: 24px;">
+        ${reminderUrls.map((url, i) => `<div style="text-align: center; margin-bottom: ${i < 3 ? '8' : '0'}px;"><img src="${url}" alt="Reminder ${i + 1}" style="width: 100%; max-width: 500px; height: auto; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.2);" /></div>`).join('\n        ')}
       </div>
 
       <!-- Checklist -->
@@ -140,7 +141,7 @@ function buildEmail(fullName: string): string {
         <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; color: #06b6d4; margin: 0 0 10px 0;">👕 Official Merch — Available On-site!</h3>
         <p style="color: #a1a1aa; font-size: 13px; margin: 0 0 14px 0;">We have official Gen AI to Z merch available at the event. Grab yours while supplies last!</p>
         <div style="text-align: center;">
-          <img src="${merchUrl}" alt="Gen AI to Z Official Merchandise" style="width: 100%; max-width: 400px; height: auto; border-radius: 10px; border: 1px solid rgba(6, 182, 212, 0.2);" />
+          ${merchUrls.map((url, i) => `<img src="${url}" alt="Gen AI to Z Merch ${i + 1}" style="width: 100%; max-width: 400px; height: auto; border-radius: 10px; border: 1px solid rgba(6, 182, 212, 0.2); margin-bottom: ${i < 3 ? '8px' : '0'};" />`).join('\n          ')}
         </div>
       </div>
 

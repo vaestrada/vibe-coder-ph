@@ -51,6 +51,8 @@ next-env.d.ts
 # large event assets (hosted on Supabase Storage)
 main_poster_gen_ai_to_z.png
 public/images/gen-ai-to-z-poster.png
+MERCH*.png
+[0-9].png
 
 # CSV and Excel files (contact databases — stored in data/contacts/)
 *.csv
