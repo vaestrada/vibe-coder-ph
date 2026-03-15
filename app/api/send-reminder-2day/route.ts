@@ -250,7 +250,7 @@ export async function POST(request: NextRequest) {
         recipientName = registrant.full_name;
       }
 
-      const { data, error } = await resend.emails.send({
+        const { data: _data, error } = await resend.emails.send({
         from: 'Vibe Coders PH <noreply@updates.vibecoders.ph>',
         to: testEmail,
         replyTo: 'hello@vibecoders.ph',
@@ -271,7 +271,7 @@ export async function POST(request: NextRequest) {
         test: true,
         sentTo: testEmail,
         recipientName,
-        emailId: data?.id,
+        emailId: _data?.id,
       });
     }
 
