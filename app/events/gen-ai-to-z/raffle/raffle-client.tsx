@@ -1,22 +1,33 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Trophy, Shuffle, Lock, Users } from "lucide-react";
+import {
+  Trophy, Lock, Users, ShoppingBag, Tag, Shirt,
+  CheckCircle2, RotateCcw, Zap, Medal,
+} from "lucide-react";
 
 interface Registrant {
   id: string;
   full_name: string;
 }
 
-const PRIZES = [
-  { round: 1, label: "🎽 Gen AI to Z Shirt", emoji: "🎽" },
-  { round: 2, label: "👜 Gen AI to Z Tote Bag", emoji: "👜" },
-  { round: 3, label: "✨ Gen AI to Z Sticker Pack", emoji: "✨" },
+type PrizeConfig = {
+  round: number;
+  label: string;
+  Icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+};
+
+const PRIZES: PrizeConfig[] = [
+  { round: 1, label: "Tote Bag", Icon: ShoppingBag },
+  { round: 2, label: "Sticker Pack", Icon: Tag },
+  { round: 3, label: "Shirt", Icon: Shirt },
 ];
 
 const SPIN_DURATION_MS = 4000;
 const FAST_INTERVAL = 60;
-const SLOW_INTERVAL = 200;
+const SLOW_INTERVAL = 210;
+
+const MEDAL_COLORS = ["text-amber-400", "text-slate-300", "text-orange-500"];
 
 export default function RafflePage() {
   const [adminKey, setAdminKey] = useState("");
@@ -25,13 +36,12 @@ export default function RafflePage() {
   const [registrants, setRegistrants] = useState<Registrant[]>([]);
   const [eligible, setEligible] = useState<Registrant[]>([]);
   const [winners, setWinners] = useState<{ round: number; label: string; name: string; id: string }[]>([]);
-  const [currentDisplay, setCurrentDisplay] = useState("???");
+  const [currentDisplay, setCurrentDisplay] = useState("—");
   const [isSpinning, setIsSpinning] = useState(false);
   const [currentWinner, setCurrentWinner] = useState<Registrant | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const spinIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const spinTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const spinIntervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const currentRound = winners.length + 1;
   const currentPrize = PRIZES[currentRound - 1] ?? null;
@@ -87,7 +97,6 @@ export default function RafflePage() {
       elapsed += interval;
 
       if (elapsed >= SPIN_DURATION_MS) {
-        clearInterval(spinIntervalRef.current!);
         setCurrentDisplay(chosen.full_name);
         setCurrentWinner(chosen);
         setEligible(prev => prev.filter(r => r.id !== chosen.id));
@@ -110,186 +119,341 @@ export default function RafflePage() {
     if (winners.length === 0 || isSpinning) return;
     const last = winners[winners.length - 1];
     const registrant = registrants.find(r => r.id === last.id);
-    if (registrant) {
-      setEligible(prev => [...prev, registrant]);
-    }
+    if (registrant) setEligible(prev => [...prev, registrant]);
     setWinners(prev => prev.slice(0, -1));
     setCurrentWinner(null);
-    setCurrentDisplay("???");
+    setCurrentDisplay("—");
   }
 
   useEffect(() => {
-    return () => {
-      if (spinIntervalRef.current) clearTimeout(spinIntervalRef.current);
-      if (spinTimeoutRef.current) clearTimeout(spinTimeoutRef.current);
-    };
+    return () => { if (spinIntervalRef.current) clearTimeout(spinIntervalRef.current); };
   }, []);
 
   // Auth screen
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
-        <div className="w-full max-w-sm space-y-6">
-          <div className="text-center space-y-2">
-            <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 rounded-full bg-fuchsia-600/20 border border-fuchsia-500/30 flex items-center justify-center">
-                <Lock className="w-8 h-8 text-fuchsia-400" />
+      <>
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+          .rf-display { font-family: 'Bebas Neue', Impact, system-ui; letter-spacing: 0.04em; }
+          .rf-ticker  { font-family: 'Courier New', 'Lucida Console', monospace; }
+        `}</style>
+        <div
+          className="min-h-screen flex items-center justify-center px-4"
+          style={{
+            background: "#070707",
+            backgroundImage: "radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        >
+          <div className="w-full max-w-xs">
+            <div className="mb-10 text-center">
+              <p className="text-xs font-mono text-white/25 tracking-[0.25em] uppercase mb-5">
+                Gen AI to Z &middot; March 17, 2026
+              </p>
+              <h1 className="rf-display text-[5.5rem] leading-none text-white">Grand Raffle</h1>
+              <div className="mt-4 flex justify-center">
+                <div className="flex items-center gap-2 px-3 py-1 border border-white/10 bg-white/5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                  <span className="text-[10px] font-mono text-white/30 tracking-[0.2em] uppercase">Admin Access</span>
+                </div>
               </div>
             </div>
-            <h1 className="text-2xl font-bold text-white">Raffle System</h1>
-            <p className="text-zinc-500 text-sm">Gen AI to Z · March 17, 2026</p>
+            <form onSubmit={handleAuth} className="space-y-3">
+              <div className="relative">
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20" />
+                <input
+                  type="password"
+                  placeholder="Enter admin key"
+                  value={adminKey}
+                  onChange={e => setAdminKey(e.target.value)}
+                  className="w-full bg-white/[0.04] border border-white/10 px-4 pl-11 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-white/25 font-mono text-sm tracking-widest transition-colors rounded-none"
+                  autoFocus
+                />
+              </div>
+              {authError && (
+                <p className="text-red-400/70 text-xs font-mono text-center tracking-wide">{authError}</p>
+              )}
+              <button
+                type="submit"
+                disabled={loading || !adminKey}
+                className="w-full py-3.5 font-mono text-sm tracking-[0.22em] uppercase text-black bg-white hover:bg-white/90 disabled:bg-white/15 disabled:text-white/20 transition-all"
+              >
+                {loading ? "Loading..." : "Unlock"}
+              </button>
+            </form>
           </div>
-          <form onSubmit={handleAuth} className="space-y-4">
-            <input
-              type="password"
-              placeholder="Admin Key"
-              value={adminKey}
-              onChange={e => setAdminKey(e.target.value)}
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-fuchsia-500 text-center text-lg tracking-widest"
-              autoFocus
-            />
-            {authError && <p className="text-red-400 text-sm text-center">{authError}</p>}
-            <button
-              type="submit"
-              disabled={loading || !adminKey}
-              className="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 disabled:opacity-40 transition-all"
-            >
-              {loading ? "Loading..." : "Enter"}
-            </button>
-          </form>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white flex flex-col">
-      {/* Header */}
-      <div className="text-center pt-8 pb-4 px-4">
-        <p className="text-fuchsia-400 text-xs font-semibold uppercase tracking-widest mb-1">Gen AI to Z · March 17, 2026</p>
-        <h1 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
-          🎉 Grand Raffle
-        </h1>
-        <div className="flex items-center justify-center gap-4 mt-2 text-sm text-zinc-500">
-          <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" />{eligible.length} eligible</span>
-          <span>·</span>
-          <span className="flex items-center gap-1"><Trophy className="w-3.5 h-3.5 text-yellow-500" />{winners.length}/{PRIZES.length} drawn</span>
-        </div>
-      </div>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        .rf-display { font-family: 'Bebas Neue', Impact, system-ui; letter-spacing: 0.04em; }
+        .rf-ticker  { font-family: 'Courier New', 'Lucida Console', monospace; }
+        @keyframes winner-amber {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,0); }
+          50%       { box-shadow: 0 0 50px 8px rgba(251,191,36,0.08); }
+        }
+        .winner-glow { animation: winner-amber 2.4s ease-in-out infinite; }
+        @keyframes spin-flicker {
+          0%,100% { opacity: 1; } 50% { opacity: 0.7; }
+        }
+        .spinning-name { animation: spin-flicker 0.12s linear infinite; }
+      `}</style>
 
-      {/* Prize Progress */}
-      <div className="flex justify-center gap-3 px-4 py-3 flex-wrap">
-        {PRIZES.map((p) => {
-          const won = winners.find(w => w.round === p.round);
-          const isCurrent = currentRound === p.round && !isDone;
-          return (
-            <div
-              key={p.round}
-              className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all ${
-                won
-                  ? 'bg-yellow-500/10 border-yellow-500/50 text-yellow-400'
-                  : isCurrent
-                  ? 'bg-fuchsia-600/20 border-fuchsia-500 text-fuchsia-300 shadow-[0_0_12px_rgba(217,70,239,0.3)]'
-                  : 'bg-zinc-900 border-zinc-800 text-zinc-600'
-              }`}
-            >
-              {p.emoji} {won ? `${p.label.split(' ').slice(1).join(' ')} → ${won.name.split(' ')[0]}` : p.label}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Main Stage */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 py-6 gap-6">
-
-        {isDone ? (
-          <div className="text-center space-y-4">
-            <div className="text-6xl">🎊</div>
-            <h2 className="text-2xl font-bold text-white">All prizes have been drawn!</h2>
-            <p className="text-zinc-500">Congratulations to all winners!</p>
+      <div
+        className="min-h-screen flex flex-col text-white"
+        style={{
+          background: "#070707",
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.032) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      >
+        {/* ── Status Bar ───────────────────────────────────────── */}
+        <div className="flex items-center justify-between px-5 py-3 border-b border-white/[0.06]">
+          <div className="flex items-center gap-2.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            <span className="text-[10px] font-mono text-white/25 uppercase tracking-[0.22em]">
+              Live &middot; Gen AI to Z
+            </span>
           </div>
-        ) : (
-          <>
-            {/* Current Prize Banner */}
-            <div className="text-center">
-              <p className="text-zinc-500 text-xs uppercase tracking-widest mb-1">Now Drawing — Prize {currentRound} of {PRIZES.length}</p>
-              <p className="text-2xl font-bold text-white">{currentPrize?.label}</p>
-            </div>
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5 text-[10px] font-mono text-white/25">
+              <Users className="w-3 h-3" />{eligible.length} eligible
+            </span>
+            <span className="text-white/10 font-mono text-xs">|</span>
+            <span className="flex items-center gap-1.5 text-[10px] font-mono text-amber-400/60">
+              <Trophy className="w-3 h-3" />{winners.length} / {PRIZES.length}
+            </span>
+          </div>
+        </div>
 
-            {/* Spinner Display */}
-            <div className={`relative w-full max-w-2xl rounded-3xl border-2 p-8 md:p-12 text-center transition-all duration-300 ${
-              currentWinner
-                ? 'border-yellow-400 bg-yellow-400/5 shadow-[0_0_60px_rgba(250,204,21,0.2)]'
-                : isSpinning
-                ? 'border-fuchsia-500 bg-fuchsia-500/5 shadow-[0_0_40px_rgba(217,70,239,0.2)]'
-                : 'border-zinc-800 bg-zinc-900/40'
-            }`}>
-              {currentWinner && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider">
-                  🏆 Winner!
-                </div>
-              )}
-              <p className="text-zinc-500 text-sm uppercase tracking-widest mb-4">
-                {isSpinning ? "Drawing..." : currentWinner ? "Congratulations!" : "Ready to Draw"}
-              </p>
+        {/* ── Title ────────────────────────────────────────────── */}
+        <div className="text-center pt-7 pb-1 px-4">
+          <h1
+            className="rf-display leading-none text-white"
+            style={{ fontSize: "clamp(3rem, 10vw, 6.5rem)" }}
+          >
+            Grand Raffle
+          </h1>
+          <p className="text-[10px] font-mono text-white/15 tracking-[0.3em] uppercase mt-1.5">
+            March 17, 2026 &middot; UP Diliman
+          </p>
+        </div>
+
+        {/* ── Prize Tracker ────────────────────────────────────── */}
+        <div className="flex justify-center gap-2 md:gap-3 px-4 py-5 flex-wrap">
+          {PRIZES.map((p) => {
+            const won = winners.find(w => w.round === p.round);
+            const isCurrent = currentRound === p.round && !isDone;
+            const Icon = p.Icon;
+            return (
               <div
-                className={`text-3xl md:text-5xl font-extrabold leading-tight break-words transition-all ${
-                  isSpinning
-                    ? 'text-fuchsia-300 animate-pulse'
-                    : currentWinner
-                    ? 'text-yellow-300'
-                    : 'text-zinc-600'
+                key={p.round}
+                className={`flex items-center gap-2.5 px-4 py-2.5 border transition-all duration-500 ${
+                  won
+                    ? "border-amber-500/35 bg-amber-500/[0.04]"
+                    : isCurrent
+                    ? "border-white/25 bg-white/[0.04]"
+                    : "border-white/[0.07] bg-white/[0.02]"
                 }`}
-                style={{ minHeight: '4rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
-                {currentDisplay}
+                <span className={`text-[10px] font-mono tabular-nums ${
+                  won ? "text-amber-400/50" : isCurrent ? "text-white/35" : "text-white/15"
+                }`}>0{p.round}</span>
+                <Icon
+                  className={`w-3.5 h-3.5 ${won ? "text-amber-400" : isCurrent ? "text-white/60" : "text-white/15"}`}
+                  strokeWidth={1.5}
+                />
+                <span className={`text-[11px] font-mono uppercase tracking-widest ${
+                  won ? "text-amber-400" : isCurrent ? "text-white/65" : "text-white/20"
+                }`}>{p.label}</span>
+                {won && (
+                  <>
+                    <span className="text-white/15 font-mono text-xs">—</span>
+                    <span className="text-[11px] font-mono text-amber-400/60 max-w-[90px] truncate">
+                      {won.name.split(" ")[0]}
+                    </span>
+                    <CheckCircle2 className="w-3 h-3 text-amber-400/60 ml-0.5" strokeWidth={2} />
+                  </>
+                )}
+                {isCurrent && (
+                  <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse ml-0.5" />
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── Main Stage ───────────────────────────────────────── */}
+        <div className="flex-1 flex flex-col items-center justify-center px-4 py-4 gap-5">
+          {isDone ? (
+            /* ── All Done ── */
+            <div className="text-center space-y-7 w-full max-w-2xl">
+              <div className="flex justify-center">
+                <div className="w-16 h-16 border border-amber-500/25 flex items-center justify-center">
+                  <Trophy className="w-8 h-8 text-amber-400" strokeWidth={1} />
+                </div>
+              </div>
+              <div>
+                <p className="text-[10px] font-mono text-white/25 tracking-[0.28em] uppercase mb-2">
+                  Raffle Complete
+                </p>
+                <h2 className="rf-display text-5xl text-white">All Prizes Drawn</h2>
+              </div>
+              <div className="space-y-1.5">
+                {winners.map((w, i) => (
+                  <div
+                    key={w.id}
+                    className="flex items-center gap-4 px-5 py-3 border border-amber-500/15 bg-amber-500/[0.03]"
+                  >
+                    <Medal className={`w-4 h-4 ${MEDAL_COLORS[i]}`} strokeWidth={1.5} />
+                    <div className="flex-1 text-left">
+                      <p className="rf-ticker text-base text-white/90">{w.name}</p>
+                      <p className="text-[10px] font-mono text-white/25 uppercase tracking-wider mt-0.5">{w.label}</p>
+                    </div>
+                    <CheckCircle2 className="w-4 h-4 text-amber-400/50" strokeWidth={1.5} />
+                  </div>
+                ))}
               </div>
             </div>
-
-            {/* Controls */}
-            <div className="flex gap-3 flex-wrap justify-center">
-              <button
-                onClick={pickWinner}
-                disabled={isSpinning || eligible.length === 0}
-                className="flex items-center gap-2 px-8 py-4 rounded-2xl font-black text-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-fuchsia-500/30 active:scale-95"
-              >
-                <Shuffle className="w-6 h-6" />
-                {isSpinning ? "Drawing..." : currentWinner ? `Draw Prize ${currentRound + 1}` : "Draw!"}
-              </button>
-              {winners.length > 0 && !isSpinning && (
-                <button
-                  onClick={undoLastWinner}
-                  className="px-5 py-4 rounded-2xl font-semibold text-sm bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 transition-all text-zinc-400"
-                >
-                  Undo Last
-                </button>
-              )}
-            </div>
-          </>
-        )}
-      </div>
-
-      {/* Winners List */}
-      {winners.length > 0 && (
-        <div className="px-4 pb-8 w-full max-w-2xl mx-auto">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 mb-3 flex items-center gap-2">
-            <Trophy className="w-4 h-4 text-yellow-500" /> Winners ({winners.length})
-          </h2>
-          <div className="space-y-2">
-            {[...winners].reverse().map((w) => (
-              <div key={w.id} className="flex items-center justify-between bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-yellow-500 font-bold text-sm w-6">#{w.round}</span>
-                  <div>
-                    <p className="text-white font-semibold">{w.name}</p>
-                    <p className="text-zinc-500 text-xs">{w.label}</p>
+          ) : (
+            <>
+              {/* ── Current Prize Label ── */}
+              {currentPrize && (() => { const Icon = currentPrize.Icon; return (
+                <div className="text-center">
+                  <p className="text-[10px] font-mono text-white/20 tracking-[0.28em] uppercase mb-2">
+                    Drawing &mdash; Prize {currentRound} of {PRIZES.length}
+                  </p>
+                  <div className="flex items-center justify-center gap-2.5">
+                    <Icon className="w-5 h-5 text-white/40" strokeWidth={1.5} />
+                    <span className="rf-display text-[2rem] text-white/75 leading-none">
+                      {currentPrize.label}
+                    </span>
                   </div>
                 </div>
+              ); })()}
+
+              {/* ── Spinner Stage ── */}
+              <div
+                className={`relative w-full max-w-3xl border transition-all duration-500 ${
+                  currentWinner
+                    ? "border-amber-500/45 winner-glow"
+                    : isSpinning
+                    ? "border-white/15"
+                    : "border-white/[0.07]"
+                }`}
+                style={{
+                  background: currentWinner
+                    ? "linear-gradient(135deg,rgba(251,191,36,0.035) 0%,transparent 100%)"
+                    : "rgba(255,255,255,0.012)",
+                }}
+              >
+                {/* top accent */}
+                {currentWinner && (
+                  <div className="absolute top-0 left-0 right-0 h-px bg-amber-400/60" />
+                )}
+
+                <div className="px-8 py-10 md:px-16 md:py-14 text-center">
+                  <p className={`text-[10px] font-mono tracking-[0.3em] uppercase mb-6 transition-colors ${
+                    currentWinner ? "text-amber-400/55" : isSpinning ? "text-white/25" : "text-white/12"
+                  }`}>
+                    {isSpinning ? "selecting" : currentWinner ? "winner" : "ready"}
+                  </p>
+                  <div
+                    className={`rf-ticker break-words leading-tight transition-colors duration-200 ${
+                      isSpinning
+                        ? "spinning-name text-white/45"
+                        : currentWinner
+                        ? "text-amber-300"
+                        : "text-white/18"
+                    }`}
+                    style={{
+                      fontSize: "clamp(2rem,6vw,4.5rem)",
+                      minHeight: "4rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {currentDisplay}
+                  </div>
+                </div>
+
+                {/* bottom accent */}
+                {currentWinner && (
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-amber-400/25" />
+                )}
               </div>
-            ))}
-          </div>
+
+              {/* ── Controls ── */}
+              <div className="flex flex-col sm:flex-row gap-2.5 w-full max-w-3xl">
+                <button
+                  onClick={pickWinner}
+                  disabled={isSpinning || eligible.length === 0}
+                  className={`flex-1 flex items-center justify-center gap-3 py-4 font-mono text-sm tracking-[0.22em] uppercase transition-all ${
+                    isSpinning || eligible.length === 0
+                      ? "bg-white/[0.04] text-white/20 cursor-not-allowed border border-white/[0.07]"
+                      : "bg-white text-black hover:bg-white/92 border border-white active:scale-[0.99]"
+                  }`}
+                >
+                  <Zap className="w-4 h-4" strokeWidth={2} />
+                  {isSpinning
+                    ? "Drawing..."
+                    : currentWinner
+                    ? `Draw Prize ${currentRound + 1}`
+                    : "Draw"}
+                </button>
+
+                {winners.length > 0 && !isSpinning && (
+                  <button
+                    onClick={undoLastWinner}
+                    className="flex items-center justify-center gap-2 px-6 py-4 font-mono text-[11px] tracking-[0.2em] uppercase text-white/25 border border-white/[0.07] hover:border-white/18 hover:text-white/45 transition-all"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" strokeWidth={1.5} />
+                    Undo
+                  </button>
+                )}
+              </div>
+            </>
+          )}
         </div>
-      )}
-    </div>
+
+        {/* ── Winners Sidebar ───────────────────────────────────── */}
+        {winners.length > 0 && !isDone && (
+          <div className="px-4 pb-10 w-full max-w-3xl mx-auto">
+            <div className="border-t border-white/[0.06] pt-5">
+              <p className="text-[10px] font-mono text-white/18 tracking-[0.25em] uppercase mb-3 flex items-center gap-2">
+                <Trophy className="w-3 h-3" />
+                Winners
+              </p>
+              <div className="space-y-1.5">
+                {[...winners].reverse().map((w, i) => (
+                  <div
+                    key={w.id}
+                    className="flex items-center gap-4 px-4 py-2.5 border border-white/[0.06] bg-white/[0.015]"
+                  >
+                    <span className="text-[10px] font-mono text-amber-400/50 w-5">#{w.round}</span>
+                    <Medal
+                      className={`w-3.5 h-3.5 ${MEDAL_COLORS[winners.length - 1 - i]}`}
+                      strokeWidth={1.5}
+                    />
+                    <div className="flex-1">
+                      <p className="rf-ticker text-sm text-white/80">{w.name}</p>
+                      <p className="text-[10px] font-mono text-white/22 uppercase tracking-wider mt-0.5">{w.label}</p>
+                    </div>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400/35" strokeWidth={1.5} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
