@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import {
   Trophy, Lock, Users, ShoppingBag, Tag, Shirt,
-  CheckCircle2, RotateCcw, Zap, Medal,
+  CheckCircle2, RotateCcw, Zap, Medal, Sparkles, Gift,
 } from "lucide-react";
 
 interface Registrant {
@@ -27,7 +27,7 @@ const SPIN_DURATION_MS = 4000;
 const FAST_INTERVAL = 60;
 const SLOW_INTERVAL = 210;
 
-const MEDAL_COLORS = ["text-amber-400", "text-slate-300", "text-orange-500"];
+const MEDAL_COLORS = ["text-violet-400", "text-fuchsia-400", "text-cyan-400"];
 
 export default function RafflePage() {
   const [adminKey, setAdminKey] = useState("");
@@ -136,52 +136,59 @@ export default function RafflePage() {
     return (
       <>
         <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-          .rf-display { font-family: 'Bebas Neue', Impact, system-ui; letter-spacing: 0.04em; }
-          .rf-ticker  { font-family: 'Courier New', 'Lucida Console', monospace; }
+          @keyframes spin-glow { 0%,100% { opacity: 0.3; } 50% { opacity: 0.6; } }
+          .auth-glow { animation: spin-glow 3s ease-in-out infinite; }
         `}</style>
-        <div
-          className="min-h-screen flex items-center justify-center px-4"
-          style={{
-            background: "#070707",
-            backgroundImage: "radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        >
-          <div className="w-full max-w-xs">
+        <div className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden bg-gradient-to-br from-violet-950 via-background to-fuchsia-950">
+          {/* Background orbs */}
+          <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-violet-500/20 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-fuchsia-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+          {/* Grid overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: "linear-gradient(to right, rgb(139,92,246) 1px, transparent 1px), linear-gradient(to bottom, rgb(139,92,246) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+
+          <div className="relative z-10 w-full max-w-sm animate-fade-in-up">
             <div className="mb-10 text-center">
-              <p className="text-xs font-mono text-white/25 tracking-[0.25em] uppercase mb-5">
+              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-violet-500/15 border border-violet-500/25 rounded-full text-violet-300 text-sm font-mono">
+                <Gift className="w-4 h-4" />
                 Gen AI to Z &middot; March 17, 2026
-              </p>
-              <h1 className="rf-display text-[5.5rem] leading-none text-white">Grand Raffle</h1>
-              <div className="mt-4 flex justify-center">
-                <div className="flex items-center gap-2 px-3 py-1 border border-white/10 bg-white/5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                  <span className="text-[10px] font-mono text-white/30 tracking-[0.2em] uppercase">Admin Access</span>
-                </div>
               </div>
+
+              <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
+                Grand Raffle
+              </h1>
+
+              <p className="mt-3 text-muted-foreground text-sm">
+                Enter admin key to begin the draw
+              </p>
             </div>
-            <form onSubmit={handleAuth} className="space-y-3">
+
+            <form onSubmit={handleAuth} className="space-y-4">
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-violet-400/50" />
                 <input
                   type="password"
-                  placeholder="Enter admin key"
+                  placeholder="Admin key"
                   value={adminKey}
                   onChange={e => setAdminKey(e.target.value)}
-                  className="w-full bg-white/[0.04] border border-white/10 px-4 pl-11 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-white/25 font-mono text-sm tracking-widest transition-colors rounded-none"
+                  className="w-full bg-card/60 backdrop-blur-sm border border-violet-500/20 rounded-lg px-4 pl-12 py-3.5 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20 font-mono text-sm tracking-wider transition-all"
                   autoFocus
                 />
               </div>
               {authError && (
-                <p className="text-red-400/70 text-xs font-mono text-center tracking-wide">{authError}</p>
+                <p className="text-red-400 text-sm text-center">{authError}</p>
               )}
               <button
                 type="submit"
                 disabled={loading || !adminKey}
-                className="w-full py-3.5 font-mono text-sm tracking-[0.22em] uppercase text-black bg-white hover:bg-white/90 disabled:bg-white/15 disabled:text-white/20 transition-all"
+                className="w-full py-3.5 rounded-lg text-sm font-semibold tracking-wide transition-all bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-violet-500/40 disabled:opacity-40 disabled:shadow-none active:scale-[0.98]"
               >
-                {loading ? "Loading..." : "Unlock"}
+                {loading ? "Loading..." : "Unlock Raffle"}
               </button>
             </form>
           </div>
@@ -193,62 +200,70 @@ export default function RafflePage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-        .rf-display { font-family: 'Bebas Neue', Impact, system-ui; letter-spacing: 0.04em; }
-        .rf-ticker  { font-family: 'Courier New', 'Lucida Console', monospace; }
-        @keyframes winner-amber {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,0); }
-          50%       { box-shadow: 0 0 50px 8px rgba(251,191,36,0.08); }
+        @keyframes winner-glow {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(139,92,246,0), 0 0 0 0 rgba(217,70,239,0); }
+          50%       { box-shadow: 0 0 60px 10px rgba(139,92,246,0.15), 0 0 120px 30px rgba(217,70,239,0.08); }
         }
-        .winner-glow { animation: winner-amber 2.4s ease-in-out infinite; }
+        .winner-glow { animation: winner-glow 2s ease-in-out infinite; }
         @keyframes spin-flicker {
-          0%,100% { opacity: 1; } 50% { opacity: 0.7; }
+          0%,100% { opacity: 1; } 50% { opacity: 0.6; }
         }
-        .spinning-name { animation: spin-flicker 0.12s linear infinite; }
+        .spinning-name { animation: spin-flicker 0.1s linear infinite; }
+        @keyframes confetti-drift {
+          0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+          10% { opacity: 1; }
+          100% { transform: translateY(40px) rotate(360deg); opacity: 0; }
+        }
       `}</style>
 
-      <div
-        className="min-h-screen flex flex-col text-white"
-        style={{
-          background: "#070707",
-          backgroundImage: "radial-gradient(rgba(255,255,255,0.032) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      >
+      <div className="relative min-h-screen flex flex-col text-foreground overflow-hidden bg-gradient-to-br from-violet-950 via-background to-fuchsia-950">
+        {/* Background orbs */}
+        <div className="absolute top-1/4 left-1/6 w-96 h-96 bg-violet-500/15 rounded-full blur-3xl animate-float pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/6 w-96 h-96 bg-fuchsia-500/15 rounded-full blur-3xl animate-float pointer-events-none" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-float pointer-events-none" style={{ animationDelay: "4s" }} />
+        {/* Grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: "linear-gradient(to right, rgb(139,92,246) 1px, transparent 1px), linear-gradient(to bottom, rgb(139,92,246) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+
         {/* ── Status Bar ───────────────────────────────────────── */}
-        <div className="flex items-center justify-between px-5 py-3 border-b border-white/[0.06]">
+        <div className="relative z-10 flex items-center justify-between px-5 py-3 border-b border-violet-500/10 backdrop-blur-sm">
           <div className="flex items-center gap-2.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-            <span className="text-[10px] font-mono text-white/25 uppercase tracking-[0.22em]">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-xs font-mono text-muted-foreground tracking-wide">
               Live &middot; Gen AI to Z
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-[10px] font-mono text-white/25">
-              <Users className="w-3 h-3" />{eligible.length} eligible
+            <span className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground">
+              <Users className="w-3.5 h-3.5" />{eligible.length} eligible
             </span>
-            <span className="text-white/10 font-mono text-xs">|</span>
-            <span className="flex items-center gap-1.5 text-[10px] font-mono text-amber-400/60">
-              <Trophy className="w-3 h-3" />{winners.length} / {PRIZES.length}
+            <span className="text-violet-500/30">|</span>
+            <span className="flex items-center gap-1.5 text-xs font-mono text-violet-400">
+              <Trophy className="w-3.5 h-3.5" />{winners.length} / {PRIZES.length}
             </span>
           </div>
         </div>
 
         {/* ── Title ────────────────────────────────────────────── */}
-        <div className="text-center pt-7 pb-1 px-4">
+        <div className="relative z-10 text-center pt-8 pb-2 px-4 animate-fade-in-up">
           <h1
-            className="rf-display leading-none text-white"
-            style={{ fontSize: "clamp(3rem, 10vw, 6.5rem)" }}
+            className="font-bold leading-none bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent"
+            style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)" }}
           >
             Grand Raffle
           </h1>
-          <p className="text-[10px] font-mono text-white/15 tracking-[0.3em] uppercase mt-1.5">
+          <p className="text-sm text-muted-foreground mt-2 font-mono">
             March 17, 2026 &middot; UP Diliman
           </p>
         </div>
 
         {/* ── Prize Tracker ────────────────────────────────────── */}
-        <div className="flex justify-center gap-2 md:gap-3 px-4 py-5 flex-wrap">
+        <div className="relative z-10 flex justify-center gap-3 px-4 py-5 flex-wrap animate-fade-in-up" style={{ animationDelay: "200ms" }}>
           {PRIZES.map((p) => {
             const won = winners.find(w => w.round === p.round);
             const isCurrent = currentRound === p.round && !isDone;
@@ -256,35 +271,39 @@ export default function RafflePage() {
             return (
               <div
                 key={p.round}
-                className={`flex items-center gap-2.5 px-4 py-2.5 border transition-all duration-500 ${
+                className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border backdrop-blur-sm transition-all duration-500 ${
                   won
-                    ? "border-amber-500/35 bg-amber-500/[0.04]"
+                    ? "border-violet-500/40 bg-violet-500/10"
                     : isCurrent
-                    ? "border-white/25 bg-white/[0.04]"
-                    : "border-white/[0.07] bg-white/[0.02]"
+                    ? "border-fuchsia-500/30 bg-fuchsia-500/10"
+                    : "border-white/[0.08] bg-white/[0.03]"
                 }`}
               >
-                <span className={`text-[10px] font-mono tabular-nums ${
-                  won ? "text-amber-400/50" : isCurrent ? "text-white/35" : "text-white/15"
-                }`}>0{p.round}</span>
+                <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                  won
+                    ? "bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white"
+                    : isCurrent
+                    ? "bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30"
+                    : "bg-white/5 text-white/20"
+                }`}>{p.round}</span>
                 <Icon
-                  className={`w-3.5 h-3.5 ${won ? "text-amber-400" : isCurrent ? "text-white/60" : "text-white/15"}`}
+                  className={`w-4 h-4 ${won ? "text-violet-400" : isCurrent ? "text-fuchsia-400" : "text-white/20"}`}
                   strokeWidth={1.5}
                 />
-                <span className={`text-[11px] font-mono uppercase tracking-widest ${
-                  won ? "text-amber-400" : isCurrent ? "text-white/65" : "text-white/20"
+                <span className={`text-sm font-medium ${
+                  won ? "text-violet-300" : isCurrent ? "text-fuchsia-300" : "text-white/25"
                 }`}>{p.label}</span>
                 {won && (
                   <>
-                    <span className="text-white/15 font-mono text-xs">—</span>
-                    <span className="text-[11px] font-mono text-amber-400/60 max-w-[90px] truncate">
+                    <span className="text-violet-500/30 mx-1">&middot;</span>
+                    <span className="text-sm text-violet-400/70 max-w-[100px] truncate font-medium">
                       {won.name.split(" ")[0]}
                     </span>
-                    <CheckCircle2 className="w-3 h-3 text-amber-400/60 ml-0.5" strokeWidth={2} />
+                    <CheckCircle2 className="w-4 h-4 text-green-400 ml-0.5" strokeWidth={2} />
                   </>
                 )}
                 {isCurrent && (
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse ml-0.5" />
+                  <Sparkles className="w-3.5 h-3.5 text-fuchsia-400 animate-pulse ml-0.5" />
                 )}
               </div>
             );
@@ -292,33 +311,33 @@ export default function RafflePage() {
         </div>
 
         {/* ── Main Stage ───────────────────────────────────────── */}
-        <div className="flex-1 flex flex-col items-center justify-center px-4 py-4 gap-5">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-4 gap-6">
           {showDone ? (
             /* ── All Done ── */
-            <div className="text-center space-y-7 w-full max-w-2xl">
+            <div className="text-center space-y-8 w-full max-w-2xl animate-fade-in-up">
               <div className="flex justify-center">
-                <div className="w-16 h-16 border border-amber-500/25 flex items-center justify-center">
-                  <Trophy className="w-8 h-8 text-amber-400" strokeWidth={1} />
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center shadow-xl shadow-violet-500/30">
+                  <Trophy className="w-10 h-10 text-white" strokeWidth={1.5} />
                 </div>
               </div>
               <div>
-                <p className="text-[10px] font-mono text-white/25 tracking-[0.28em] uppercase mb-2">
-                  Raffle Complete
-                </p>
-                <h2 className="rf-display text-5xl text-white">All Prizes Drawn</h2>
+                <p className="text-sm text-muted-foreground mb-2">Raffle Complete</p>
+                <h2 className="text-4xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                  All Prizes Drawn!
+                </h2>
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-3">
                 {winners.map((w, i) => (
                   <div
                     key={w.id}
-                    className="flex items-center gap-4 px-5 py-3 border border-amber-500/15 bg-amber-500/[0.03]"
+                    className="flex items-center gap-4 px-5 py-4 rounded-xl border border-violet-500/20 bg-violet-500/5 backdrop-blur-sm"
                   >
-                    <Medal className={`w-4 h-4 ${MEDAL_COLORS[i]}`} strokeWidth={1.5} />
+                    <Medal className={`w-5 h-5 ${MEDAL_COLORS[i]}`} strokeWidth={1.5} />
                     <div className="flex-1 text-left">
-                      <p className="rf-ticker text-base text-white/90">{w.name}</p>
-                      <p className="text-[10px] font-mono text-white/25 uppercase tracking-wider mt-0.5">{w.label}</p>
+                      <p className="text-lg font-semibold text-foreground">{w.name}</p>
+                      <p className="text-sm text-muted-foreground mt-0.5">{w.label}</p>
                     </div>
-                    <CheckCircle2 className="w-4 h-4 text-amber-400/50" strokeWidth={1.5} />
+                    <CheckCircle2 className="w-5 h-5 text-green-400" strokeWidth={1.5} />
                   </div>
                 ))}
               </div>
@@ -327,15 +346,14 @@ export default function RafflePage() {
             <>
               {/* ── Current Prize Label ── */}
               {currentPrize && !isDone && (() => { const Icon = currentPrize.Icon; return (
-                <div className="text-center">
-                  <p className="text-[10px] font-mono text-white/20 tracking-[0.28em] uppercase mb-2">
-                    Drawing &mdash; Prize {currentRound} of {PRIZES.length}
-                  </p>
-                  <div className="flex items-center justify-center gap-2.5">
-                    <Icon className="w-5 h-5 text-white/40" strokeWidth={1.5} />
-                    <span className="rf-display text-[2rem] text-white/75 leading-none">
-                      {currentPrize.label}
-                    </span>
+                <div className="text-center animate-fade-in-up">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-fuchsia-500/15 border border-fuchsia-500/25 text-fuchsia-300 text-sm font-medium mb-3">
+                    <Sparkles className="w-4 h-4" />
+                    Prize {currentRound} of {PRIZES.length}
+                  </div>
+                  <div className="flex items-center justify-center gap-3">
+                    <Icon className="w-6 h-6 text-fuchsia-400" strokeWidth={1.5} />
+                    <span className="text-3xl font-bold text-foreground">{currentPrize.label}</span>
                   </div>
                 </div>
               ); })()}
@@ -344,15 +362,14 @@ export default function RafflePage() {
                 const lastPrize = PRIZES[PRIZES.length - 1];
                 const Icon = lastPrize.Icon;
                 return (
-                  <div className="text-center">
-                    <p className="text-[10px] font-mono text-amber-400/40 tracking-[0.28em] uppercase mb-2">
+                  <div className="text-center animate-fade-in-up">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/15 border border-green-500/25 text-green-300 text-sm font-medium mb-3">
+                      <CheckCircle2 className="w-4 h-4" />
                       Final Prize Drawn
-                    </p>
-                    <div className="flex items-center justify-center gap-2.5">
-                      <Icon className="w-5 h-5 text-amber-400/50" strokeWidth={1.5} />
-                      <span className="rf-display text-[2rem] text-amber-400/70 leading-none">
-                        {lastPrize.label}
-                      </span>
+                    </div>
+                    <div className="flex items-center justify-center gap-3">
+                      <Icon className="w-6 h-6 text-violet-400" strokeWidth={1.5} />
+                      <span className="text-3xl font-bold text-foreground">{lastPrize.label}</span>
                     </div>
                   </div>
                 );
@@ -360,41 +377,36 @@ export default function RafflePage() {
 
               {/* ── Spinner Stage ── */}
               <div
-                className={`relative w-full max-w-3xl border transition-all duration-500 ${
+                className={`relative w-full max-w-3xl rounded-2xl border backdrop-blur-sm transition-all duration-500 ${
                   currentWinner
-                    ? "border-amber-500/45 winner-glow"
+                    ? "border-violet-500/50 winner-glow bg-violet-500/5"
                     : isSpinning
-                    ? "border-white/15"
-                    : "border-white/[0.07]"
+                    ? "border-fuchsia-500/30 bg-fuchsia-500/5"
+                    : "border-white/10 bg-white/[0.03]"
                 }`}
-                style={{
-                  background: currentWinner
-                    ? "linear-gradient(135deg,rgba(251,191,36,0.035) 0%,transparent 100%)"
-                    : "rgba(255,255,255,0.012)",
-                }}
               >
-                {/* top accent */}
+                {/* top gradient accent */}
                 {currentWinner && (
-                  <div className="absolute top-0 left-0 right-0 h-px bg-amber-400/60" />
+                  <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-violet-400/60 to-transparent" />
                 )}
 
-                <div className="px-6 py-8 md:px-12 md:py-10 text-center">
-                  <p className={`text-[10px] font-mono tracking-[0.3em] uppercase mb-5 transition-colors ${
-                    currentWinner ? "text-amber-400/55" : isSpinning ? "text-white/25" : "text-white/12"
+                <div className="px-6 py-10 md:px-12 md:py-12 text-center">
+                  <p className={`text-sm font-medium tracking-wider uppercase mb-6 transition-colors ${
+                    currentWinner ? "text-violet-400" : isSpinning ? "text-fuchsia-400/60" : "text-muted-foreground/40"
                   }`}>
-                    {isSpinning ? "selecting" : currentWinner ? "winner" : "ready"}
+                    {isSpinning ? "Selecting..." : currentWinner ? "Winner!" : "Ready"}
                   </p>
                   <div
                     className="flex items-center justify-center overflow-hidden"
                     style={{ height: "5rem" }}
                   >
                     <p
-                      className={`rf-ticker leading-none transition-colors duration-200 truncate w-full ${
+                      className={`leading-none transition-colors duration-200 truncate w-full font-bold ${
                         isSpinning
-                          ? "spinning-name text-white/45"
+                          ? "spinning-name text-fuchsia-300/50"
                           : currentWinner
-                          ? "text-amber-300"
-                          : "text-white/18"
+                          ? "bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent"
+                          : "text-muted-foreground/20"
                       }`}
                       style={{ fontSize: "2.75rem" }}
                     >
@@ -403,18 +415,18 @@ export default function RafflePage() {
                   </div>
                 </div>
 
-                {/* bottom accent */}
+                {/* bottom gradient accent */}
                 {currentWinner && (
-                  <div className="absolute bottom-0 left-0 right-0 h-px bg-amber-400/25" />
+                  <div className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-fuchsia-400/40 to-transparent" />
                 )}
               </div>
 
               {/* ── Controls ── */}
-              <div className="flex flex-col sm:flex-row gap-2.5 w-full max-w-3xl">
+              <div className="flex flex-col sm:flex-row gap-3 w-full max-w-3xl">
                 {isDone && currentWinner ? (
                   <button
                     onClick={() => setShowDone(true)}
-                    className="flex-1 flex items-center justify-center gap-3 py-4 font-mono text-sm tracking-[0.22em] uppercase transition-all bg-white text-black hover:bg-white/92 border border-white active:scale-[0.99]"
+                    className="flex-1 flex items-center justify-center gap-3 py-4 rounded-xl text-sm font-semibold tracking-wide transition-all bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-violet-500/40 active:scale-[0.98]"
                   >
                     <Trophy className="w-4 h-4" strokeWidth={2} />
                     View All Winners
@@ -423,10 +435,10 @@ export default function RafflePage() {
                   <button
                     onClick={pickWinner}
                     disabled={isSpinning || eligible.length === 0}
-                    className={`flex-1 flex items-center justify-center gap-3 py-4 font-mono text-sm tracking-[0.22em] uppercase transition-all ${
+                    className={`flex-1 flex items-center justify-center gap-3 py-4 rounded-xl text-sm font-semibold tracking-wide transition-all ${
                       isSpinning || eligible.length === 0
-                        ? "bg-white/[0.04] text-white/20 cursor-not-allowed border border-white/[0.07]"
-                        : "bg-white text-black hover:bg-white/92 border border-white active:scale-[0.99]"
+                        ? "bg-white/5 text-white/20 cursor-not-allowed border border-white/10"
+                        : "bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-violet-500/40 active:scale-[0.98]"
                     }`}
                   >
                     <Zap className="w-4 h-4" strokeWidth={2} />
@@ -441,9 +453,9 @@ export default function RafflePage() {
                 {winners.length > 0 && !isSpinning && (
                   <button
                     onClick={undoLastWinner}
-                    className="flex items-center justify-center gap-2 px-6 py-4 font-mono text-[11px] tracking-[0.2em] uppercase text-white/25 border border-white/[0.07] hover:border-white/18 hover:text-white/45 transition-all"
+                    className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm text-muted-foreground border border-white/10 hover:border-violet-500/30 hover:text-violet-300 hover:bg-violet-500/5 transition-all"
                   >
-                    <RotateCcw className="w-3.5 h-3.5" strokeWidth={1.5} />
+                    <RotateCcw className="w-4 h-4" strokeWidth={1.5} />
                     Undo
                   </button>
                 )}
@@ -454,28 +466,30 @@ export default function RafflePage() {
 
         {/* ── Winners Sidebar ───────────────────────────────────── */}
         {winners.length > 0 && !showDone && (
-          <div className="px-4 pb-10 w-full max-w-3xl mx-auto">
-            <div className="border-t border-white/[0.06] pt-5">
-              <p className="text-[10px] font-mono text-white/18 tracking-[0.25em] uppercase mb-3 flex items-center gap-2">
-                <Trophy className="w-3 h-3" />
+          <div className="relative z-10 px-4 pb-10 w-full max-w-3xl mx-auto">
+            <div className="border-t border-violet-500/10 pt-5">
+              <p className="text-sm text-muted-foreground mb-3 flex items-center gap-2 font-medium">
+                <Trophy className="w-4 h-4 text-violet-400" />
                 Winners
               </p>
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 {[...winners].reverse().map((w, i) => (
                   <div
                     key={w.id}
-                    className="flex items-center gap-4 px-4 py-2.5 border border-white/[0.06] bg-white/[0.015]"
+                    className="flex items-center gap-4 px-4 py-3 rounded-xl border border-violet-500/15 bg-violet-500/5 backdrop-blur-sm"
                   >
-                    <span className="text-[10px] font-mono text-amber-400/50 w-5">#{w.round}</span>
+                    <span className="w-7 h-7 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-xs font-bold text-white">
+                      {w.round}
+                    </span>
                     <Medal
-                      className={`w-3.5 h-3.5 ${MEDAL_COLORS[winners.length - 1 - i]}`}
+                      className={`w-4 h-4 ${MEDAL_COLORS[winners.length - 1 - i]}`}
                       strokeWidth={1.5}
                     />
                     <div className="flex-1">
-                      <p className="rf-ticker text-sm text-white/80">{w.name}</p>
-                      <p className="text-[10px] font-mono text-white/22 uppercase tracking-wider mt-0.5">{w.label}</p>
+                      <p className="text-sm font-semibold text-foreground">{w.name}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{w.label}</p>
                     </div>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400/35" strokeWidth={1.5} />
+                    <CheckCircle2 className="w-4 h-4 text-green-400" strokeWidth={1.5} />
                   </div>
                 ))}
               </div>
