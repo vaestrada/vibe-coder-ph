@@ -307,14 +307,20 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: 'No registrants found', sent: 0 });
     }
 
+    // Filter out invalid email addresses
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const validRegistrants = registrants.filter(r => emailRegex.test(r.email));
+    const invalidCount = registrants.length - validRegistrants.length;
+
     if (dryRun) {
       return NextResponse.json({
         success: true,
         dryRun: true,
-        totalRecipients: registrants.length,
-        confirmed: registrants.filter(r => r.status === 'confirmed').length,
-        pending: registrants.filter(r => r.status === 'pending').length,
-        recipients: registrants.map(r => ({
+        totalRecipients: validRegistrants.length,
+        invalidEmails: invalidCount,
+        confirmed: validRegistrants.filter(r => r.status === 'confirmed').length,
+        pending: validRegistrants.filter(r => r.status === 'pending').length,
+        recipients: validRegistrants.map(r => ({
           name: r.full_name,
           email: r.email,
           status: r.status,
@@ -326,8 +332,8 @@ export async function POST(request: NextRequest) {
     const BATCH_SIZE = 100;
     const BATCH_DELAY_MS = 1500;
     const skip = typeof skipFirst === 'number' ? skipFirst : 0;
-    const toSend = skip > 0 ? registrants.slice(skip) : registrants;
-    const results = { sent: 0, failed: 0, skipped: skip, errors: [] as string[] };
+    const toSend = skip > 0 ? validRegistrants.slice(skip) : validRegistrants;
+    const results = { sent: 0, failed: 0, skipped: skip, invalidEmails: invalidCount, errors: [] as string[] };
 
     for (let i = 0; i < toSend.length; i += BATCH_SIZE) {
       const batch = toSend.slice(i, i + BATCH_SIZE);
