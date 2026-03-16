@@ -68,3 +68,6 @@ pnpm-workspace.yaml
 # copilot skills (local development)
 .agents/
 .github/skills/
+
+# Generated reports
+reports/
