@@ -53,6 +53,8 @@ main_poster_gen_ai_to_z.png
 public/images/gen-ai-to-z-poster.png
 MERCH*.png
 [0-9].png
+FLOWERSTORE.png
+JOYRIDE.png
 
 # CSV and Excel files (contact databases — stored in data/contacts/)
 *.csv
