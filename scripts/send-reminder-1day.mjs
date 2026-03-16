@@ -21,6 +21,8 @@ const endpoint = `${baseUrl}/api/send-reminder-1day`;
 const isSend = args.includes('--send');
 const testIdx = args.indexOf('--test');
 const testEmail = testIdx !== -1 ? args[testIdx + 1] : null;
+const skipIdx = args.indexOf('--skip');
+const skipFirst = skipIdx !== -1 ? parseInt(args[skipIdx + 1], 10) : 0;
 
 console.log('\n🔥 Gen AI to Z — 1 Day to Go Reminder\n');
 console.log(`   Mode:     ${testEmail ? `🧪 TEST → ${testEmail}` : isSend ? '📨 SENDING emails' : '📋 DRY RUN (use --send to send, --test email to test)'}`);
@@ -29,6 +31,7 @@ console.log(`   Endpoint: ${endpoint}\n`);
 const body = { adminKey };
 if (testEmail) body.testEmail = testEmail;
 else if (!isSend) body.dryRun = true;
+if (skipFirst > 0) body.skipFirst = skipFirst;
 
 try {
   const res = await fetch(endpoint, {

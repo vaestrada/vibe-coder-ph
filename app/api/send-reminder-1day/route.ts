@@ -242,7 +242,7 @@ function buildEmail(fullName: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const { adminKey, dryRun, testEmail } = await request.json();
+    const { adminKey, dryRun, testEmail, skipFirst } = await request.json();
     const expectedKey = process.env.ADMIN_API_KEY;
 
     if (!expectedKey || adminKey !== expectedKey) {
@@ -322,12 +322,15 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // Send in batches of 100
+    // Send in batches of 100 with delay to avoid rate limits
     const BATCH_SIZE = 100;
-    const results = { sent: 0, failed: 0, errors: [] as string[] };
+    const BATCH_DELAY_MS = 1500;
+    const skip = typeof skipFirst === 'number' ? skipFirst : 0;
+    const toSend = skip > 0 ? registrants.slice(skip) : registrants;
+    const results = { sent: 0, failed: 0, skipped: skip, errors: [] as string[] };
 
-    for (let i = 0; i < registrants.length; i += BATCH_SIZE) {
-      const batch = registrants.slice(i, i + BATCH_SIZE);
+    for (let i = 0; i < toSend.length; i += BATCH_SIZE) {
+      const batch = toSend.slice(i, i + BATCH_SIZE);
 
       const emailPayloads = batch.map(registrant => ({
         from: 'Vibe Coders PH <noreply@updates.vibecoders.ph>',
@@ -352,6 +355,11 @@ export async function POST(request: NextRequest) {
       } catch (batchError) {
         results.failed += batch.length;
         results.errors.push(`Batch ${Math.floor(i / BATCH_SIZE) + 1}: ${String(batchError)}`);
+      }
+
+      // Delay between batches to respect Resend rate limits
+      if (i + BATCH_SIZE < toSend.length) {
+        await new Promise(resolve => setTimeout(resolve, BATCH_DELAY_MS));
       }
     }
 
