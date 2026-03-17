@@ -190,7 +190,7 @@ export default async function ReportPage() {
           </p>
 
           {/* Summary Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto">
             <StatCard
               value={data.summary.total}
               label="Total Registrants"
@@ -202,6 +202,18 @@ export default async function ReportPage() {
               color="#10b981"
             />
             <StatCard
+              value={data.summary.checkedIn}
+              label="Checked In"
+              color="#06b6d4"
+            />
+            <StatCard
+              value={`${data.summary.checkinPctConfirmed}%`}
+              label="Show-up Rate"
+              color="#f59e0b"
+            />
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mt-3">
+            <StatCard
               value={data.summary.pending}
               label="Pending"
               color="#f59e0b"
@@ -209,12 +221,17 @@ export default async function ReportPage() {
             <StatCard
               value={data.schools.length}
               label="Schools"
-              color="#06b6d4"
+              color="#d946ef"
             />
             <StatCard
               value={data.orgPartners.length}
               label="Org Partners"
-              color="#d946ef"
+              color="#f43f5e"
+            />
+            <StatCard
+              value={`${data.summary.checkinPctTotal}%`}
+              label="% of All Registered"
+              color="#38bdf8"
             />
           </div>
         </div>
@@ -222,6 +239,66 @@ export default async function ReportPage() {
 
       {/* Content */}
       <div className="max-w-5xl mx-auto px-4 pb-20 space-y-8">
+        {/* Check-in Analytics */}
+        {data.checkinTimeline.length > 0 && (
+          <Section
+            title="Check-in Analytics"
+            subtitle={`${data.summary.checkedIn} of ${data.summary.total} registered attendees checked in (${data.summary.checkinPctTotal}%)`}
+          >
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+              <div className="rounded-lg border border-cyan-800/50 bg-cyan-950/20 px-4 py-3 text-center">
+                <div className="text-2xl font-bold text-cyan-400">{data.summary.checkedIn}</div>
+                <div className="text-xs text-cyan-300/60">Total Checked In</div>
+              </div>
+              <div className="rounded-lg border border-emerald-800/50 bg-emerald-950/20 px-4 py-3 text-center">
+                <div className="text-2xl font-bold text-emerald-400">{data.summary.checkinPctConfirmed}%</div>
+                <div className="text-xs text-emerald-300/60">of Confirmed</div>
+              </div>
+              <div className="rounded-lg border border-violet-800/50 bg-violet-950/20 px-4 py-3 text-center col-span-2 sm:col-span-1">
+                <div className="text-2xl font-bold text-violet-400">{data.summary.total - data.summary.checkedIn}</div>
+                <div className="text-xs text-violet-300/60">No-Shows</div>
+              </div>
+            </div>
+            {/* Check-in timeline bars */}
+            <div className="flex flex-col gap-2">
+              {(() => {
+                const maxCheckin = Math.max(...data.checkinTimeline.map(t => t.count));
+                return data.checkinTimeline.map((t, i) => {
+                  const pct = (t.count / maxCheckin) * 100;
+                  return (
+                    <div key={t.label} className="group">
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs sm:text-sm text-cyan-200 w-[35%] sm:w-[30%] text-right truncate shrink-0">
+                          {t.label}
+                        </span>
+                        <div className="flex-1 h-7 bg-cyan-950/40 rounded overflow-hidden">
+                          <div
+                            className="h-full rounded transition-all duration-700 ease-out"
+                            style={{
+                              width: `${Math.max(pct, 2)}%`,
+                              background: i === 0 ? '#06b6d4' : i <= 2 ? '#8b5cf6' : '#d946ef',
+                            }}
+                          />
+                        </div>
+                        <span className="text-xs sm:text-sm text-cyan-100 font-semibold tabular-nums w-12">
+                          {t.count}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                });
+              })()}
+            </div>
+            <p className="text-xs text-violet-500 mt-4">
+              Peak check-in hour:{" "}
+              {(() => {
+                const peak = data.checkinTimeline.reduce((a, b) => a.count > b.count ? a : b);
+                return `${peak.label} with ${peak.count} check-ins`;
+              })()}
+            </p>
+          </Section>
+        )}
+
         {/* Affiliation */}
         <Section title="Demographics by Affiliation" subtitle="Breakdown of registrant types">
           <DonutChart items={data.affiliation} total={data.summary.total} />

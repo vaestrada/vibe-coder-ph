@@ -5,6 +5,9 @@ export interface ReportSummary {
   total: number;
   confirmed: number;
   pending: number;
+  checkedIn: number;
+  checkinPctTotal: number;
+  checkinPctConfirmed: number;
 }
 
 export interface ReportItem {
@@ -19,6 +22,11 @@ export interface ReportTimeline {
   cumulative: number;
 }
 
+export interface CheckinTimeBlock {
+  label: string;
+  count: number;
+}
+
 export interface ReportData {
   summary: ReportSummary;
   affiliation: ReportItem[];
@@ -26,6 +34,7 @@ export interface ReportData {
   schools: ReportItem[];
   orgPartners: ReportItem[];
   timeline: ReportTimeline[];
+  checkinTimeline: CheckinTimeBlock[];
 }
 
 // ─── School Clusters ─────────────────────────────────────────────────
@@ -214,16 +223,45 @@ function toSorted(map: Record<string, number>, total: number): ReportItem[] {
 export async function getEventReport(): Promise<ReportData> {
   const { data: rows, error } = await supabase
     .from('event_registrations')
-    .select('organization, affiliation, how_did_you_hear, status, created_at')
+    .select('organization, affiliation, how_did_you_hear, status, created_at, checked_in, checked_in_at')
     .eq('event_slug', 'gen-ai-to-z');
 
   if (error || !rows) throw new Error('Failed to fetch registrations');
 
+  const checkedIn = rows.filter(r => r.checked_in === true).length;
+  const confirmed = rows.filter(r => r.status === 'confirmed').length;
   const summary: ReportSummary = {
     total: rows.length,
-    confirmed: rows.filter(r => r.status === 'confirmed').length,
+    confirmed,
     pending: rows.filter(r => r.status === 'pending').length,
+    checkedIn,
+    checkinPctTotal: rows.length > 0 ? +((checkedIn / rows.length) * 100).toFixed(1) : 0,
+    checkinPctConfirmed: confirmed > 0 ? +((checkedIn / confirmed) * 100).toFixed(1) : 0,
   };
+
+  // Check-in timeline (hourly blocks, Manila timezone)
+  const TIME_BLOCKS = [
+    { label: 'Before 7 AM', minHr: 0, maxHr: 6 },
+    { label: '7:00–7:59 AM', minHr: 7, maxHr: 7 },
+    { label: '8:00–8:59 AM', minHr: 8, maxHr: 8 },
+    { label: '9:00–9:59 AM', minHr: 9, maxHr: 9 },
+    { label: '10:00–10:59 AM', minHr: 10, maxHr: 10 },
+    { label: '11:00–11:59 AM', minHr: 11, maxHr: 11 },
+    { label: '12:00–12:59 PM', minHr: 12, maxHr: 12 },
+    { label: '1:00–1:59 PM', minHr: 13, maxHr: 13 },
+    { label: '2:00–2:59 PM', minHr: 14, maxHr: 14 },
+    { label: '3:00 PM+', minHr: 15, maxHr: 23 },
+  ];
+  const checkinTimeline: CheckinTimeBlock[] = TIME_BLOCKS.map(b => {
+    const count = rows.filter(r => {
+      if (!r.checked_in || !r.checked_in_at) return false;
+      // Convert to Manila time (UTC+8)
+      const utcDate = new Date(r.checked_in_at);
+      const manilaHour = new Date(utcDate.getTime() + 8 * 60 * 60 * 1000).getUTCHours();
+      return manilaHour >= b.minHr && manilaHour <= b.maxHr;
+    }).length;
+    return { label: b.label, count };
+  }).filter(b => b.count > 0);
 
   // Affiliation
   const affilMap: Record<string, number> = {};
@@ -273,5 +311,6 @@ export async function getEventReport(): Promise<ReportData> {
     schools: toSorted(schoolMap, rows.length),
     orgPartners: toSorted(orgMap, rows.length),
     timeline,
+    checkinTimeline,
   };
 }
