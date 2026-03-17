@@ -53,6 +53,32 @@ export interface ReportData {
   affiliationAttendance: AffiliationAttendance[];
   regTimingAttendance: RegTimingBucket[];
   topInterests: ReportItem[];
+  feedback: FeedbackData | null;
+}
+
+// ─── Feedback Types ──────────────────────────────────────────────────
+export interface RatingCategory {
+  label: string;
+  avg: number;
+  distribution: number[]; // [1-star, 2-star, 3-star, 4-star, 5-star]
+}
+
+export interface Testimonial {
+  text: string;
+  isAnonymous: boolean;
+}
+
+export interface FeedbackData {
+  totalResponses: number;
+  responseRate: number; // of checked-in attendees
+  nps: number; // Net Promoter Score (would_recommend)
+  wouldRecommendYes: number;
+  wouldRecommendTotal: number;
+  ratings: RatingCategory[];
+  testimonials: Testimonial[];
+  topicsForFuture: ReportItem[];
+  whatWorkedWell: string[];
+  whatNeedsImprovement: string[];
 }
 
 // ─── School Clusters ─────────────────────────────────────────────────
@@ -407,6 +433,103 @@ export async function getEventReport(): Promise<ReportData> {
   }
   const topInterests = toSorted(interestCounts, expectationsRows.length);
 
+  // ─── Feedback ────────────────────────────────────────────────────
+  let feedback: FeedbackData | null = null;
+  const { data: fbRows } = await supabase
+    .from('event_feedback')
+    .select('overall_rating, content_rating, speakers_rating, venue_rating, organization_rating, would_recommend, consent_for_testimonial, is_anonymous, what_worked_well, what_needs_improvement, topics_for_future, additional_comments')
+    .eq('event_slug', 'gen-ai-to-z');
+
+  if (fbRows && fbRows.length > 0) {
+    const RATING_FIELDS: { key: string; label: string }[] = [
+      { key: 'overall_rating', label: 'Overall' },
+      { key: 'content_rating', label: 'Content' },
+      { key: 'speakers_rating', label: 'Speakers' },
+      { key: 'venue_rating', label: 'Venue' },
+      { key: 'organization_rating', label: 'Organization' },
+    ];
+
+    const ratings: RatingCategory[] = RATING_FIELDS.map(({ key, label }) => {
+      const vals = fbRows.map(r => (r as Record<string, unknown>)[key] as number | null).filter((v): v is number => v != null);
+      const dist = [0, 0, 0, 0, 0];
+      let sum = 0;
+      for (const v of vals) { dist[v - 1]++; sum += v; }
+      return { label, avg: vals.length > 0 ? +(sum / vals.length).toFixed(2) : 0, distribution: dist };
+    });
+
+    const recWithAnswer = fbRows.filter(r => r.would_recommend != null);
+    const yesCount = recWithAnswer.filter(r => r.would_recommend === true).length;
+    const nps = recWithAnswer.length > 0 ? +((yesCount / recWithAnswer.length) * 100).toFixed(0) : 0;
+
+    // Testimonials: only from consented respondents with meaningful text
+    const SKIP_TEXT = new Set(['', 'none', 'n/a', 'na', 'nothing', '-', '.']);
+    const testimonials: Testimonial[] = fbRows
+      .filter(r => r.consent_for_testimonial === true)
+      .flatMap(r => {
+        const texts: string[] = [];
+        for (const field of ['what_worked_well', 'additional_comments'] as const) {
+          const v = ((r as Record<string, unknown>)[field] as string | null || '').trim();
+          if (v && !SKIP_TEXT.has(v.toLowerCase()) && v.length > 20) texts.push(v);
+        }
+        return texts.map(text => ({ text, isAnonymous: r.is_anonymous === true }));
+      })
+      .slice(0, 12);
+
+    // Topics for future events
+    const topicMap: Record<string, number> = {};
+    const FUTURE_KEYWORDS: [string, RegExp][] = [
+      ['Hands-on Workshops', /workshop|hands.?on/i],
+      ['Hackathons', /hackathon/i],
+      ['AI / Machine Learning', /\bai\b|machine learning|deep learning|llm/i],
+      ['Web Development', /web\s*dev|frontend|backend|fullstack/i],
+      ['Prompt Engineering', /prompt/i],
+      ['Data Science', /data\s*(?:science|analy|engineer)/i],
+      ['Robotics / Hardware', /robot|hardware|iot/i],
+      ['Networking Events', /network/i],
+      ['Career / Industry', /career|industry|intern|job/i],
+      ['Cybersecurity', /cyber|security/i],
+      ['Seminars / Talks', /seminar|talk|lecture/i],
+      ['AI Tools for Students', /ai\s*tool|tool.*student|student.*tool/i],
+    ];
+    for (const r of fbRows) {
+      const text = ((r.topics_for_future as string) || '').trim();
+      if (!text || SKIP_TEXT.has(text.toLowerCase())) continue;
+      for (const [label, re] of FUTURE_KEYWORDS) {
+        if (re.test(text)) topicMap[label] = (topicMap[label] || 0) + 1;
+      }
+    }
+    const topicTotal = fbRows.filter(r => {
+      const t = ((r.topics_for_future as string) || '').trim();
+      return t && !SKIP_TEXT.has(t.toLowerCase());
+    }).length;
+    const topicsForFuture = toSorted(topicMap, topicTotal);
+
+    // What worked well — curated themes
+    const workedWell = fbRows
+      .map(r => ((r.what_worked_well as string) || '').trim())
+      .filter(t => t && !SKIP_TEXT.has(t.toLowerCase()) && t.length > 15)
+      .slice(0, 8);
+
+    // What needs improvement
+    const improvements = fbRows
+      .map(r => ((r.what_needs_improvement as string) || '').trim())
+      .filter(t => t && !SKIP_TEXT.has(t.toLowerCase()) && t.length > 10)
+      .slice(0, 8);
+
+    feedback = {
+      totalResponses: fbRows.length,
+      responseRate: summary.checkedIn > 0 ? +((fbRows.length / summary.checkedIn) * 100).toFixed(1) : 0,
+      nps,
+      wouldRecommendYes: yesCount,
+      wouldRecommendTotal: recWithAnswer.length,
+      ratings,
+      testimonials,
+      topicsForFuture,
+      whatWorkedWell: workedWell,
+      whatNeedsImprovement: improvements,
+    };
+  }
+
   return {
     summary,
     affiliation: toSorted(affilMap, rows.length),
@@ -419,5 +542,6 @@ export async function getEventReport(): Promise<ReportData> {
     affiliationAttendance,
     regTimingAttendance,
     topInterests,
+    feedback,
   };
 }

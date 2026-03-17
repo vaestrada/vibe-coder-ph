@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getEventReport } from "@/lib/event-report";
-import type { ReportItem, AffiliationAttendance, RegTimingBucket } from "@/lib/event-report";
+import type { ReportItem, AffiliationAttendance, RegTimingBucket, FeedbackData } from "@/lib/event-report";
 
 export const metadata: Metadata = {
   title: "Gen AI to Z — Registration Demographics Report",
@@ -163,6 +163,160 @@ function Section({
   );
 }
 
+// ── Star Visual ──────────────────────────────────────────────────────
+function Stars({ rating }: { rating: number }) {
+  return (
+    <span className="inline-flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
+      {[1, 2, 3, 4, 5].map(n => (
+        <span
+          key={n}
+          className={`text-sm ${n <= Math.round(rating) ? 'text-yellow-400' : 'text-violet-800'}`}
+        >
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
+
+// ── Feedback Section ─────────────────────────────────────────────────
+function FeedbackSection({ feedback }: { feedback: FeedbackData }) {
+  return (
+    <Section
+      title="Attendee Satisfaction"
+      subtitle={`${feedback.totalResponses} responses (${feedback.responseRate}% response rate of checked-in attendees)`}
+    >
+      {/* NPS + Headline Stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+        <div className="rounded-xl border-2 border-emerald-600 bg-emerald-950/20 px-4 py-4 text-center col-span-2 sm:col-span-1">
+          <div className="text-3xl font-bold text-emerald-400">{feedback.nps}%</div>
+          <div className="text-xs text-emerald-300/60 mt-1">Would Recommend</div>
+          <div className="text-[10px] text-violet-500 mt-0.5">{feedback.wouldRecommendYes}/{feedback.wouldRecommendTotal} respondents</div>
+        </div>
+        <div className="rounded-xl border-2 border-yellow-600/50 bg-yellow-950/10 px-4 py-4 text-center">
+          <div className="text-3xl font-bold text-yellow-400">{feedback.ratings[0]?.avg}</div>
+          <div className="text-xs text-yellow-300/60 mt-1">Overall Rating</div>
+          <div className="text-[10px] text-violet-500 mt-0.5">out of 5.0</div>
+        </div>
+        <div className="rounded-xl border border-violet-800/40 bg-violet-950/20 px-4 py-4 text-center">
+          <div className="text-2xl font-bold text-violet-300">{feedback.totalResponses}</div>
+          <div className="text-xs text-violet-400 mt-1">Responses</div>
+        </div>
+        <div className="rounded-xl border border-violet-800/40 bg-violet-950/20 px-4 py-4 text-center">
+          <div className="text-2xl font-bold text-violet-300">{feedback.responseRate}%</div>
+          <div className="text-xs text-violet-400 mt-1">Response Rate</div>
+        </div>
+      </div>
+
+      {/* Rating Categories with Distribution */}
+      <h3 className="text-sm font-bold text-violet-200 mb-3 uppercase tracking-wider">Ratings by Category</h3>
+      <div className="space-y-3 mb-8">
+        {feedback.ratings.map((cat) => {
+          const total = cat.distribution.reduce((a, b) => a + b, 0);
+          return (
+            <div key={cat.label} className="group">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-sm text-violet-200">{cat.label}</span>
+                <span className="flex items-center gap-2">
+                  <Stars rating={cat.avg} />
+                  <span className="text-sm font-bold text-yellow-400 tabular-nums w-10 text-right">{cat.avg}</span>
+                </span>
+              </div>
+              <div className="flex h-5 rounded-lg overflow-hidden bg-violet-950/40">
+                {cat.distribution.map((count, i) => {
+                  if (count === 0) return null;
+                  const pct = (count / total) * 100;
+                  const colors = ['#ef4444', '#f97316', '#eab308', '#a3e635', '#22c55e'];
+                  return (
+                    <div
+                      key={i}
+                      className="h-full flex items-center justify-center text-[9px] font-bold text-white/90 transition-all"
+                      style={{ width: `${pct}%`, background: colors[i], minWidth: pct > 0 ? '16px' : 0 }}
+                      title={`${i + 1} star: ${count} (${pct.toFixed(0)}%)`}
+                    >
+                      {pct >= 8 && count}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+        <div className="flex items-center gap-3 text-[10px] text-violet-500 mt-1">
+          {['1★', '2★', '3★', '4★', '5★'].map((label, i) => {
+            const colors = ['#ef4444', '#f97316', '#eab308', '#a3e635', '#22c55e'];
+            return (
+              <span key={label} className="flex items-center gap-1">
+                <span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ background: colors[i] }} />
+                {label}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      {feedback.testimonials.length > 0 && (
+        <>
+          <h3 className="text-sm font-bold text-violet-200 mb-3 uppercase tracking-wider">What Attendees Said</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+            {feedback.testimonials.map((t, i) => (
+              <div
+                key={i}
+                className="rounded-lg bg-violet-950/30 border border-violet-800/20 p-4"
+              >
+                <p className="text-sm text-violet-200 italic leading-relaxed">&ldquo;{t.text}&rdquo;</p>
+                <p className="text-[10px] text-violet-500 mt-2">
+                  — {t.isAnonymous ? 'Anonymous attendee' : 'Event attendee'}
+                </p>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Topics for Future Events */}
+      {feedback.topicsForFuture.length > 0 && (
+        <>
+          <h3 className="text-sm font-bold text-violet-200 mb-3 uppercase tracking-wider">Requested Topics for Future Events</h3>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {feedback.topicsForFuture.map((topic, i) => (
+              <div
+                key={topic.name}
+                className="rounded-full border px-4 py-1.5"
+                style={{
+                  borderColor: COLORS[i % COLORS.length] + '50',
+                  background: COLORS[i % COLORS.length] + '10',
+                }}
+              >
+                <span className="text-sm" style={{ color: COLORS[i % COLORS.length] }}>
+                  {topic.name}
+                </span>
+                <span className="text-[10px] text-violet-400 ml-1.5">{topic.count}</span>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Areas for Improvement */}
+      {feedback.whatNeedsImprovement.length > 0 && (
+        <>
+          <h3 className="text-sm font-bold text-violet-200 mb-3 uppercase tracking-wider">Areas for Improvement</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {feedback.whatNeedsImprovement.map((text, i) => (
+              <div key={i} className="flex items-start gap-2 text-sm text-violet-300 bg-violet-950/20 rounded-lg px-3 py-2.5">
+                <span className="text-fuchsia-500 mt-0.5 shrink-0">→</span>
+                <span className="leading-relaxed">{text}</span>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </Section>
+  );
+}
+
 // ── Page ─────────────────────────────────────────────────────────────
 export default async function ReportPage() {
   const data = await getEventReport();
@@ -298,6 +452,9 @@ export default async function ReportPage() {
             </p>
           </Section>
         )}
+
+        {/* ═══ ATTENDEE SATISFACTION ═══ */}
+        {data.feedback && <FeedbackSection feedback={data.feedback} />}
 
         {/* ═══ CONVERSION FUNNEL ═══ */}
         <Section
@@ -589,6 +746,11 @@ export default async function ReportPage() {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
+              ...(data.feedback ? [{
+                icon: '⭐',
+                title: 'Exceptional Satisfaction',
+                body: `${data.feedback.ratings[0]?.avg}/5.0 overall rating from ${data.feedback.totalResponses} respondents. ${data.feedback.nps}% would recommend the event — world-class satisfaction score.`,
+              }] : []),
               {
                 icon: '📊',
                 title: 'Strong Reach',
@@ -621,6 +783,11 @@ export default async function ReportPage() {
                   ? `Top audience interests: ${data.topInterests.slice(0, 3).map(i => i.name).join(', ')}.`
                   : 'Audience showed broad interest across AI topics.',
               },
+              ...(data.feedback && data.feedback.topicsForFuture.length > 0 ? [{
+                icon: '🔮',
+                title: 'Audience Wants More',
+                body: `Top requested topics: ${data.feedback.topicsForFuture.slice(0, 3).map(t => t.name).join(', ')}. ${data.feedback.responseRate}% of attendees submitted feedback — strong post-event engagement.`,
+              }] : []),
             ].map((insight) => (
               <div
                 key={insight.title}
