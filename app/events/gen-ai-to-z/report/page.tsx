@@ -370,7 +370,7 @@ export default async function ReportPage() {
           subtitle="Daily registration volume over time"
         >
           <div className="overflow-x-auto">
-            <div className="flex items-end gap-[2px] h-40 min-w-[600px]">
+            <div className="flex gap-[2px] h-40 min-w-[600px]">
               {(() => {
                 // Group days into weekly buckets for cleaner visualization
                 const weekly: { label: string; count: number; cumulative: number }[] = [];
@@ -386,7 +386,7 @@ export default async function ReportPage() {
                   return (
                     <div
                       key={w.label}
-                      className="flex-1 group relative"
+                      className="flex-1 flex items-end group relative"
                       title={`Week of ${w.label}: ${w.count} registrations (${w.cumulative} total)`}
                     >
                       <div
