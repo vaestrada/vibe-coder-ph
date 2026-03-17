@@ -27,6 +27,20 @@ export interface CheckinTimeBlock {
   count: number;
 }
 
+export interface AffiliationAttendance {
+  name: string;
+  total: number;
+  checkedIn: number;
+  pct: number;
+}
+
+export interface RegTimingBucket {
+  label: string;
+  total: number;
+  checkedIn: number;
+  pct: number;
+}
+
 export interface ReportData {
   summary: ReportSummary;
   affiliation: ReportItem[];
@@ -35,6 +49,10 @@ export interface ReportData {
   orgPartners: ReportItem[];
   timeline: ReportTimeline[];
   checkinTimeline: CheckinTimeBlock[];
+  yearLevel: ReportItem[];
+  affiliationAttendance: AffiliationAttendance[];
+  regTimingAttendance: RegTimingBucket[];
+  topInterests: ReportItem[];
 }
 
 // ─── School Clusters ─────────────────────────────────────────────────
@@ -223,7 +241,7 @@ function toSorted(map: Record<string, number>, total: number): ReportItem[] {
 export async function getEventReport(): Promise<ReportData> {
   const { data: rows, error } = await supabase
     .from('event_registrations')
-    .select('organization, affiliation, how_did_you_hear, status, created_at, checked_in, checked_in_at')
+    .select('organization, affiliation, how_did_you_hear, status, created_at, checked_in, checked_in_at, year_level, expectations')
     .eq('event_slug', 'gen-ai-to-z');
 
   if (error || !rows) throw new Error('Failed to fetch registrations');
@@ -304,6 +322,91 @@ export async function getEventReport(): Promise<ReportData> {
     return { date: d, count: dateMap[d], cumulative: cum };
   });
 
+  // Year level (normalize variants)
+  const yearMap: Record<string, number> = {};
+  for (const r of rows) {
+    const raw = (r.year_level || '').trim().toLowerCase();
+    if (!raw) continue;
+    let level: string | null = null;
+    if (/grade\s*11/i.test(raw)) level = 'Grade 11';
+    else if (/grade\s*12/i.test(raw)) level = 'Grade 12';
+    else if (/1st|first|^1$/i.test(raw)) level = '1st Year';
+    else if (/2nd|second|^2$/i.test(raw)) level = '2nd Year';
+    else if (/3rd|third|^3$/i.test(raw)) level = '3rd Year';
+    else if (/4th|fourth|4rt|^4$/i.test(raw)) level = '4th Year';
+    else if (/5th|fifth|^5$/i.test(raw)) level = '5th Year';
+    else if (/master/i.test(raw)) level = 'Masters';
+    else level = raw.charAt(0).toUpperCase() + raw.slice(1);
+    if (level) yearMap[level] = (yearMap[level] || 0) + 1;
+  }
+  const yearTotal = Object.values(yearMap).reduce((a, b) => a + b, 0);
+  const yearLevel = toSorted(yearMap, yearTotal);
+
+  // Attendance by affiliation (cross-tab)
+  const affilAttnMap: Record<string, { total: number; checkedIn: number }> = {};
+  for (const r of rows) {
+    const a = (r.affiliation || 'Not specified').trim();
+    if (!affilAttnMap[a]) affilAttnMap[a] = { total: 0, checkedIn: 0 };
+    affilAttnMap[a].total += 1;
+    if (r.checked_in) affilAttnMap[a].checkedIn += 1;
+  }
+  const affiliationAttendance: AffiliationAttendance[] = Object.entries(affilAttnMap)
+    .sort((a, b) => b[1].total - a[1].total)
+    .map(([name, v]) => ({
+      name,
+      total: v.total,
+      checkedIn: v.checkedIn,
+      pct: v.total > 0 ? +((v.checkedIn / v.total) * 100).toFixed(1) : 0,
+    }));
+
+  // Registration timing → attendance correlation
+  const REG_BUCKETS: { label: string; start: string; end: string }[] = [
+    { label: 'Early (before Feb 15)', start: '2000-01-01', end: '2026-02-15' },
+    { label: 'Late Feb (15–28)', start: '2026-02-15', end: '2026-03-01' },
+    { label: 'Early Mar (1–9)', start: '2026-03-01', end: '2026-03-10' },
+    { label: 'Last week (10–15)', start: '2026-03-10', end: '2026-03-16' },
+    { label: 'Day before / Day of', start: '2026-03-16', end: '2099-01-01' },
+  ];
+  const regTimingAttendance: RegTimingBucket[] = REG_BUCKETS.map(b => {
+    const inBucket = rows.filter(r => r.created_at >= b.start && r.created_at < b.end);
+    const checkedInCount = inBucket.filter(r => r.checked_in).length;
+    return {
+      label: b.label,
+      total: inBucket.length,
+      checkedIn: checkedInCount,
+      pct: inBucket.length > 0 ? +((checkedInCount / inBucket.length) * 100).toFixed(1) : 0,
+    };
+  }).filter(b => b.total > 0);
+
+  // Audience interests from expectations (keyword extraction)
+  const INTEREST_KEYWORDS: [string, RegExp][] = [
+    ['AI / Artificial Intelligence', /\bai\b|artificial intelligence/i],
+    ['Vibe Coding', /vibe\s*cod/i],
+    ['Machine Learning', /machine learning|ml\b/i],
+    ['Prompt Engineering', /prompt/i],
+    ['Web Development', /web\s*dev|website|frontend|backend/i],
+    ['Career / Jobs', /career|job|intern|employ|hire/i],
+    ['Data Science / Analytics', /data\s*(?:science|analy)|analytics/i],
+    ['Networking', /network|connect|meet|community/i],
+    ['Automation', /automat/i],
+    ['Software Development', /software|coding|code|program/i],
+    ['Productivity Tools', /productiv|tool/i],
+    ['Ethics / Responsible AI', /ethic|responsible|bias/i],
+    ['Business / Entrepreneurship', /business|entrepreneur|startup|market/i],
+    ['Deep Learning', /deep\s*learn|neural|nlp|llm/i],
+  ];
+  const interestCounts: Record<string, number> = {};
+  const expectationsRows = rows.filter(r => r.expectations && r.expectations.trim());
+  for (const r of expectationsRows) {
+    const text = r.expectations;
+    for (const [label, re] of INTEREST_KEYWORDS) {
+      if (re.test(text)) {
+        interestCounts[label] = (interestCounts[label] || 0) + 1;
+      }
+    }
+  }
+  const topInterests = toSorted(interestCounts, expectationsRows.length);
+
   return {
     summary,
     affiliation: toSorted(affilMap, rows.length),
@@ -312,5 +415,9 @@ export async function getEventReport(): Promise<ReportData> {
     orgPartners: toSorted(orgMap, rows.length),
     timeline,
     checkinTimeline,
+    yearLevel,
+    affiliationAttendance,
+    regTimingAttendance,
+    topInterests,
   };
 }

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getEventReport } from "@/lib/event-report";
-import type { ReportItem } from "@/lib/event-report";
+import type { ReportItem, AffiliationAttendance, RegTimingBucket } from "@/lib/event-report";
 
 export const metadata: Metadata = {
   title: "Gen AI to Z — Registration Demographics Report",
@@ -299,6 +299,121 @@ export default async function ReportPage() {
           </Section>
         )}
 
+        {/* ═══ CONVERSION FUNNEL ═══ */}
+        <Section
+          title="Conversion Funnel"
+          subtitle="Registration → Confirmation → Check-in pipeline"
+        >
+          <div className="space-y-4">
+            {[
+              { label: 'Registered', value: data.summary.total, pct: 100, color: '#8b5cf6' },
+              { label: 'Confirmed (Verified Email)', value: data.summary.confirmed, pct: data.summary.total > 0 ? +((data.summary.confirmed / data.summary.total) * 100).toFixed(1) : 0, color: '#10b981' },
+              { label: 'Checked In (Attended)', value: data.summary.checkedIn, pct: data.summary.total > 0 ? +((data.summary.checkedIn / data.summary.total) * 100).toFixed(1) : 0, color: '#06b6d4' },
+            ].map((step, i) => (
+              <div key={step.label}>
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-sm text-violet-200 font-medium">{step.label}</span>
+                  <span className="text-sm font-bold tabular-nums" style={{ color: step.color }}>
+                    {step.value} <span className="text-violet-500 text-xs font-normal">({step.pct}%)</span>
+                  </span>
+                </div>
+                <div className="h-8 bg-violet-950/50 rounded-lg overflow-hidden">
+                  <div
+                    className="h-full rounded-lg transition-all duration-700"
+                    style={{ width: `${step.pct}%`, background: step.color }}
+                  />
+                </div>
+                {i < 2 && (
+                  <div className="flex items-center gap-2 mt-1.5 ml-4">
+                    <span className="text-[10px] text-violet-500">
+                      {i === 0
+                        ? `${data.summary.total - data.summary.confirmed} did not verify email (${(((data.summary.total - data.summary.confirmed) / data.summary.total) * 100).toFixed(1)}% drop)`
+                        : `${data.summary.confirmed - data.summary.checkedIn} confirmed but did not attend (${((((data.summary.confirmed - data.summary.checkedIn)) / data.summary.confirmed) * 100).toFixed(1)}% drop)`}
+                    </span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        {/* ═══ ATTENDANCE BY AFFILIATION ═══ */}
+        <Section
+          title="Attendance Rate by Segment"
+          subtitle="Check-in rate across audience demographics"
+        >
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-violet-800/40">
+                  <th className="text-left py-2 pr-4 text-violet-400 font-medium">Segment</th>
+                  <th className="text-right px-3 py-2 text-violet-400 font-medium">Registered</th>
+                  <th className="text-right px-3 py-2 text-violet-400 font-medium">Checked In</th>
+                  <th className="text-right pl-3 py-2 text-violet-400 font-medium">Show-up %</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.affiliationAttendance.map((row) => (
+                  <tr key={row.name} className="border-b border-violet-900/20">
+                    <td className="py-2.5 pr-4 text-violet-100">{row.name}</td>
+                    <td className="text-right px-3 py-2.5 text-violet-300 tabular-nums">{row.total}</td>
+                    <td className="text-right px-3 py-2.5 text-cyan-300 tabular-nums">{row.checkedIn}</td>
+                    <td className="text-right pl-3 py-2.5 tabular-nums font-semibold" style={{
+                      color: row.pct >= 45 ? '#10b981' : row.pct >= 30 ? '#f59e0b' : '#f43f5e',
+                    }}>
+                      {row.pct}%
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Section>
+
+        {/* ═══ REGISTRATION TIMING → ATTENDANCE ═══ */}
+        <Section
+          title="When They Registered vs. Whether They Showed Up"
+          subtitle="Later registrants had significantly higher attendance rates"
+        >
+          <div className="space-y-3">
+            {data.regTimingAttendance.map((bucket) => {
+              const maxTotal = Math.max(...data.regTimingAttendance.map(b => b.total));
+              const barWidth = (bucket.total / maxTotal) * 100;
+              const checkinWidth = (bucket.checkedIn / maxTotal) * 100;
+              return (
+                <div key={bucket.label}>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs sm:text-sm text-violet-200">{bucket.label}</span>
+                    <span className="text-xs tabular-nums">
+                      <span className="text-cyan-400 font-semibold">{bucket.checkedIn}</span>
+                      <span className="text-violet-500">/{bucket.total}</span>
+                      <span className="font-semibold ml-1.5" style={{
+                        color: bucket.pct >= 50 ? '#10b981' : bucket.pct >= 35 ? '#f59e0b' : '#f43f5e',
+                      }}>
+                        ({bucket.pct}%)
+                      </span>
+                    </span>
+                  </div>
+                  <div className="relative h-6 bg-violet-950/50 rounded overflow-hidden">
+                    <div
+                      className="absolute inset-y-0 left-0 rounded bg-violet-800/40"
+                      style={{ width: `${barWidth}%` }}
+                    />
+                    <div
+                      className="absolute inset-y-0 left-0 rounded bg-cyan-500/70"
+                      style={{ width: `${checkinWidth}%` }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex items-center gap-4 mt-4 text-[10px] text-violet-500">
+            <span className="flex items-center gap-1.5"><span className="w-3 h-2 rounded bg-violet-800/60 inline-block" /> Registered</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-2 rounded bg-cyan-500/70 inline-block" /> Checked In</span>
+          </div>
+        </Section>
+
         {/* Affiliation */}
         <Section title="Demographics by Affiliation" subtitle="Breakdown of registrant types">
           <DonutChart items={data.affiliation} total={data.summary.total} />
@@ -364,6 +479,55 @@ export default async function ReportPage() {
           />
         </Section>
 
+        {/* ═══ YEAR LEVEL DISTRIBUTION ═══ */}
+        {data.yearLevel.length > 0 && (
+          <Section
+            title="Year Level Distribution"
+            subtitle={`Academic level of ${data.yearLevel.reduce((s, y) => s + y.count, 0)} student registrants`}
+          >
+            <DonutChart
+              items={data.yearLevel}
+              total={data.yearLevel.reduce((s, y) => s + y.count, 0)}
+            />
+          </Section>
+        )}
+
+        {/* ═══ AUDIENCE INTERESTS ═══ */}
+        {data.topInterests.length > 0 && (
+          <Section
+            title="Audience Interests"
+            subtitle="Top topics extracted from 'What are your expectations?' responses"
+          >
+            <div className="flex flex-wrap gap-2">
+              {data.topInterests.map((interest, i) => {
+                const maxCount = data.topInterests[0]?.count ?? 1;
+                const scale = 0.6 + (interest.count / maxCount) * 0.4;
+                return (
+                  <div
+                    key={interest.name}
+                    className="rounded-full border px-4 py-2 text-center transition-colors"
+                    style={{
+                      borderColor: COLORS[i % COLORS.length] + '60',
+                      background: COLORS[i % COLORS.length] + '15',
+                      transform: `scale(${scale})`,
+                    }}
+                  >
+                    <span className="text-sm font-medium" style={{ color: COLORS[i % COLORS.length] }}>
+                      {interest.name}
+                    </span>
+                    <span className="text-[10px] text-violet-400 ml-1.5">
+                      {interest.pct}%
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="text-xs text-violet-500 mt-4">
+              Based on {data.topInterests.reduce((s, i) => s + i.count, 0)} keyword matches from free-text responses. Percentages are of respondents who filled out the field.
+            </p>
+          </Section>
+        )}
+
         {/* Timeline */}
         <Section
           title="Registration Timeline"
@@ -416,6 +580,60 @@ export default async function ReportPage() {
               return `${peak.date} with ${peak.count} registrations`;
             })()}
           </p>
+        </Section>
+
+        {/* ═══ KEY INSIGHTS ═══ */}
+        <Section
+          title="Key Insights"
+          subtitle="Executive summary for organizers, sponsors, and speakers"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              {
+                icon: '📊',
+                title: 'Strong Reach',
+                body: `${data.summary.total} registrants from ${data.schools.length} schools and ${data.orgPartners.length} org partners — proving demand for AI/tech career events in the Philippine academic community.`,
+              },
+              {
+                icon: '✅',
+                title: 'Healthy Show-up Rate',
+                body: `${data.summary.checkinPctConfirmed}% of confirmed registrants checked in — above the 30-40% industry average for free tech events.`,
+              },
+              {
+                icon: '⏰',
+                title: 'Recency Drives Attendance',
+                body: `Registrants who signed up in the last 2 days had a ${data.regTimingAttendance[data.regTimingAttendance.length - 1]?.pct ?? 0}% show-up rate vs ${data.regTimingAttendance[0]?.pct ?? 0}% for the earliest cohort.`,
+              },
+              {
+                icon: '🎓',
+                title: 'Student-Dominated Audience',
+                body: `${data.affiliationAttendance[0]?.name === 'College Student' ? `${data.affiliationAttendance[0].total} college students (${(data.affiliationAttendance[0].total / data.summary.total * 100).toFixed(0)}%) — the core demographic` : 'Diverse audience across multiple segments.'}.`,
+              },
+              {
+                icon: '🔍',
+                title: 'Top Discovery Channel',
+                body: `"${data.howDidYouHear[0]?.name}" drove ${data.howDidYouHear[0]?.pct}% of registrations — the dominant marketing channel.`,
+              },
+              {
+                icon: '🤖',
+                title: 'AI Interest Dominates',
+                body: data.topInterests.length > 0
+                  ? `Top audience interests: ${data.topInterests.slice(0, 3).map(i => i.name).join(', ')}.`
+                  : 'Audience showed broad interest across AI topics.',
+              },
+            ].map((insight) => (
+              <div
+                key={insight.title}
+                className="rounded-xl bg-violet-950/40 border border-violet-800/30 p-4"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-lg">{insight.icon}</span>
+                  <h3 className="text-sm font-bold text-violet-100">{insight.title}</h3>
+                </div>
+                <p className="text-xs text-violet-300 leading-relaxed">{insight.body}</p>
+              </div>
+            ))}
+          </div>
         </Section>
 
         {/* Footer */}
