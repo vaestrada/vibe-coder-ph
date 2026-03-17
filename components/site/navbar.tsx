@@ -9,6 +9,7 @@ import { useState } from "react";
 
 const links = [
   { href: "/", label: "Home" },
+  { href: "/events/gen-ai-to-z", label: "Events", matchPrefix: "/events" },
   { href: "/projects", label: "Projects" },
   { href: "/courses", label: "Blog" },
   { href: "/sponsor", label: "Sponsor" },
@@ -40,17 +41,22 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 text-sm">
-            {links.map((l) => (
+            {links.map((l) => {
+              const isActive = l.matchPrefix
+                ? pathname.startsWith(l.matchPrefix)
+                : pathname === l.href;
+              return (
               <Link
                 key={l.href}
                 href={l.href}
                 className={`rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground transition-colors ${
-                  pathname === l.href ? "bg-accent text-accent-foreground" : "text-muted-foreground"
+                  isActive ? "bg-accent text-accent-foreground" : "text-muted-foreground"
                 }`}
               >
                 {l.label}
               </Link>
-            ))}
+              );
+            })}
             <Link
               href={COHORT_HREF}
               className={`ml-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-all duration-200 ${
@@ -86,20 +92,25 @@ export function Navbar() {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {links.map((l) => (
+              {links.map((l) => {
+                const isActive = l.matchPrefix
+                  ? pathname.startsWith(l.matchPrefix)
+                  : pathname === l.href;
+                return (
                 <Link
                   key={l.href}
                   href={l.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                    pathname === l.href
+                    isActive
                       ? "bg-accent text-accent-foreground"
                       : "text-muted-foreground hover:text-accent-foreground hover:bg-accent"
                   }`}
                 >
                   {l.label}
                 </Link>
-              ))}
+                );
+              })}
               <Link
                 href={COHORT_HREF}
                 onClick={() => setIsMobileMenuOpen(false)}
