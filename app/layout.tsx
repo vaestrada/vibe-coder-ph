@@ -4,7 +4,6 @@ import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import { AnnouncementBar } from "@/components/announcement-bar";
 import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
@@ -67,7 +66,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <AnnouncementBar />
           <Navbar />
           <main className="min-h-[calc(100dvh-64px-240px)]">{children}</main>
           <Footer />

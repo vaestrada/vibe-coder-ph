@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Sparkles, Users, Clock4, Code2, Calendar, ArrowRight, Hammer } from "lucide-react";
 import { getAllBlogPosts } from "@/lib/blog-data";
-import { EventAnnouncementModal } from "@/components/event-announcement-modal";
 import HeroVideo from "@/components/hero-video";
 
 export default function Home() {
@@ -28,9 +27,6 @@ export default function Home() {
 
   return (
     <div className="font-sans">
-      {/* Event Announcement Modal */}
-      <EventAnnouncementModal />
-
       {/* Hero */}
       <section className="relative overflow-hidden">
         {/* Dark mode friendly background */}

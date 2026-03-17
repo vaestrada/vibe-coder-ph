@@ -5,7 +5,7 @@ import type { ReportItem } from "@/lib/event-report";
 export const metadata: Metadata = {
   title: "Gen AI to Z — Registration Demographics Report",
   description:
-    "Live registration demographics and analytics for the Gen AI to Z AI Career Summit at UP Diliman, March 17, 2026.",
+    "Registration demographics and check-in analytics for the Gen AI to Z AI Career Summit at UP Diliman, March 17, 2026.",
   openGraph: {
     title: "Gen AI to Z — Registration Demographics Report",
     description:
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Revalidate every 5 minutes
-export const revalidate = 300;
+// Static page — event concluded March 17, 2026
+export const revalidate = false;
 
 // ── Chart colors ─────────────────────────────────────────────────────
 const COLORS = [
@@ -371,25 +371,35 @@ export default async function ReportPage() {
         >
           <div className="overflow-x-auto">
             <div className="flex items-end gap-[2px] h-40 min-w-[600px]">
-              {data.timeline.map((t) => {
-                const maxDaily = Math.max(...data.timeline.map((d) => d.count));
-                const h = (t.count / maxDaily) * 100;
-                return (
-                  <div
-                    key={t.date}
-                    className="flex-1 group relative"
-                    title={`${t.date}: ${t.count} new (${t.cumulative} total)`}
-                  >
+              {(() => {
+                // Group days into weekly buckets for cleaner visualization
+                const weekly: { label: string; count: number; cumulative: number }[] = [];
+                for (let i = 0; i < data.timeline.length; i += 7) {
+                  const chunk = data.timeline.slice(i, i + 7);
+                  const count = chunk.reduce((s, d) => s + d.count, 0);
+                  const last = chunk[chunk.length - 1];
+                  weekly.push({ label: chunk[0].date, count, cumulative: last.cumulative });
+                }
+                const maxWeekly = Math.max(...weekly.map(w => w.count));
+                return weekly.map((w) => {
+                  const h = (w.count / maxWeekly) * 100;
+                  return (
                     <div
-                      className="w-full rounded-t bg-violet-500/70 hover:bg-fuchsia-500/80 transition-colors"
-                      style={{ height: `${Math.max(h, 2)}%` }}
-                    />
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden group-hover:block bg-violet-900 text-violet-100 text-[10px] rounded px-1.5 py-0.5 whitespace-nowrap z-10">
-                      {t.date.slice(5)}: {t.count} new
+                      key={w.label}
+                      className="flex-1 group relative"
+                      title={`Week of ${w.label}: ${w.count} registrations (${w.cumulative} total)`}
+                    >
+                      <div
+                        className="w-full rounded-t bg-violet-500/80 hover:bg-fuchsia-500/80 transition-colors"
+                        style={{ height: `${Math.max(h, 3)}%` }}
+                      />
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden group-hover:block bg-violet-900 text-violet-100 text-[10px] rounded px-1.5 py-0.5 whitespace-nowrap z-10">
+                        {w.label.slice(5)}: {w.count}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                });
+              })()}
             </div>
             <div className="flex justify-between text-[10px] text-violet-500 mt-1 min-w-[600px]">
               <span>{data.timeline[0]?.date.slice(5)}</span>
@@ -410,8 +420,8 @@ export default async function ReportPage() {
 
         {/* Footer */}
         <p className="text-center text-xs text-violet-600 pt-4">
-          Vibe Coders Philippines &middot; vibecoders.ph &middot; Data
-          auto-refreshes every 5 minutes
+          Vibe Coders Philippines &middot; vibecoders.ph &middot; Event
+          concluded March 17, 2026
         </p>
       </div>
     </div>

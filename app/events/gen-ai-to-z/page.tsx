@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, MapPin, Users, Sparkles, Code2, GraduationCap, ChevronDown, Check, Handshake, BookOpen, Compass, Flag, Mic, ShieldCheck, Ticket } from "lucide-react";
-import CountdownTimer from "./components/countdown-timer";
 import PersonaCards from "./components/persona-cards";
 import ScheduleSection from "./components/schedule-section";
 import ScrollIndicator from "./components/scroll-indicator";
@@ -241,22 +240,25 @@ export default function GenAItoZPage() {
                   <span className="hidden sm:inline text-violet-400">•</span>
                   <div className="flex items-center gap-2">
                     <Users className="w-5 h-5 text-cyan-400" />
-                    <span>600+ Registered</span>
+                    <span>794 Registered · 333 Checked In</span>
                   </div>
                 </div>
 
-                {/* Countdown Timer */}
+                {/* Event Status Badge */}
                 <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
-                  <CountdownTimer targetDate="2026-03-17T08:00:00+08:00" />
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    Event Successfully Concluded
+                  </div>
                 </div>
 
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up" style={{ animationDelay: '800ms' }}>
                   <Link
-                    href="/events/gen-ai-to-z/register"
+                    href="/events/gen-ai-to-z/report"
                     className="group inline-flex items-center justify-center gap-2 min-h-[48px] min-w-[200px] px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white rounded-lg text-lg font-semibold shadow-lg shadow-violet-500/50 transition-all hover:scale-105 hover:shadow-xl hover:shadow-violet-500/60 touch-action-manipulation"
                   >
-                    Register Free
+                    View Event Report
                     <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                   </Link>
                   <Link
@@ -332,7 +334,7 @@ export default function GenAItoZPage() {
               {[
                 { value: "1", label: "Full Day", sublabel: "8AM - 5PM" },
                 { value: "10+", label: "Speakers", sublabel: "Talks, Panels, Showcases" },
-                { value: "600+", label: "Registered", sublabel: "Students & Pros" },
+                { value: "794", label: "Registered", sublabel: "Students & Pros" },
                 { value: "FREE", label: "Admission", sublabel: "Open to All" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
@@ -571,22 +573,22 @@ export default function GenAItoZPage() {
           
           <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white via-violet-200 to-white bg-clip-text text-transparent">
-              Your Career. Your Move.
+              Thank You For Joining!
             </h2>
             <p className="text-xl sm:text-2xl text-muted-foreground mb-4">
-              The future of work is being written right now.
+              Gen AI to Z was a success. 333 attendees showed up.
             </p>
             <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              The question isn&apos;t <strong className="text-white">&ldquo;Will AI change my career?&rdquo;</strong><br />
-              It&apos;s <strong className="text-white">&ldquo;Will I know how to use it when it does?&rdquo;</strong>
+              Missed the event? Check out the full report with demographics,
+              check-in analytics, and partner insights.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <Link
-                href="/events/gen-ai-to-z/register"
+                href="/events/gen-ai-to-z/report"
                 className="group inline-flex items-center justify-center gap-3 min-h-[64px] min-w-[280px] px-12 py-6 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 hover:from-violet-400 hover:via-fuchsia-400 hover:to-cyan-400 text-white rounded-2xl text-xl font-bold shadow-2xl shadow-violet-500/40 transition-all hover:scale-105 hover:shadow-violet-500/60 touch-action-manipulation"
               >
-                Register Now — It&apos;s Free
+                View Event Report
                 <Sparkles className="w-6 h-6 group-hover:rotate-12 transition-transform" />
               </Link>
             </div>
