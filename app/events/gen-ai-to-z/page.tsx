@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, MapPin, Users, Sparkles, Code2, GraduationCap, ChevronDown, Check, Handshake, BookOpen, Compass, Flag, Mic, ShieldCheck, Ticket } from "lucide-react";
+import { Calendar, MapPin, Users, Sparkles, Code2, GraduationCap, ChevronDown, Check, Handshake, BookOpen, Compass, Flag, Mic, ShieldCheck, Ticket, MessageSquare } from "lucide-react";
 import PersonaCards from "./components/persona-cards";
 import ScheduleSection from "./components/schedule-section";
 import ScrollIndicator from "./components/scroll-indicator";
@@ -262,11 +262,11 @@ export default function GenAItoZPage() {
                     <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                   </Link>
                   <Link
-                    href="#about"
-                    className="inline-flex items-center justify-center gap-2 min-h-[48px] min-w-[200px] px-8 py-4 border-2 border-violet-500 hover:bg-violet-500/10 rounded-lg text-lg font-semibold transition-all touch-action-manipulation"
+                    href="/events/gen-ai-to-z/feedback"
+                    className="inline-flex items-center justify-center gap-2 min-h-[48px] min-w-[200px] px-8 py-4 border-2 border-fuchsia-500 hover:bg-fuchsia-500/10 rounded-lg text-lg font-semibold transition-all touch-action-manipulation"
                   >
-                    Learn More
-                    <ChevronDown className="w-5 h-5" />
+                    Share Feedback
+                    <MessageSquare className="w-5 h-5" />
                   </Link>
                 </div>
               </div>
@@ -590,6 +590,13 @@ export default function GenAItoZPage() {
               >
                 View Event Report
                 <Sparkles className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+              </Link>
+              <Link
+                href="/events/gen-ai-to-z/feedback"
+                className="inline-flex items-center justify-center gap-3 min-h-[64px] min-w-[200px] px-10 py-6 border-2 border-fuchsia-500 hover:bg-fuchsia-500/10 rounded-2xl text-xl font-bold transition-all hover:scale-105 touch-action-manipulation"
+              >
+                Share Feedback
+                <MessageSquare className="w-6 h-6" />
               </Link>
             </div>
 

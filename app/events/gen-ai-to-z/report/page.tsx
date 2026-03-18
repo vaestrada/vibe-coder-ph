@@ -803,6 +803,19 @@ export default async function ReportPage() {
           </div>
         </Section>
 
+        {/* Feedback CTA */}
+        <div className="rounded-2xl bg-gradient-to-r from-fuchsia-950/60 to-violet-950/60 border border-fuchsia-800/30 p-6 sm:p-8 text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">Attended the Summit?</h2>
+          <p className="text-sm text-violet-300 mb-5">Your feedback helps us build better events for the community.</p>
+          <a
+            href="/events/gen-ai-to-z/feedback"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-fuchsia-600 to-violet-600 hover:from-fuchsia-500 hover:to-violet-500 text-white rounded-lg font-semibold shadow-lg shadow-fuchsia-500/30 transition-all hover:scale-105"
+          >
+            Share Your Feedback
+            <span aria-hidden>→</span>
+          </a>
+        </div>
+
         {/* Footer */}
         <p className="text-center text-xs text-violet-600 pt-4">
           Vibe Coders Philippines &middot; vibecoders.ph &middot; Event
