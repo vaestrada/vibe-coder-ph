@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Revalidate every 5 minutes while feedback is still coming in
-export const revalidate = 300;
+// Always server-render on demand so data is always fresh; client AutoRefresh re-fetches every 5 min
+export const dynamic = 'force-dynamic';
 
 // ── Chart colors ─────────────────────────────────────────────────────
 const COLORS = [
