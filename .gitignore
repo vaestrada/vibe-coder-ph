@@ -48,13 +48,12 @@ next-env.d.ts
 *.avi
 *.webm
 
-# large event assets (hosted on Supabase Storage)
-main_poster_gen_ai_to_z.png
-public/images/gen-ai-to-z-poster.png
-MERCH*.png
-[0-9].png
-FLOWERSTORE.png
-JOYRIDE.png
+# images dumped in root (uploaded to Supabase Storage)
+*.png
+!public/**/*.png
+
+# temp scripts (prefixed with _)
+scripts/_*
 
 # CSV and Excel files (contact databases — stored in data/contacts/)
 *.csv
