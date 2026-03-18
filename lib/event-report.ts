@@ -66,6 +66,7 @@ export interface RatingCategory {
 export interface Testimonial {
   text: string;
   isAnonymous: boolean;
+  name?: string;
 }
 
 export interface FeedbackData {
@@ -437,8 +438,9 @@ export async function getEventReport(): Promise<ReportData> {
   let feedback: FeedbackData | null = null;
   const { data: fbRows } = await supabase
     .from('event_feedback')
-    .select('overall_rating, content_rating, speakers_rating, venue_rating, organization_rating, would_recommend, consent_for_testimonial, is_anonymous, what_worked_well, what_needs_improvement, topics_for_future, additional_comments')
-    .eq('event_slug', 'gen-ai-to-z');
+    .select('overall_rating, content_rating, speakers_rating, venue_rating, organization_rating, would_recommend, consent_for_testimonial, is_anonymous, respondent_name, testimonial_featured, what_worked_well, what_needs_improvement, topics_for_future, additional_comments')
+    .eq('event_slug', 'gen-ai-to-z')
+    .order('overall_rating', { ascending: false });
 
   if (fbRows && fbRows.length > 0) {
     const RATING_FIELDS: { key: string; label: string }[] = [
@@ -461,19 +463,26 @@ export async function getEventReport(): Promise<ReportData> {
     const yesCount = recWithAnswer.filter(r => r.would_recommend === true).length;
     const nps = recWithAnswer.length > 0 ? +((yesCount / recWithAnswer.length) * 100).toFixed(0) : 0;
 
-    // Testimonials: only from consented respondents with meaningful text
+    // Testimonials: prefer manually featured ones; fall back to auto-selection from consented respondents
     const SKIP_TEXT = new Set(['', 'none', 'n/a', 'na', 'nothing', '-', '.']);
-    const testimonials: Testimonial[] = fbRows
-      .filter(r => r.consent_for_testimonial === true)
-      .flatMap(r => {
+    const toTestimonials = (rows: typeof fbRows): Testimonial[] =>
+      rows.flatMap(r => {
         const texts: string[] = [];
         for (const field of ['what_worked_well', 'additional_comments'] as const) {
           const v = ((r as Record<string, unknown>)[field] as string | null || '').trim();
           if (v && !SKIP_TEXT.has(v.toLowerCase()) && v.length > 20) texts.push(v);
         }
-        return texts.map(text => ({ text, isAnonymous: r.is_anonymous === true }));
-      })
-      .slice(0, 12);
+        return texts.map(text => ({
+          text,
+          isAnonymous: r.is_anonymous === true,
+          name: r.is_anonymous ? undefined : ((r.respondent_name as string | null) || undefined),
+        }));
+      });
+
+    const featuredRows = fbRows.filter(r => r.testimonial_featured === true);
+    const autoRows = fbRows.filter(r => r.consent_for_testimonial === true);
+    const testimonialSource = featuredRows.length > 0 ? featuredRows : autoRows;
+    const testimonials: Testimonial[] = toTestimonials(testimonialSource).slice(0, 12);
 
     // Topics for future events
     const topicMap: Record<string, number> = {};

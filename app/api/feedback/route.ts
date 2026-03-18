@@ -23,6 +23,7 @@ export async function POST(request: NextRequest) {
       additional_comments,
       consent_for_testimonial,
       is_anonymous,
+      respondent_name,
     } = body;
 
     // Basic validation
@@ -40,6 +41,7 @@ export async function POST(request: NextRequest) {
     const { error } = await supabase.from('event_feedback').insert({
       event_slug: 'gen-ai-to-z',
       is_anonymous: is_anonymous ?? false,
+      respondent_name: is_anonymous ? null : (respondent_name?.trim() || null),
       overall_rating,
       content_rating: content_rating || null,
       speakers_rating: speakers_rating || null,

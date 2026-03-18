@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getEventReport } from "@/lib/event-report";
 import type { ReportItem, AffiliationAttendance, RegTimingBucket, FeedbackData } from "@/lib/event-report";
+import AutoRefresh from "./auto-refresh";
 
 export const metadata: Metadata = {
   title: "Gen AI to Z — Registration Demographics Report",
@@ -16,8 +17,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Static page — event concluded March 17, 2026
-export const revalidate = false;
+// Revalidate every 5 minutes while feedback is still coming in
+export const revalidate = 300;
 
 // ── Chart colors ─────────────────────────────────────────────────────
 const COLORS = [
@@ -267,7 +268,7 @@ function FeedbackSection({ feedback }: { feedback: FeedbackData }) {
               >
                 <p className="text-sm text-violet-200 italic leading-relaxed">&ldquo;{t.text}&rdquo;</p>
                 <p className="text-[10px] text-violet-500 mt-2">
-                  — {t.isAnonymous ? 'Anonymous attendee' : 'Event attendee'}
+                  — {t.isAnonymous ? 'Anonymous attendee' : (t.name || 'Event attendee')}
                 </p>
               </div>
             ))}
@@ -325,6 +326,7 @@ export default async function ReportPage() {
 
   return (
     <div className="min-h-screen bg-[#0f0b1a]">
+      <AutoRefresh />
       {/* Hero */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-violet-950/80 via-[#0f0b1a] to-fuchsia-950/60" />

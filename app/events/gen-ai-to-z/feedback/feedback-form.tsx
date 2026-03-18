@@ -60,6 +60,7 @@ export default function FeedbackForm() {
     additional_comments: "",
   });
 
+  const [respondentName, setRespondentName] = useState("");
   const [wouldRecommend, setWouldRecommend] = useState<boolean | null>(null);
   const [consentForTestimonial, setConsentForTestimonial] = useState(false);
   const [isAnonymous, setIsAnonymous] = useState(false);
@@ -89,6 +90,7 @@ export default function FeedbackForm() {
           would_recommend: wouldRecommend,
           consent_for_testimonial: consentForTestimonial,
           is_anonymous: isAnonymous,
+          respondent_name: isAnonymous ? null : respondentName.trim() || null,
           ...form,
         }),
       });
@@ -241,13 +243,32 @@ export default function FeedbackForm() {
               <input
                 type="checkbox"
                 checked={isAnonymous}
-                onChange={(e) => setIsAnonymous(e.target.checked)}
+                onChange={(e) => {
+                  setIsAnonymous(e.target.checked);
+                  if (e.target.checked) setRespondentName("");
+                }}
                 className="mt-1 w-4 h-4 accent-fuchsia-500 flex-shrink-0"
               />
               <span className="text-sm text-zinc-400 leading-relaxed">
                 Submit anonymously
               </span>
             </label>
+
+            {!isAnonymous && (
+              <div className="space-y-2 pt-1">
+                <label className="block text-sm font-medium text-zinc-300">
+                  Your name <span className="text-zinc-500 font-normal">(optional — shown on testimonials if you consented above)</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Maria Santos"
+                  value={respondentName}
+                  onChange={(e) => setRespondentName(e.target.value)}
+                  maxLength={80}
+                  className="w-full bg-zinc-800/60 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-fuchsia-500"
+                />
+              </div>
+            )}
           </section>
 
           {/* Error */}
