@@ -13,16 +13,23 @@ interface CertRecord {
   cert_code: string | null;
 }
 
-async function getCertificate(id: string): Promise<CertRecord | null> {
+async function getCertificate(idOrCode: string): Promise<CertRecord | null> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!supabaseUrl || !supabaseKey) return null;
 
   const supabase = createClient(supabaseUrl, supabaseKey);
+
+  // Try cert_code first (e.g. GAI2Z26-3F2A), fall back to UUID
+  const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(idOrCode);
+  const filter = isUuid
+    ? { column: 'id', value: idOrCode }
+    : { column: 'cert_code', value: idOrCode.toUpperCase() };
+
   const { data, error } = await supabase
     .from('event_certificates')
     .select('id, event_slug, recipient_name, recipient_email, issued_at, revoked, cert_code')
-    .eq('id', id)
+    .eq(filter.column, filter.value)
     .single();
 
   if (error || !data) return null;
@@ -32,7 +39,6 @@ async function getCertificate(id: string): Promise<CertRecord | null> {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const cert = await getCertificate(id);
-
   if (!cert || cert.revoked) {
     return {
       title: 'Certificate Not Found | Vibe Coder PH',
@@ -79,9 +85,10 @@ function maskEmail(email: string): string {
 export default async function CertVerificationPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  // Basic UUID format validation to avoid unnecessary DB calls
+  // Accept both cert_code (GAI2Z26-XXXX) and UUID
   const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-  if (!UUID_REGEX.test(id)) {
+  const CODE_REGEX = /^[A-Z0-9]+-[A-F0-9]{4}$/i;
+  if (!UUID_REGEX.test(id) && !CODE_REGEX.test(id)) {
     notFound();
   }
 

@@ -44,11 +44,12 @@ const NAME_FONT_SIZE = 120;
 const NAME_FONT_COLOR = '#FFFFFF';
 const MAX_NAME_WIDTH = 1200; // max text width, will scale down if longer
 
-// QR code position — bottom-right, above partner logos row (~y=1340)
-// Cert is 2000x1414; axolotl starts ~x=1780
+// QR code position — lower bottom-right, clear of axolotl (~x=1760)
+// x=1440 → right edge at 1600, well clear of axolotl
+// y=1170 → bottom at 1330, above partner logos row (~y=1340)
 const QR_SIZE = 160;
-const QR_X = 1560; // left edge
-const QR_Y = 1120; // top edge (bottom at 1280, clear of partner logos)
+const QR_X = 1440;
+const QR_Y = 1170;
 
 // Human-readable certificate code prefix
 const CERT_CODE_PREFIX = 'GAI2Z26';
@@ -119,7 +120,9 @@ function generateCertificate(recipientName, certId) {
   ctx.fillText(recipientName, NAME_CENTER_X, NAME_CENTER_Y);
 
   // Generate & draw QR code — white modules on transparent background
-  const verifyUrl = `${CERT_VERIFICATION_BASE}/${certId}`;
+  // QR points to the human-readable cert_code URL
+  const certCode = makeCertCode(certId);
+  const verifyUrl = `${CERT_VERIFICATION_BASE}/${certCode}`;
   const qrData = QRCode.create(verifyUrl, { errorCorrectionLevel: 'M' });
   const modules = qrData.modules;
   const moduleCount = modules.size;
@@ -139,7 +142,6 @@ function generateCertificate(recipientName, certId) {
   }
 
   // Draw cert code below QR
-  const certCode = makeCertCode(certId);
   ctx.font = '22px sans-serif';
   ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
   ctx.textAlign = 'center';
