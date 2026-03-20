@@ -346,16 +346,11 @@ export default async function ReportPage() {
           </p>
 
           {/* Summary Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
             <StatCard
               value={data.summary.total}
               label="Total Registrants"
               color="#8b5cf6"
-            />
-            <StatCard
-              value={data.summary.confirmed}
-              label="Confirmed"
-              color="#10b981"
             />
             <StatCard
               value={data.summary.checkedIn}
@@ -368,12 +363,7 @@ export default async function ReportPage() {
               color="#f59e0b"
             />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mt-3">
-            <StatCard
-              value={data.summary.pending}
-              label="Pending"
-              color="#f59e0b"
-            />
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto mt-3">
             <StatCard
               value={data.schools.length}
               label="Schools"

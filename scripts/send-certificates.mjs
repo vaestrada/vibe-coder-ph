@@ -231,7 +231,7 @@ function buildCertificateEmail(fullName, certId, certJpgBuffer) {
             <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 14px 10px;">
               <img src="${storageBase}/feedback-qr-v2.png" alt="Feedback Form QR Code" width="120" style="display: block; margin: 0 auto 10px auto; border-radius: 6px;" />
               <p style="color: #c084fc; font-size: 12px; font-weight: 700; margin: 0 0 4px 0;">📝 EVENT FEEDBACK</p>
-              <p style="color: #a1a1aa; font-size: 11px; margin: 0; line-height: 1.4;">Rate the event &amp; help us improve</p>
+              <p style="color: #a1a1aa; font-size: 11px; margin: 0; line-height: 1.4;">Rate &amp; help us improve</p>
             </div>
           </td>
           <!-- PIXEL Account -->
