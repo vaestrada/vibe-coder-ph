@@ -146,11 +146,11 @@ function generateCertificate(recipientName, certId) {
   ctx.textBaseline = 'top';
   ctx.fillText(certCode, QR_X + QR_SIZE / 2, QR_Y + QR_SIZE + 10);
 
-  return canvas.toBuffer('image/png');
+  return canvas.toBuffer('image/jpeg', 90);
 }
 
 // ─── Email builder ──────────────────────────────────────────────────────────────
-function buildCertificateEmail(fullName, certId, certPngBuffer) {
+function buildCertificateEmail(fullName, certId, certJpgBuffer) {
   const firstName = fullName.split(' ')[0];
   const certCode = makeCertCode(certId);
   const verifyUrl = `${CERT_VERIFICATION_BASE}/${certCode}`;
@@ -274,9 +274,9 @@ function buildCertificateEmail(fullName, certId, certPngBuffer) {
     html: htmlBody,
     attachments: [
       {
-        filename: `certificate-gen-ai-to-z-${firstName.toLowerCase().replace(/\s+/g, '-')}.png`,
-        content: certPngBuffer,
-        type: 'image/png',
+        filename: `certificate-gen-ai-to-z-${firstName.toLowerCase().replace(/\s+/g, '-')}.jpg`,
+        content: certJpgBuffer,
+        type: 'image/jpeg',
       },
     ],
   };
@@ -372,7 +372,7 @@ for (const attendee of toProcess) {
       certId = '00000000-0000-0000-0000-000000000000'; // placeholder for dry run
     }
 
-    // 2. Generate certificate PNG
+    // 2. Generate certificate JPEG
     const certBuffer = generateCertificate(attendee.full_name, certId);
     const certCode = makeCertCode(certId);
 
@@ -390,11 +390,11 @@ for (const attendee of toProcess) {
         throw new Error(`Email send failed: ${sendError.message}`);
       }
 
-      // 4. Upload PNG to Supabase storage for web preview/download
-      const storagePath = `events/certs/${certCode}.png`;
+      // 4. Upload JPEG to Supabase storage for web preview/download
+      const storagePath = `events/certs/${certCode}.jpg`;
       const { error: storageError } = await supabase.storage
         .from('project-media')
-        .upload(storagePath, certBuffer, { contentType: 'image/png', upsert: true });
+        .upload(storagePath, certBuffer, { contentType: 'image/jpeg', upsert: true });
       if (storageError) {
         // Non-fatal — email already sent, just log the warning
         process.stderr.write(`  ⚠️  Storage upload failed for ${certCode}: ${storageError.message}\n`);

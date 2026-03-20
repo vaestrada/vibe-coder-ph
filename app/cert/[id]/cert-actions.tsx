@@ -4,12 +4,13 @@ import { useState } from 'react';
 
 interface CertActionsProps {
   certCode: string;
-  downloadPath: string;
+  pdfPath: string;
+  imagePath: string | null;
   downloadName: string;
   linkedInUrl: string;
 }
 
-export function CertActions({ certCode, downloadPath, downloadName, linkedInUrl }: CertActionsProps) {
+export function CertActions({ certCode, pdfPath, imagePath, downloadName, linkedInUrl }: CertActionsProps) {
   const [copied, setCopied] = useState(false);
 
   const certUrl = `https://www.vibecoders.ph/cert/${certCode}`;
@@ -26,10 +27,10 @@ export function CertActions({ certCode, downloadPath, downloadName, linkedInUrl 
 
   return (
     <div className="flex flex-wrap gap-3 justify-center">
-      {/* Download */}
+      {/* Download PDF — primary action */}
       <a
-        href={downloadPath}
-        download={downloadName}
+        href={pdfPath}
+        download={`${downloadName}.pdf`}
         className="flex items-center gap-2 px-5 py-2.5 bg-violet-600 hover:bg-violet-500 active:bg-violet-700 text-white rounded-xl font-semibold text-sm transition-colors shadow-lg shadow-violet-900/30"
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -37,7 +38,7 @@ export function CertActions({ certCode, downloadPath, downloadName, linkedInUrl 
           <polyline points="7 10 12 15 17 10" />
           <line x1="12" y1="15" x2="12" y2="3" />
         </svg>
-        Download PNG
+        Download PDF
       </a>
 
       {/* LinkedIn Add to Profile */}
@@ -76,6 +77,22 @@ export function CertActions({ certCode, downloadPath, downloadName, linkedInUrl 
           </>
         )}
       </button>
+
+      {/* Download Image — secondary */}
+      {imagePath && (
+        <a
+          href={imagePath}
+          download={`${downloadName}.jpg`}
+          className="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-900 text-zinc-200 rounded-xl font-semibold text-sm transition-colors border border-zinc-700"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+          Save Image
+        </a>
+      )}
     </div>
   );
 }

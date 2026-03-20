@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 
   const certImageUrl = cert.cert_code
-    ? `https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/certs/${cert.cert_code}.png`
+    ? `https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/certs/${cert.cert_code}.jpg`
     : undefined;
 
   return {
@@ -113,14 +113,16 @@ export default async function CertVerificationPage({ params }: { params: Promise
 
   // Supabase direct URL (in remotePatterns) for next/image optimization
   const certImageUrl = certCode
-    ? `https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/certs/${certCode}.png`
+    ? `https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events/certs/${certCode}.jpg`
     : null;
 
-  // Same-origin proxy path for the download link (download attribute requires same-origin)
-  const certDownloadPath = certCode ? `/media/events/certs/${certCode}.png` : null;
+  // Same-origin proxy path for the image download
+  const certImageDownloadPath = certCode ? `/media/events/certs/${certCode}.jpg` : null;
+  // PDF download via API route
+  const certPdfPath = certCode ? `/api/cert/${certCode}/pdf` : null;
   const certDownloadName = certCode
-    ? `certificate-gen-ai-to-z-${cert.recipient_name.toLowerCase().replace(/\s+/g, '-')}.png`
-    : 'certificate.png';
+    ? `certificate-gen-ai-to-z-${cert.recipient_name.toLowerCase().replace(/\s+/g, '-')}`
+    : 'certificate';
 
   // LinkedIn "Add to Profile" deep link
   const linkedInUrl = certCode
@@ -200,10 +202,11 @@ export default async function CertVerificationPage({ params }: { params: Promise
         )}
 
         {/* Action buttons — Download, LinkedIn, Copy Link */}
-        {certCode && certDownloadPath && (
+        {certCode && certPdfPath && (
           <CertActions
             certCode={certCode}
-            downloadPath={certDownloadPath}
+            pdfPath={certPdfPath}
+            imagePath={certImageDownloadPath}
             downloadName={certDownloadName}
             linkedInUrl={linkedInUrl}
           />
