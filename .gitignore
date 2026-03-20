@@ -38,6 +38,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# supabase temp files
+supabase/.temp/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
@@ -51,6 +54,10 @@ next-env.d.ts
 # images dumped in root (uploaded to Supabase Storage)
 *.png
 !public/**/*.png
+
+# generated certificate test/sample outputs (not committed)
+public/events/gen-ai-to-z/cert-test.png
+public/events/gen-ai-to-z/cert-sample-output.png
 
 # temp scripts (prefixed with _)
 scripts/_*
