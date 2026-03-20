@@ -44,12 +44,10 @@ const NAME_FONT_SIZE = 120;
 const NAME_FONT_COLOR = '#FFFFFF';
 const MAX_NAME_WIDTH = 1200; // max text width, will scale down if longer
 
-// QR code position — lower bottom-right, clear of axolotl (~x=1760)
-// x=1440 → right edge at 1600, well clear of axolotl
-// y=1170 → bottom at 1330, above partner logos row (~y=1340)
-const QR_SIZE = 160;
-const QR_X = 1440;
-const QR_Y = 1170;
+// QR code position — very lower-right corner, 30px from edges
+const QR_SIZE = 220;
+const QR_X = 1750; // 2000 - 220 - 30
+const QR_Y = 1132; // 1414 - 220 - 32(text) - 30
 
 // Human-readable certificate code prefix
 const CERT_CODE_PREFIX = 'GAI2Z26';
@@ -154,7 +152,8 @@ function generateCertificate(recipientName, certId) {
 // ─── Email builder ──────────────────────────────────────────────────────────────
 function buildCertificateEmail(fullName, certId, certPngBuffer) {
   const firstName = fullName.split(' ')[0];
-  const verifyUrl = `${CERT_VERIFICATION_BASE}/${certId}`;
+  const certCode = makeCertCode(certId);
+  const verifyUrl = `${CERT_VERIFICATION_BASE}/${certCode}`;
   const storageBase = 'https://qxxlzffjeruemlsbfefv.supabase.co/storage/v1/object/public/project-media/events';
   const mainPosterUrl = `${storageBase}/gen-ai-to-z-main-poster.png`;
 
@@ -220,6 +219,39 @@ function buildCertificateEmail(fullName, certId, certPngBuffer) {
         <li>Share on social media with <strong style="color: #d4d4d8;">#VibeCoderPH</strong> and <strong style="color: #d4d4d8;">#GenAItoZ</strong></li>
         <li>Include in your <strong style="color: #d4d4d8;">resume or portfolio</strong></li>
       </ul>
+    </div>
+
+    <!-- What's Next -->
+    <div style="margin-bottom: 28px;">
+      <h3 style="text-align: center; font-size: 18px; font-weight: 700; color: #c084fc; margin: 0 0 20px 0;">📌 WHAT'S NEXT FOR YOU</h3>
+      <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+        <tr>
+          <!-- Feedback Form -->
+          <td width="33%" style="padding: 0 6px; vertical-align: top; text-align: center;">
+            <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 14px 10px;">
+              <img src="${storageBase}/feedback-qr-v2.png" alt="Feedback Form QR Code" width="120" style="display: block; margin: 0 auto 10px auto; border-radius: 6px;" />
+              <p style="color: #c084fc; font-size: 12px; font-weight: 700; margin: 0 0 4px 0;">📝 EVENT FEEDBACK</p>
+              <p style="color: #a1a1aa; font-size: 11px; margin: 0; line-height: 1.4;">Rate the event &amp; help us improve</p>
+            </div>
+          </td>
+          <!-- PIXEL Account -->
+          <td width="33%" style="padding: 0 6px; vertical-align: top; text-align: center;">
+            <div style="background: rgba(217, 70, 239, 0.1); border: 1px solid rgba(217, 70, 239, 0.25); border-radius: 10px; padding: 14px 10px;">
+              <img src="${storageBase}/pixel-qr-v2.png" alt="PIXEL Account QR Code" width="120" style="display: block; margin: 0 auto 10px auto; border-radius: 6px;" />
+              <p style="color: #e879f9; font-size: 12px; font-weight: 700; margin: 0 0 4px 0;">📸 PIXEL ACCOUNT</p>
+              <p style="color: #a1a1aa; font-size: 11px; margin: 0; line-height: 1.4;">Join our creators platform</p>
+            </div>
+          </td>
+          <!-- AI Builder Cohort -->
+          <td width="33%" style="padding: 0 6px; vertical-align: top; text-align: center;">
+            <div style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 10px; padding: 14px 10px;">
+              <img src="${storageBase}/ai-builder-cohort-qr.png" alt="AI Builder Cohort QR Code" width="120" style="display: block; margin: 0 auto 10px auto; border-radius: 6px;" />
+              <p style="color: #67e8f9; font-size: 12px; font-weight: 700; margin: 0 0 4px 0;">🚀 AI BUILDER COHORT</p>
+              <p style="color: #a1a1aa; font-size: 11px; margin: 0; line-height: 1.4;">Apply to our builder program</p>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
 
     <!-- Footer -->
@@ -342,6 +374,7 @@ for (const attendee of toProcess) {
 
     // 2. Generate certificate PNG
     const certBuffer = generateCertificate(attendee.full_name, certId);
+    const certCode = makeCertCode(certId);
 
     // 3. Send email
     if (!DRY_RUN) {
@@ -355,6 +388,16 @@ for (const attendee of toProcess) {
         // Rollback: delete the cert record if email fails
         await supabase.from('event_certificates').delete().eq('id', certId);
         throw new Error(`Email send failed: ${sendError.message}`);
+      }
+
+      // 4. Upload PNG to Supabase storage for web preview/download
+      const storagePath = `events/certs/${certCode}.png`;
+      const { error: storageError } = await supabase.storage
+        .from('project-media')
+        .upload(storagePath, certBuffer, { contentType: 'image/png', upsert: true });
+      if (storageError) {
+        // Non-fatal — email already sent, just log the warning
+        process.stderr.write(`  ⚠️  Storage upload failed for ${certCode}: ${storageError.message}\n`);
       }
     } else {
       // In dry run, save one sample PNG for visual inspection
