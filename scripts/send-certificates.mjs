@@ -196,7 +196,7 @@ function buildCertificateEmail(fullName, certId, certJpgBuffer) {
       </p>
 
       <p style="color: #d4d4d8; line-height: 1.7; margin: 0 0 16px 0;">
-        Your Certificate of Participation is attached to this email as a PNG image. You can download it, share it on LinkedIn, or add it to your portfolio!
+        Your Certificate of Participation is attached to this email. You can download it, share it on LinkedIn, or add it to your portfolio!
       </p>
 
       <p style="color: #d4d4d8; line-height: 1.7; margin: 0 0 24px 0;">

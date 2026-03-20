@@ -127,8 +127,8 @@ export default async function CertVerificationPage({ params }: { params: Promise
   // LinkedIn "Add to Profile" deep link
   const linkedInUrl = certCode
     ? `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME` +
-      `&name=${encodeURIComponent('Gen AI to Z: Certificate of Participation')}` +
-      `&organizationName=${encodeURIComponent('Vibe Coder Philippines')}` +
+      `&name=${encodeURIComponent('Gen AI to Z: A Career Summit in an AI-Driven World - Certificate of Participation')}` +
+      `&organizationName=${encodeURIComponent('Vibe Coders PH')}` +
       `&issueYear=2026&issueMonth=3` +
       `&certUrl=${encodeURIComponent(`https://www.vibecoders.ph/cert/${certCode}`)}` +
       `&certId=${encodeURIComponent(certCode)}`
