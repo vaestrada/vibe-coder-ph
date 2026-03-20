@@ -10,6 +10,7 @@ interface CertRecord {
   recipient_email: string;
   issued_at: string;
   revoked: boolean;
+  cert_code: string | null;
 }
 
 async function getCertificate(id: string): Promise<CertRecord | null> {
@@ -20,7 +21,7 @@ async function getCertificate(id: string): Promise<CertRecord | null> {
   const supabase = createClient(supabaseUrl, supabaseKey);
   const { data, error } = await supabase
     .from('event_certificates')
-    .select('id, event_slug, recipient_name, recipient_email, issued_at, revoked')
+    .select('id, event_slug, recipient_name, recipient_email, issued_at, revoked, cert_code')
     .eq('id', id)
     .single();
 
@@ -160,6 +161,10 @@ export default async function CertVerificationPage({ params }: { params: Promise
                     <dt className="text-xs font-medium tracking-widest text-zinc-500 uppercase mb-1">Location</dt>
                     <dd className="text-zinc-300">{event.location}</dd>
                   </div>
+                </div>
+                <div>
+                  <dt className="text-xs font-medium tracking-widest text-zinc-500 uppercase mb-1">Certificate Code</dt>
+                  <dd className="text-lg font-bold font-mono text-purple-300">{cert.cert_code ?? '—'}</dd>
                 </div>
                 <div>
                   <dt className="text-xs font-medium tracking-widest text-zinc-500 uppercase mb-1">Issued On</dt>

@@ -26,7 +26,7 @@ ctx.drawImage(template, 0, 0);
 const testNames = ['Alex Brush', 'Juan dela Cruz', 'María José Rodríguez-Vásquez'];
 const testName = process.argv[2] || 'Alex Brush';
 
-ctx.font = '60px "Alex Brush"';
+ctx.font = '120px "Alex Brush"';
 ctx.fillStyle = '#FFFFFF';
 ctx.textAlign = 'center';
 ctx.textBaseline = 'middle';

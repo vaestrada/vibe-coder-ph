@@ -39,16 +39,19 @@ const CERT_VERIFICATION_BASE = `${BASE_URL}/cert`;
 
 // Certificate layout constants (from pixel diff analysis)
 const NAME_CENTER_X = 1002;
-const NAME_CENTER_Y = 703;
-const NAME_FONT_SIZE = 60;
+const NAME_CENTER_Y = 748;
+const NAME_FONT_SIZE = 120;
 const NAME_FONT_COLOR = '#FFFFFF';
 const MAX_NAME_WIDTH = 1200; // max text width, will scale down if longer
 
-// QR code position (bottom-right area, outside the main design)
-// Cert is 2000x1414, place QR at bottom-left corner
-const QR_SIZE = 120;
-const QR_X = 64;
-const QR_Y = 1414 - QR_SIZE - 64;
+// QR code position — bottom-right, above partner logos row (~y=1340)
+// Cert is 2000x1414; axolotl starts ~x=1780
+const QR_SIZE = 160;
+const QR_X = 1560; // left edge
+const QR_Y = 1120; // top edge (bottom at 1280, clear of partner logos)
+
+// Human-readable certificate code prefix
+const CERT_CODE_PREFIX = 'GAI2Z26';
 
 // ─── CLI args ──────────────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
@@ -86,7 +89,13 @@ const templateImage = await loadImage(readFileSync(templatePath));
 console.log(`✅ Loaded template: ${templateImage.width}x${templateImage.height}px`);
 
 // ─── Certificate generation ─────────────────────────────────────────────────────
-async function generateCertificate(recipientName, certId) {
+function makeCertCode(uuid) {
+  // Last 4 hex chars of UUID, uppercase
+  const suffix = uuid.replace(/-/g, '').slice(-4).toUpperCase();
+  return `${CERT_CODE_PREFIX}-${suffix}`;
+}
+
+function generateCertificate(recipientName, certId) {
   const canvas = createCanvas(templateImage.width, templateImage.height);
   const ctx = canvas.getContext('2d');
 
@@ -109,16 +118,33 @@ async function generateCertificate(recipientName, certId) {
   ctx.textBaseline = 'middle';
   ctx.fillText(recipientName, NAME_CENTER_X, NAME_CENTER_Y);
 
-  // Generate & draw QR code
+  // Generate & draw QR code — white modules on transparent background
   const verifyUrl = `${CERT_VERIFICATION_BASE}/${certId}`;
-  const qrDataUrl = await QRCode.toDataURL(verifyUrl, {
-    width: QR_SIZE * 2,   // 2x for retina
-    margin: 1,
-    color: { dark: '#000000', light: '#FFFFFF' },
-    errorCorrectionLevel: 'M',
-  });
-  const qrImage = await loadImage(qrDataUrl);
-  ctx.drawImage(qrImage, QR_X, QR_Y, QR_SIZE, QR_SIZE);
+  const qrData = QRCode.create(verifyUrl, { errorCorrectionLevel: 'M' });
+  const modules = qrData.modules;
+  const moduleCount = modules.size;
+  const moduleSize = QR_SIZE / moduleCount;
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
+  for (let row = 0; row < moduleCount; row++) {
+    for (let col = 0; col < moduleCount; col++) {
+      if (modules.get(row, col)) {
+        ctx.fillRect(
+          QR_X + col * moduleSize,
+          QR_Y + row * moduleSize,
+          moduleSize,
+          moduleSize
+        );
+      }
+    }
+  }
+
+  // Draw cert code below QR
+  const certCode = makeCertCode(certId);
+  ctx.font = '22px sans-serif';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.fillText(certCode, QR_X + QR_SIZE / 2, QR_Y + QR_SIZE + 10);
 
   return canvas.toBuffer('image/png');
 }
@@ -285,6 +311,7 @@ for (const attendee of toProcess) {
     // 1. Create cert record in DB to get UUID first (needed for QR code)
     let certId;
     if (!DRY_RUN) {
+      // Insert cert record, read back UUID, derive cert_code and update
       const { data: certRecord, error: insertError } = await supabase
         .from('event_certificates')
         .insert({
@@ -297,6 +324,12 @@ for (const attendee of toProcess) {
         .select('id')
         .single();
 
+      if (!insertError && certRecord) {
+        // Derive and store the human-readable code
+        const code = makeCertCode(certRecord.id);
+        await supabase.from('event_certificates').update({ cert_code: code }).eq('id', certRecord.id);
+      }
+
       if (insertError) {
         throw new Error(`DB insert failed: ${insertError.message}`);
       }
@@ -306,7 +339,7 @@ for (const attendee of toProcess) {
     }
 
     // 2. Generate certificate PNG
-    const certBuffer = await generateCertificate(attendee.full_name, certId);
+    const certBuffer = generateCertificate(attendee.full_name, certId);
 
     // 3. Send email
     if (!DRY_RUN) {
