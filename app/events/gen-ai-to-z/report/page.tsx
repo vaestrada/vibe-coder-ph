@@ -390,6 +390,18 @@ export default async function ReportPage() {
               color="#38bdf8"
             />
           </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mt-3">
+            <StatCard
+              value={5}
+              label="Gold Sponsors"
+              color="#f59e0b"
+            />
+            <StatCard
+              value={6}
+              label="Bronze Sponsors"
+              color="#cd7f32"
+            />
+          </div>
         </div>
       </div>
 
