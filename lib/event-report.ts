@@ -466,18 +466,22 @@ export async function getEventReport(): Promise<ReportData> {
     // Testimonials: prefer manually featured ones; fall back to auto-selection from consented respondents
     const SKIP_TEXT = new Set(['', 'none', 'n/a', 'na', 'nothing', '-', '.']);
     const toTestimonials = (rows: typeof fbRows): Testimonial[] =>
-      rows.flatMap(r => {
-        const texts: string[] = [];
+      rows.reduce<Testimonial[]>((acc, r) => {
+        // Pick the single longest qualifying text per respondent (avoids duplicates)
+        let best = '';
         for (const field of ['what_worked_well', 'additional_comments'] as const) {
           const v = ((r as Record<string, unknown>)[field] as string | null || '').trim();
-          if (v && !SKIP_TEXT.has(v.toLowerCase()) && v.length > 20) texts.push(v);
+          if (v && !SKIP_TEXT.has(v.toLowerCase()) && v.length > 20 && v.length > best.length) best = v;
         }
-        return texts.map(text => ({
-          text,
-          isAnonymous: r.is_anonymous === true,
-          name: r.is_anonymous ? undefined : ((r.respondent_name as string | null) || undefined),
-        }));
-      });
+        if (best) {
+          acc.push({
+            text: best,
+            isAnonymous: r.is_anonymous === true,
+            name: r.is_anonymous ? undefined : ((r.respondent_name as string | null) || undefined),
+          });
+        }
+        return acc;
+      }, []);
 
     const featuredRows = fbRows.filter(r => r.testimonial_featured === true);
     const autoRows = fbRows.filter(r => r.consent_for_testimonial === true);
