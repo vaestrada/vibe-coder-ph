@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "blog-post": {
+      "source": "langchain-ai/deepagents",
+      "sourceType": "github",
+      "computedHash": "4a695b9be73d15798cf887a5c55732a8247e4926d2ce3d844c97ae57c44bb3f2"
+    },
+    "essay": {
+      "source": "clyderankin/essay-skills",
+      "sourceType": "github",
+      "computedHash": "4c0e866d6736d0e001dbe1e321a737929bcee64b2d2f5db4a258252191e113f6"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "computedHash": "d31e234f0c90694a670222cdd1dafa853e051d7066beda389f1097c22dadd461"
+    },
+    "technical-blog-writing": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "computedHash": "833ef303857d5770ff2c197c89065b2087813717f136e1ca7ee1fcad6b1b25c7"
+    }
+  }
+}

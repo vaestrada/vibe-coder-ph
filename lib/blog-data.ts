@@ -2736,6 +2736,161 @@ feature:       ●──●  (feature-login-form)
     tags: ["Open Graph", "Social Media", "SEO", "Meta Tags", "Branding"],
     featured: true,
   },
+      {
+    slug: "gen-ai-to-z-post-summit-letter",
+    title: "I Vibe Coded an Entire AI Summit: A Post-Event Letter from the Event Director of Gen AI to Z",
+    excerpt: "795 registered. 341 checked in. One person with AI, three months, and a 256-seat theater to fill. Here's the full story behind Gen AI to Z.",
+    author: "Viron Gil Estrada",
+    publishedAt: "2026-04-04",
+    readTime: "10 min read",
+    category: "Process & Culture",
+    tags: ["Gen AI to Z", "Event Recap", "Community", "Philippines", "AI", "Personal Essay", "Vibe Coders PH"],
+    featured: true,
+    content: `
+      <div class="prose prose-lg max-w-none">
+
+        <p class="text-lg leading-relaxed mb-6">
+          My biggest fear for three straight months was that nobody was going to show up.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          795 people registered. 341 checked in. Free admission, no corporate backing, no track record. Just a community get-together that somehow turned into a full-blown career summit at UP Diliman. And for most of the three months it took to pull it off, it was basically just me and AI.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          I'm writing this not because the event was perfect (it wasn't), but because of what it proved: that one person with AI can do the work of an entire organizing committee, and that young Filipinos are hungry for something the industry isn't giving them.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-8">
+          This is that story.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          What was supposed to be a simple get-together with our community members turned into me securing a 256-seat university theater. I have this problem where I can't keep things small, kasi every time I see an opportunity, my brain goes somewhere bigger. I had event experience from PSYSC and from organizing UP Fair Kalye Tunes with my fraternity, EMC&sup2;. So when the idea for a casual meetup came up, I didn't see a bar gathering. I saw a summit.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Around the same time, I fell deep into AI image and video generation. Minimax. HiDream. Hailuo. Tools most people hadn't heard of. One night I asked myself: can I make a 3D mascot in fifteen minutes? I tried. Out came Astrolotl, this axolotl-inspired character that became the face of the event. Five more followed in a single day: Datamaraw, ChickGPT, Lolo Long, Prof Agile, Artsier. Six mascots. All AI-generated. Made by someone with zero formal training in design. That's when I knew: if I can create an entire visual identity with AI in one sitting, I can build an entire event with it.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          And that's exactly what I did. For three months, I was basically a one-person operation doing the work of a full event committee. Sponsor outreach emails? ChatGPT and Gemini, personalized for every follow-up. MOAs, partnership contracts? AI-generated. Visual identity, social media captions? AI. The website, event page, registration system, check-in system, the Supabase backend? Vibe coded. Automated countdown newsletters? Built it. A personalized certificate system that mass-delivered certs to every attendee via Resend? Built that too. For lead generation, I used Bright Data MCP to discover contact info from school organizations and tech communities I never even knew existed.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-8">
+          One person, leveraging AI, doing what used to take ten.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          But ang hirap. 256 seats to fill with zero brand recognition. What if nobody comes? That thought hit me almost every night. The embarrassment wouldn't just be mine. It would fall on every speaker and sponsor who took a chance on us.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Social media went up only in early February. Super late by any standard. But then the partner organizations changed everything. I asked each org for a simple deal: have at least ten members register and attend, and reshare our posts. What actually happened? Orgs came back asking if they could bring twenty. My answer was always the same: bring your friends, bring your dormmates, bring your whole barkada. This is for everyone.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-8">
+          And they did.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          March 17. The theater was full before the program started. Dean Maria Antonia N. Tanchuling of the UP College of Engineering delivered the opening remarks, and for us at EMC&sup2; and Vibe Coders PH, that wasn't just protocol. Having the Dean of the UP College of Engineering open your event? That's a milestone. We were proud. We were inspired. And we were very aware we really had to deliver.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Three speaker segments ran across the day. The AI Leadership segment opened with Jimbo Jose Emmanuel Reverente on research commercialization. He had the crowd laughing within minutes, sharing stories about burning through API credits on cloud platforms. Everyone got the jokes because they'd been through the same thing. That moment told me the formula was right: right speakers, right topics, right audience. Nothing dumbed down. Lois Anne Leal followed with AI in earth observation and satellite applications, a field most students didn't know existed. Jaemark Tordecilla closed it out with generative AI and responsible use.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          The Creative AI segment was the one closest to my heart. Darryll Rapacon and Rodson Verr Suarez, both AI film directors, talked about using AI in filmmaking. And Darryll said something I keep coming back to. He's always wanted to make films, but the barriers were massive: cast, crew, equipment, budget, months of planning. For someone with a vision but no resources, filmmaking was nearly impossible. Now, with AI tools like Minimax, Sora, Runway, and Kling, you can make a film by yourself. Your creative vision becomes your most important asset. The technology that used to gatekeep entire industries? Dismantled. That's the whole message of Gen AI to Z. Not "AI is taking your job." It's: AI opens doors for people who were never allowed through them before.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          The Industry segment had Jean Madrid on AI-driven business transformation, Bryl Lim (someone I honestly didn't expect to say yes) on AI career leverage, Aurelien Chu of Eskwelabs on AI education, and Jayson Cunanan on applied AI and startup building. Seeing Jayson on that stage after nearly a year of him mentoring us from Japan through Discord? Iba talaga 'pag in-person.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          After the panels, speakers stepped off stage and participants crowded around them. Not polite handshake lines. Actual crowds. Photos. Long conversations that went way beyond the formal program. I watched from the side and thought: that's not an audience. That's a community forming in real time.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-8">
+          That's the whole point.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Now let me talk about something uncomfortable, because this is the real reason I built this event.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          We all know the reality. Most employment in the Philippines revolves around BPO, call centers, customer service. 1.6 million workers in outsourcing. Important jobs, respectable jobs. But a huge number of Filipinos graduate with four-year degrees in CS, Engineering, or IT and end up in night shift tech support, serving US and European clients while the country sleeps. Not because they lack talent. Because nobody showed them what else was possible.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Here's the part that's harder to say. Companies like TaskUs, a $200M+ per year outsourcing firm with over 47,000 employees principally in the Philippines, provide data labeling, content moderation, and AI training services powering the models behind ChatGPT, Facebook, and other platforms. Filipino workers annotate data, label images, moderate content, and build the training datasets that make large language models work. An MIT and Stanford study found that when Filipino support agents use AI tools, productivity goes up 14 percent, and 35 percent for new hires.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          We train the models. We moderate the content. We provide the data labor. And then we work night shifts serving the very companies that profit from what our labor built. The people who build the foundation of AI should be the same people leveraging it to build their own futures. That disconnect is what Gen AI to Z exists to challenge.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-8">
+          I didn't do this alone, by the way.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Alge was the creative director. Every poster, every social media visual, every merch design? That was her. Without Alge, this event would have looked like a Discord server trying to pass as a summit. Gerd handled all logistics: the Viber groups with speakers and sponsors, parking, booth setup, meals, speaker coordination. Every smooth transition you noticed at the event? Most of that was Gerd working behind the scenes. Ian Riarte, my batchmate and close friend, flew from Davao to Manila specifically to help. Someone flew from Mindanao for a free event by an unknown community. That says everything. Paris Acedo hosted the entire day, and the feedback forms specifically praised her as relatable, funny, and engaging.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          EMC&sup2; Fraternity showed up from start to finish. Every Vibe Coders PH member who helped made this real. Our gold sponsors (Alibaba Cloud, SP Madrid, PIXEL for Creators, InLife Foundation, Nature Spring) trusted a first-time event when nothing was certain. Our bronze sponsors (JoyRide, Eskwelabs, Tito's Latin BBQ and Brew, FlowerStore.ph, Potico.ph) were part of it. And our 22 partner organizations, from UP Data Science Society to AWS Cloud Clubs Philippines to DEVCON Manila to Hack Club Philippines, didn't just lend their names. They brought community to an event that was fundamentally about community.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-8">
+          Dean Tanchuling, thank you for that opening. None of us will forget it.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          42.9 percent of checked-in attendees filled out our feedback form. For a free event, that number is wild. People only bother with feedback when something was really good or really bad. Ours was the former. 99 percent positive. Speakers were relatable. Venue was praised. Even Paris's hosting energy got called out specifically. And the demand? Two-day event. Hackathons. More workshops. More Q&amp;A time. More Vibe Coders PH, period. When your audience isn't just satisfied but actively demanding more, that's not feedback. That's a mandate.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-8">
+          So here's the part where I talk directly to you.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          If you're a student, a career shifter, a developer, a creative, someone figuring out what comes next: there is a place for you here. You don't need a PhD. You don't need an expensive laptop. You don't need to know anyone. You need curiosity, willingness to try, and the guts to be okay with failing a few times.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          AI changes the equation. It lets you go from employee to builder. From consuming technology to creating with it. Whatever your field, whether it's engineering, marketing, data, creative arts, AI helps you level up. Want to ship a product? Vibe coding lets you build an app or website in an afternoon. Stuck in a role that doesn't match what you're capable of? Learn AI. Build a portfolio. Start on weekends, on breaks, whenever you can. It's how I did it.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          We have the talent. We have the English proficiency. We have the work ethic. What's been missing is the shift: from workforce to builder force. From being the labor behind AI to being the people who leverage it.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-8">
+          I listen to Sam Altman, Andrew Ng, Demis Hassabis, Dario Amodei, the people shaping the direction of AI globally. And I always think the same thing: when will Filipinos show up in those conversations? Not as consumers. Not as the invisible labor force training the models. As builders. As leaders. As participants. That's starting now. 795 people registered for a free event about AI organized by a community that started with five people on Discord. That's not hype. That's hunger.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Version 2.0 is already in my head. Bigger venue. More speakers. Two-day format. Hackathons and workshops alongside the talks. Metro Manila scale for sure. National, maybe. International speakers if we get the support. We're also launching the <a href="/ai-builder-cohort" class="text-violet-400 hover:text-violet-300 underline">AI Builder Cohort</a>, a mentored learning experience with Jayson and other Vibe Coders mentors where you build and ship a real product. Not pre-recorded modules. AI moves too fast for that. You learn by building, and you ship by the end.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Follow us on all platforms at <strong>@vibecodersph</strong>. Check out <strong>vibecoders.ph</strong>. Join the Discord. We're just getting started.
+        </p>
+
+        <p class="text-base leading-relaxed text-muted-foreground italic mt-12">
+          — Viron Gil Estrada<br />
+          Event Director, Gen AI to Z<br />
+          Co-Founder, Vibe Coders PH<br />
+          April 4, 2026
+        </p>
+
+      </div>
+    `,
+  },
 ];
 
 export const categories = ["All", "Process & Culture", "Web Development", "AI Engineering", "Data Analytics"];
