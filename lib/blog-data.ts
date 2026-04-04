@@ -2838,7 +2838,7 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Alge was the creative director. Every poster, every social media visual, every merch design? That was her. Without Alge, this event would have looked like a Discord server trying to pass as a summit. Gerd handled all logistics: the Viber groups with speakers and sponsors, parking, booth setup, meals, speaker coordination. Every smooth transition you noticed at the event? Most of that was Gerd working behind the scenes. Ian Riarte, my batchmate and close friend, flew from Davao to Manila specifically to help. Someone flew from Mindanao for a free event by an unknown community. That says everything. Paris Acedo hosted the entire day, and the feedback forms specifically praised her as relatable, funny, and engaging.
+          Alj was the creative director. Every poster, every social media visual, every merch design? That was him. Without Alj, this event would have looked like a Discord server trying to pass as a summit. Gerd handled all logistics: the Viber groups with speakers and sponsors, parking, booth setup, meals, speaker coordination. Every smooth transition you noticed at the event? Most of that was Gerd working behind the scenes. Ian Uriarte, my batchmate and close friend, flew from Davao to Manila specifically to help. Someone flew from Mindanao for a free event by an unknown community. That says everything. Paris Acedo hosted the entire day, and the feedback forms specifically praised her as relatable, funny, and engaging.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
