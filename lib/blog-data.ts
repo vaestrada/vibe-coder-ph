@@ -2794,19 +2794,19 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          March 17. The theater was full before the program started. Dean Maria Antonia N. Tanchuling of the UP College of Engineering delivered the opening remarks, and for us at EMC&sup2; and Vibe Coders PH, that wasn't just protocol. Having the Dean of the UP College of Engineering open your event? That's a milestone. We were proud. We were inspired. And we were very aware we really had to deliver.
+          March 17. The theater was full before the program started. Dean Maria Antonia N. Tanchuling of the UP College of Engineering delivered the opening remarks, and for us at EMC&sup2; Fraternity and Vibe Coders PH, that wasn't just protocol. Having the Dean of the UP College of Engineering open your event? That's a milestone. We were proud. We were inspired. And we were very aware we really had to deliver.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Three speaker segments ran across the day. The AI Leadership segment opened with Jimbo Jose Emmanuel Reverente on research commercialization. He had the crowd laughing within minutes, sharing stories about burning through API credits on cloud platforms. Everyone got the jokes because they'd been through the same thing. That moment told me the formula was right: right speakers, right topics, right audience. Nothing dumbed down. Lois Anne Leal followed with AI in earth observation and satellite applications, a field most students didn't know existed. Jaemark Tordecilla closed it out with generative AI and responsible use.
+          Three speaker segments ran across the day. The AI Leadership segment opened with Jimbo Jose Emmanuel Reverente on research commercialization, followed by Lois Anne Leal on AI in earth observation and satellite applications, a field most students didn't know existed, and Jaemark Tordecilla on generative AI and responsible use. Then came the panel discussion, and that's where Jimbo had the crowd laughing, sharing the very relatable chaos of switching between AI tools trying to get things done: using NotebookLM to generate a slide deck, asking Claude Code if it could read a Google Doc, finding out the hard way that every tool has its limits. Everyone in that room knew exactly what he was talking about. That moment told me the formula was right: right speakers, right topics, right audience. Nothing dumbed down.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          The Creative AI segment was the one closest to my heart. Darryll Rapacon and Rodson Verr Suarez, both AI film directors, talked about using AI in filmmaking. And Darryll said something I keep coming back to. He's always wanted to make films, but the barriers were massive: cast, crew, equipment, budget, months of planning. For someone with a vision but no resources, filmmaking was nearly impossible. Now, with AI tools like Minimax, Sora, Runway, and Kling, you can make a film by yourself. Your creative vision becomes your most important asset. The technology that used to gatekeep entire industries? Dismantled. That's the whole message of Gen AI to Z. Not "AI is taking your job." It's: AI opens doors for people who were never allowed through them before.
+          The Creative AI segment was the one closest to my heart. Darryll Rapacon and Rodson Verr Suarez, both AI film directors, talked about using AI in filmmaking. And Darryll said something I keep coming back to. He's always wanted to make films, but the barriers were massive: cast, crew, equipment, budget, months of planning. For someone with a vision but no resources, filmmaking was nearly impossible. Now, with AI tools like Google Veo, Minimax, Sora, Runway, Kling, and the just recently released Seedance 2.0, you can make a film by yourself. Your creative vision becomes your most important asset. The technology that used to gatekeep entire industries? Dismantled. That's the whole message of Gen AI to Z. Not "AI is taking your job." It's: AI opens doors for people who were never allowed through them before.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          The Industry segment had Jean Madrid on AI-driven business transformation, Bryl Lim (someone I honestly didn't expect to say yes) on AI career leverage, Aurelien Chu of Eskwelabs on AI education, and Jayson Cunanan on applied AI and startup building. Seeing Jayson on that stage after nearly a year of him mentoring us from Japan through Discord? Iba talaga 'pag in-person.
+          The Industry segment had Jean Madrid, who made the case for why the world needs more Filipino AI engineers, not just Filipino workers powering AI from behind the scenes. Bryl Lim presented Tarsi, an expense tracker app he built in just two weeks leading up to the event. That was the talk itself: here's what I built, here's how fast I built it, here's what AI made possible. Aurelien Chu of Eskwelabs covered AI education and workforce development. And Jayson Cunanan closed it out by sharing the story of Vibe Coders PH, the apps we've built as a community, including our sari-sari store management app that's already rolled out to 20 branches of our first client. He also talked about the AI Builder Cohort, our upcoming mentored program where you actually build and ship something real.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2814,7 +2814,7 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-8">
-          That's the whole point.
+          That's the whole point!
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2822,7 +2822,11 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Here's the part that's harder to say. Companies like TaskUs, a $200M+ per year outsourcing firm with over 47,000 employees principally in the Philippines, provide data labeling, content moderation, and AI training services powering the models behind ChatGPT, Facebook, and other platforms. Filipino workers annotate data, label images, moderate content, and build the training datasets that make large language models work. An MIT and Stanford study found that when Filipino support agents use AI tools, productivity goes up 14 percent, and 35 percent for new hires.
+          Here's the harder part. Companies like TaskUs, a $200M+ per year outsourcing firm with over 47,000 employees principally in the Philippines, provide data labeling, content moderation, and AI training services powering the models behind ChatGPT, Facebook, and other platforms. Filipino workers annotate data, label images, moderate content, and build the training datasets that make large language models work. An MIT and Stanford study found that when Filipino support agents use AI tools, productivity goes up 14 percent, and 35 percent for new hires.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          I witnessed this first hand. When I was a kid, my parents bought a desktop PC. It felt like the future had arrived in our living room. The machine could barely run Windows, but we were obsessed. Getting online meant buying prepaid internet scratch cards from the computer shop, scratching off the silver coating to reveal a username and password, then sitting through the screeching modem handshake while Windows dialed up to our ISP. My mother used that to work on Amazon Mechanical Turk or MTurk as we call it. I had no idea what it was at the time. She would sit there completing tasks: is this image a dog or not, is this a stop sign, select all the squares containing a train. Amazon called them Human Intelligence Tasks. The platform existed to do one thing: use human judgment to train machine learning systems at scale, a few cents per click. My mother was building AI training datasets. We just didn't have a word for it then.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2834,7 +2838,7 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Alj, our creative director and brother, built the entire visual identity. Every poster, every social media graphic, every merch design, that was him. Gerd took ownership of everything that kept the day from falling apart: Viber coordination between speakers and sponsors, parking, booth setup, meals, speaker readiness minutes before stage time. You don't see that work. You feel it when nothing goes wrong. Jayson Cunanan, our mentor and one of the speakers, also moderated both the Creative and Industry panel discussions, and helped us manage the program on the day itself. A year of guiding us from a distance, and when it mattered most, he was in it with us completely. Joshua Moreno handled every presentation slide from every guest speaker, coordinating revisions up to the morning of March 17 and running the technical program flow throughout the entire day. Every clean transition on that stage, every visual that matched exactly what the speaker needed in that moment, was Joshua. Paris Acedo stepped in as host on short notice and carried the whole day. She's been EMC&sup2;'s go-to for years, Kalye Tunes included, and you can hear why within the first five minutes of her on a microphone. She also moderated the Creative AI panel, and post-event feedback called her out by name: relatable, funny, genuinely engaging. Ian Uriarte flew in from Davao to help. Not a paid role. Not a big-stage gig. Just a batchmate and close friend who believed in what we were building enough to board a plane.
+          Alj, our creative director, built the entire visual identity. Every poster, every social media graphic, every merch design, that was him. Gerd took ownership of everything that kept the day from falling apart: Viber coordination between speakers and sponsors, parking, booth setup, meals, speaker readiness minutes before stage time. You don't see that work. You feel it when nothing goes wrong. Jayson Cunanan, our mentor and one of the speakers, also moderated both the Creative and Industry panel discussions, and helped us manage the program on the day itself. A year of guiding us from a distance, and when it mattered most, he was in it with us completely. Josh Moreno handled every presentation slide from every guest speaker, coordinating revisions up to the very last minute before the speaker's talk and running the technical program flow throughout the entire day. Every clean transition on that stage, every visual that matched exactly what the speaker needed in that moment, was Josh. Paris Acedo stepped in as host on short notice and carried the whole day. She's been EMC&sup2;'s go-to for years, Kalye Tunes included, and you can hear why within the first five minutes of her on a microphone. She also moderated the Creative AI panel, and post-event feedback called her out by name: relatable, funny, genuinely engaging. Ian Uriarte flew in from Davao to help. Not a paid role. Not a big-stage gig. Just a batchmate and close friend who believed in what we were building enough to board a plane.
         </p>
 
         <p class="text-lg leading-relaxed mb-8">
@@ -2866,7 +2870,7 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          AI changes the equation. It lets you go from employee to builder. From consuming technology to creating with it. Whatever your field, whether it's engineering, marketing, data, creative arts, AI helps you level up. Want to ship a product? Vibe coding lets you build an app or website in an afternoon. Stuck in a role that doesn't match what you're capable of? Learn AI. Build a portfolio. Start on weekends, on breaks, whenever you can. It's how I did it.
+          AI changes the equation. It lets you go from employee to builder. From consuming technology to creating with it. Whatever your field, whether it's engineering, marketing, finance, fine arts, AI helps you level up. Want to ship a product? Vibe coding lets you build an app or website in an afternoon. Stuck in a role that doesn't match what you're capable of? Learn AI. Build a portfolio. Start on weekends, on breaks, whenever you can. It's how I did it.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
