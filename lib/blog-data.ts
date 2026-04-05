@@ -2766,19 +2766,19 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          What was supposed to be a simple get-together with our community members turned into me securing a 256-seat university theater. I have this problem where I can't keep things small, kasi every time I see an opportunity, my brain goes somewhere bigger. I had extensive event organizing experience way back in college, from the National Children's Science Interactive Workshop under PSYSC to UP Fair Kalye Tunes with EMC&sup2; Fraternity. So when the idea for a casual meetup came up, I didn't see a bar gathering. I saw a summit.
+          What was supposed to be a simple get-together with our community members turned into me securing a 256-seat university theater. I have this problem where I can't keep things small, kasi every time I see an opportunity, my brain goes somewhere bigger. I'd been organizing events since college, from the National Children's Science Interactive Workshop under PSYSC to UP Fair Kalye Tunes with EMC&sup2; Fraternity. So when the idea for a casual meetup came up, I didn't see a bar gathering. I saw a summit.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Around the same time, I fell deep into AI image and video generation. Nano Banana Pro. Kling. Seedream. Flux. Higgsfield Soul. Tools most people hadn't heard of. One night I asked myself: can I make a 3D mascot in fifteen minutes? I tried. Out came Astrolotl, this axolotl-inspired character that became the face of the event. Five more followed in a single day: Datamaraw, ChickGPT, Lolo Long, Prof Agile, Artsier. Six mascots. All AI-generated. Made by someone with zero formal training in design. That's when I knew: if I can create an entire visual identity with AI in one sitting, I can build an entire event with it.
+          Around the same time, I fell deep into AI image and video generation. Nano Banana Pro. Kling. Seedream. Flux. Higgsfield Soul. Tools most people hadn't heard of. One night I asked myself: can I make a 3D mascot in fifteen minutes? I tried. Out came Astrolotl, this axolotl-inspired character that became the face of the event. Five more followed in a single day: Datamaraw, ChickGPT, Lolo Long, Prof Agile, Artsier. Six mascots. All AI-generated. Made by someone with zero formal training in design. That's when it clicked. If I can make an entire visual identity with AI in one sitting, I can probably build an entire event with it too.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          And that's exactly what I did. For three months, I was basically a one-person operation doing the work of a full event committee. Sponsor outreach emails? ChatGPT and Gemini, personalized for every follow-up. MOAs, partnership contracts? AI-generated. Visual identity, social media captions? AI. The website, event page, registration system, check-in system, the Supabase backend? Vibe coded. Automated countdown newsletters? Built it. A personalized certificate system that mass-delivered certs to every attendee via Resend? Built that too. For lead generation, I used Bright Data MCP to discover contact info from school organizations and tech communities I never even knew existed.
+          For three months, that's exactly what I did. Basically a one-person operation doing the work of a full event committee. Sponsor outreach emails? ChatGPT and Gemini, personalized for every follow-up. MOAs, partnership contracts? AI-generated. Visual identity, social media captions? AI. The website, event page, registration system, check-in system, the Supabase backend? Vibe coded. Automated countdown newsletters? Built it. A personalized certificate system that mass-delivered certs to every attendee via Resend? Built that too. For lead generation, I used Bright Data MCP to discover contact info from school organizations and tech communities I never even knew existed.
         </p>
 
         <p class="text-lg leading-relaxed mb-8">
-          One person, leveraging AI, doing what used to take ten.
+          One person with AI, doing what used to take ten.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2794,19 +2794,19 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          March 17. The theater was full before the program started. Dean Maria Antonia N. Tanchuling of the UP College of Engineering delivered the opening remarks, and for us at EMC&sup2; Fraternity and Vibe Coders PH, that wasn't just protocol. Having the Dean of the UP College of Engineering open your event? That's a milestone. We were proud. We were inspired. And we were very aware we really had to deliver.
+          March 17. The theater was full before the program started. Dean Maria Antonia N. Tanchuling of the UP College of Engineering delivered the opening remarks, and for us at EMC&sup2; Fraternity and Vibe Coders PH, that wasn't just protocol. Having the Dean of the UP College of Engineering open your event? That's a milestone. We were proud. We were inspired. And we knew we had to deliver.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Three speaker segments ran across the day. The AI Leadership segment opened with Jimbo Jose Emmanuel Reverente on research commercialization, followed by Lois Anne Leal on AI in earth observation and satellite applications, a field most students didn't know existed, and Jaemark Tordecilla on generative AI and responsible use. Then came the panel discussion, and that's where Jimbo had the crowd laughing, sharing the very relatable chaos of switching between AI tools trying to get things done: using NotebookLM to generate a slide deck, asking Claude Code if it could read a Google Doc, finding out the hard way that every tool has its limits. Everyone in that room knew exactly what he was talking about. That moment told me the formula was right: right speakers, right topics, right audience. Nothing dumbed down.
+          The AI Leadership talks opened with Jimbo Jose Emmanuel Reverente on research commercialization, followed by Lois Anne Leal on AI in earth observation and satellite applications, a field most students didn't know existed, and Jaemark Tordecilla on generative AI and responsible use. Then came the panel discussion, and that's where Jimbo had the crowd laughing, sharing the very relatable chaos of switching between AI tools trying to get things done: using NotebookLM to generate a slide deck, asking Claude Code if it could read a Google Doc, finding out the hard way that every tool has its limits. Everyone in that room knew exactly what he was talking about. Right speakers, right topics, right audience. Nothing dumbed down.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          The Creative AI segment was the one closest to my heart. Darryll Rapacon and Rodson Verr Suarez, both AI film directors, talked about using AI in filmmaking. And Darryll said something I keep coming back to. He's always wanted to make films, but the barriers were massive: cast, crew, equipment, budget, months of planning. For someone with a vision but no resources, filmmaking was nearly impossible. Now, with AI tools like Google Veo, Minimax, Sora, Runway, Kling, and the just recently released Seedance 2.0, you can make a film by yourself. Your creative vision becomes your most important asset. The technology that used to gatekeep entire industries? Dismantled. That's the whole message of Gen AI to Z. Not "AI is taking your job." It's: AI opens doors for people who were never allowed through them before.
+          The Creative AI talks were the closest to my heart. Darryll Rapacon and Rodson Verr Suarez, both AI film directors, talked about using AI in filmmaking. And Darryll said something I keep coming back to. He's always wanted to make films, but the barriers were massive: cast, crew, equipment, budget, months of planning. For someone with a vision but no resources, filmmaking was nearly impossible. Now, with AI tools like Google Veo, Minimax, Sora, Runway, Kling, and the just recently released Seedance 2.0, you can make a film by yourself. Your ideas become the hardest part, not the production. That's what this whole thing is about. Not "AI is taking your job." It's that AI gives access to people who were never supposed to have it.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          The Industry segment had Jean Madrid, who made the case for why the world needs more Filipino AI engineers, not just Filipino workers powering AI from behind the scenes. Bryl Lim presented Tarsi, an expense tracker app he built in just two weeks leading up to the event. That was the talk itself: here's what I built, here's how fast I built it, here's what AI made possible. Aurelien Chu of Eskwelabs covered AI education and workforce development. And Jayson Cunanan closed it out by sharing the story of Vibe Coders PH, the apps we've built as a community, including our sari-sari store management app that's already rolled out to 20 branches of our first client. He also talked about the AI Builder Cohort, our upcoming mentored program where you actually build and ship something real.
+          Jean Madrid made the case for why the world needs more Filipino AI engineers, not just Filipino workers powering AI from behind the scenes. Bryl Lim presented Tarsi, an expense tracker app he built in just two weeks leading up to the event. That was the talk itself: here's what I built, here's how fast I built it, here's what AI made possible. Aurelien Chu of Eskwelabs talked about AI in education. And Jayson Cunanan closed it out by sharing the story of Vibe Coders PH, the apps we've built as a community, including our sari-sari store management app that's already rolled out to 20 branches of our first client. He also introduced the AI Builder Cohort, our upcoming mentored program where you actually build and ship something real.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2818,7 +2818,7 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          We all know the reality. Most employment in the Philippines revolves around BPO, call centers, customer service. 1.6 million workers in outsourcing. Important jobs, respectable jobs. But a huge number of Filipinos graduate with four-year degrees in CS, Engineering, or IT and end up in night shift tech support, serving US and European clients while the country sleeps. Not because they lack talent. Because nobody showed them what else was possible.
+          We all know the reality. Most employment in the Philippines revolves around BPO, call centers, customer service. 1.6 million workers in outsourcing. Important jobs, respectable jobs. But a huge number of Filipinos graduate with four-year degrees in CS, Engineering, or IT and end up in night shift tech support, serving US and European clients while the country sleeps. Not because they lack talent. Because nobody showed them there was something else.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2826,11 +2826,11 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          I witnessed this first hand. When I was a kid, my parents bought a desktop PC. It felt like the future had arrived in our living room. The machine could barely run Windows, but we were obsessed. Getting online meant buying prepaid internet scratch cards from the computer shop, scratching off the silver coating to reveal a username and password, then sitting through the screeching modem handshake while Windows dialed up to our ISP. My mother used that to work on Amazon Mechanical Turk or MTurk as we call it. I had no idea what it was at the time. She would sit there completing tasks: is this image a dog or not, is this a stop sign, select all the squares containing a train. Amazon called them Human Intelligence Tasks. The platform existed to do one thing: use human judgment to train machine learning systems at scale, a few cents per click. My mother was building AI training datasets. We just didn't have a word for it then.
+          I saw this up close growing up. My parents bought a desktop PC when I was a kid. I thought it was the coolest thing in the world. The machine could barely run Windows, but we were obsessed. Getting online meant buying prepaid internet scratch cards from the computer shop, scratching off the silver coating to reveal a username and password, then sitting through the screeching modem handshake while Windows dialed up to our ISP. My mother used that to work on Amazon Mechanical Turk or MTurk as we call it. I had no idea what it was at the time. She would sit there completing tasks: is this image a dog or not, is this a stop sign, select all the squares containing a train. Amazon called them Human Intelligence Tasks. A few cents per click to help teach a machine what a dog looks like. My mother was building AI training datasets. We just didn't have a word for it then.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          We train the models. We moderate the content. We provide the data labor. And then we work night shifts serving the very companies that profit from what our labor built. The people who build the foundation of AI should be the same people leveraging it to build their own futures. That disconnect is what Gen AI to Z exists to challenge.
+          We train the models. We moderate the content. We provide the data labor. And then we work night shifts serving the very companies that profit from what our labor built. The people building the foundation of AI should be the same ones using it to build their own things.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2850,7 +2850,7 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          To our gold sponsors. Alibaba Cloud came in with a full industry showcase presentation. SP Madrid brought Jean Madrid as one of our industry speakers, and their booth was one of the most engaging on the floor. PIXEL for Creators came with a speaker, a booth full of freebies, and Alayza, their marketing officer, who was one of the most genuinely collaborative partners we had through the entire planning process. InLife Foundation covered food for our organizing team, handled light and sound for the entire venue, and ran a booth that participants kept coming back to all day. Nature Spring kept everyone going: every attendee, every speaker, every organizer, for a full eight hours. That kind of support is more than it sounds.
+          To our gold sponsors. Alibaba Cloud came in with a full industry showcase presentation. SP Madrid brought Jean Madrid as one of our industry speakers, and their booth was one of the most engaging on the floor. PIXEL for Creators came with a speaker, a booth full of freebies, and Alayza, their marketing officer, who was one of the most genuinely collaborative partners we had through the entire planning process. InLife Foundation covered food for our organizing team, handled light and sound for the entire venue, and ran a booth that participants kept coming back to all day. Nature Spring kept everyone going: every attendee, every speaker, every organizer, for a full eight hours. That kind of support matters more than it sounds.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2866,27 +2866,35 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          If you're a student, a career shifter, a developer, a creative, someone figuring out what comes next: there is a place for you here. You don't need a PhD. You don't need an expensive laptop. You don't need to know anyone. You need curiosity, willingness to try, and the guts to be okay with failing a few times.
+          AI changes the equation. You go from employee to builder. From using tech to building with it. Whatever your field, engineering, marketing, finance, fine arts, AI lets you do more with less. Want to ship a product? Vibe coding lets you build an app or website in an afternoon. Stuck in a role that doesn't match what you're capable of? Learn AI. Build a portfolio. Start on weekends, on breaks, whenever you can. It's how I did it.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          AI changes the equation. It lets you go from employee to builder. From consuming technology to creating with it. Whatever your field, whether it's engineering, marketing, finance, fine arts, AI helps you level up. Want to ship a product? Vibe coding lets you build an app or website in an afternoon. Stuck in a role that doesn't match what you're capable of? Learn AI. Build a portfolio. Start on weekends, on breaks, whenever you can. It's how I did it.
-        </p>
-
-        <p class="text-lg leading-relaxed mb-6">
-          We have the talent. We have the English proficiency. We have the work ethic. What's been missing is the shift: from workforce to builder force. From being the labor behind AI to being the people who leverage it.
+          We have the talent. We have the English proficiency. We have the work ethic. What's been missing is the shift: from workforce to builder force. From being the labor behind AI to being the people who use it to build.
         </p>
 
         <p class="text-lg leading-relaxed mb-8">
-          I listen to Sam Altman, Andrew Ng, Demis Hassabis, Dario Amodei, the people shaping the direction of AI globally. And I always think the same thing: when will Filipinos show up in those conversations? Not as consumers. Not as the invisible labor force training the models. As builders. As leaders. As participants. That's starting now. 795 people registered for a free event about AI organized by a community that started with five people on Discord. That's not hype. That's hunger.
+          I listen to Sam Altman, Andrew Ng, Demis Hassabis, Dario Amodei talk about where AI is going. And I always think the same thing: when are Filipinos going to show up in those conversations? Not behind the scenes. Not training the models for someone else. In the room. At the table. 795 people registering for a free AI summit organized by a community nobody had heard of six months ago tells me it's already starting.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Version 2.0 is already in my head. Bigger venue. More speakers. Two-day format. Hackathons and workshops alongside the talks. Metro Manila scale for sure. National, maybe. International speakers if we get the support. We're also launching the <a href="/ai-builder-cohort" class="text-violet-400 hover:text-violet-300 underline">AI Builder Cohort</a>, a mentored learning experience with Jayson and other Vibe Coders mentors where you build and ship a real product. Not pre-recorded modules. AI moves too fast for that. You learn by building, and you ship by the end.
+          If you're a student still mapping out your path, or a working Filipino quietly convinced you're capable of more than what your current role lets you show, here it is: it has never been easier to start building with AI. You don't need a CS degree. You don't need to wait for the right job, the right boss, or the right moment. A laptop, a free account on any AI tool, and a few uncomfortable hours on a Sunday afternoon. That's the whole entry requirement.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Follow us on all platforms at <strong>@vibecodersph</strong>. Check out <strong>vibecoders.ph</strong>. Join the Discord. We're just getting started.
+          Join the Vibe Coders PH Discord Server. That's where the real conversations happen. Working professionals sharing AI workflows they've actually tested. Students vibe coding their first apps and deploying them the same night. Mentors who answer questions not because they're paid to, but because they remember what it felt like to have no one around to ask. The right environment changes everything, and it doesn't have to be a university lab or a Silicon Valley office. It can be a group chat at 11pm.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Follow us on all platforms at <strong>@vibecodersph</strong> for new AI tools as they drop, job openings in Philippine tech, and quick breakdowns you can actually use that week. Subscribe to the newsletter if you want the longer reads. And whenever you're ready to build something real, vibecoders.ph has everything you need to get started.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          I keep thinking about Version 2.0. Bigger venue. Two days instead of one. Hackathons, workshops, the real hands-on stuff people asked for in the feedback. Metro Manila scale for sure. National, maybe. I don't know exactly what it looks like yet, but after the kind of turnout and feedback we got from a first-time event with zero track record, I know it's happening. We're also building the <a href="/ai-builder-cohort" class="text-violet-400 hover:text-violet-300 underline">AI Builder Cohort</a>, a mentored program with Jayson and other Vibe Coders mentors where you build and ship a real product. Not pre-recorded modules. AI moves too fast for that. You learn by building, and you ship by the end.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          A community that started with five people on Discord filled a university theater on its first try. That's not hype. That's hunger. And we're just getting started.
         </p>
 
         <p class="text-base leading-relaxed text-muted-foreground italic mt-12">
