@@ -2750,11 +2750,11 @@ feature:       ●──●  (feature-login-form)
       <div class="prose prose-lg max-w-none">
 
         <p class="text-lg leading-relaxed mb-6">
-          My biggest fear for three straight months was that nobody was going to show up.
+          My biggest fear for organizing this event was that nobody was going to show up.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          795 people registered. 341 checked in. Free admission, no corporate backing, no track record. Just a community get-together that somehow turned into a full-blown career summit at UP Diliman. And for most of the three months it took to pull it off, it was basically just me and AI.
+          Turns out, 341 did. Out of 795 people who registered, 341 checked in on the morning of March 17 for a free summit with no corporate backing, no established track record, and an organizing team that had never done anything like this together before. What started as a casual community get-together had quietly become a full-blown career summit at UP Diliman. And for most of the three months it took to get there, it was basically just me and AI.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2818,10 +2818,6 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Now let me talk about something uncomfortable, because this is the real reason I built this event.
-        </p>
-
-        <p class="text-lg leading-relaxed mb-6">
           We all know the reality. Most employment in the Philippines revolves around BPO, call centers, customer service. 1.6 million workers in outsourcing. Important jobs, respectable jobs. But a huge number of Filipinos graduate with four-year degrees in CS, Engineering, or IT and end up in night shift tech support, serving US and European clients while the country sleeps. Not because they lack talent. Because nobody showed them what else was possible.
         </p>
 
@@ -2833,28 +2829,36 @@ feature:       ●──●  (feature-login-form)
           We train the models. We moderate the content. We provide the data labor. And then we work night shifts serving the very companies that profit from what our labor built. The people who build the foundation of AI should be the same people leveraging it to build their own futures. That disconnect is what Gen AI to Z exists to challenge.
         </p>
 
-        <p class="text-lg leading-relaxed mb-8">
-          I didn't do this alone, by the way.
+        <p class="text-lg leading-relaxed mb-6">
+          The team behind this was small. Smaller than the event suggested.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Alj was the creative director. Every poster, every social media visual, every merch design? That was him. Without Alj, this event would have looked like a Discord server trying to pass as a summit. Gerd handled all logistics: the Viber groups with speakers and sponsors, parking, booth setup, meals, speaker coordination. Every smooth transition you noticed at the event? Most of that was Gerd working behind the scenes. Ian Uriarte, my batchmate and close friend, flew from Davao to Manila specifically to help. Someone flew from Mindanao for a free event by an unknown community. That says everything. Paris Acedo hosted the entire day, and the feedback forms specifically praised her as relatable, funny, and engaging.
-        </p>
-
-        <p class="text-lg leading-relaxed mb-6">
-          EMC&sup2; Fraternity showed up from start to finish. Every Vibe Coders PH member who helped made this real. Our gold sponsors (Alibaba Cloud, SP Madrid, PIXEL for Creators, InLife Foundation, Nature Spring) trusted a first-time event when nothing was certain. Our bronze sponsors (JoyRide, Eskwelabs, Tito's Latin BBQ and Brew, FlowerStore.ph, Potico.ph) were part of it. And our 22 partner organizations, from UP Data Science Society to AWS Cloud Clubs Philippines to DEVCON Manila to Hack Club Philippines, didn't just lend their names. They brought community to an event that was fundamentally about community.
+          Alj, our creative director and brother, built the entire visual identity. Every poster, every social media graphic, every merch design, that was him. Gerd took ownership of everything that kept the day from falling apart: Viber coordination between speakers and sponsors, parking, booth setup, meals, speaker readiness minutes before stage time. You don't see that work. You feel it when nothing goes wrong. Jayson Cunanan, our mentor and one of the speakers, also moderated both the Creative and Industry panel discussions, and helped us manage the program on the day itself. A year of guiding us from a distance, and when it mattered most, he was in it with us completely. Joshua Moreno handled every presentation slide from every guest speaker, coordinating revisions up to the morning of March 17 and running the technical program flow throughout the entire day. Every clean transition on that stage, every visual that matched exactly what the speaker needed in that moment, was Joshua. Paris Acedo stepped in as host on short notice and carried the whole day. She's been EMC&sup2;'s go-to for years, Kalye Tunes included, and you can hear why within the first five minutes of her on a microphone. She also moderated the Creative AI panel, and post-event feedback called her out by name: relatable, funny, genuinely engaging. Ian Uriarte flew in from Davao to help. Not a paid role. Not a big-stage gig. Just a batchmate and close friend who believed in what we were building enough to board a plane.
         </p>
 
         <p class="text-lg leading-relaxed mb-8">
+          EMC&sup2; Fraternity showed up from start to finish. Brothers doing what brothers do.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
           Dean Tanchuling, thank you for that opening. None of us will forget it.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          42.9 percent of checked-in attendees filled out our feedback form. For a free event, that number is wild. People only bother with feedback when something was really good or really bad. Ours was the former. 99 percent positive. Speakers were relatable. Venue was praised. Even Paris's hosting energy got called out specifically. And the demand? Two-day event. Hackathons. More workshops. More Q&amp;A time. More Vibe Coders PH, period. When your audience isn't just satisfied but actively demanding more, that's not feedback. That's a mandate.
+          To our gold sponsors. Alibaba Cloud came in with a full industry showcase presentation. SP Madrid brought Jean Madrid as one of our industry speakers, and their booth was one of the most engaging on the floor. PIXEL for Creators came with a speaker, a booth full of freebies, and Alayza, their marketing officer, who was one of the most genuinely collaborative partners we had through the entire planning process. InLife Foundation covered food for our organizing team, handled light and sound for the entire venue, and ran a booth that participants kept coming back to all day. Nature Spring kept everyone going: every attendee, every speaker, every organizer, for a full eight hours. That kind of support is more than it sounds.
         </p>
 
-        <p class="text-lg leading-relaxed mb-8">
-          So here's the part where I talk directly to you.
+        <p class="text-lg leading-relaxed mb-6">
+          To our bronze sponsors: JoyRide, Eskwelabs, Tito's Latin BBQ &amp; Brew, FlowerStore.ph, and Potico.ph. You trusted a first-time event with nothing to promise you but an audience that actually cared. That audience showed up.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          And to our 16 partner organizations: UP Data Science Society, GDG on Campus PUP, GDG on Campus NU Manila, AWS Cloud Club PUP, AWS Cloud Clubs Philippines, AWS User Group e:Novators PH, Microsoft Azure Community PH, Power BI Pilipinas, DEVCON Manila, JPCS TIP QC, JPCS FEU Tech, COMSA &ndash; EARIST, PUP ASCII, Hack Club Philippines, FWDP, and PSYSC. They didn't just lend their names. They brought their communities.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          42.9 percent of checked-in attendees filled out our feedback form. For a free event, that number is wild. People only bother with feedback when something was really good or really bad. Ours was the former. 99 percent positive. Speakers were relatable. Venue was praised. Even Paris's hosting energy got called out specifically. And the demand? Two-day event. Hackathons. More workshops. More Q&amp;A time. More Vibe Coders PH, period. When your audience isn't just satisfied but actively demanding more, that's not feedback. That's a mandate.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
