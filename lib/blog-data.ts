@@ -2754,7 +2754,7 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Turns out, 341 did. Out of 795 people who registered, 341 checked in on the morning of March 17 for a free summit with no corporate backing, no established track record, and an organizing team that had never done anything like this together before. What started as a casual community get-together had quietly become a full-blown career summit at UP Diliman. And for most of the three months it took to get there, it was basically just me and AI.
+          Turns out, 341 did! Out of 795 people who registered, 341 checked in on the morning of March 17 for a free summit with no corporate backing, no established track record, and an organizing team that had never done anything like this together before. What started as a casual community get-together had quietly become a full-blown career summit at UP Diliman. And for most of the three months it took to get there, it was basically just me and AI.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2766,11 +2766,11 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          What was supposed to be a simple get-together with our community members turned into me securing a 256-seat university theater. I have this problem where I can't keep things small, kasi every time I see an opportunity, my brain goes somewhere bigger. I had event experience from PSYSC and from organizing UP Fair Kalye Tunes with my fraternity, EMC&sup2;. So when the idea for a casual meetup came up, I didn't see a bar gathering. I saw a summit.
+          What was supposed to be a simple get-together with our community members turned into me securing a 256-seat university theater. I have this problem where I can't keep things small, kasi every time I see an opportunity, my brain goes somewhere bigger. I had extensive event organizing experience way back in college, from the National Children's Science Interactive Workshop under PSYSC to UP Fair Kalye Tunes with EMC&sup2; Fraternity. So when the idea for a casual meetup came up, I didn't see a bar gathering. I saw a summit.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          Around the same time, I fell deep into AI image and video generation. Minimax. HiDream. Hailuo. Tools most people hadn't heard of. One night I asked myself: can I make a 3D mascot in fifteen minutes? I tried. Out came Astrolotl, this axolotl-inspired character that became the face of the event. Five more followed in a single day: Datamaraw, ChickGPT, Lolo Long, Prof Agile, Artsier. Six mascots. All AI-generated. Made by someone with zero formal training in design. That's when I knew: if I can create an entire visual identity with AI in one sitting, I can build an entire event with it.
+          Around the same time, I fell deep into AI image and video generation. Nano Banana Pro. Kling. Seedream. Flux. Higgsfield Soul. Tools most people hadn't heard of. One night I asked myself: can I make a 3D mascot in fifteen minutes? I tried. Out came Astrolotl, this axolotl-inspired character that became the face of the event. Five more followed in a single day: Datamaraw, ChickGPT, Lolo Long, Prof Agile, Artsier. Six mascots. All AI-generated. Made by someone with zero formal training in design. That's when I knew: if I can create an entire visual identity with AI in one sitting, I can build an entire event with it.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
@@ -2782,7 +2782,7 @@ feature:       ●──●  (feature-login-form)
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
-          But ang hirap. 256 seats to fill with zero brand recognition. What if nobody comes? That thought hit me almost every night. The embarrassment wouldn't just be mine. It would fall on every speaker and sponsor who took a chance on us.
+          Pero ang hirap! 256 seats to fill with zero brand recognition. What if nobody comes? That thought hit me almost every night. The embarrassment wouldn't just be mine. It would fall on every speaker and sponsor who took a chance on us.
         </p>
 
         <p class="text-lg leading-relaxed mb-6">
